@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCC 2 · Anxiety & Psychosis · Master Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0c0b14;
+  --paper: #f5f0e8;
+  --cream: #ede7d9;
+  --warm: #d4c9b0;
+  --rose: #c8315a;
+  --rose-light: #f2758a;
+  --rose-pale: rgba(200,49,90,0.1);
+  --teal: #1a7a6e;
+  --teal-light: #25b09e;
+  --teal-pale: rgba(26,122,110,0.1);
+  --amber: #c4720a;
+  --amber-light: #f0930d;
+  --amber-pale: rgba(196,114,10,0.1);
+  --navy: #1e2d50;
+  --navy-light: #2d4275;
+  --text: #1a1625;
+  --text-muted: #6b6275;
+  --text-light: #9e97a8;
+  --border: #d8d0c4;
+  --border-light: #ede7dc;
+  --sidebar-w: 260px;
+  --header-h: 0px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--ink);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-brand {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-brand .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  margin-bottom: 6px;
+}
+.sidebar-brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.sidebar-brand .sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.sidebar-progress {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 6px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.5px;
+}
+.progress-track {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), var(--amber-light));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+  scrollbar-width: none;
+}
+.sidebar-nav::-webkit-scrollbar { display: none; }
+
+.nav-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  padding: 14px 24px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+.nav-item:hover { background: rgba(255,255,255,0.04); }
+.nav-item.active {
+  background: rgba(200,49,90,0.12);
+  border-left-color: var(--rose);
+}
+.nav-icon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.2s;
+}
+.nav-item.active .nav-icon { background: rgba(200,49,90,0.25); }
+.nav-text {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+  line-height: 1.3;
+}
+.nav-item.active .nav-text { color: #fff; font-weight: 600; }
+.nav-item:hover .nav-text { color: rgba(255,255,255,0.8); }
+
+.nav-badge {
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.25);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+.nav-item.active .nav-badge {
+  background: rgba(200,49,90,0.3);
+  color: var(--rose-light);
+}
+
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.quiz-score-pill {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quiz-score-pill .ql { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+.quiz-score-pill .qv {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--teal-light);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════
+   MAIN CONTENT
+══════════════════════════════════════ */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  animation: pageIn 0.35s ease;
+}
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PAGE HERO */
+.page-hero {
+  padding: 56px 56px 40px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  right: -80px; top: -80px;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,49,90,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 2px;
+  background: var(--rose);
+}
+.page-hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.page-hero p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+}
+.htag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.3px;
+}
+.htag-rose { background: var(--rose-pale); color: var(--rose); border: 1px solid rgba(200,49,90,0.2); }
+.htag-teal { background: var(--teal-pale); color: var(--teal); border: 1px solid rgba(26,122,110,0.2); }
+.htag-amber { background: var(--amber-pale); color: var(--amber); border: 1px solid rgba(196,114,10,0.2); }
+.htag-navy { background: rgba(30,45,80,0.08); color: var(--navy); border: 1px solid rgba(30,45,80,0.15); }
+
+/* CONTENT AREA */
+.content-area {
+  padding: 40px 56px 80px;
+}
+
+/* TWO-COLUMN GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.span-2 { grid-column: span 2; }
+
+/* CARDS */
+.card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+.card-header {
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.card-icon-rose { background: var(--rose-pale); }
+.card-icon-teal { background: var(--teal-pale); }
+.card-icon-amber { background: var(--amber-pale); }
+.card-icon-navy { background: rgba(30,45,80,0.08); }
+
+.card-title-group { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.card-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 2px;
+  font-family: 'DM Mono', monospace;
+}
+.card-body { padding: 18px 22px; }
+
+/* ALERT STRIPS */
+.strip {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.strip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.strip-rose { background: var(--rose-pale); border-left: 3px solid var(--rose); color: #8a0f2e; }
+.strip-teal { background: var(--teal-pale); border-left: 3px solid var(--teal); color: #0e4d45; }
+.strip-amber { background: var(--amber-pale); border-left: 3px solid var(--amber); color: #7a4600; }
+.strip-navy { background: rgba(30,45,80,0.07); border-left: 3px solid var(--navy); color: var(--navy); }
+
+/* LISTS */
+.fancy-list { list-style: none; }
+.fancy-list li {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+}
+.fancy-list li:last-child { border-bottom: none; }
+.fancy-list li .bullet { color: var(--rose); font-weight: 700; flex-shrink: 0; }
+.fancy-list.teal li .bullet { color: var(--teal); }
+.fancy-list.amber li .bullet { color: var(--amber); }
+.fancy-list.navy li .bullet { color: var(--navy); }
+
+/* DIVIDER */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 24px;
+}
+.section-divider .label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+.section-divider .line { flex: 1; height: 1px; background: var(--border); }
+.section-divider .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--rose);
+  flex-shrink: 0;
+}
+
+/* BIG STAT CARDS */
+.stat-card {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 22px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.stat-card .stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-card .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+.stat-card .stat-desc { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 10px; line-height: 1.5; }
+
+/* TABLES */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.835rem; }
+.data-table thead tr { background: var(--cream); }
+.data-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+}
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--text);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(0,0,0,0.015); }
+.data-table .td-rose { color: var(--rose); font-weight: 700; }
+.data-table .td-teal { color: var(--teal); font-weight: 700; }
+.data-table .td-amber { color: var(--amber); font-weight: 700; }
+
+/* COLLAPSIBLE */
+.accordion-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 6px; overflow: hidden; }
+.accordion-trigger {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 14px 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.accordion-trigger:hover { background: var(--cream); }
+.accordion-trigger.open { background: var(--ink); color: #fff; }
+.accordion-arrow { font-size: 0.75rem; transition: transform 0.3s; color: var(--text-light); }
+.accordion-trigger.open .accordion-arrow { transform: rotate(180deg); color: rgba(255,255,255,0.5); }
+.accordion-body {
+  display: none;
+  padding: 16px 18px;
+  background: #faf8f5;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.accordion-body.open { display: block; animation: fadeIn 0.2s ease; }
+.accordion-answer-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.answer-tag-rose { background: var(--rose-pale); color: var(--rose); }
+
+/* MNEMONIC */
+.mnemonic-card {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.mnemonic-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.012) 40px,
+    rgba(255,255,255,0.012) 41px
+  );
+}
+.mnemonic-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  margin-bottom: 6px;
+}
+.mnemonic-word {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.mnemonic-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+.mnemonic-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--rose-light);
+  width: 28px;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+.mnemonic-def {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  padding-top: 4px;
+}
+.mnemonic-def strong { color: #fff; font-weight: 700; }
+
+/* FLIP CARDS */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.flip-card { height: 150px; cursor: pointer; perspective: 1000px; }
+.flip-inner {
+  width: 100%; height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+}
+.flip-front {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.flip-front::after {
+  content: '↻';
+  position: absolute;
+  bottom: 8px; right: 10px;
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+.flip-back {
+  background: var(--ink);
+  transform: rotateY(180deg);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+.flip-back strong { color: var(--rose-light); }
+
+/* ══════════════════════════════════════
+   QUIZ STYLES
+══════════════════════════════════════ */
+.quiz-masthead {
+  background: var(--ink);
+  padding: 28px 56px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.quiz-masthead .qm-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 700;
+}
+.quiz-masthead .qm-sub { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.quiz-masthead .qm-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.qm-stat {
+  text-align: center;
+  padding: 0 16px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.qm-stat:first-child { border-left: none; }
+.qm-stat .val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
+}
+.qm-stat .key { font-size: 0.65rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; }
+
+.quiz-track {
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+}
+.quiz-track-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), var(--amber-light));
+  transition: width 0.5s ease;
+}
+
+.quiz-body { padding: 40px 56px 60px; }
+
+.q-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.q-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.q-badge-sata { background: rgba(26,122,110,0.1); color: var(--teal); border: 1px solid rgba(26,122,110,0.25); }
+.q-badge-single { background: var(--rose-pale); color: var(--rose); border: 1px solid rgba(200,49,90,0.25); }
+.q-badge-teaching { background: var(--amber-pale); color: var(--amber); border: 1px solid rgba(196,114,10,0.25); }
+.q-badge-outcome { background: rgba(30,45,80,0.08); color: var(--navy); border: 1px solid rgba(30,45,80,0.2); }
+.q-badge-priority { background: rgba(200,49,90,0.15); color: var(--rose); border: 1px solid rgba(200,49,90,0.3); }
+
+.q-stem {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+.q-stem strong { color: var(--rose); }
+
+.sata-instruct {
+  background: rgba(26,122,110,0.07);
+  border: 1px solid rgba(26,122,110,0.2);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 0.8rem;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.options-list { display: flex; flex-direction: column; gap: 8px; max-width: 700px; }
+.opt-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.18s;
+  line-height: 1.5;
+}
+.opt-btn:hover:not(:disabled) {
+  border-color: var(--rose);
+  background: var(--rose-pale);
+  transform: translateX(3px);
+}
+.opt-btn.selected {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+}
+.opt-btn.correct {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+  color: var(--teal);
+}
+.opt-btn.wrong {
+  border-color: var(--rose);
+  background: var(--rose-pale);
+  color: var(--rose);
+}
+.opt-btn:disabled { cursor: default; }
+.opt-letter {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+.opt-btn.correct .opt-letter { background: var(--teal); color: #fff; }
+.opt-btn.wrong .opt-letter { background: var(--rose); color: #fff; }
+.opt-btn.selected .opt-letter { background: var(--teal); color: #fff; }
+
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.btn-submit {
+  background: var(--rose);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-submit:hover:not(:disabled) { background: #a82248; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(200,49,90,0.35); }
+.btn-submit:disabled { background: var(--warm); cursor: not-allowed; color: var(--text-muted); }
+.btn-next {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+.btn-next.show { display: inline-flex; align-items: center; gap: 6px; }
+.btn-next:hover { border-color: var(--rose); color: var(--rose); }
+
+.rationale-panel {
+  display: none;
+  margin-top: 20px;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 18px 20px;
+  max-width: 700px;
+  border-left: 4px solid var(--teal);
+  animation: fadeIn 0.3s ease;
+}
+.rationale-panel.show { display: block; }
+.rationale-heading {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.rationale-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.rationale-text strong { color: var(--rose); }
+
+/* RESULTS PAGE */
+.results-wrap {
+  display: none;
+  min-height: calc(100vh - 80px);
+  align-items: center;
+  justify-content: center;
+  padding: 60px 56px;
+}
+.results-wrap.show { display: flex; }
+.results-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 56px;
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.1);
+}
+.result-grade {
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 12px 0;
+}
+.result-grade.pass { color: var(--teal); }
+.result-grade.fail { color: var(--rose); }
+.result-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+.result-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; }
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: var(--cream);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.result-stat {
+  flex: 1;
+  padding: 18px 12px;
+  border-right: 1px solid var(--border);
+}
+.result-stat:last-child { border-right: none; }
+.result-stat .rs-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--text); }
+.result-stat .rs-key { font-size: 0.7rem; color: var(--text-light); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'DM Mono', monospace; }
+.btn-restart {
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-restart:hover { background: #2a2040; transform: translateY(-2px); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .main { margin-left: 0; }
+  .page-hero, .content-area, .quiz-body, .quiz-masthead { padding-left: 24px; padding-right: 24px; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .span-2 { grid-column: span 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.4s ease both; }
+.fade-in-2 { animation: fadeIn 0.4s ease 0.08s both; }
+.fade-in-3 { animation: fadeIn 0.4s ease 0.16s both; }
+.fade-in-4 { animation: fadeIn 0.4s ease 0.24s both; }
+.fade-in-5 { animation: fadeIn 0.4s ease 0.32s both; }
+
+.inline-key {
+  display: inline;
+  background: var(--rose-pale);
+  color: var(--rose);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.vs-row {
+  display: flex;
+  gap: 12px;
+}
+.vs-col {
+  flex: 1;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.vs-col-rose { background: var(--rose-pale); border: 1px solid rgba(200,49,90,0.2); }
+.vs-col-teal { background: var(--teal-pale); border: 1px solid rgba(26,122,110,0.2); }
+.vs-col h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-family: 'DM Mono', monospace; }
+.vs-col-rose h4 { color: var(--rose); }
+.vs-col-teal h4 { color: var(--teal); }
+
+.big-quote {
+  border-left: 4px solid var(--rose);
+  padding: 12px 18px;
+  background: var(--cream);
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 12px 0;
+}
+.big-quote strong { font-style: normal; color: var(--text); }
+
+/* small utility */
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-20 { margin-top: 20px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.text-sm { font-size: 0.82rem; }
+.text-xs { font-size: 0.72rem; }
+.text-muted { color: var(--text-muted); }
+.fw-700 { font-weight: 700; }
+.font-mono { font-family: 'DM Mono', monospace; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="eyebrow">Future Nurse AI</div>
+    <h1>HCC 2<br>Study Guide</h1>
+    <div class="sub">Anxiety · Psychosis · Defense Mechanisms · Pharmacology</div>
+  </div>
+
+  <div class="sidebar-progress">
+    <div class="progress-label">
+      <span>Study Progress</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="sidebarProgress"></div>
+    </div>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Content</div>
+    <div class="nav-item active" onclick="showPage('home')">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-text">Overview</div>
+    </div>
+    <div class="nav-item" onclick="showPage('foundations')">
+      <div class="nav-icon">⚗️</div>
+      <div class="nav-text">Foundations & Neurotransmitters</div>
+      <div class="nav-badge">4</div>
+    </div>
+    <div class="nav-item" onclick="showPage('anxiety')">
+      <div class="nav-icon">😰</div>
+      <div class="nav-text">Anxiety Disorders</div>
+      <div class="nav-badge">5</div>
+    </div>
+    <div class="nav-item" onclick="showPage('ocd')">
+      <div class="nav-icon">🔁</div>
+      <div class="nav-text">OCD & Phobias</div>
+      <div class="nav-badge">3</div>
+    </div>
+    <div class="nav-item" onclick="showPage('defense')">
+      <div class="nav-icon">🛡️</div>
+      <div class="nav-text">Defense Mechanisms</div>
+      <div class="nav-badge">9</div>
+    </div>
+    <div class="nav-item" onclick="showPage('psychosis')">
+      <div class="nav-icon">🌀</div>
+      <div class="nav-text">Psychosis & Schizophrenia</div>
+      <div class="nav-badge">6</div>
+    </div>
+    <div class="nav-item" onclick="showPage('meds')">
+      <div class="nav-icon">💊</div>
+      <div class="nav-text">Pharmacology</div>
+      <div class="nav-badge">8</div>
+    </div>
+    <div class="nav-section-label">Practice</div>
+    <div class="nav-item" onclick="showPage('flashcards')">
+      <div class="nav-icon">🃏</div>
+      <div class="nav-text">Flash Cards</div>
+      <div class="nav-badge">18</div>
+    </div>
+    <div class="nav-item" onclick="showPage('nclex')">
+      <div class="nav-icon">📝</div>
+      <div class="nav-text">NCLEX Practice</div>
+      <div class="nav-badge">20</div>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="quiz-score-pill">
+      <span class="ql">Quiz Score</span>
+      <span class="qv" id="sidebarScore">— / 20</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+<!-- ══ HOME PAGE ══ -->
+<div class="page active" id="page-home">
+  <div class="page-hero">
+    <div class="hero-eyebrow">HCC 2 · Spring 2026</div>
+    <h2>Anxiety &amp; Psychosis<br>Master Guide</h2>
+    <p>Your complete, exam-focused study resource built from your EAQ results. Every concept, every medication, every NCLEX pattern — all in one place.</p>
+    <div class="hero-tags">
+      <span class="htag htag-rose">Anxiety Disorders</span>
+      <span class="htag htag-rose">Panic Disorder</span>
+      <span class="htag htag-rose">PTSD &amp; GAD</span>
+      <span class="htag htag-teal">Defense Mechanisms</span>
+      <span class="htag htag-teal">OCD &amp; Phobias</span>
+      <span class="htag htag-amber">Psychosis / Schizophrenia</span>
+      <span class="htag htag-amber">Antipsychotics</span>
+      <span class="htag htag-navy">Pharmacology</span>
+      <span class="htag htag-navy">Medication Safety</span>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="grid-3 fade-in">
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--rose-light);">43</div>
+        <div class="stat-label">EAQ Questions Answered</div>
+        <div class="stat-desc">100% correct on HCC 2 Anxiety intermediate module</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--teal-light);">9</div>
+        <div class="stat-label">Defense Mechanisms</div>
+        <div class="stat-desc">From denial &amp; regression to undoing and displacement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--amber-light);">20</div>
+        <div class="stat-label">NCLEX Practice Qs</div>
+        <div class="stat-desc">SATA · Teaching · Outcomes · Priority · Calculations</div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-2">
+      <div class="dot"></div>
+      <div class="label">High-Yield NCLEX Themes</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="grid-2 fade-in-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-rose">🎯</div>
+          <div class="card-title-group">
+            <div class="card-title">Safety Is Always First</div>
+            <div class="card-subtitle">PRIORITY FRAMEWORK</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="fancy-list">
+            <li><span class="bullet">1.</span> Is the patient safe?</li>
+            <li><span class="bullet">2.</span> Is anyone else at risk?</li>
+            <li><span class="bullet">3.</span> Is this a medical emergency?</li>
+            <li><span class="bullet">4.</span> What is the most immediate need?</li>
+          </ul>
+          <div class="strip strip-rose mt-12">
+            <span class="strip-icon">⚠️</span>
+            <span><strong>Suicide risk is ALWAYS the #1 priority</strong> — even when indirect: "I don't see a way out," "I'm tired of everything."</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-teal">🗣️</div>
+          <div class="card-title-group">
+            <div class="card-title">Therapeutic Communication Keys</div>
+            <div class="card-subtitle">UNIVERSAL RULES</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="fancy-list teal">
+            <li><span class="bullet">✓</span> Stay with the anxious client — presence = acceptance</li>
+            <li><span class="bullet">✓</span> Short, simple sentences during acute anxiety</li>
+            <li><span class="bullet">✓</span> Acknowledge feelings without validating delusions</li>
+            <li><span class="bullet">✓</span> Ask about command hallucinations — assess safety first</li>
+            <li><span class="bullet">✓</span> Never argue with delusions</li>
+            <li><span class="bullet">✗</span> Do NOT teach during severe/panic-level anxiety</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-amber">💊</div>
+          <div class="card-title-group">
+            <div class="card-title">Drug Class Quick Reference</div>
+            <div class="card-subtitle">WHAT GOES WHERE</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="fancy-list amber">
+            <li><span class="bullet">→</span> <strong>SSRIs</strong> — first-line for anxiety &amp; PTSD (fluoxetine, sertraline, paroxetine)</li>
+            <li><span class="bullet">→</span> <strong>Benzodiazepines</strong> — acute anxiety, short-term; GABA enhancers</li>
+            <li><span class="bullet">→</span> <strong>Buspirone</strong> — GAD; non-addictive, delayed onset, no sedation</li>
+            <li><span class="bullet">→</span> <strong>Typical antipsychotics</strong> — positive symptoms; EPS risk</li>
+            <li><span class="bullet">→</span> <strong>Atypical antipsychotics</strong> — broader; metabolic syndrome risk</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-navy">🧠</div>
+          <div class="card-title-group">
+            <div class="card-title">The GAD Nursing Trap</div>
+            <div class="card-subtitle">MOST MISSED ON NCLEX</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="strip strip-navy mb-12">
+            <span class="strip-icon">✅</span>
+            <span>Help client develop <strong>healthy, adaptive coping mechanisms</strong> — replacing maladaptive worrying</span>
+          </div>
+          <ul class="fancy-list navy">
+            <li><span class="bullet">✗</span> Creating anxiety-free environment — <em>not possible or desirable</em></li>
+            <li><span class="bullet">✗</span> Simply avoiding triggers — <em>usually not possible</em></li>
+            <li><span class="bullet">✗</span> Promising anxiety can be eliminated — <em>false reassurance</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOUNDATIONS PAGE ══ -->
+<div class="page" id="page-foundations">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 01</div>
+    <h2>Foundations &amp;<br>Neurotransmitters</h2>
+    <p>The "why" behind every disorder and drug. Understand the chemistry before you memorize the interventions.</p>
+  </div>
+  <div class="content-area">
+    <div class="grid-3 fade-in">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-rose">⚡</div><div class="card-title-group"><div class="card-title">Serotonin</div><div class="card-subtitle">MOOD · SLEEP · ANXIETY</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-rose"><span class="strip-icon">📉</span><span><strong>LOW serotonin</strong> = anxiety disorders, PTSD, depression</span></div>
+          <ul class="fancy-list">
+            <li><span class="bullet">→</span> SSRIs <em>increase</em> serotonin availability</li>
+            <li><span class="bullet">→</span> First-line for anxiety and PTSD</li>
+            <li><span class="bullet">→</span> Takes 3–4 weeks to reach therapeutic effect</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-amber">🎯</div><div class="card-title-group"><div class="card-title">Dopamine</div><div class="card-subtitle">PERCEPTION · THINKING · REWARD</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-amber"><span class="strip-icon">📈</span><span><strong>EXCESS dopamine</strong> = psychosis, hallucinations, delusions</span></div>
+          <ul class="fancy-list amber">
+            <li><span class="bullet">→</span> Antipsychotics <em>block</em> dopamine receptors</li>
+            <li><span class="bullet">→</span> Explains positive symptoms of schizophrenia</li>
+            <li><span class="bullet">→</span> Dopamine pathway affected determines side effects</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-teal">🛑</div><div class="card-title-group"><div class="card-title">GABA</div><div class="card-subtitle">PRIMARY INHIBITOR</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-teal"><span class="strip-icon">📉</span><span><strong>LOW GABA</strong> = overstimulation → anxiety</span></div>
+          <ul class="fancy-list teal">
+            <li><span class="bullet">→</span> Benzodiazepines <em>enhance</em> GABA activity</li>
+            <li><span class="bullet">→</span> Calming, sedating effect</li>
+            <li><span class="bullet">→</span> Risk of dependence with long-term use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20">
+      <div class="dot"></div>
+      <div class="label">Levels of Anxiety</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="strip strip-rose mb-16">
+      <span class="strip-icon">🔑</span>
+      <span><strong>NCLEX Key:</strong> To assess the <em>degree</em> of anxiety, assess the <strong>PERCEPTUAL FIELD</strong> — it narrows as anxiety increases. Memory, creativity, and delusional system are NOT measures of anxiety level.</span>
+    </div>
+
+    <div class="card span-2 fade-in-2">
+      <div class="card-header"><div class="card-icon card-icon-amber">📊</div><div class="card-title-group"><div class="card-title">Four Levels of Anxiety</div><div class="card-subtitle">PERCEPTUAL FIELD NARROWS WITH EACH LEVEL</div></div></div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Level</th><th>Perception</th><th>Physical Signs</th><th>Nursing Focus</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-teal fw-700">MILD</td>
+              <td>Enhanced awareness, increased alertness ✅ <em>Beneficial</em></td>
+              <td>Normal vitals, alert, focused</td>
+              <td>Teaching can happen here</td>
+            </tr>
+            <tr>
+              <td class="td-amber fw-700">MODERATE</td>
+              <td>Narrowed field; problem-solving possible but limited</td>
+              <td>↑HR, ↑RR, muscle tension, ↑BP</td>
+              <td>Guided coping, stay nearby</td>
+            </tr>
+            <tr>
+              <td style="color:#c45a0a; font-weight:700;">SEVERE</td>
+              <td>Very narrow; cannot learn; focused on one detail</td>
+              <td>Severe physical symptoms, hyperventilation</td>
+              <td>Stay present, brief directions — NO teaching</td>
+            </tr>
+            <tr>
+              <td class="td-rose fw-700">PANIC</td>
+              <td>Complete disorganization, loss of rational thought</td>
+              <td>Terror, chest pain, feeling of dying</td>
+              <td>Safety first; grounding; calm presence</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="strip strip-amber mt-12">
+          <span class="strip-icon">💡</span>
+          <span>Mild anxiety initially <em>amplifies</em> physiological function and is beneficial — it enhances focus and decision-making. Prolonged anxiety leads to exhaustion and <em>decreased</em> function. Primary purpose of taking action to reduce anxiety = <strong>REDUCTION OF TENSION</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20">
+      <div class="dot"></div>
+      <div class="label">Nursing Assessment Framework</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="grid-2 fade-in-3">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-rose">🩺</div><div class="card-title-group"><div class="card-title">What to Always Assess</div><div class="card-subtitle">COMPREHENSIVE MENTAL HEALTH ASSESSMENT</div></div></div>
+        <div class="card-body">
+          <ul class="fancy-list">
+            <li><span class="bullet">1.</span><div><strong>Suicide risk</strong> — always #1 priority. Hidden signs: "I don't see a way out," "I'm tired of everything"</div></li>
+            <li><span class="bullet">2.</span><div><strong>Support systems</strong> — family, friends, community, therapy access, resources</div></li>
+            <li><span class="bullet">3.</span><div><strong>Coping ability</strong> — handling new diagnosis, loss of independence, life stressors</div></li>
+            <li><span class="bullet">4.</span><div><strong>Defense mechanisms</strong> — adaptive vs maladaptive use</div></li>
+            <li><span class="bullet">5.</span><div><strong>Perceptual field</strong> — narrows with increasing anxiety</div></li>
+            <li><span class="bullet">6.</span><div><strong>Role adaptation</strong> — coping with life role changes</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-navy">🏥</div><div class="card-title-group"><div class="card-title">Rule Out Medical Causes First</div><div class="card-subtitle">NEVER ASSUME PURELY PSYCHOLOGICAL</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-navy mb-12">
+            <span class="strip-icon">⚕️</span>
+            <span>Anxiety is a <strong>subjective feeling of distress</strong> triggered by perceived threat, with both psychological AND physiological components.</span>
+          </div>
+          <ul class="fancy-list navy">
+            <li><span class="bullet">→</span> Cardiac conditions (arrhythmias)</li>
+            <li><span class="bullet">→</span> Endocrine disorders (hyperthyroidism)</li>
+            <li><span class="bullet">→</span> Substance use or withdrawal</li>
+            <li><span class="bullet">→</span> Medications (stimulants, decongestants)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ANXIETY DISORDERS PAGE ══ -->
+<div class="page" id="page-anxiety">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 02</div>
+    <h2>Anxiety Disorders</h2>
+    <p>Panic Disorder, PTSD, GAD — nursing interventions, therapeutic communication, and expected outcomes.</p>
+  </div>
+  <div class="content-area">
+    <div class="grid-2 fade-in">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-rose">💥</div><div class="card-title-group"><div class="card-title">Panic Disorder</div><div class="card-subtitle">SUDDEN INTENSE EPISODES</div></div></div>
+        <div class="card-body">
+          <p class="text-sm text-muted mb-12">Involves sudden, intense fear with physical symptoms that mimic life-threatening conditions. Patients often go to the ED believing they're having a heart attack.</p>
+          <div class="vs-row">
+            <div class="vs-col vs-col-rose">
+              <h4>Symptoms</h4>
+              <ul class="fancy-list" style="font-size:0.82rem;">
+                <li><span class="bullet">·</span> Tachycardia, palpitations</li>
+                <li><span class="bullet">·</span> Shortness of breath</li>
+                <li><span class="bullet">·</span> Chest pain, nausea</li>
+                <li><span class="bullet">·</span> Fear of dying or losing control</li>
+                <li><span class="bullet">·</span> Sweating, trembling</li>
+              </ul>
+            </div>
+            <div class="vs-col vs-col-teal">
+              <h4>Acute Nursing (All SATA!)</h4>
+              <ul class="fancy-list teal" style="font-size:0.82rem;">
+                <li><span class="bullet">✓</span> Stay with the client</li>
+                <li><span class="bullet">✓</span> Give brief, simple directions</li>
+                <li><span class="bullet">✓</span> Use short, simple sentences</li>
+                <li><span class="bullet">✓</span> Reduce environmental stimuli</li>
+                <li><span class="bullet">✓</span> Guide controlled breathing</li>
+              </ul>
+            </div>
+          </div>
+          <div class="big-quote mt-12">"<strong>You are safe. I am here with you.</strong>" — correct therapeutic response during acute panic</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-navy">🎖️</div><div class="card-title-group"><div class="card-title">PTSD</div><div class="card-subtitle">POST-TRAUMATIC STRESS DISORDER</div></div></div>
+        <div class="card-body">
+          <p class="text-sm text-muted mb-12">Develops after severe trauma; involves persistent re-experiencing. Survivors of disasters (earthquakes, etc.) should be assessed with the <span class="inline-key">IES-R Tool</span>.</p>
+          <table class="data-table">
+            <thead><tr><th>IES-R Score</th><th>Referral</th></tr></thead>
+            <tbody>
+              <tr><td>High on <strong>one</strong> subscale (Client C)</td><td>Social worker / mental health counselor</td></tr>
+              <tr><td>High on <strong>all</strong> subscales (Client A)</td><td>Psychiatrist / clinical psychologist</td></tr>
+              <tr><td>Normal scores (Client B)</td><td>No referral needed</td></tr>
+              <tr><td>Low on all (Client D)</td><td>No referral needed</td></tr>
+            </tbody>
+          </table>
+          <div class="strip strip-navy mt-12">
+            <span class="strip-icon">🧭</span>
+            <span>Long-term PTSD care: grounding techniques, encourage expression of feelings, support coping development, therapy participation. <strong>Do NOT initiate teaching during severe anxiety.</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20">
+      <div class="dot"></div>
+      <div class="label">Therapeutic Communication Masterclass</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="card span-2 fade-in-2">
+      <div class="card-header"><div class="card-icon card-icon-teal">💬</div><div class="card-title-group"><div class="card-title">What Nurses Say vs What They Should Say</div><div class="card-subtitle">HIGH-FREQUENCY NCLEX SCENARIOS</div></div></div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Scenario</th><th class="td-rose">Wrong Response</th><th class="td-teal">Correct Response &amp; Why</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Anxious client starts crying uncontrollably</td>
+              <td style="color:#8a0f2e;">"Talking about your problem is upsetting you." / "It helps to get it out."</td>
+              <td style="color:#0e4d45;">"<strong>It's okay to cry; I'll just stay with you for now.</strong>" — nonjudgmental; offers presence; reduces anxiety before talking can begin</td>
+            </tr>
+            <tr>
+              <td>Post-op patient anxious after teaching</td>
+              <td style="color:#8a0f2e;">"Your anxiety may have kept you from understanding." / "Let me quiz you."</td>
+              <td style="color:#0e4d45;">"<strong>Sometimes clients having this surgery are anxious. Do you have any concerns?</strong>" — normalizes anxiety; opens communication</td>
+            </tr>
+            <tr>
+              <td>Pre-op client says "I gave my spouse all my financial records in case I don't make it"</td>
+              <td style="color:#8a0f2e;">"Your surgeon is very experienced." / "People your age do well."</td>
+              <td style="color:#0e4d45;">"<strong>Are you concerned that you may die during surgery?</strong>" — reflective; addresses real fear; encourages communication</td>
+            </tr>
+            <tr>
+              <td>Withdrawn client refuses to leave bed</td>
+              <td style="color:#8a0f2e;">Leave them alone indefinitely / Force them out of bed</td>
+              <td style="color:#0e4d45;"><strong>Stay with client until calm</strong> — provides support without power struggle; eventual limits may be needed but presence is immediate action</td>
+            </tr>
+            <tr>
+              <td>Anxious client pacing, looking side to side</td>
+              <td style="color:#8a0f2e;">Suggest relaxation exercises / Watch from a distance</td>
+              <td style="color:#0e4d45;"><strong>Talk with the client to assess the meaning of behavior</strong> — determines if client is at risk; pacing = rising anxiety, early intervention essential</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OCD & PHOBIAS PAGE ══ -->
+<div class="page" id="page-ocd">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 03</div>
+    <h2>OCD &amp; Phobias</h2>
+    <p>Ritualistic behaviors, compulsions, school phobia, and the critical nursing principle: rituals temporarily relieve anxiety.</p>
+  </div>
+  <div class="content-area">
+    <div class="grid-2 fade-in">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-rose">🔁</div><div class="card-title-group"><div class="card-title">OCD — Key Principles</div><div class="card-subtitle">OBSESSIVE-COMPULSIVE DISORDER</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-rose mb-12"><span class="strip-icon">🔑</span><span>The compulsive ritual <strong>temporarily relieves anxiety</strong>. The ritual IS the coping mechanism — it's useful, not useless.</span></div>
+          <ul class="fancy-list mb-16">
+            <li><span class="bullet">⚡</span> <strong>Interrupting a ritual → increases anxiety</strong> (most tested fact)</li>
+            <li><span class="bullet">⚡</span> Setting limits prematurely → increases anxiety; client must first develop other defenses</li>
+            <li><span class="bullet">⚡</span> Rituals manifest rigidity and inflexibility of the disorder</li>
+            <li><span class="bullet">⚡</span> OCD clients do <strong>NOT</strong> hallucinate</li>
+            <li><span class="bullet">⚡</span> Depression is common comorbidity but rituals do NOT relieve depression</li>
+            <li><span class="bullet">⚡</span> Anxiety in OCD is NOT related to time of day (sundowning is dementia)</li>
+          </ul>
+          <div class="strip strip-teal"><span class="strip-icon">🏁</span><span><strong>Correct discharge criterion:</strong> "Able to intervene when increasing levels of anxiety occur" — knowing when &amp; how to interrupt the anxiety-ritual cycle</span></div>
+          <div class="strip strip-rose mt-12" style="margin-bottom:0;"><span class="strip-icon">❌</span><span>Wrong discharge criteria: "Verbalizes positive aspects of self" / "Follows therapeutic milieu rules" / "Recognizes hallucinations at extreme anxiety" (OCD ≠ hallucinations)</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-teal">🐕</div><div class="card-title-group"><div class="card-title">Phobias</div><div class="card-subtitle">SPECIFIC &amp; AGORAPHOBIA</div></div></div>
+        <div class="card-body">
+          <ul class="fancy-list teal mb-16">
+            <li><span class="bullet">✓</span> Discussing the feared object <strong>triggers the fear response</strong></li>
+            <li><span class="bullet">✓</span> Clients have <strong>rigid impulse control</strong> — NOT poor impulse control</li>
+            <li><span class="bullet">✓</span> <strong>No distortion of reality</strong> — unlike psychosis</li>
+            <li><span class="bullet">✓</span> Treatment: <strong>desensitization programs</strong> (systematic exposure)</li>
+            <li><span class="bullet">✓</span> School phobia = BOTH legal AND emotional aspects (school attendance is legally required)</li>
+          </ul>
+          <div class="section-divider" style="margin: 14px 0 10px;"><div class="label" style="font-size:0.9rem;">Short vs Long-Term Goals</div><div class="line"></div></div>
+          <div class="vs-row">
+            <div class="vs-col vs-col-teal">
+              <h4>Short-Term ✅</h4>
+              <p class="text-sm">Describe thoughts and feelings in terrifying situations — realistic first step before solutions</p>
+            </div>
+            <div class="vs-col vs-col-rose">
+              <h4>Long-Term Only</h4>
+              <p class="text-sm">Ride elevator without anxiety · Mood elevation · Going out unaccompanied</p>
+            </div>
+          </div>
+          <div class="strip strip-amber mt-12" style="margin-bottom:0;"><span class="strip-icon">🏥</span><span>Agoraphobia inpatient: <strong>essential SHORT-TERM goal = feeling safe in the unit</strong>. Going out unaccompanied &amp; group comfort = long-term only.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-2">
+      <div class="dot"></div>
+      <div class="label">Body Dysmorphic Disorder</div>
+      <div class="line"></div>
+    </div>
+    <div class="card fade-in-3">
+      <div class="card-header"><div class="card-icon card-icon-navy">🪞</div><div class="card-title-group"><div class="card-title">Body Dysmorphic Disorder — Nursing Approach</div><div class="card-subtitle">PRIORITY INTERVENTION</div></div></div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div>
+            <div class="strip strip-teal mb-12"><span class="strip-icon">✅</span><span><strong>Priority:</strong> Explore issues that influence the client's self-perception — address body image disturbance, provide nonthreatening and realistic feedback</span></div>
+            <ul class="fancy-list teal">
+              <li><span class="bullet">✗</span> Controlling manipulative behavior — clients with BDD are NOT manipulative</li>
+              <li><span class="bullet">✗</span> Relaxation techniques — not the priority; must address self-perception first</li>
+              <li><span class="bullet">✗</span> Desensitization — appropriate for <em>phobias</em>, not BDD</li>
+            </ul>
+          </div>
+          <div>
+            <div class="strip strip-amber"><span class="strip-icon">💡</span><span>Key differentiator: Desensitization is for <strong>phobias</strong>. Body image work is for <strong>BDD</strong>. Know your treatment modalities!</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DEFENSE MECHANISMS PAGE ══ -->
+<div class="page" id="page-defense">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 04</div>
+    <h2>Defense Mechanisms</h2>
+    <p>Nine essential defense mechanisms — every clinical scenario, every EAQ pattern, every NCLEX trap explained.</p>
+  </div>
+  <div class="content-area">
+    <div class="mnemonic-card fade-in mb-20">
+      <div class="mnemonic-title">Memory Device</div>
+      <div class="mnemonic-word">D · R · P · U · D · I · C · S · R</div>
+      <div class="grid-2" style="position:relative; z-index:1;">
+        <div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">D</span><div class="mnemonic-def"><strong>Denial</strong> — Ignoring/refusing to accept painful reality. "This can't be happening."</div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">R</span><div class="mnemonic-def"><strong>Regression</strong> — Reverting to earlier/childlike behavior for security. <em>Fetal position = regression.</em></div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">P</span><div class="mnemonic-def"><strong>Projection</strong> — Attributing own feelings/impulses to another. <em>Blaming others for your mistakes.</em></div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">U</span><div class="mnemonic-def"><strong>Undoing</strong> — Act that partially negates a previous one. <em>OCD hand washing = undoing.</em></div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">D</span><div class="mnemonic-def"><strong>Displacement</strong> — Redirecting feelings to a safer target. <em>Parents arguing after child's cancer dx.</em></div></div>
+        </div>
+        <div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">I</span><div class="mnemonic-def"><strong>Introjection</strong> — Treating external things as internal. <em>Incorporating others' criticism into self-image.</em></div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">C</span><div class="mnemonic-def"><strong>Compensation</strong> — Making up for a perceived deficiency by emphasizing another asset.</div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">S</span><div class="mnemonic-def"><strong>Suppression</strong> — <em>CONSCIOUS</em> exclusion from awareness (vs. repression = unconscious).</div></div>
+          <div class="mnemonic-row"><span class="mnemonic-letter">R</span><div class="mnemonic-def"><strong>Reaction Formation</strong> — Conscious behavior that is the <em>opposite</em> of an unconscious feeling.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-2">
+      <div class="dot"></div>
+      <div class="label">Clinical Scenarios — Test Yourself</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="fade-in-3">
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          A client with OCD has hands raw and bloody from ritualistic hand washing. Which defense mechanism?
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: UNDOING</span><br>
+          Undoing is an act that partially negates a previous one — the client uses this primitive defense mechanism to reduce anxiety. Clients who wash hands compulsively may be having thoughts they consider "dirty." The ritual temporarily undoes the perceived transgression. <strong>NOT displacement, projection, or suppression.</strong>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Parents have a bitter argument immediately after being told their child has leukemia. Which defense mechanism?
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: DISPLACEMENT</span><br>
+          The parents are directing feelings about their child's diagnosis (the real threatening source) onto each other (a "safer" target). Denial = refusing to accept reality. Projection = attributing your feelings TO another person. Compensation = making up for a perceived deficiency.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          A client sits huddled and then moves to assume the fetal position in a corner. Which defense mechanism?
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: REGRESSION</span><br>
+          The client is reverting to an earlier developmental stage — curling up in the fetal position for both protection and security. In displacement, feelings are directed at others who are less threatening. Dissociation = detachment of emotional affect from an incident. Reaction formation = conscious behavior opposite of unconscious feeling.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          "That person is always trying to steal my ideas" — when in reality it's the client doing the stealing.
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: PROJECTION</span><br>
+          The client is attributing their own unacceptable impulses and behaviors to another person. This is the hallmark of projection — "it's not me, it's them." Common in paranoid presentations.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          "Incorporating others' negative comments into one's own self-image." Which defense mechanism?
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: INTROJECTION</span><br>
+          Introjection = treating something outside the self as if it's actually inside the self. The person takes in others' criticism and makes it part of their self-concept. This is different from projection (attributing your feelings to someone else) — introjection goes inward.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          According to psychodynamic theory, what purpose do DELUSIONS serve?
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: Defense against anxiety from real or imagined threats</span><br>
+          Delusions are unconsciously used to defend against anxiety — they are precipitated by <strong>anxiety</strong>, NOT anger. Magical thinking (believing thoughts control events) is normal in young children but pathological in adults. Illusions = false interpretation of actual external stimuli (different from delusions).
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          "Directing emotions at someone other than the primary source." Name this defense mechanism and contrast it with projection.
+          <span class="accordion-arrow">▾</span>
+        </button>
+        <div class="accordion-body">
+          <span class="accordion-answer-tag answer-tag-rose">Answer: DISPLACEMENT</span><br>
+          <strong>Displacement</strong> = emotions directed at a <em>different target</em> (safer person/object) when the primary source creates too much anxiety or danger.<br><br>
+          <strong>Projection</strong> = YOUR feelings attributed TO someone else (same or different target).<br><br>
+          Memory trick: Displacement <em>moves</em> the emotion to a new target. Projection <em>assigns</em> your emotion to another person.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PSYCHOSIS PAGE ══ -->
+<div class="page" id="page-psychosis">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 05</div>
+    <h2>Psychosis &amp;<br>Schizophrenia</h2>
+    <p>Loss of contact with reality. Positive vs negative symptoms, hallucination management, and the single most important question to ask.</p>
+  </div>
+  <div class="content-area">
+    <div class="strip strip-rose fade-in mb-20">
+      <span class="strip-icon">🚨</span>
+      <span><strong>Most important question for hallucinating client:</strong> "What are the voices telling you to do?" — Always assess for COMMAND HALLUCINATIONS to determine immediate safety risk.</span>
+    </div>
+
+    <div class="grid-2 fade-in-2">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-rose">➕</div><div class="card-title-group"><div class="card-title">Positive Symptoms</div><div class="card-subtitle">EXCESS — ADDED BEHAVIORS</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-rose mb-12"><span class="strip-icon">📌</span><span>These are treated more effectively by typical (first-gen) antipsychotics</span></div>
+          <ul class="fancy-list">
+            <li><span class="bullet">+</span> Hallucinations (auditory most common)</li>
+            <li><span class="bullet">+</span> Delusions (fixed false beliefs)</li>
+            <li><span class="bullet">+</span> Paranoia</li>
+            <li><span class="bullet">+</span> Disorganized speech</li>
+            <li><span class="bullet">+</span> Disorganized behavior</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-navy">➖</div><div class="card-title-group"><div class="card-title">Negative Symptoms</div><div class="card-subtitle">DEFICIT — LOST BEHAVIORS</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-navy mb-12"><span class="strip-icon">📌</span><span>Harder to treat. <strong>More strongly impact quality of life.</strong> Atypical antipsychotics address these better.</span></div>
+          <ul class="fancy-list navy">
+            <li><span class="bullet">–</span> Flat affect (no emotional expression)</li>
+            <li><span class="bullet">–</span> Alogia (poverty of speech)</li>
+            <li><span class="bullet">–</span> Avolition (lack of motivation)</li>
+            <li><span class="bullet">–</span> Social withdrawal</li>
+            <li><span class="bullet">–</span> Anhedonia (inability to feel pleasure)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-3">
+      <div class="dot"></div>
+      <div class="label">Therapeutic Communication</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="card span-2 fade-in-4">
+      <div class="card-header"><div class="card-icon card-icon-teal">💬</div><div class="card-title-group"><div class="card-title">Hallucinations &amp; Delusions — What to Say</div><div class="card-subtitle">EVERY NCLEX PATTERN</div></div></div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Situation</th><th class="td-teal">Correct Approach</th><th class="td-rose">Avoid This</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Client reports hearing voices</strong></td>
+              <td style="color:#0e4d45;">"I understand you hear voices, but I do not hear them." — acknowledge without validating</td>
+              <td style="color:#8a0f2e;">"Those voices aren't real, ignore them." — dismissive, confrontational, increases distrust</td>
+            </tr>
+            <tr>
+              <td><strong>Client expresses frightening delusion</strong></td>
+              <td style="color:#0e4d45;">"That must be very frightening." — empathize; do NOT argue with delusional content</td>
+              <td style="color:#8a0f2e;">"That's not true." / "That can't be happening." — arguing escalates anxiety</td>
+            </tr>
+            <tr>
+              <td><strong>Command hallucinations present</strong></td>
+              <td style="color:#0e4d45;"><strong>Priority:</strong> "What are the voices telling you to do?" — assess for harm risk immediately</td>
+              <td style="color:#8a0f2e;">Ignoring or only redirecting without safety assessment</td>
+            </tr>
+            <tr>
+              <td><strong>New admission: suspicious &amp; paranoid</strong></td>
+              <td style="color:#0e4d45;">Accept the client's behavior — recognize as illness manifestation; meet immediate needs first</td>
+              <td style="color:#8a0f2e;">Setting limits immediately, reviewing history, or meeting family first</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEDICATIONS PAGE ══ -->
+<div class="page" id="page-meds">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Section 06</div>
+    <h2>Pharmacology</h2>
+    <p>Anxiolytics, antidepressants, and antipsychotics. Nursing priorities, expected/unexpected outcomes, medication safety, and dosage calculations.</p>
+  </div>
+  <div class="content-area">
+
+    <div class="section-divider fade-in"><div class="dot"></div><div class="label">Anxiolytics (Benzodiazepines)</div><div class="line"></div></div>
+
+    <div class="card fade-in-2">
+      <div class="card-header"><div class="card-icon card-icon-teal">🧘</div><div class="card-title-group"><div class="card-title">Benzodiazepines — Nursing Priorities</div><div class="card-subtitle">GABA ENHANCERS · SHORT-TERM USE ONLY</div></div></div>
+      <div class="card-body">
+        <table class="data-table mb-16">
+          <thead><tr><th>Drug</th><th>Use</th><th>Priority Assessment</th><th>Key Teaching</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Alprazolam</strong> (Xanax)</td>
+              <td>Panic disorder, anxiety</td>
+              <td class="td-rose"><strong>CHECK BP</strong> — orthostatic hypotension is EARLY side effect; also vital signs, cheeking, baseline comparison</td>
+              <td>Change positions slowly; avoid alcohol; no abrupt stop</td>
+            </tr>
+            <tr>
+              <td><strong>Lorazepam</strong> (Ativan)</td>
+              <td>Acute panic attacks</td>
+              <td>Monitor respiratory status; sedation; fall risk</td>
+              <td>Calculation: 1.5 mg ÷ 0.5 mg × 1 tab = <strong>3 tablets</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Midazolam</strong></td>
+              <td>Pre-procedure sedation</td>
+              <td class="td-amber">Older adults: <strong>smaller increments + SLOWER injection</strong>; administer over ≥2 min; wait 2+ min to evaluate</td>
+              <td>NOT for rapid IV push; most serious SE = CNS depression</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="strip strip-amber" style="margin-bottom:0;">
+          <span class="strip-icon">⚠️</span>
+          <span><strong>New anxiolytic (within 24 hrs):</strong> NO aerobic exercise — orthostatic hypotension risk. DO: monitor vitals, check for cheeking, compare to baseline. Aerobic exercise = needs further teaching.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-2"><div class="dot"></div><div class="label">Antidepressants</div><div class="line"></div></div>
+
+    <div class="card fade-in-3">
+      <div class="card-header"><div class="card-icon card-icon-navy">🌈</div><div class="card-title-group"><div class="card-title">Antidepressant Reference Guide</div><div class="card-subtitle">SSRIs · SNRIs · TCAs · Atypicals</div></div></div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Drug / Class</th><th>Used For</th><th>Must-Know Nursing Point</th><th>Side Effects</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Fluoxetine, Sertraline, Paroxetine</strong> — SSRI</td>
+              <td>Anxiety, PTSD, depression</td>
+              <td>Takes <strong>3–4 weeks</strong> to work; never stop abruptly; monitor for suicidal ideation</td>
+              <td>Anxiety, insomnia (fluoxetine), sexual dysfunction</td>
+            </tr>
+            <tr>
+              <td><strong>Venlafaxine ER</strong> (Effexor) — SNRI</td>
+              <td>Anxiety and depression</td>
+              <td>Do NOT crush/cut; taper up; never stop suddenly; 3–4 weeks onset; report suicidal thoughts</td>
+              <td>Nausea, increased BP</td>
+            </tr>
+            <tr>
+              <td class="td-rose"><strong>Bupropion</strong> (Wellbutrin) — NDRI</td>
+              <td>Depression</td>
+              <td class="td-rose"><strong>RAISES BLOOD PRESSURE</strong> — reconsider if hypertension present!</td>
+              <td>↑BP, seizure risk, insomnia</td>
+            </tr>
+            <tr>
+              <td><strong>Trazodone</strong></td>
+              <td>Depression, sleep</td>
+              <td>Sedative effects — often used at bedtime</td>
+              <td>Sedation, priapism</td>
+            </tr>
+            <tr>
+              <td><strong>Mirtazapine</strong></td>
+              <td>Depression</td>
+              <td>Drowsiness and abnormal dreams are expected side effects</td>
+              <td>Drowsiness, weight gain</td>
+            </tr>
+            <tr>
+              <td><strong>Imipramine</strong> — TCA</td>
+              <td class="td-teal"><strong>Childhood enuresis (bedwetting)</strong></td>
+              <td>Used as adjuvant in pediatric enuresis; NOT OCD (that's clomipramine)</td>
+              <td>Anticholinergic effects</td>
+            </tr>
+            <tr>
+              <td><strong>Clomipramine</strong> — TCA</td>
+              <td class="td-teal"><strong>OCD</strong></td>
+              <td>TCA specifically for OCD; different from imipramine (enuresis)</td>
+              <td>Anticholinergic effects</td>
+            </tr>
+            <tr>
+              <td><strong>Buspirone</strong></td>
+              <td>GAD</td>
+              <td>Non-addictive; <strong>delayed onset</strong> (weeks); no sedation; no dependence</td>
+              <td>Dizziness, headache</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20 fade-in-4"><div class="dot"></div><div class="label">Antipsychotics</div><div class="line"></div></div>
+
+    <div class="grid-2 fade-in-5">
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-amber">⚡</div><div class="card-title-group"><div class="card-title">First-Gen (Typical)</div><div class="card-subtitle">HALOPERIDOL · CHLORPROMAZINE</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-amber mb-12"><span class="strip-icon">🎯</span><span>Treats positive symptoms. Higher EPS risk than atypical antipsychotics.</span></div>
+          <p class="fw-700 text-sm mb-12">⚠️ EPS Side Effects:</p>
+          <ul class="fancy-list amber mb-12">
+            <li><span class="bullet">→</span> <strong>Acute dystonia</strong> — muscle spasms → treat with Benztropine</li>
+            <li><span class="bullet">→</span> <strong>Pseudoparkinsonism</strong> — tremor, rigidity, shuffling gait</li>
+            <li><span class="bullet">→</span> <strong>Akathisia</strong> — restlessness, can't sit still</li>
+            <li><span class="bullet">→</span> <strong>Tardive Dyskinesia</strong> — IRREVERSIBLE; involuntary rhythmic movements</li>
+          </ul>
+          <div class="strip strip-rose" style="margin-bottom:0;"><span class="strip-icon">☠️</span><span><strong>NMS (Neuroleptic Malignant Syndrome)</strong> — LIFE-THREATENING: high fever + severe rigidity + altered consciousness + autonomic instability → STOP drug IMMEDIATELY → Notify provider → ICU → Dantrolene</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon card-icon-teal">🌟</div><div class="card-title-group"><div class="card-title">Second-Gen (Atypical)</div><div class="card-subtitle">RISPERIDONE · OLANZAPINE · CLOZAPINE</div></div></div>
+        <div class="card-body">
+          <div class="strip strip-teal mb-12"><span class="strip-icon">📌</span><span>Treats both positive AND negative symptoms. Less EPS but metabolic risks.</span></div>
+          <p class="fw-700 text-sm mb-12">Side Effects to Teach:</p>
+          <ul class="fancy-list teal mb-12">
+            <li><span class="bullet">→</span> <strong>Metabolic syndrome</strong> — weight gain, diabetes → teach diet &amp; exercise</li>
+            <li><span class="bullet">→</span> <strong>Orthostatic hypotension</strong> → teach slow position changes</li>
+            <li><span class="bullet">→</span> <strong>Anticholinergic</strong> — dry mouth, constipation</li>
+          </ul>
+          <div class="strip strip-rose" style="margin-bottom:0;"><span class="strip-icon">🩸</span><span><strong>CLOZAPINE → AGRANULOCYTOSIS</strong><br>Dangerous drop in WBC. Mandatory CBC monitoring. Report fever IMMEDIATELY. Blood tests CANNOT be skipped.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider mt-20"><div class="dot"></div><div class="label">Medication Calculations</div><div class="line"></div></div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon card-icon-rose">🧮</div><div class="card-title-group"><div class="card-title">Desire ÷ Have × Quantity</div><div class="card-subtitle">RATIO AND PROPORTION METHOD</div></div></div>
+      <div class="card-body">
+        <div class="grid-3">
+          <div class="strip strip-teal"><span class="strip-icon">①</span><span>Lorazepam 1.5 mg ordered / 0.5 mg tabs available<br><strong>1.5 ÷ 0.5 × 1 = 3 tablets</strong></span></div>
+          <div class="strip strip-rose"><span class="strip-icon">②</span><span>Paroxetine 30 mg / 10 mg per 5 mL suspension<br><strong>(30 ÷ 10) × 5 = 15 mL</strong></span></div>
+          <div class="strip strip-amber"><span class="strip-icon">③</span><span>Ziprasidone 15 mg IM / 20 mg/mL available<br><strong>15 ÷ 20 = 0.75 mL</strong></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLASHCARDS PAGE ══ -->
+<div class="page" id="page-flashcards">
+  <div class="page-hero">
+    <div class="hero-eyebrow">Practice</div>
+    <h2>Flash Cards</h2>
+    <p>Tap any card to reveal the answer. Test yourself on high-yield EAQ concepts before the NCLEX practice set.</p>
+  </div>
+  <div class="content-area">
+    <div class="strip strip-navy mb-20 fade-in"><span class="strip-icon">👆</span><span>Click any card to flip — cover the grid and quiz yourself by topic!</span></div>
+    <div class="flip-grid fade-in-2">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">What parameter assesses degree of anxiety?</div><div class="flip-back"><strong>Perceptual Field</strong> — narrows as anxiety ↑. Not memory, creativity, or delusional system.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Primary purpose of taking action to reduce anxiety?</div><div class="flip-back"><strong>Reduction of tension</strong> — not denial, not avoiding discomfort, not decision-making.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Interrupting an OCD ritual causes what?</div><div class="flip-back"><strong>Increased anxiety</strong> — the ritual controls anxiety. Interrupting = more anxiety, not hostility or withdrawal.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Benefit of MILD anxiety?</div><div class="flip-back"><strong>Increased alertness</strong> — attention becomes focused. Mild anxiety is beneficial and improves decision-making.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Alprazolam — first priority assessment?</div><div class="flip-back"><strong>Check blood pressure</strong> — orthostatic hypotension is a common EARLY side effect. Not pupils, urine output, or abdomen (those = prolonged use).</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Which antidepressant raises blood pressure?</div><div class="flip-back"><strong>Bupropion</strong> (Wellbutrin) — flag this if client has hypertension! Fluoxetine = insomnia/anxiety, Trazodone = sedation.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">NMS — first nursing action?</div><div class="flip-back"><strong>Stop the medication IMMEDIATELY</strong> → notify provider → ICU → dantrolene → supportive care.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Clozapine's most dangerous side effect?</div><div class="flip-back"><strong>Agranulocytosis</strong> — dangerous WBC drop. Mandatory CBC monitoring. Never skip blood tests. Report fever immediately.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Fetal position in corner = what defense mechanism?</div><div class="flip-back"><strong>Regression</strong> — reverting to earlier developmental behavior for protection and security.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Parents argue after child's cancer diagnosis = ?</div><div class="flip-back"><strong>Displacement</strong> — redirecting painful feelings about the diagnosis onto each other (safer target).</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Childhood enuresis → which drug?</div><div class="flip-back"><strong>Imipramine</strong> (TCA) — childhood bedwetting adjuvant. OCD = clomipramine. Anxiety = alprazolam. Bipolar = lithium.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Most important question for hallucinating client?</div><div class="flip-back"><strong>"What are the voices telling you to do?"</strong> — COMMAND HALLUCINATIONS. Determines immediate safety risk. ALWAYS assess this.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Midazolam — how to adjust in older adults?</div><div class="flip-back"><strong>Smaller increments + slower injection rate</strong> — peak effect delayed in elderly. Administer over ≥2 min. Wait 2+ min to evaluate.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">OCD correct discharge criterion?</div><div class="flip-back"><strong>"Able to intervene when increasing levels of anxiety occur"</strong> — NOT "verbalizes positives about self," NOT "follows milieu rules."</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Body dysmorphic disorder — priority nursing action?</div><div class="flip-back"><strong>Explore issues influencing self-perception</strong> — address body image disturbance with nonthreatening realistic feedback. Desensitization is for phobias, not BDD.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">4-month-old infant crying while NPO for surgery?</div><div class="flip-back"><strong>Offer a pacifier</strong> — sucking provides comfort via oral gratification. NOT rattle (stimulation), mobile (visual), or blanket (tactile only).</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Agoraphobia inpatient: essential short-term goal?</div><div class="flip-back"><strong>Feeling safe in the unit</strong> — calm, quiet, nonthreatening environment. Going out unaccompanied and group comfort are long-term goals.</div></div></div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front">Delusions per psychodynamic theory serve what purpose?</div><div class="flip-back"><strong>Defense against anxiety from real or imagined threats</strong> — precipitated by anxiety, NOT anger. Unconscious protective mechanism.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NCLEX PAGE ══ -->
+<div class="page" id="page-nclex">
+  <div class="quiz-masthead">
+    <div>
+      <div class="qm-title">NCLEX Practice — HCC 2 Anxiety</div>
+      <div class="qm-sub">20 questions · SATA · Teaching · Outcomes · Priority · Calculations</div>
+    </div>
+    <div class="qm-right">
+      <div class="qm-stat">
+        <div class="val" id="qScore">0</div>
+        <div class="key">Correct</div>
+      </div>
+      <div class="qm-stat">
+        <div class="val" id="qAnswered">0</div>
+        <div class="key">Answered</div>
+      </div>
+      <div class="qm-stat">
+        <div class="val" id="qLeft">20</div>
+        <div class="key">Remaining</div>
+      </div>
+    </div>
+  </div>
+  <div class="quiz-track"><div class="quiz-track-fill" id="quizTrack" style="width:0%"></div></div>
+
+  <div id="quizContent">
+    <div class="quiz-body" id="questionArea"></div>
+  </div>
+  <div class="results-wrap" id="resultsWrap">
+    <div class="results-card">
+      <div style="font-size:2.5rem;">🎓</div>
+      <div class="result-grade" id="resultGrade">--</div>
+      <div class="result-title" id="resultTitle">--</div>
+      <div class="result-sub" id="resultSub">--</div>
+      <div class="result-stats">
+        <div class="result-stat"><div class="rs-val" id="rs1">0</div><div class="rs-key">Correct</div></div>
+        <div class="result-stat"><div class="rs-val" id="rs2">0</div><div class="rs-key">Incorrect</div></div>
+        <div class="result-stat"><div class="rs-val" id="rs3">--%</div><div class="rs-key">Score</div></div>
+      </div>
+      <button class="btn-restart" onclick="restartQuiz()">↺ Retake Quiz</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ══════════════ NAVIGATION ══════════════
+const visitedPages = new Set(['home']);
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(n => {
+    if (n.getAttribute('onclick').includes("'" + id + "'")) n.classList.add('active');
+  });
+  visitedPages.add(id);
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const total = 9;
+  const pct = Math.round((visitedPages.size / total) * 100);
+  document.getElementById('sidebarProgress').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// ══════════════ ACCORDION ══════════════
+function toggleAccordion(trigger) {
+  const body = trigger.nextElementSibling;
+  const allTriggers = document.querySelectorAll('.accordion-trigger');
+  const allBodies = document.querySelectorAll('.accordion-body');
+  allTriggers.forEach((t, i) => {
+    if (t !== trigger) { t.classList.remove('open'); allBodies[i].classList.remove('open'); }
+  });
+  trigger.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ══════════════ QUIZ DATA ══════════════
+const QUESTIONS = [
+  {
+    type: 'single', badge: 'single', label: 'Single Best Answer',
+    stem: 'A nurse is assessing a client with anxiety. Which parameter would the nurse assess to determine the <strong>degree</strong> of anxiety the client is experiencing?',
+    opts: ['Memory state', 'Creativity level', 'Perceptual field', 'Delusional system'],
+    correct: [2],
+    rationale: '<strong>Perceptual field</strong> is the correct answer. The perceptual field narrows as anxiety increases — it is the primary indicator of anxiety level. Memory state, creativity level, and delusional system are NOT direct parameters for measuring anxiety degree.'
+  },
+  {
+    type: 'sata', badge: 'sata', label: 'Select All That Apply',
+    stem: 'A nurse is caring for a client having an <strong>acute episode of anxiety</strong>. Which actions would the nurse take? Select ALL that apply.',
+    opts: ['Stay with the client', 'Give brief directions', 'Use short, simple sentences', 'Provide detailed discharge education', 'Link the client\'s behavior to feelings', 'Teach a cognitive therapy principle', 'Have the client write an assessment of their strengths'],
+    correct: [0,1,2,4,5,6],
+    rationale: 'ALL except "detailed discharge education" are correct. Stay with client (conveys acceptance), brief directions (reduces indecision), short sentences (promotes comprehension), link behavior to feelings (promotes self-awareness), cognitive therapy (basis for behavioral change), strengths assessment (increases self-acceptance). Detailed teaching should <strong>NOT</strong> occur during severe anxiety — the client cannot process complex information.'
+  },
+  {
+    type: 'teaching', badge: 'teaching', label: 'Needs Further Teaching',
+    stem: 'A nursing student is caring for a client who began anxiolytic medications less than 24 hours ago. Which statement by the nursing student indicates a <strong>need for further teaching</strong>?',
+    opts: ['"I should monitor the client\'s vital signs."', '"I will check the client\'s oral cavity for cheeking of medications."', '"I will encourage the client to attend aerobic exercise classes."', '"I will compare my assessment with the client\'s baseline assessment."'],
+    correct: [2],
+    rationale: 'Encouraging <strong>aerobic exercise</strong> is incorrect — the nurse would encourage the client to change positions slowly to minimize dizziness. Orthostatic hypotension is a COMMON early side effect of anxiolytics. Aerobic exercise is not appropriate until the client has adjusted to the medication. All other statements are correct nursing actions.'
+  },
+  {
+    type: 'sata', badge: 'sata', label: 'Select All That Apply',
+    stem: 'A nurse is educating a client prescribed <strong>venlafaxine ER</strong> tablets for anxiety and depression. Which instructions should be included? Select ALL that apply.',
+    opts: ['Do not crush or cut the tablets', 'Report any suicidal thoughts to the provider', 'The medication takes 3 to 4 weeks to work', 'Do not suddenly stop taking this medication', 'Taper your dose up to the required dose as prescribed', 'You may take this medication with alcohol if needed'],
+    correct: [0,1,2,3,4],
+    rationale: 'All are correct <strong>except</strong> alcohol — clients should avoid alcohol with venlafaxine. Correct instructions: Do NOT crush (extended-release tablet), report suicidal thoughts (black box warning), takes 3–4 weeks to work, never stop suddenly (causes serious discontinuation syndrome), taper dose up as prescribed.'
+  },
+  {
+    type: 'single', badge: 'single', label: 'Single Best Answer',
+    stem: 'A nurse is caring for a client diagnosed with <strong>OCD who uses ritualistic hand washing</strong>. The client\'s hands are raw and bloody. Which defense mechanism is the client using?',
+    opts: ['Projection', 'Regression', 'Undoing', 'Displacement'],
+    correct: [2],
+    rationale: '<strong>Undoing</strong> — an act that partially negates a previous one. The ritualistic hand washing is used to reduce anxiety, possibly related to thoughts the client considers "dirty." This is a primitive defense mechanism. Projection = attributing thoughts to others. Regression = childlike behavior. Displacement = redirecting to a safer target.'
+  },
+  {
+    type: 'outcome', badge: 'outcome', label: 'Expected vs Unexpected Outcome',
+    stem: 'A client with <strong>panic disorder</strong> has been treated with alprazolam and CBT for 6 weeks. Which finding is an <strong>unexpected</strong> outcome requiring nursing intervention?',
+    opts: ['Client reports decreased frequency of panic attacks', 'Client is developing healthy adaptive coping strategies', 'Client is taking additional doses because "one pill stopped working"', 'Client is participating in outpatient therapy sessions'],
+    correct: [2],
+    rationale: 'Taking additional doses indicates <strong>medication misuse/dependence</strong> — a serious unexpected outcome requiring immediate intervention. Benzodiazepines carry high dependence potential. Expected outcomes: decreased panic attacks ✅, improved coping ✅, therapy participation ✅. Medication misuse = notify provider.'
+  },
+  {
+    type: 'single', badge: 'priority', label: 'Priority — Single Best',
+    stem: 'A client with schizophrenia tells the nurse, "I\'ve been hearing voices all night." Which nursing response is the <strong>priority</strong>?',
+    opts: ['"The voices are not real. Try to focus on what I\'m saying."', '"What are the voices telling you to do?"', '"Let\'s watch TV to distract you from the voices."', '"I hear the voices too. Let\'s talk about what they\'re saying."'],
+    correct: [1],
+    rationale: '"<strong>What are the voices telling you to do?</strong>" is the priority because it assesses for COMMAND HALLUCINATIONS — the immediate safety risk. If voices command self-harm or harm to others, this is an emergency requiring immediate intervention. Never argue voices aren\'t real, never validate them as real, and distraction alone doesn\'t address safety.'
+  },
+  {
+    type: 'outcome', badge: 'outcome', label: 'Expected vs Unexpected Outcome',
+    stem: 'A client taking <strong>haloperidol (Haldol)</strong> for 2 weeks is being assessed. Which finding is an <strong>expected outcome</strong> that does NOT require immediate intervention?',
+    opts: ['High fever, severe muscle rigidity, and altered consciousness', 'Decrease in the frequency of hallucinations and delusions', 'Involuntary tongue movements and lip smacking', 'Critically low WBC with new onset fever'],
+    correct: [1],
+    rationale: '<strong>Decreased hallucinations and delusions</strong> = expected, desired outcome of haloperidol. The others require IMMEDIATE action: High fever + rigidity + altered consciousness = <strong>NMS</strong> (life-threatening — STOP medication). Involuntary movements = <strong>Tardive Dyskinesia</strong> (irreversible). Low WBC + fever = <strong>Agranulocytosis</strong> (life-threatening, associated with clozapine).'
+  },
+  {
+    type: 'teaching', badge: 'teaching', label: 'Teaching Effectiveness',
+    stem: 'A nurse has educated a client about their <strong>OCD treatment plan</strong>. Which statement by the client shows the teaching was <strong>effective</strong>?',
+    opts: ['"I should completely stop my rituals as soon as possible to show progress."', '"Once I develop other coping strategies, my rituals can gradually be limited."', '"My rituals are pointless and I need to just stop doing them."', '"If I perform my rituals perfectly, my OCD will eventually be cured."'],
+    correct: [1],
+    rationale: 'The client understands that rituals are a coping mechanism for anxiety, and that <strong>other coping skills must be developed first</strong> before rituals can be limited. Forcing immediate cessation without alternative coping = dangerous anxiety escalation. Rituals are NOT pointless (they do temporarily relieve anxiety) and they do not cure OCD.'
+  },
+  {
+    type: 'single', badge: 'single', label: 'Single Best Answer',
+    stem: 'After being told their child has been diagnosed with <strong>acute myelogenous leukemia</strong>, two parents immediately begin a bitter argument with each other. Which defense mechanism are the parents using?',
+    opts: ['Denial', 'Projection', 'Displacement', 'Compensation'],
+    correct: [2],
+    rationale: '<strong>Displacement</strong> — the parents are directing feelings about their child\'s diagnosis (real threatening source) onto each other (safer target). Denial = refusing to accept reality. Projection = attributing your feelings TO another person. Compensation = making up for a perceived deficiency by emphasizing an asset.'
+  },
+  {
+    type: 'sata', badge: 'sata', label: 'Select All That Apply',
+    stem: 'A client receiving <strong>antipsychotic medication</strong> is brought to the ED with high fever, severe muscle rigidity, altered consciousness, and autonomic instability. The nurse suspects <strong>Neuroleptic Malignant Syndrome (NMS)</strong>. Which nursing actions are appropriate? Select ALL that apply.',
+    opts: ['Stop the antipsychotic medication immediately', 'Notify the provider STAT', 'Administer dantrolene as prescribed', 'Increase the antipsychotic dose to manage rigidity', 'Prepare for ICU transfer', 'Provide supportive care including hydration and cooling'],
+    correct: [0,1,2,4,5],
+    rationale: 'NMS is LIFE-THREATENING. Correct actions: <strong>STOP medication IMMEDIATELY</strong> (never continue or increase!), notify provider STAT, administer dantrolene (reduces rigidity), prepare for ICU transfer, supportive care. Never increase or continue the antipsychotic — this worsens NMS and can be fatal.'
+  },
+  {
+    type: 'teaching', badge: 'teaching', label: 'Teaching Effectiveness',
+    stem: 'A nurse has educated a client prescribed <strong>alprazolam</strong> about starting therapy. Which statement by the client indicates that teaching was <strong>effective</strong>?',
+    opts: ['"A glass of wine will help the medication work better for my anxiety."', '"I should slowly rise from sitting or lying to prevent dizziness."', '"If I feel extra anxious, I can take an extra pill."', '"Once I feel better, I can just stop taking this medication."'],
+    correct: [1],
+    rationale: 'Slowly rising from positions prevents <strong>orthostatic hypotension</strong> — the most common early side effect of alprazolam. Alcohol should be AVOIDED (additive CNS depression). Never self-increase doses (dependence risk). Never stop abruptly without provider guidance (withdrawal seizures possible).'
+  },
+  {
+    type: 'single', badge: 'priority', label: 'Priority — Single Best',
+    stem: 'A 50-year-old client scheduled for valve replacement tells the nurse, <em>"I gave my spouse all my financial records in case I don\'t make it."</em> Which response by the nurse is <strong>best</strong>?',
+    opts: ['"Your surgeon is very experienced and does this surgery often."', '"People your age generally do very well with this procedure."', '"Are you concerned that you may die during surgery?"', '"Would you like medication to help you sleep tonight?"'],
+    correct: [2],
+    rationale: '"<strong>Are you concerned that you may die during surgery?</strong>" is reflective and directly addresses the client\'s real fear — opens communication. "Surgeon is experienced" = cuts off communication. "People do well" = false, nonspecific reassurance. Sleep medication = evades the concern entirely. Therapeutic communication means addressing what the client is really saying.'
+  },
+  {
+    type: 'sata', badge: 'sata', label: 'Select All That Apply',
+    stem: 'A nurse is assessing a client receiving treatment for <strong>PTSD</strong>. Which findings are <strong>unexpected outcomes</strong> that require follow-up? Select ALL that apply.',
+    opts: ['Client reports reduced frequency of flashbacks after 8 weeks of therapy', 'Client has begun drinking alcohol daily "to cope with the memories"', 'Client is re-engaging with friends and returning to activities', 'Client expresses suicidal ideation during a therapy session', 'Client reports improved emotional regulation', 'Client has completely withdrawn from all social activities over the past month'],
+    correct: [1,3,5],
+    rationale: '<strong>Unexpected outcomes requiring intervention:</strong> Substance abuse (alcohol = maladaptive coping, comorbid substance use disorder risk), Suicidal ideation (ALWAYS safety priority — immediate intervention), Social withdrawal (isolation worsens PTSD). <strong>Expected outcomes:</strong> Reduced flashbacks ✅, Re-engaging with relationships ✅, Improved emotional regulation ✅.'
+  },
+  {
+    type: 'outcome', badge: 'outcome', label: 'Expected vs Unexpected Outcome',
+    stem: 'A client with GAD has been taking <strong>buspirone</strong> for 3 weeks. Which finding is an <strong>expected</strong> outcome of this medication?',
+    opts: ['Client reports the medication provides immediate relief within 30 minutes', 'Client has developed tolerance and requires increasing doses for the same effect', 'Client reports gradual reduction in anxiety symptoms over the past few weeks', 'Client reports feeling drowsy and sedated throughout the day'],
+    correct: [2],
+    rationale: 'Buspirone has a <strong>delayed onset</strong> — gradual anxiety reduction over several weeks is the EXPECTED effect. It does NOT provide immediate relief (unlike benzodiazepines). It does NOT cause tolerance or dependence (major advantage over benzodiazepines). It does NOT cause sedation — non-sedating is one of its key advantages.'
+  },
+  {
+    type: 'teaching', badge: 'teaching', label: 'Needs Further Teaching',
+    stem: 'A nurse has educated a client on <strong>clozapine</strong> for schizophrenia. Which statement indicates the need for <strong>further teaching</strong>?',
+    opts: ['"I will report any fever or signs of infection right away."', '"I need to have my blood tested regularly while on this medication."', '"I can skip my blood tests if I feel okay and have no symptoms."', '"Weight gain is a possible side effect so I should watch my diet."'],
+    correct: [2],
+    rationale: 'Clients taking clozapine <strong>CANNOT skip blood tests</strong> — monitoring for agranulocytosis (dangerous WBC drop) is mandatory and non-negotiable. Clients who miss required blood testing should have their medication withheld. All other statements are correct: report fever ✅ (could indicate agranulocytosis), regular CBC required ✅, monitor diet for metabolic syndrome ✅.'
+  },
+  {
+    type: 'single', badge: 'single', label: 'Single Best Answer',
+    stem: 'A nurse is caring for a client diagnosed with <strong>GAD</strong>. Which approach would the nurse use in managing this client\'s care?',
+    opts: ['Creating an anxiety-free environment for the client', 'Assisting the client with developing healthy, adaptive coping mechanisms', 'Identifying and helping the client avoid all anxiety triggers', 'Providing reassurance that the client\'s anxiety issues can be eliminated'],
+    correct: [1],
+    rationale: 'The nurse helps the client develop <strong>healthy, adaptive coping mechanisms</strong> to replace the maladaptive worrying. It is NOT possible or desirable to create an anxiety-free environment (the goal is to handle anxiety healthily). Avoiding all triggers is usually impossible. Promising anxiety elimination is false reassurance — all people experience anxiety and must learn to cope.'
+  },
+  {
+    type: 'sata', badge: 'sata', label: 'Select All That Apply',
+    stem: 'A nurse is caring for a client with <strong>schizophrenia</strong> who reports hearing command hallucinations. Which nursing actions are appropriate? Select ALL that apply.',
+    opts: ['Ask the client what the voices are telling them to do', 'Tell the client the voices are not real and to ignore them', 'Acknowledge the client\'s feelings without validating the hallucination', 'Assess for any intent to act on the commands', 'Redirect the client\'s attention after acknowledging the experience', 'Agree with the client that the voices are real to build therapeutic trust'],
+    correct: [0,2,3,4],
+    rationale: 'Correct: Ask what voices command (assess safety risk), acknowledge feelings without validating ("I understand you hear voices, but I do not hear them"), assess intent to act (determines immediate safety), redirect after acknowledging. Never tell them voices "aren\'t real" (dismissive, confrontational). Never validate hallucinations as real (reinforces false perception).'
+  },
+  {
+    type: 'single', badge: 'single', label: 'Medication Calculation',
+    stem: 'A client with panic disorder is prescribed oral <strong>lorazepam 1.5 mg stat</strong>. Lorazepam is available in <strong>0.5 mg tablets</strong>. How many tablets would the nurse administer?',
+    opts: ['1 tablet', '2 tablets', '3 tablets', '4 tablets'],
+    correct: [2],
+    rationale: 'Use Desired ÷ Available × Quantity: (1.5 mg ÷ 0.5 mg) × 1 tablet = <strong>3 tablets</strong>. Always verify the 6 rights of medication administration. Always double-check calculations before administration, especially with CNS depressants.'
+  },
+  {
+    type: 'single', badge: 'single', label: 'Single Best Answer',
+    stem: 'A nurse is minimizing <strong>psychological stress</strong> for an anxious client newly admitted to the psychiatric unit. Which action would the nurse take?',
+    opts: ['Explain in detail all the therapies being used for the client', 'Learn what is of particular importance to the client', 'Advise the client that the nurse is in charge of the situation', 'Avoid discussing any emotionally charged areas'],
+    correct: [1],
+    rationale: 'The nurse would <strong>learn what is of particular importance to the client</strong> — providing support, understanding, and acceptance reduces stress. Explaining therapies in detail increases anxiety. Advising the nurse is "in charge" is authoritarian. Avoiding emotionally charged areas is wrong — the psychiatric unit is exactly the safe place to explore these. Meeting individual needs = best stress reduction.'
+  }
+];
+
+// ══════════════ QUIZ LOGIC ══════════════
+let qIdx = 0, qScore = 0, qAnswered = 0;
+let selected = new Set(), submitted = false;
+
+function renderQ() {
+  if (qIdx >= QUESTIONS.length) { showResults(); return; }
+  const q = QUESTIONS[qIdx];
+  const pct = (qIdx / QUESTIONS.length) * 100;
+  document.getElementById('quizTrack').style.width = pct + '%';
+  document.getElementById('qLeft').textContent = QUESTIONS.length - qIdx;
+
+  const badgeMap = { single:'q-badge-single', sata:'q-badge-sata', teaching:'q-badge-teaching', outcome:'q-badge-outcome', priority:'q-badge-priority' };
+  const badgeClass = badgeMap[q.badge] || 'q-badge-single';
+
+  const sataNote = q.type === 'sata' ? `<div class="sata-instruct">📌 Select ALL that apply — one, some, or all responses may be correct.</div>` : '';
+
+  const opts = q.opts.map((o, i) => {
+    const letter = String.fromCharCode(65+i);
+    return `<button class="opt-btn" id="obtn${i}" onclick="selectOpt(${i})"><span class="opt-letter">${letter}</span>${o}</button>`;
+  }).join('');
+
+  document.getElementById('questionArea').innerHTML = `
+    <div class="q-number">Question ${qIdx+1} of ${QUESTIONS.length}</div>
+    <span class="q-badge ${badgeClass}">${q.label}</span>
+    <div class="q-stem">${q.stem}</div>
+    ${sataNote}
+    <div class="options-list">${opts}</div>
+    <div class="quiz-actions">
+      <button class="btn-submit" id="submitBtn" onclick="submitQ()" disabled>Submit Answer</button>
+      <button class="btn-next" id="nextBtn" onclick="nextQ()">Next Question →</button>
+    </div>
+    <div class="rationale-panel" id="rationale">
+      <div class="rationale-heading">📚 Rationale</div>
+      <div class="rationale-text">${q.rationale}</div>
+    </div>
+  `;
+  selected = new Set();
+  submitted = false;
+}
+
+function selectOpt(i) {
+  if (submitted) return;
+  const q = QUESTIONS[qIdx];
+  if (q.type === 'sata') {
+    if (selected.has(i)) { selected.delete(i); document.getElementById('obtn'+i).classList.remove('selected'); }
+    else { selected.add(i); document.getElementById('obtn'+i).classList.add('selected'); }
+  } else {
+    selected.clear();
+    document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+    selected.add(i);
+    document.getElementById('obtn'+i).classList.add('selected');
+  }
+  document.getElementById('submitBtn').disabled = selected.size === 0;
+}
+
+function submitQ() {
+  if (submitted) return;
+  submitted = true;
+  const q = QUESTIONS[qIdx];
+  document.getElementById('submitBtn').disabled = true;
+  document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+
+  const correctSet = new Set(q.correct);
+  const selArr = Array.from(selected);
+  const isCorrect = q.type === 'sata'
+    ? selArr.length === q.correct.length && selArr.every(x => correctSet.has(x))
+    : selArr.length === 1 && correctSet.has(selArr[0]);
+
+  q.opts.forEach((_, i) => {
+    const btn = document.getElementById('obtn'+i);
+    if (correctSet.has(i)) btn.classList.add('correct');
+    else if (selected.has(i)) btn.classList.add('wrong');
+    btn.classList.remove('selected');
+  });
+
+  if (isCorrect) { qScore++; document.getElementById('qScore').textContent = qScore; document.getElementById('sidebarScore').textContent = qScore + ' / 20'; }
+  qAnswered++;
+  document.getElementById('qAnswered').textContent = qAnswered;
+  document.getElementById('rationale').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQ() { qIdx++; renderQ(); }
+
+function showResults() {
+  document.getElementById('quizContent').style.display = 'none';
+  document.getElementById('resultsWrap').classList.add('show');
+  const pct = Math.round((qScore / QUESTIONS.length) * 100);
+  document.getElementById('resultGrade').textContent = pct + '%';
+  document.getElementById('resultGrade').className = 'result-grade ' + (pct >= 75 ? 'pass' : 'fail');
+  document.getElementById('rs1').textContent = qScore;
+  document.getElementById('rs2').textContent = QUESTIONS.length - qScore;
+  document.getElementById('rs3').textContent = pct + '%';
+  const msgs = [
+    [90, '🏆 Ready for Exam!', 'Outstanding — you clearly know this material inside and out.'],
+    [80, '💪 Strong Performance', 'Almost there — review the rationales for missed questions.'],
+    [70, '📚 Getting There', 'Solid foundation — focus on weak areas and retake.'],
+    [0, '🔄 Keep Grinding', 'Review the content sections carefully and try again — you\'ve got this!']
+  ];
+  const [t, title, sub] = msgs.find(([t]) => pct >= t);
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSub').textContent = sub;
+  document.getElementById('quizTrack').style.width = '100%';
+}
+
+function restartQuiz() {
+  qIdx = 0; qScore = 0; qAnswered = 0;
+  document.getElementById('qScore').textContent = 0;
+  document.getElementById('qAnswered').textContent = 0;
+  document.getElementById('qLeft').textContent = 20;
+  document.getElementById('sidebarScore').textContent = '— / 20';
+  document.getElementById('quizContent').style.display = 'block';
+  document.getElementById('resultsWrap').classList.remove('show');
+  renderQ();
+}
+
+// Init
+renderQ();
+</script>
+</body>
+</html>

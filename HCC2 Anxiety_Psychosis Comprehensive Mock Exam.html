@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCC2 Comprehensive Exam — Psychosis, Anxiety & PTSD</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+:root{
+  --navy:#0d1b2a;--navy-card:#1a2d42;--navy-deep:#0a1520;
+  --teal:#2dd4bf;--teal-dim:#1a8c7d;--teal-muted:rgba(45,212,191,.12);
+  --gold:#f59e0b;--gold-muted:rgba(245,158,11,.15);
+  --red:#f87171;--red-muted:rgba(248,113,113,.15);
+  --green:#4ade80;--green-muted:rgba(74,222,128,.12);
+  --plum:#7c3aed;--plum-muted:rgba(124,58,237,.15);
+  --text-primary:#e2e8f0;--text-secondary:#94a3b8;--text-muted:#64748b;
+  --border:rgba(45,212,191,.18);--border-soft:rgba(255,255,255,.07);
+  --radius:12px;--radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--navy);color:var(--text-primary);font-family:'Source Serif 4',Georgia,serif;font-size:15px;line-height:1.75;min-height:100vh;}
+/* HEADER */
+.exam-header{background:linear-gradient(135deg,#0d1b2a,#0f2a3f 50%,#132d3e);border-bottom:2px solid var(--teal-dim);padding:2rem 2rem 1.5rem;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 30px rgba(0,0,0,.5);}
+.badge{display:inline-block;background:var(--teal-muted);border:1px solid var(--teal-dim);color:var(--teal);font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:10px;font-weight:600;}
+.exam-header h1{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:4px;}
+.exam-header p{color:var(--text-secondary);font-size:13px;}
+.progress-bar-wrap{margin:12px auto 0;background:rgba(255,255,255,.07);border-radius:20px;height:6px;overflow:hidden;max-width:600px;}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal-dim),var(--teal));border-radius:20px;width:0%;transition:width .4s ease;}
+.progress-label{font-size:11px;color:var(--text-muted);margin-top:5px;text-align:center;}
+/* MAIN */
+.exam-body{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+/* QUESTION CARD */
+.q-card{background:var(--navy-card);border:1px solid var(--border-soft);border-radius:var(--radius);padding:1.6rem 1.8rem;margin-bottom:1.4rem;transition:border-color .2s;position:relative;}
+.q-card:hover{border-color:var(--border);}
+.q-card.correct-card{border-color:rgba(74,222,128,.4);background:linear-gradient(135deg,var(--navy-card),#1a2d2a);}
+.q-card.incorrect-card{border-color:rgba(248,113,113,.4);background:linear-gradient(135deg,var(--navy-card),#2d1a1a);}
+.q-number{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--teal-muted);border:1px solid var(--teal-dim);color:var(--teal);font-size:12px;font-weight:700;margin-right:10px;flex-shrink:0;font-family:'Playfair Display',serif;}
+.q-header{display:flex;align-items:flex-start;margin-bottom:1.1rem;}
+.q-text{font-size:15px;color:var(--text-primary);line-height:1.75;flex:1;}
+.q-instruction{font-size:12px;color:var(--teal);font-style:italic;margin-bottom:12px;margin-left:40px;opacity:.85;}
+/* CHOICES */
+.choices-list{list-style:none;margin-left:40px;display:flex;flex-direction:column;gap:8px;}
+.choice-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--border-soft);background:rgba(255,255,255,.03);cursor:pointer;transition:all .15s;}
+.choice-item:hover{background:var(--teal-muted);border-color:var(--teal-dim);}
+.choice-item input{margin-top:2px;accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;cursor:pointer;}
+.choice-item label{cursor:pointer;color:var(--text-primary);font-size:14px;line-height:1.6;}
+.choice-item.correct-choice{background:var(--green-muted);border-color:rgba(74,222,128,.5);}
+.choice-item.correct-choice label{color:var(--green);}
+.choice-item.incorrect-choice{background:var(--red-muted);border-color:rgba(248,113,113,.4);}
+.choice-item.incorrect-choice label{color:var(--red);}
+.choice-item.missed-choice{background:var(--gold-muted);border-color:rgba(245,158,11,.4);}
+.choice-item.missed-choice label{color:var(--gold);}
+/* MATRIX */
+.matrix-wrap{margin-left:40px;overflow-x:auto;}
+.matrix-table{width:100%;border-collapse:collapse;min-width:500px;}
+.matrix-table thead th{padding:10px 16px;text-align:center;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);border-bottom:2px solid var(--border);background:var(--teal-muted);font-weight:700;}
+.matrix-table thead th:first-child{text-align:left;width:52%;}
+.matrix-table tbody tr{border-bottom:1px solid var(--border-soft);}
+.matrix-table td{padding:10px 16px;vertical-align:middle;font-size:14px;color:var(--text-primary);}
+.matrix-table td.col-radio{text-align:center;width:24%;}
+.matrix-table td.col-radio input[type="radio"]{accent-color:var(--teal);width:16px;height:16px;cursor:pointer;}
+.matrix-table tbody tr.mat-correct td{background:var(--green-muted);}
+.matrix-table tbody tr.mat-correct td:first-child{color:var(--green);}
+.matrix-table tbody tr.mat-incorrect td{background:var(--red-muted);}
+.matrix-table tbody tr.mat-incorrect td:first-child{color:var(--red);}
+.mat-row-rationale{display:none;font-size:12px;color:var(--text-secondary);font-style:italic;margin-top:5px;padding:6px 10px;background:rgba(0,0,0,.2);border-radius:6px;border-left:2px solid var(--teal-dim);}
+/* BOWTIE */
+.bowtie-wrap{margin-left:40px;}
+.bowtie-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start;}
+.bowtie-center{background:linear-gradient(135deg,var(--teal-muted),rgba(45,212,191,.06));border:1.5px solid var(--teal-dim);border-radius:var(--radius);padding:14px 18px;text-align:center;font-size:13px;color:var(--teal);font-weight:600;line-height:1.5;min-width:140px;}
+.bowtie-center .bt-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;display:block;}
+.bowtie-col-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:700;}
+.bowtie-col-label.right{color:var(--plum);}
+.bowtie-select-group{display:flex;flex-direction:column;gap:10px;}
+.bt-select-wrap{display:flex;flex-direction:column;gap:4px;}
+.bt-select-wrap label{font-size:12px;color:var(--text-muted);font-style:italic;}
+.bt-select{width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid var(--border-soft);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'Source Serif 4',serif;font-size:13px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232dd4bf' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;}
+.bt-select:focus{outline:1px solid var(--teal-dim);}
+.bt-select option{background:#1a2d42;}
+.bt-select.correct-sel{border-color:rgba(74,222,128,.6);background-color:var(--green-muted);}
+.bt-select.incorrect-sel{border-color:rgba(248,113,113,.5);background-color:var(--red-muted);}
+@media(max-width:600px){.bowtie-grid{grid-template-columns:1fr;}.bowtie-center{order:-1;min-width:unset;}}
+/* RATIONALE */
+.rationale-block{display:none;margin-top:1rem;margin-left:40px;padding:12px 16px;background:rgba(0,0,0,.25);border-left:3px solid var(--teal-dim);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:13.5px;color:var(--text-secondary);line-height:1.75;}
+.rat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:6px;display:block;}
+.q-result-badge{display:none;position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
+.q-result-badge.correct{background:var(--green-muted);color:var(--green);border:1px solid rgba(74,222,128,.4);}
+.q-result-badge.incorrect{background:var(--red-muted);color:var(--red);border:1px solid rgba(248,113,113,.4);}
+/* SUBMIT */
+.submit-zone{text-align:center;margin:2.5rem 0;}
+.btn-submit{background:linear-gradient(135deg,var(--teal-dim),var(--teal));color:var(--navy);border:none;padding:14px 48px;font-size:15px;font-weight:700;font-family:'Source Serif 4',serif;letter-spacing:1px;border-radius:30px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(45,212,191,.3);}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(45,212,191,.45);}
+.btn-reset{background:transparent;color:var(--text-secondary);border:1px solid var(--border);padding:10px 28px;font-size:14px;font-family:'Source Serif 4',serif;border-radius:30px;cursor:pointer;margin-left:14px;transition:all .2s;}
+.btn-reset:hover{border-color:var(--teal-dim);color:var(--teal);}
+/* SCORE */
+#score-panel{display:none;background:linear-gradient(135deg,var(--navy-card),#0d2233);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 2.5rem;text-align:center;margin-bottom:2rem;}
+.score-headline{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:6px;}
+.score-sub{font-size:14px;color:var(--text-secondary);margin-bottom:18px;}
+.score-grade{display:inline-block;font-size:18px;font-weight:700;padding:8px 24px;border-radius:20px;margin-bottom:16px;}
+.grade-a{background:var(--green-muted);color:var(--green);border:1px solid rgba(74,222,128,.4);}
+.grade-b{background:var(--teal-muted);color:var(--teal);border:1px solid var(--teal-dim);}
+.grade-c{background:var(--gold-muted);color:var(--gold);border:1px solid rgba(245,158,11,.4);}
+.grade-d{background:var(--red-muted);color:var(--red);border:1px solid rgba(248,113,113,.4);}
+.score-breakdown{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:12px;}
+.score-breakdown-item{text-align:center;}
+.score-breakdown-item .val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text-primary);display:block;}
+.score-breakdown-item .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);}
+.unanswered-warning{display:none;text-align:center;color:var(--gold);font-size:13px;margin-bottom:10px;padding:8px 16px;background:var(--gold-muted);border-radius:var(--radius-sm);border:1px solid rgba(245,158,11,.3);cursor:pointer;}
+#scrolltop-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--teal-dim);color:var(--navy);border:none;border-radius:50%;cursor:pointer;font-size:20px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s;z-index:200;}
+#scrolltop-btn:hover{background:var(--teal);transform:translateY(-2px);}
+@media(max-width:600px){.exam-body{padding:1.5rem 1rem 3rem;}.q-card{padding:1.2rem;}.choices-list,.matrix-wrap,.bowtie-wrap,.q-instruction,.rationale-block{margin-left:0;}.q-number{width:26px;height:26px;font-size:11px;}}
+</style>
+</head>
+<body>
+<header class="exam-header">
+  <div class="badge">HCC2 Spring 2026 — Prof. Bryan</div>
+  <h1>Psychosis, Schizophrenia, Anxiety &amp; PTSD — Comprehensive Exam</h1>
+  <p>Full Coverage · MCQ · SATA · Matrix · Bowtie &nbsp;|&nbsp; All Questions Shuffled</p>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0 of 0 answered</div>
+</header>
+<main class="exam-body">
+  <div id="score-panel"></div>
+  <div id="unanswered-warning" class="unanswered-warning"></div>
+  <div id="questionsContainer"></div>
+  <div class="submit-zone">
+    <button class="btn-submit" id="submitBtn" onclick="submitExam()">Submit Exam</button>
+    <button class="btn-reset" onclick="resetExam()">Start Over</button>
+  </div>
+</main>
+<button id="scrolltop-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+/* ═══════════════════════════════════════════════
+   QUESTION BANK
+═══════════════════════════════════════════════ */
+const RAW_Q = [
+
+// ──────────────────────────────────────
+//  MCQ  (15)
+// ──────────────────────────────────────
+
+{type:'mcq',
+stem:`A nurse is assessing a client in the emergency department who is diaphoretic, has a heart rate of 118, reports chest tightness and shortness of breath, and states, "I feel like I'm dying." The nurse is aware that before attributing these findings to a panic attack, it is most important to first:`,
+choices:[
+  `Administer a short-acting benzodiazepine to reduce sympathetic activation and assess response`,
+  `Rule out cardiac and other serious medical causes such as myocardial infarction, pulmonary embolism, or hyperthyroidism`,
+  `Ask the client whether they have a previous history of panic disorder, since this confirms the diagnosis`,
+  `Administer supplemental oxygen and encourage slow deep breathing to activate the parasympathetic nervous system`
+],
+correctIndex:1,
+rationale:`The textbook explicitly states that a determination of anxiety should never be made until high-risk medical explanations — including MI, pulmonary embolism, and stroke — have been ruled out. Tachycardia, chest pain, diaphoresis, and dyspnea are classic cardiac and pulmonary symptoms. Diagnosing panic disorder without ruling out organic causes is a clinical error that can be fatal. A history of panic disorder (option C) does not exclude a concurrent cardiac event. Oxygen and breathing techniques (option D) are nursing interventions, not the first diagnostic step. Giving a benzodiazepine (option A) before ruling out cardiac etiology is premature and potentially dangerous.`
+},
+
+{type:'mcq',
+stem:`A nurse is assessing a client experiencing anxiety. The client is unable to focus on any task, misperceives environmental stimuli, and is trembling. The client's anxiety level is severe enough that normal problem-solving ability is completely absent and the client expresses a sense of overwhelming terror. Using Peplau's framework, the nurse identifies this client as experiencing which level of anxiety?`,
+choices:[
+  `Moderate anxiety`,
+  `Mild anxiety`,
+  `Severe anxiety`,
+  `Panic-level anxiety`
+],
+correctIndex:3,
+rationale:`Peplau's panic level is characterized by complete loss of focus, inability to process any information, behavioral and emotional dysregulation, terror, and the patient's inability to learn anything new. Severe anxiety is characterized by significantly narrowed perceptual field and marked impairment of attention and problem-solving, but the client retains some ability to function with guidance. The client in this scenario cannot process information at all and is in complete terror — this is panic level. Mild anxiety (option B) enhances learning and has a wide perceptual field. Moderate anxiety (option A) narrows focus but leaves some functional capacity intact.`
+},
+
+{type:'mcq',
+stem:`A client with schizophrenia tells the nurse, "The CIA placed a transmitter in my brain during surgery. I can prove it — there's a lump right here." The nurse recognizes this as which type of delusion?`,
+choices:[
+  `Grandiose delusion`,
+  `Thought insertion`,
+  `Somatic delusion`,
+  `Ideas of reference`
+],
+correctIndex:2,
+rationale:`A somatic delusion is a fixed false belief about one's own body, bodily functions, or health — the classic example being believing that a foreign object, organism, or device has been placed in or is affecting the body. Thought insertion (option B) involves believing that external forces are placing thoughts into the mind — not a physical device into the body. Grandiose delusions (option A) involve exaggerated beliefs about one's importance, power, or identity. Ideas of reference (option D) involve interpreting neutral external events as having personal, special meaning directed at oneself.`
+},
+
+{type:'mcq',
+stem:`A nurse is caring for a client recently started on haloperidol (Haldol) who is now pacing continuously, crossing and uncrossing their legs, and states, "I can't stop moving — it's like something is forcing me." The nurse understands that this symptom differs from pseudoparkinsonism because:`,
+choices:[
+  `Pseudoparkinsonism presents with resting tremor, mask-like face, and shuffling gait — not an inner compulsion to move`,
+  `Pseudoparkinsonism presents with repetitive lip smacking and tongue protrusion after months of therapy`,
+  `Pseudoparkinsonism responds to beta-blockers and the symptoms described would respond to benztropine`,
+  `Pseudoparkinsonism is a chronic syndrome that begins after 6 months of antipsychotic therapy, not acutely`
+],
+correctIndex:0,
+rationale:`The client is experiencing akathisia — a subjective inner restlessness and compulsion to remain in constant motion. Pseudoparkinsonism mimics Parkinson's disease, presenting with cogwheel rigidity, resting tremor ("pill-rolling"), mask-like facies, shuffling gait, drooling, and akinesia — not the driven, inner-restlessness quality of akathisia. Option B describes tardive dyskinesia, not pseudoparkinsonism. Option C has the treatments reversed — akathisia responds to beta-blockers (propranolol), NOT benztropine; benztropine treats dystonia and pseudoparkinsonism. Option D describes tardive dyskinesia's chronic onset.`
+},
+
+{type:'mcq',
+stem:`A client taking sertraline and a newly prescribed sumatriptan reports sudden onset agitation, tremors, rapid heart rate, and hyperreflexia. The nurse recognizes this presentation is most consistent with which condition?`,
+choices:[
+  `Neuroleptic malignant syndrome from dopamine receptor blockade`,
+  `Serotonin syndrome from excess serotonergic activity`,
+  `Acute dystonia from nigrostriatal dopamine pathway blockade`,
+  `Tardive dyskinesia from long-term dopamine receptor sensitization`
+],
+correctIndex:1,
+rationale:`Serotonin syndrome results from excess serotonergic activity — most commonly from combining two or more serotonergic agents (SSRIs + triptans, SSRIs + MAOIs, etc.). Its hallmarks are the triad of neuromuscular abnormalities (tremor, clonus, hyperreflexia, myoclonus), autonomic instability (tachycardia, diaphoresis, hypertension), and altered mental status (agitation, confusion). NMS (option A) involves antipsychotic use, lead-pipe rigidity (not hyperreflexia/clonus), and markedly elevated temperature — this client is not on an antipsychotic. Acute dystonia (option C) involves specific muscle spasms and abnormal posturing without systemic effects. Tardive dyskinesia (option D) is a chronic movement disorder, not an acute systemic syndrome.`
+},
+
+{type:'mcq',
+stem:`A nurse is reviewing medication teaching with a family caring for a client newly prescribed clozapine (Clozaril). Which statement by the nurse most accurately explains why weekly CBC monitoring is required?`,
+choices:[
+  `Clozapine commonly causes tachycardia and hypertension, which must be monitored frequently`,
+  `Clozapine can cause agranulocytosis — a life-threatening reduction in white blood cells that eliminates the body's ability to fight infection`,
+  `Clozapine requires CBC monitoring because it causes polycythemia, which increases clot formation risk`,
+  `Clozapine's metabolic effects on glucose and lipids require frequent bloodwork to detect diabetes early`
+],
+correctIndex:1,
+rationale:`Clozapine's most dangerous adverse effect is agranulocytosis — a severe, potentially fatal reduction in granulocytes (white blood cells), leaving the patient unable to mount an immune response. This is why clozapine requires weekly CBC monitoring for 6 months, biweekly thereafter, and monthly after one year of stable therapy. Fever, sore throat, chills, and fatigue must prompt immediate CBC and medication hold. Option A describes general anticholinergic and cardiovascular effects, not the reason for CBC monitoring. Option C (polycythemia) is incorrect — clozapine does not cause elevated RBCs. Option D (glucose/lipid monitoring) is relevant to atypical antipsychotics generally but not the reason for CBC monitoring specifically.`
+},
+
+{type:'mcq',
+stem:`During a psychoeducation session, the nurse is asked by a family member, "Why doesn't our son think he's sick? He refuses to believe the diagnosis." The nurse correctly explains that this lack of awareness of illness is called:`,
+choices:[
+  `Avolition — the negative symptom of reduced motivation that prevents the client from engaging with care`,
+  `Diagnostic overshadowing — the tendency to attribute all symptoms to the psychiatric disorder`,
+  `Anosognosia — a neurological feature of schizophrenia that impairs the client's insight into their own illness`,
+  `Anhedonia — the inability to experience pleasure, including pleasure in seeking treatment`
+],
+correctIndex:2,
+rationale:`Anosognosia is the neurological impairment of insight into one's own illness — it is a symptom of schizophrenia itself, not stubbornness or denial. The brain's capacity for self-assessment is impaired by the same pathological process causing the other symptoms. This is why it is classified as a symptom, not a character flaw, and why coercive arguments about the diagnosis are ineffective. Avolition (option A) is loss of motivation but is distinct from lack of illness awareness. Diagnostic overshadowing (option B) is the clinician's error of attributing all symptoms to the psychiatric diagnosis. Anhedonia (option D) is loss of pleasure — not relevant to illness awareness.`
+},
+
+{type:'mcq',
+stem:`A client with a history of schizophrenia is admitted to the psychiatric unit and tells the nurse, "The voice is telling me to do things." Which is the nurse's priority assessment question?`,
+choices:[
+  `"How long has the voice been telling you to do things?"`,
+  `"Are you afraid of the voice?"`,
+  `"What is the voice telling you to do?"`,
+  `"Do you recognize who the voice belongs to?"`
+],
+correctIndex:2,
+rationale:`The priority is to identify the specific content of the command hallucination because the command may direct the patient to harm themselves or others — constituting an immediate psychiatric emergency. You cannot assess the level of danger without knowing what the command is. Duration of the hallucination (option A) is relevant but subordinate to immediate safety assessment. Emotional response to the voice (option B) is a secondary assessment. Identity of the voice (option D) is clinically irrelevant to the safety determination. Safety always supersedes all other assessment priorities.`
+},
+
+{type:'mcq',
+stem:`A client with schizophrenia shouts, "They're all plotting to destroy me. Isn't that true?" Which response by the nurse is most therapeutic?`,
+choices:[
+  `"Everyone here is trying to help you. No one wants to harm you."`,
+  `"That is not true. People here are trying to help you if you will let them."`,
+  `"Feeling that people want to destroy you must be very frightening."`,
+  `"Staff members are healthcare professionals who are qualified to help you."`
+],
+correctIndex:2,
+rationale:`The most therapeutic response focuses on the feeling behind the delusion — fear and terror — rather than arguing against or engaging with the content. Option C validates the emotional experience (fear of being destroyed) without confirming or denying the delusional belief, which de-escalates distress and preserves the therapeutic relationship. Options A, B, and D all directly argue against the delusion's content, which increases the patient's anxiety and actually strengthens the tenacity with which they hold the belief. The textbook explicitly identifies arguing with delusions as counterproductive and non-therapeutic.`
+},
+
+{type:'mcq',
+stem:`A patient experiencing acute anxiety needs a PRN anxiolytic. Looking at the patient's medication administration record, the nurse finds orders for buspirone, lorazepam, amitriptyline, and fluoxetine. Which medication is most appropriate to administer for acute anxiety relief?`,
+choices:[
+  `Buspirone — it is an atypical anxiolytic with no dependence risk`,
+  `Fluoxetine — it is an SSRI and is the first-line medication for anxiety disorders`,
+  `Amitriptyline — it is a tricyclic antidepressant effective for anxiety`,
+  `Lorazepam — it is a benzodiazepine with a rapid onset appropriate for acute/PRN use`
+],
+correctIndex:3,
+rationale:`Lorazepam (Ativan) is a benzodiazepine — fast-acting (onset 30–60 minutes), appropriate for PRN anxiolytic use in acute and crisis situations. Buspirone (option A) is an excellent long-term anxiolytic but takes 1–4 weeks to reach therapeutic effect and is absolutely not appropriate for PRN acute use. Fluoxetine (option B) is an SSRI that takes 4–6 weeks to work — not for PRN use. Amitriptyline (option C) is a tricyclic antidepressant not indicated for PRN panic management. The key principle: benzos = fast/acute/crisis; SSRIs and buspirone = slow/maintenance/long-term.`
+},
+
+{type:'mcq',
+stem:`A nurse is explaining to a nursing student the difference between "first-line" and "first-generation" medications. Which statement most accurately explains this distinction?`,
+choices:[
+  `First-line and first-generation are interchangeable terms that both refer to the most effective medications in their class`,
+  `First-generation medications are always the preferred treatment because they were developed first and have the most research`,
+  `First-line refers to the treatment recommended first based on evidence and safety, while first-generation refers to the earliest medications in a class, which may have more side effects`,
+  `First-line refers to medications used in the first 24 hours, while first-generation refers to medications developed in the first generation of psychiatric research`
+],
+correctIndex:2,
+rationale:`First-line means the treatment that should be tried first based on the best evidence, safety profile, and therapeutic outcomes — for example, SSRIs are first-line for anxiety disorders. First-generation refers to the earliest developed drugs in a class, which often have more side effects than newer versions — for example, typical antipsychotics (haloperidol, chlorpromazine) are first-generation antipsychotics but are no longer first-line treatment due to EPS risk. These terms can point in opposite directions — something can be first-generation but NOT first-line. Confusing these terms is a common error on pharmacology questions.`
+},
+
+{type:'mcq',
+stem:`A nurse is caring for a client admitted after a traumatic motor vehicle accident. The client reports intrusive flashbacks, nightmares, refusing to drive or ride in cars, emotional numbness, and feeling "detached from everyone." The nurse recognizes which symptom as falling into the PTSD cluster of increased arousal?`,
+choices:[
+  `Intrusive flashbacks and nightmares — recurrent re-experiencing of the event`,
+  `Refusing to drive or ride in cars — avoidance of stimuli associated with the trauma`,
+  `Emotional numbness and feeling detached from others — negative cognition and mood`,
+  `Irritability, hypervigilance, and exaggerated startle response`
+],
+correctIndex:3,
+rationale:`The hyperarousal/increased arousal cluster of PTSD includes: irritability and anger outbursts, trouble concentrating, sleep disturbances (insomnia), exaggerated startle response, and hypervigilance. Flashbacks and nightmares (option A) belong to the re-experiencing cluster. Avoidance of cars (option B) belongs to the avoidance cluster. Emotional numbness and interpersonal detachment (option C) belong to the negative cognition and mood cluster. Recognizing which symptoms belong to which cluster is important for clinical assessment and exam questions.`
+},
+
+{type:'mcq',
+stem:`A client with schizophrenia is being treated with olanzapine and has gained 22 lbs over 4 months. The client's most recent labs show a fasting glucose of 132 mg/dL and LDL of 148 mg/dL. The nurse identifies these findings as most consistent with which complication of atypical antipsychotic therapy?`,
+choices:[
+  `Agranulocytosis requiring immediate CBC and medication hold`,
+  `Extrapyramidal side effects from D2 receptor blockade in the nigrostriatal pathway`,
+  `Metabolic syndrome, including weight gain, hyperglycemia, and dyslipidemia`,
+  `Neuroleptic malignant syndrome requiring immediate HCP notification`
+],
+correctIndex:2,
+rationale:`Metabolic syndrome is a major and well-documented adverse effect of atypical (second-generation) antipsychotics, particularly olanzapine and clozapine. It encompasses weight gain (especially abdominal), elevated fasting glucose (diabetes risk), elevated triglycerides and LDL cholesterol, and elevated blood pressure. This patient demonstrates the classic triad: significant weight gain, hyperglycemia, and dyslipidemia. Agranulocytosis (option A) is a clozapine-specific risk requiring CBC monitoring, not applicable to olanzapine. EPS (option B) are movement disorders — not metabolic changes. NMS (option D) presents with fever, rigidity, altered LOC — none of which are described here.`
+},
+
+{type:'mcq',
+stem:`A nurse teaches a client about diphenhydramine (Benadryl) used to treat acute dystonia from an antipsychotic. The client asks, "How does an antihistamine help with muscle spasms?" The nurse's best explanation is:`,
+choices:[
+  `Diphenhydramine blocks histamine-1 receptors and directly relaxes skeletal muscle`,
+  `Diphenhydramine has significant anticholinergic properties, blocking acetylcholine and restoring the dopamine-acetylcholine balance in the basal ganglia disrupted by the antipsychotic`,
+  `Diphenhydramine directly stimulates dopamine D2 receptors in the nigrostriatal pathway, reversing the antipsychotic blockade`,
+  `Diphenhydramine activates the parasympathetic nervous system, which counteracts the sympathetic muscle spasm response`
+],
+correctIndex:1,
+rationale:`Antipsychotics block dopamine D2 receptors in the basal ganglia (nigrostriatal pathway), creating a dopamine-acetylcholine imbalance — with acetylcholine becoming relatively dominant. This imbalance produces EPS (muscle spasms, dystonia, rigidity). Diphenhydramine's significant anticholinergic properties block acetylcholine receptors, reducing acetylcholine dominance and restoring the dopamine/ACh balance — which resolves the EPS. It works by the same mechanism as benztropine (Cogentin), which is also anticholinergic. Direct dopamine agonism (option C) is not how diphenhydramine works. Option A (histamine-1 blockade causing muscle relaxation) is incorrect — the mechanism is anticholinergic, not antihistamine.`
+},
+
+{type:'mcq',
+stem:`A nurse teaches a client newly prescribed long-term buspirone (BuSpar) for generalized anxiety. Which statement by the client indicates the teaching has been effective?`,
+choices:[
+  `"I can take buspirone when I feel a panic attack coming on because it works within 30 minutes."`,
+  `"Buspirone may take 1 to 4 weeks to work, and I should not expect immediate relief."`,
+  `"I should avoid alcohol while taking buspirone because the combination causes dangerous central nervous system depression."`,
+  `"Buspirone is safe for short-term use, but I must taper off after 6 weeks to avoid dependence."`
+],
+correctIndex:1,
+rationale:`Buspirone is an atypical, non-barbiturate anxiolytic (serotonin 1A partial agonist) with a delayed onset of 1–4 weeks. It is absolutely NOT for acute or PRN use — clients must understand this to avoid frustration and early discontinuation. Option A is wrong because buspirone does NOT work within 30 minutes — that is the benzodiazepine profile. Option C is wrong because buspirone lacks the dangerous CNS synergy with alcohol that benzodiazepines have — this is actually a teaching point distinguishing buspirone from benzos (buspirone does NOT interact dangerously with alcohol). Option D is wrong because buspirone does NOT cause physical dependence — long-term use is safe without tapering concerns.`
+},
+
+// ──────────────────────────────────────
+//  SATA  (38)
+// ──────────────────────────────────────
+
+{type:'sata',
+stem:`A nurse is assessing a client experiencing a panic attack. Which findings meet the diagnostic criteria for a panic attack? Select all that apply.`,
+choices:[
+  `Palpitations, pounding heart, or accelerated heart rate`,
+  `Gradual onset of anxiety that builds over several hours without a discrete trigger`,
+  `Paresthesias — numbness or tingling sensations`,
+  `Derealization — feelings that the world is unreal`,
+  `Depersonalization — feeling detached from oneself`,
+  `Fear of dying or fear of losing control`,
+  `Nausea or abdominal distress`,
+  `Shortness of breath and a smothering sensation`
+],
+correctIndices:[0,2,3,4,5,6,7],
+rationale:`A panic attack is defined as an abrupt surge of intense fear peaking within 10 minutes, with 4 or more of the following symptoms: palpitations, sweating, trembling/shaking, SOB/smothering, feelings of choking, chest pain/discomfort, nausea/abdominal distress, dizziness/lightheadedness, chills/hot flushes, paresthesias, derealization, depersonalization, fear of losing control, and fear of dying. All options except B are valid panic attack symptoms. Gradual onset over several hours (option B) is the key distractor — panic attacks are defined by ABRUPT onset with rapid escalation to peak intensity within 10 minutes. This is a key distinguishing diagnostic feature.`
+},
+
+{type:'sata',
+stem:`The nurse understands that anxiety symptoms can result from medical conditions rather than primary psychiatric disorders. Which medical conditions can produce anxiety symptoms and must be ruled out before diagnosing a primary anxiety disorder? Select all that apply.`,
+choices:[
+  `Hyperthyroidism`,
+  `Pheochromocytoma — a tumor that secretes catecholamines`,
+  `Myocardial infarction`,
+  `Pulmonary embolism`,
+  `Hypothyroidism`,
+  `Alcohol or substance withdrawal`,
+  `Chronic stable angina with a normal stress test`
+],
+correctIndices:[0,1,2,3,5],
+rationale:`The textbook states that a determination of anxiety should never be made until high-risk medical explanations are ruled out. Medical causes include: hyperthyroidism (excess thyroid hormone drives sympathetic activation), pheochromocytoma (catecholamine-secreting adrenal tumor that directly triggers fight-or-flight), myocardial infarction (chest pain, diaphoresis, SOB mimic panic), pulmonary embolism (dyspnea, tachycardia, chest pain mimic panic), and alcohol/substance withdrawal (causes severe sympathetic overactivation, including anxiety and seizures). Hypothyroidism (option E) causes fatigue and depression, not sympathetic hyperactivation/anxiety. Chronic stable angina with a normal stress test (option G) is a stable, evaluated condition that does not produce acute anxiety mimicry requiring urgent rule-out.`
+},
+
+{type:'sata',
+stem:`A nurse is preparing to care for a client admitted with acute psychosis. Which statements accurately describe the difference between primary and secondary psychosis? Select all that apply.`,
+choices:[
+  `Primary psychosis has a psychiatric etiology — schizophrenia and schizoaffective disorder are the most common exemplars`,
+  `Secondary psychosis arises from a medical condition — causes include delirium, substance intoxication, dementia, and metabolic disorders`,
+  `A patient on a medical-surgical unit experiencing acute confusion and hallucinations should be assumed to have primary psychosis`,
+  `Secondary psychosis may be reversible once the underlying medical cause is treated`,
+  `The critical nursing implication is to always rule out medical (secondary) causes before assuming primary psychosis`,
+  `Primary psychosis always presents with all five DSM-5-TR symptom domains simultaneously`
+],
+correctIndices:[0,1,3,4],
+rationale:`Primary psychosis has a psychiatric etiology (schizophrenia, schizoaffective disorder — option A). Secondary psychosis arises from medical causes (delirium, substance intoxication, metabolic disorders, dementia — option B) and is often reversible when the underlying condition is treated (option D). Always rule out medical causes first (option E — a core nursing principle). Option C is wrong and represents the error of diagnostic overshadowing — a client on a medical-surgical floor with acute confusion and hallucinations has many likely medical causes (UTI, electrolyte imbalance, drug toxicity) and must be fully evaluated before assuming psychiatric etiology. Option F is wrong — not all five DSM-5-TR domains are required simultaneously for a diagnosis.`
+},
+
+{type:'sata',
+stem:`A nurse is teaching a nursing student about Peplau's four levels of anxiety. Which characteristics correctly describe the panic level of anxiety? Select all that apply.`,
+choices:[
+  `Complete loss of focus and inability to process any information`,
+  `The client can concentrate with guidance and learns best with simple, one-step instructions`,
+  `Patient cannot learn new information — any health teaching must be postponed`,
+  `Behavioral and emotional dysregulation with expressions of terror`,
+  `The perceptual field is narrowed but the client remains functional`,
+  `Severe misperception of the environment is present`,
+  `The nurse's priority interventions include staying with the client, minimizing stimuli, and guiding controlled breathing`
+],
+correctIndices:[0,2,3,5,6],
+rationale:`Panic-level anxiety is characterized by: complete loss of focus (A), inability to learn new information (C — teaching is explicitly contraindicated at this level), behavioral/emotional dysregulation with terror (D), severe environmental misperception (F), and the priority nursing interventions of staying with the client, minimizing stimuli, and guiding breathing to activate the parasympathetic nervous system (G). Option B describes severe anxiety — not panic — where the client can still function with guidance. Option E describes moderate anxiety where narrowed perceptual field still allows some function.`
+},
+
+{type:'sata',
+stem:`A nurse is preparing to minimize stimuli for a client experiencing an acute panic attack. Which actions are appropriate? Select all that apply.`,
+choices:[
+  `Move the client to a quiet, private room away from the general clinical environment`,
+  `Dim or reduce lighting in the room`,
+  `Turn off the television and reduce ambient noise sources`,
+  `Ask non-essential staff, visitors, and other patients to leave the client's space`,
+  `Speak in a loud, clear voice so the client can hear instructions over the noise`,
+  `Announce any physical contact before initiating touch`,
+  `Prepare a detailed teaching handout about panic disorder while waiting for the client to calm down`
+],
+correctIndices:[0,1,2,3,5],
+rationale:`Minimizing stimuli during acute panic involves creating the calmest, least threatening sensory environment possible: moving to a quiet private space (A), reducing lighting (B), eliminating noise sources like TV (C), removing non-essential persons from the space (D), and announcing touch before initiating it to avoid startling the client (F). Speaking loudly (option E) is the opposite of therapeutic — a low-pitched, slow, calm voice activates the parasympathetic nervous system and models calm co-regulation. Preparing teaching materials (option G) is contraindicated during active panic — the client cannot learn new information until the acute episode resolves.`
+},
+
+{type:'sata',
+stem:`A nurse is teaching a client about Selye's General Adaptation Syndrome (GAS) in relation to anxiety. Which statements accurately describe the three stages? Select all that apply.`,
+choices:[
+  `Stage 1 — Alarm: The stressor is perceived and the sympathetic nervous system activates to mobilize body resources`,
+  `Stage 2 — Resistance: The parasympathetic nervous system attenuates the alarm reaction, returning many functions toward homeostasis while maintaining alertness`,
+  `Stage 3 — Exhaustion: If the stressor is too intense or prolonged, the body exceeds its compensatory capacity, increasing susceptibility to disease and death`,
+  `Stage 2 — Resistance: The SNS remains fully activated and cortisol continues to rise throughout this stage`,
+  `The GAS ends at the resistance stage if the stressor is resolved`,
+  `Stage 1 involves release of epinephrine from the adrenal cortex in response to SNS activation`
+],
+correctIndices:[0,1,2,5],
+rationale:`Selye's GAS has three stages: (1) Alarm — stressor perceived, SNS activates, epinephrine released from adrenal cortex (A, F); (2) Resistance — PNS attenuates the alarm reaction, returning many functions toward homeostasis while the body remains vigilant (B — this is the key point of Stage 2); (3) Exhaustion — if the stressor is too severe or prolonged, compensatory resources are depleted, leading to disease susceptibility and potentially death (C). Option D is wrong — the PNS, not the SNS, modulates the response in Stage 2. Option E is incomplete — the GAS ends when the stressor resolves OR when the body reaches exhaustion, not necessarily at Stage 2.`
+},
+
+{type:'sata',
+stem:`The nurse is conducting a comprehensive assessment on a client presenting with anxiety. Which components should be included in the assessment, consistent with the textbook framework? Select all that apply.`,
+choices:[
+  `Identification of the event or situation causing the stress or crisis`,
+  `Assessment of suicidal ideation — this is bolded as the priority item`,
+  `Evaluation of the client's coping style — adaptive or maladaptive mechanisms`,
+  `Assessment of available social support systems`,
+  `Administration of buspirone before completing the assessment to reduce anxiety`,
+  `Asking the client directly: "What does this loss mean to you?" to capture subjective experience`,
+  `Assessment of the level of anxiety — determining which of Peplau's four levels the client is experiencing`
+],
+correctIndices:[0,1,2,3,5,6],
+rationale:`A comprehensive anxiety assessment includes: identifying the precipitating event/situation (A), assessing for suicidal ideation as the priority (B — explicitly bolded as priority in the lecture slides), evaluating coping style and whether mechanisms are adaptive or maladaptive (C), assessing available support systems (D), asking open-ended subjective experience questions (F), and determining which of Peplau's four levels the client is currently experiencing to guide interventions (G). Administering buspirone before completing the assessment (option E) is wrong — clinical assessment precedes pharmacological intervention, and buspirone is not an acute anxiolytic.`
+},
+
+{type:'sata',
+stem:`A nurse is planning long-term care for a client with panic disorder. Which goals are appropriate for the long-term plan of care? Select all that apply.`,
+choices:[
+  `Help the client recognize early symptoms of escalating anxiety and intervene before reaching the panic stage`,
+  `Administer benzodiazepines daily to prevent any anxiety from occurring`,
+  `Support the client in developing a balanced lifestyle and nourishing overall wellbeing`,
+  `Refer the client to cognitive-behavioral therapy — which has the largest evidence base for anxiety disorders`,
+  `Teach the client to eliminate caffeine, food coloring, and monosodium glutamate from their diet`,
+  `Promote medication adherence to long-term pharmacologic and psychotherapeutic treatment plans`,
+  `Teach the client to identify and manage or avoid triggers for anxiety`
+],
+correctIndices:[0,2,3,4,5,6],
+rationale:`Long-term panic disorder management goals include: early recognition of anxiety escalation (A), lifestyle balance (C), CBT referral — the most evidence-based psychotherapy for anxiety (D), dietary trigger modification — eliminating caffeine, food coloring, and MSG (E), medication adherence (F), and trigger management (G). Daily preventive benzodiazepine use (option B) is explicitly contraindicated in long-term management — daily benzodiazepine use leads to physical dependence, tolerance, and withdrawal risk; these medications are intended for acute/crisis use only.`
+},
+
+{type:'sata',
+stem:`A nurse teaches a client newly prescribed lorazepam (Ativan) for panic disorder. Which information should be included in the teaching plan? Select all that apply.`,
+choices:[
+  `Use caution with driving and operating machinery due to CNS depression`,
+  `Avoid alcoholic beverages — the combination of alcohol and benzodiazepines causes additive CNS and respiratory depression`,
+  `Avoid caffeine, as it is a stimulant that can precipitate or worsen panic attacks`,
+  `This medication should be taken on a tyramine-free diet`,
+  `This medication is for short-term use only — long-term use leads to physical dependence`,
+  `This medication may take 1 to 4 weeks to reach its full therapeutic effect`,
+  `Do not stop this medication abruptly without consulting your provider`
+],
+correctIndices:[0,1,2,4,6],
+rationale:`Key lorazepam (benzodiazepine) teaching: CNS depression impairs driving and machinery use (A), dangerous additive CNS/respiratory depression with alcohol (B), caffeine worsens panic attacks and should be restricted (C), short-term use only due to dependence risk (E), and never stop abruptly due to life-threatening withdrawal including seizures (G). Option D (tyramine-free diet) is required for MAOIs — not benzodiazepines; this is a classic exam distractor. Option F (takes 1–4 weeks) describes buspirone — benzodiazepines work within 30–60 minutes, making this a critical teaching distinction.`
+},
+
+{type:'sata',
+stem:`A client asks the nurse, "What are the warning signs that my PTSD might be getting worse or that I might be in crisis?" Which indicators should the nurse include in the teaching? Select all that apply.`,
+choices:[
+  `A sudden increase in the frequency or intensity of flashbacks and nightmares`,
+  `Beginning to avoid more people, places, and activities associated with the trauma`,
+  `Developing a specific plan or method for ending one's own life`,
+  `Increased use of alcohol or other substances to manage distressing symptoms`,
+  `Reporting that relaxation techniques are "working well and helping most of the time"`,
+  `Giving away prized possessions or saying goodbye to loved ones in an unusual way`,
+  `Expressing statements such as "I just want the pain to stop" or "Everyone would be better off without me"`
+],
+correctIndices:[0,1,2,3,5,6],
+rationale:`PTSD crisis indicators include: escalating re-experiencing symptoms (A), expanding avoidance behaviors (B), development of a specific suicide plan with method (C — this requires immediate safety assessment and intervention), increasing substance use as maladaptive coping (D), behavioral suicidal cues such as giving away possessions (F), and indirect suicidal statements that express hopelessness or burden (G). Option E describes a positive treatment outcome — relaxation techniques working well is a sign of improvement, not crisis. These indirect cues are critical because patients in crisis often do not say "I want to kill myself" directly.`
+},
+
+{type:'sata',
+stem:`A nurse is educating a client's family about PTSD. Which evidence-based treatments should the nurse include when describing available therapeutic options? Select all that apply.`,
+choices:[
+  `Prolonged exposure therapy — systematic, structured confrontation of trauma-related stimuli in a safe environment`,
+  `Eye Movement Desensitization and Reprocessing (EMDR) — processes traumatic memories using bilateral sensory stimuli`,
+  `Cognitive Behavioral Therapy / Cognitive Processing Therapy (CBT/CPT) — targets cognitive distortions and changed beliefs`,
+  `Long-term daily benzodiazepine therapy as the preferred pharmacologic treatment`,
+  `SSRIs — first-line pharmacologic treatment for PTSD`,
+  `Electroconvulsive therapy as the first-line treatment for all PTSD presentations`,
+  `Peer support programs connecting clients with others who share similar lived experiences`
+],
+correctIndices:[0,1,2,4,6],
+rationale:`Evidence-based PTSD treatments include: prolonged exposure therapy (A), EMDR — which the textbook states reduces anxiety symptoms by approximately 70% (B), CBT/CPT — which has the largest evidence base of all psychotherapies for anxiety (C), SSRIs as first-line pharmacotherapy (D — specifically sertraline and paroxetine are FDA-indicated for PTSD), and peer support programs especially relevant for veteran PTSD (F). Long-term daily benzodiazepines (option D listed here as E) are not the pharmacologic treatment of choice for PTSD — SSRIs are. ECT (option F listed) is not a first-line treatment for PTSD; it is indicated for catatonia and treatment-resistant depression.`
+},
+
+{type:'sata',
+stem:`A nurse is assessing a client with schizophrenia for positive symptoms. Which findings represent positive symptoms? Select all that apply.`,
+choices:[
+  `The client reports hearing a voice commanding them to "go to the roof"`,
+  `The client demonstrates flat, blunted affect and speaks in a monotone`,
+  `The client uses made-up words (neologisms) and strings together unrelated ideas (associative looseness)`,
+  `The client states, "Everyone on television is giving me personal messages about my mission"`,
+  `The client reports complete inability to experience pleasure in anything (anhedonia)`,
+  `The client believes their thoughts are being broadcast on public radio for all to hear`,
+  `The client remains motionless for hours and can be positioned like a mannequin (waxy flexibility)`
+],
+correctIndices:[0,2,3,5],
+rationale:`Positive symptoms represent additions to or distortions of normal experience: command hallucinations (A), disorganized thought patterns including neologisms and associative looseness (C), ideas of reference — interpreting TV messages as personally directed (D), and thought broadcasting — the delusion that one's thoughts are being transmitted publicly (F). Flat affect (B) and anhedonia (E) are negative symptoms — they represent the loss or diminishment of normal emotional function. Waxy flexibility and catatonia (G) are complex: catatonia is technically classified in DSM-5 as a separate specifier, but the accompanying features (psychomotor disturbance, loss of normal function) are negative symptom-adjacent. The study guide and slides classify catatonia under "loss of function" — not positive symptoms.`
+},
+
+{type:'sata',
+stem:`A nurse documents assessment findings for a client with schizophrenia who demonstrates the "Five A's." Which findings correctly represent the negative symptoms of schizophrenia? Select all that apply.`,
+choices:[
+  `Flat affect — minimal range of emotional expression, blank facial expression, monotone voice`,
+  `Alogia — poverty of speech with brief, empty responses and inability to sustain conversation`,
+  `Avolition — lack of motivation and inability to initiate goal-directed activities, including self-care`,
+  `Paranoia — persistent suspiciousness with belief that others intend harm`,
+  `Anhedonia — inability to experience pleasure and loss of interest in previously enjoyed activities`,
+  `Anergia — profound lack of energy and inactivity`,
+  `Associative looseness — illogical, disconnected links between thoughts`
+],
+correctIndices:[0,1,2,4,5],
+rationale:`The Five A's of negative symptoms are: Affect (flat/blunted — A), Alogia (poverty of speech — B), Avolition (lack of motivation/self-care deficits — C), Anhedonia (loss of pleasure — E), and Anergia (profound fatigue/inactivity — F). Paranoia (option D) is a positive symptom — it represents an excess of suspicious perception that doesn't normally exist. Associative looseness (option G) is a positive symptom — it represents disorganized thought patterns that represent an excess of disordered cognitive processing. Key exam point: typical (first-generation) antipsychotics do NOT treat negative symptoms; atypical (second-generation) antipsychotics treat BOTH.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing the speech and thought patterns of a client with schizophrenia. Which findings represent specific disordered thought/speech types? Select all that apply.`,
+choices:[
+  `Word salad — a random, incoherent mix of words with no logical connection`,
+  `Clang association — choosing words based on sound or rhyming rather than meaning`,
+  `Echolalia — pathological repetition of words or phrases just spoken by another person`,
+  `Neologisms — the use of well-established vocabulary in grammatically correct but illogical sentences`,
+  `Flight of ideas — rapidly shifting thoughts with some loose connections between topics`,
+  `Thought broadcasting — the belief that one's thoughts are being transmitted to others`,
+  `Anosognosia — the inability to recognize one's own illness`
+],
+correctIndices:[0,1,2,4],
+rationale:`The disordered thought/speech patterns are: word salad (A — incoherent jumble of words), clang association (B — rhyming without meaning, e.g., "I need a cat, hat, bat"), echolalia (C — repeating the other person's words), and flight of ideas (E — rapid topic jumping with loose connections). Neologisms (option D) are made-up words unique to the patient — not misuse of real vocabulary; option D incorrectly defines the term. Thought broadcasting (option F) is a type of delusion, not a speech pattern. Anosognosia (option G) is lack of illness insight — not a speech pattern.`
+},
+
+{type:'sata',
+stem:`A nurse is developing the plan of care for a client experiencing active psychosis. Which nursing interventions reflect appropriate communication and safety practices? Select all that apply.`,
+choices:[
+  `Position near the exit and maintain a safe distance when interacting with an agitated psychotic client`,
+  `When a client reports hallucinations, say: "I understand you are hearing voices. That sounds very frightening. I want to help you feel safe."`,
+  `Teach the client about their diagnosis, medications, and community resources during the acute episode to maximize use of time`,
+  `Orient the client gently to reality: "I know the voice feels very real to you. You are in the hospital and you are safe here."`,
+  `Ask about command hallucinations directly: "What is the voice telling you to do?"`,
+  `Reinforce delusional thinking by telling the client what they believe is true to build rapport`,
+  `Use structured, predictable daily routines in the milieu to reduce anxiety in the psychotic client`
+],
+correctIndices:[0,1,3,4,6],
+rationale:`Safe and therapeutic psychosis nursing care includes: safety positioning near exit (A), acknowledging the emotional experience of hallucinations without reinforcing or denying (B), gentle reality orientation (D), direct safety assessment of command hallucinations (E), and structured milieu routines that reduce anxiety through predictability (G). Health teaching during acute psychosis (option C) is contraindicated — the client cannot process new information during psychosis; teaching must wait until stability is achieved. Reinforcing delusional thinking (option F) is always contraindicated — this deepens the psychotic process and is professionally unethical.`
+},
+
+{type:'sata',
+stem:`A nurse is documenting a client's catatonic features. Which findings are consistent with catatonia in the context of schizophrenia? Select all that apply.`,
+choices:[
+  `Psychomotor retardation — markedly slowed movement`,
+  `Waxy flexibility — the body can be positioned like a mannequin and will hold the position`,
+  `Mutism — absence of verbal communication in a neurologically intact patient`,
+  `Tardive dyskinesia — repetitive involuntary movements of the mouth and face`,
+  `Stupor — extreme unresponsiveness to external stimuli`,
+  `Flight of ideas with pressured speech`,
+  `Posturing — spontaneous maintenance of unusual body positions for extended periods`
+],
+correctIndices:[0,1,2,4,6],
+rationale:`Catatonia features include: psychomotor retardation (A), waxy flexibility — the hallmark posturing feature where the body holds repositioned positions (B), mutism (C), stupor/unresponsiveness to environment (E), and unusual posturing maintained for extended periods (G). Tardive dyskinesia (option D) is an EPS related to antipsychotic use — not a feature of catatonia itself. Flight of ideas with pressured speech (option F) is a feature of mania, not catatonia. Critical nursing implications for catatonic clients include nutrition, hydration, self-care, and aspiration risk.`
+},
+
+{type:'sata',
+stem:`A nurse is conducting a comprehensive assessment of a client with schizophrenia per the textbook framework. Which assessment components should be included? Select all that apply.`,
+choices:[
+  `Grooming, appearance, and personal hygiene as indicators of negative symptoms and relapse risk`,
+  `Assessment of positive and negative symptom presence, type, content, and intensity`,
+  `Level of independence, functioning, ADLs, employment, and housing stability`,
+  `Availability and strength of social support systems`,
+  `Medication compliance, including reasons for any non-adherence`,
+  `Assessment of vital signs only — psychiatric assessment does not include physical examination findings`,
+  `Urine drug screen and lab work to rule out secondary causes`
+],
+correctIndices:[0,1,2,3,4,6],
+rationale:`A comprehensive psychosis assessment includes all elements of the biopsychosocial model: grooming/appearance (A — decline reflects avolition and early relapse), positive/negative symptom assessment (B), functional assessment including ADLs and housing (C), social support evaluation (D), medication compliance assessment with barrier exploration (E — non-adherence is the #1 cause of relapse), and diagnostic testing including labs and drug screen to rule out secondary causes (G). Option F is wrong — physical assessment including vital signs IS included in psychiatric nursing assessment; the textbook explicitly includes physical examination and diagnostic tests in the assessment framework.`
+},
+
+{type:'sata',
+stem:`A nurse is teaching a client with schizophrenia and their family about early signs of relapse. Which signs should be included in the teaching? Select all that apply.`,
+choices:[
+  `Reduced sleep and difficulty concentrating`,
+  `Hearing voices returning or worsening`,
+  `Increasing restlessness or agitation`,
+  `Independently completing ADLs and engaging in hobbies`,
+  `Becoming more withdrawn and uncomfortable around other people`,
+  `Troubling or unusual thoughts returning`,
+  `Expressing interest in work, school, or reconnecting with family`
+],
+correctIndices:[0,1,2,4,5],
+rationale:`The five early relapse warning signs emphasized by Prof. Bryan include: reduced sleep and concentration (A), returning or worsening voices (B), restlessness or agitation (C), social withdrawal and increased discomfort around others (D/E), and returning troubling or unusual thoughts (F). Independently completing ADLs and engaging in hobbies (option D here, "Independently completing...") and expressing interest in work/reconnecting with family (option G) are indicators of stability and improvement — these should be encouraged, not flagged as relapse. Medication non-adherence is the #1 modifiable cause of relapse and should be addressed in all relapse prevention teaching.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing the classification, mechanism, and clinical implications of first-generation versus second-generation antipsychotics. Which statements are accurate? Select all that apply.`,
+choices:[
+  `First-generation antipsychotics treat positive symptoms only — hallucinations, delusions, and paranoia`,
+  `Second-generation antipsychotics treat both positive and negative symptoms, in part due to 5-HT2A receptor blockade`,
+  `First-generation antipsychotics carry a higher risk of extrapyramidal side effects due to stronger D2 receptor blockade`,
+  `Second-generation antipsychotics have a higher risk of metabolic side effects including weight gain, dyslipidemia, and hyperglycemia`,
+  `Clozapine is classified as a first-generation antipsychotic because it was developed first`,
+  `Aripiprazole is classified as a third-generation antipsychotic that works as a partial D2 agonist`,
+  `Second-generation antipsychotics completely eliminate the risk of tardive dyskinesia`
+],
+correctIndices:[0,1,2,3,5],
+rationale:`First-generation agents treat positive symptoms only (A), second-generation agents treat both positive and negative symptoms via D2 + 5-HT2A blockade (B), first-generation agents have higher EPS risk from stronger D2 blockade (C), and second-generation agents carry significant metabolic side effect burden (D). Aripiprazole is indeed classified as a third-generation partial D2 agonist (F). Clozapine (option E) is a second-generation (atypical) antipsychotic — not first-generation. Option G is wrong — second-generation antipsychotics do reduce but do NOT eliminate tardive dyskinesia risk; TD is still possible with long-term atypical use, just at lower rates than with typicals.`
+},
+
+{type:'sata',
+stem:`A nurse is preparing a comprehensive review of extrapyramidal side effects (EPS) for a new nursing student. Which statements accurately describe EPS types and their treatments? Select all that apply.`,
+choices:[
+  `Acute dystonia is treated with benztropine (Cogentin) or diphenhydramine (Benadryl) — both anticholinergics`,
+  `Pseudoparkinsonism is treated with beta-blockers such as propranolol`,
+  `Akathisia does not respond well to anticholinergics — beta-blockers such as propranolol have the best clinical success`,
+  `Tardive dyskinesia is treated with benztropine and resolves within weeks`,
+  `Tardive dyskinesia is monitored using the AIMS scale at minimum every 3–6 months`,
+  `All four EPS types are caused by blockade of dopamine D2 receptors in the nigrostriatal pathway`,
+  `VMAT2 inhibitors (valbenazine/Ingrezza, deutetrabenazine/Austedo) are now available to treat tardive dyskinesia`
+],
+correctIndices:[0,2,4,5,6],
+rationale:`Acute dystonia is treated with anticholinergics — benztropine or diphenhydramine (A). Akathisia does not respond to anticholinergics; beta-blockers (propranolol) have the best success (C). TD is monitored with the AIMS scale at minimum every 3–6 months (E). All EPS types involve nigrostriatal D2 blockade (F). VMAT2 inhibitors are newer agents for TD management (G). Option B is wrong — pseudoparkinsonism is treated with benztropine (anticholinergic), NOT beta-blockers. Option D is wrong — benztropine does NOT treat TD; TD has no cure, and VMAT2 inhibitors are the current treatment option.`
+},
+
+{type:'sata',
+stem:`A nurse is identifying the hallmark signs and symptoms of neuroleptic malignant syndrome (NMS). Which findings are characteristic of NMS? Select all that apply.`,
+choices:[
+  `Markedly elevated temperature — often greater than 40°C (104°F)`,
+  `Severe "lead-pipe" muscle rigidity diffusely throughout the body`,
+  `Altered level of consciousness — ranging from confusion to stupor or coma`,
+  `Clonus, hyperreflexia, and myoclonus`,
+  `Labile hypertension and tachycardia`,
+  `Diaphoresis and drooling`,
+  `Leukocytosis and elevated creatine kinase (CK) on laboratory findings`
+],
+correctIndices:[0,1,2,4,5,6],
+rationale:`NMS is characterized by the FEVER mnemonic: Fever (high temp >104°F — A), Encephalopathy (altered LOC — C), Vitals unstable (labile hypertension, tachycardia — E), Elevated labs (leukocytosis, elevated CK/liver enzymes, myoglobinuria — G), and Rigidity (severe lead-pipe rigidity — B). Diaphoresis and drooling (F) are also hallmark features. Option D (clonus, hyperreflexia, myoclonus) describes serotonin syndrome — not NMS. This is the key differentiator between NMS (lead-pipe rigidity, no clonus) and serotonin syndrome (clonus, hyperreflexia, myoclonus). Confusing these two is a classic exam trap.`
+},
+
+{type:'sata',
+stem:`A nurse is caring for a client suspected of developing neuroleptic malignant syndrome. Which nursing actions should be implemented? Select all that apply.`,
+choices:[
+  `Stay with the patient — the patient is critically unstable and must not be left alone`,
+  `Notify the HCP immediately and prepare to transfer the patient to the ICU`,
+  `Stop all antipsychotic medications immediately — this is the first pharmacologic intervention`,
+  `Continue the antipsychotic at the current dose and observe for 24 hours before escalating care`,
+  `Apply cooling measures — cooling blankets, ice packs to axillae and groin, antipyretics`,
+  `Monitor for complications including DVT and rhabdomyolysis (muscle breakdown releasing myoglobin into bloodstream)`,
+  `Administer dantrolene to reduce muscle rigidity`
+],
+correctIndices:[0,1,2,4,5,6],
+rationale:`NMS management requires: staying with the critically ill patient (A), immediate HCP notification and ICU preparation (B), stopping all antipsychotic medications immediately (C — this is the essential first pharmacological step), cooling measures for hyperthermia (E), monitoring for DVT (immobility + fever + rigidity = high clot risk) and rhabdomyolysis (muscle protein breakdown can cause acute kidney failure — F), and administering dantrolene to reduce severe muscle rigidity (G). Option D is explicitly wrong and dangerous — continuing the antipsychotic perpetuates the NMS process and can be fatal.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing the side effect profile of second-generation antipsychotics with a client newly prescribed olanzapine. Which side effects and monitoring needs should be included in the teaching? Select all that apply.`,
+choices:[
+  `Weight gain — significant and common; often greater than 7–10% of body weight`,
+  `Elevated blood glucose and increased risk of type 2 diabetes`,
+  `Dyslipidemia — elevated triglycerides and cholesterol`,
+  `Agranulocytosis — occurs commonly with all second-generation antipsychotics`,
+  `Orthostatic hypotension — blood pressure drops when rising from sitting or lying`,
+  `Dry mouth, urinary retention, and constipation from anticholinergic effects`,
+  `Regular monitoring of weight, blood glucose, lipid panel, and blood pressure is required`
+],
+correctIndices:[0,1,2,4,5,6],
+rationale:`Second-generation antipsychotic side effects include: weight gain (A), hyperglycemia/diabetes risk (B), dyslipidemia (C), orthostatic hypotension with fall risk (E — especially important for elderly patients; teach rising slowly), anticholinergic effects — dry mouth, urinary retention, constipation, blurred vision, tachycardia (F), and the need for serial metabolic monitoring (G). Agranulocytosis (option D) is a serious adverse effect associated specifically with clozapine — not with all second-generation antipsychotics. This is a critical distinction to avoid incorrectly attributing clozapine's most dangerous effect to olanzapine.`
+},
+
+{type:'sata',
+stem:`A nurse is teaching a client about orthostatic hypotension as a side effect of their new antipsychotic medication. Which instructions should be included? Select all that apply.`,
+choices:[
+  `Rise slowly from a lying or sitting position to give the cardiovascular system time to adjust`,
+  `Sit on the edge of the bed for 1 to 2 minutes before standing`,
+  `Hold onto a railing or ask for assistance when first standing`,
+  `Report any dizziness, lightheadedness, or near-fainting to the provider`,
+  `Increase sodium intake significantly to counter blood pressure drops`,
+  `Avoid driving immediately after taking the first dose until response is known`,
+  `Increasing fluid intake moderately may help maintain adequate circulating volume`
+],
+correctIndices:[0,1,2,3,5,6],
+rationale:`Orthostatic hypotension teaching: rise slowly (A), sit at edge of bed before standing (B), hold railing/ask for help (C), report dizziness (D), avoid driving initially (F), and moderate fluid intake can support circulating volume (G). Option E (significantly increasing sodium) is not standard nursing teaching for antipsychotic-induced orthostatic hypotension and is potentially dangerous in clients with cardiac or renal conditions. The standard teaching focuses on positional awareness and fall prevention, not dietary sodium manipulation.`
+},
+
+{type:'sata',
+stem:`A nurse is conducting a medication review for a client taking haloperidol. Which findings would require the nurse to hold the medication and immediately notify the healthcare provider? Select all that apply.`,
+choices:[
+  `Temperature of 103.8°F with severe muscle rigidity and altered level of consciousness`,
+  `New onset of repetitive lip smacking and tongue protrusion after 8 months of therapy`,
+  `The client reports mild dry mouth and occasional constipation`,
+  `Sudden onset of eyes rolling upward with neck twisting`,
+  `The client rates their sedation as a 3 out of 10 and reports mild drowsiness`,
+  `The client's WBC is 2,100 cells/mm³, which is markedly decreased from the last value of 7,400`,
+  `Blood pressure drop from 128/78 while sitting to 98/60 upon standing with dizziness`
+],
+correctIndices:[0,1,3,5,6],
+rationale:`Findings requiring immediate notification: fever + rigidity + altered LOC (A) = NMS emergency; new lip smacking/tongue protrusion after 8 months (B) = tardive dyskinesia requiring provider review — may be irreversible; eyes rolling upward + neck twisting (D) = acute dystonia requiring immediate anticholinergic treatment; markedly decreased WBC of 2,100 (E) = agranulocytosis risk requiring immediate hold (though more specific to clozapine, any antipsychotic can rarely cause this); significant symptomatic orthostatic hypotension with dizziness (G) = requires provider evaluation for fall risk and dose adjustment. Mild dry mouth and constipation (C) are expected anticholinergic side effects managed with comfort measures — not a hold indication. Mild sedation rated 3/10 (E here) is expected and not a hold indicator.`
+},
+
+{type:'sata',
+stem:`A nurse is explaining the non-pharmacological treatment options available for schizophrenia. Which interventions have evidence supporting their use? Select all that apply.`,
+choices:[
+  `Social skills training (SST) — group-format training to improve social performance and interpersonal interactions`,
+  `Family-focused therapy (FFT) — educates family about psychosis, improves communication, and reduces relapse rates`,
+  `Cognitive-behavioral therapy for psychosis — appropriate during stable phases, not during acute episodes`,
+  `Assertive Community Treatment (ACT) — team-based care accessible 24 hours/day in community settings`,
+  `Prolonged exposure therapy as the first-line psychotherapy for schizophrenia`,
+  `Vocational therapy — individualized employment support that improves cognitive and negative symptoms`,
+  `Electroconvulsive therapy (ECT) — FDA-indicated for catatonia and treatment-resistant presentations`
+],
+correctIndices:[0,1,2,3,5,6],
+rationale:`Evidence-supported non-pharmacological treatments for schizophrenia include: SST (A — improves social functioning), FFT (B — improves adherence, reduces relapse and readmission), CBT for psychosis during stable phases (C), ACT — team approach proven clinically and fiscally effective (D), vocational therapy (F), and ECT for catatonia and treatment-resistant presentations (G). Prolonged exposure therapy (option E) is an evidence-based treatment for PTSD and phobias — it is NOT a first-line psychotherapy for schizophrenia. This is a high-yield distractor.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing goals of care for a client with PTSD at their 3-month follow-up visit. Which findings indicate the long-term goals of PTSD treatment are being achieved? Select all that apply.`,
+choices:[
+  `The client reports being able to discuss the traumatic event without becoming emotionally dysregulated`,
+  `The client continues to use alcohol nightly and reports it is "the only thing that helps me sleep"`,
+  `The client has reconnected with two family members and reports feeling less isolated`,
+  `The client states they are setting new career goals and are "starting to feel hopeful again"`,
+  `The client identifies three adaptive coping strategies they use regularly`,
+  `The client has not had nightmares in three weeks and is sleeping through the night`,
+  `The client remains unable to leave their home due to overwhelming fear of any public environment`
+],
+correctIndices:[0,2,3,4,5],
+rationale:`Long-term PTSD goals include: integration of trauma into one's identity without destabilization (A), renewing significant relationships (C), establishing meaningful goals and developing hope (D), using adaptive coping strategies (E), and reduction of re-experiencing symptoms including improved sleep (F). Continued nightly alcohol use (option B) represents ongoing maladaptive coping — a target for intervention, not a goal achievement. Agoraphobic confinement (option G) represents persistent avoidance that is not a goal but a target of continued treatment.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing the pharmacological properties of three anxiety medications: lorazepam, paroxetine, and buspirone. Which statements accurately characterize these medications? Select all that apply.`,
+choices:[
+  `Lorazepam is a benzodiazepine appropriate for PRN acute anxiety relief with onset within 30–60 minutes`,
+  `Paroxetine (Paxil) is an SSRI indicated for long-term management of panic disorder with a 4–6 week onset`,
+  `Buspirone is an atypical anxiolytic with a 1–4 week onset that does NOT carry dependence risk`,
+  `All three medications are equally appropriate for PRN use during acute panic attacks`,
+  `Long-term use of lorazepam may lead to physical dependence and life-threatening withdrawal if stopped abruptly`,
+  `Paroxetine should not be discontinued abruptly due to risk of discontinuation syndrome`,
+  `Buspirone is contraindicated for patients who need long-term anxiety management without risk of dependence`
+],
+correctIndices:[0,1,2,4,5],
+rationale:`Lorazepam = fast (30–60 min onset), PRN/acute use, dependence risk with long-term use, abrupt discontinuation causes dangerous withdrawal (A, E). Paroxetine/Paxil = SSRI, 4–6 weeks to full effect, first-line long-term, cannot stop abruptly (B, F). Buspirone = 1–4 week onset, no dependence risk, excellent for long-term safe management, not appropriate for acute PRN use (C). Option D is wrong — only lorazepam is appropriate for acute PRN use; paroxetine and buspirone have delayed onsets making them entirely inappropriate for acute panic attacks. Option G is wrong — buspirone is specifically INDICATED for long-term management without dependence risk; it is not contraindicated.`
+},
+
+{type:'sata',
+stem:`A nurse is preparing comprehensive discharge teaching for a client diagnosed with panic disorder. Which lifestyle and dietary modifications should the nurse include? Select all that apply.`,
+choices:[
+  `Eliminate caffeine from the diet — caffeine is a stimulant that can precipitate or worsen panic attacks`,
+  `Avoid food coloring and monosodium glutamate (MSG) which may trigger anxiety in some individuals`,
+  `Increase alcohol intake moderately — small amounts of alcohol can reduce daily anxiety`,
+  `Engage in regular physical exercise — evidence-based for improving mood, sleep, and anxiety resilience`,
+  `Avoid substance use — alcohol causes rebound anxiety and substances maintain/worsen anxiety disorders`,
+  `Practice daily relaxation techniques such as diaphragmatic breathing and progressive muscle relaxation`,
+  `Follow a tyramine-free diet to prevent dangerous interactions with your anxiety medication`
+],
+correctIndices:[0,1,3,4,5],
+rationale:`Lifestyle teaching for panic disorder includes: eliminating caffeine (A), avoiding food coloring and MSG (B), regular exercise as an evidence-based anxiolytic (D), avoiding alcohol and substances — alcohol causes rebound anxiety and worsens the disorder long-term (E), and daily relaxation practice to build parasympathetic tone (F). Increasing alcohol intake (option C) is explicitly wrong — alcohol is a CNS depressant that provides short-term relief but causes rebound anxiety and perpetuates the anxiety disorder cycle. Tyramine-free diet (option G) is required for MAOI antidepressants, not for SSRIs, benzodiazepines, or buspirone used in anxiety disorders — this is a recurring exam distractor.`
+},
+
+{type:'sata',
+stem:`A nurse is caring for a client admitted for a PTSD crisis following a recent assault. Which statements by the client most indicate indirect suicidal ideation and require immediate safety assessment? Select all that apply.`,
+choices:[
+  `"I just want to go to sleep and not wake up."`,
+  `"I gave most of my things to my sister last week — I don't need them anymore."`,
+  `"I find it really hard to fall asleep at night."`,
+  `"Everyone would be better off without me around."`,
+  `"I don't care what happens to me anymore."`,
+  `"It sounds like therapy might actually help if I tried it."`,
+  `"I just want the pain to stop — by any means necessary."`
+],
+correctIndices:[0,1,3,4,6],
+rationale:`Clients in crisis often communicate suicidal intent indirectly. Red flags requiring immediate safety assessment: "I want to go to sleep and not wake up" (A — indirect suicidal ideation expressing wish for death), giving away possessions (B — behavioral warning sign of suicidal preparation), "better off without me" (D — classic hopelessness/burden statement), "I don't care what happens to me" (E — passive suicidal ideation/self-endangerment), and "stop the pain by any means" (G — implies willingness to use lethal means). Difficulty sleeping (option C) is a PTSD hyperarousal symptom but alone is not an indirect suicidal statement. Option F indicates motivation for treatment — a protective factor, not a warning sign.`
+},
+
+{type:'sata',
+stem:`A nurse is educating a nursing student about therapeutic communication when caring for clients with psychosis. Which principles accurately reflect the textbook approach? Select all that apply.`,
+choices:[
+  `When a client expresses a delusion, focus on the underlying emotion rather than arguing against or confirming the belief`,
+  `When a client experiences hallucinations, the nurse should say, "I can hear the voices too, and they are saying helpful things"`,
+  `Gently orient the client to reality: "I know the voice feels very real to you. You are safe here in the hospital with me."`,
+  `When a paranoid client asks, "They're trying to destroy me, isn't that true?" — the correct response focuses on the feeling of fear`,
+  `The nurse should disagree with the paranoid client directly to model realistic thinking for the client`,
+  `Teaching the client about their medications is best done during an acute psychotic episode to maximize retention`,
+  `Providing quiet, non-demanding presence ("I'd like to sit with you. You don't need to talk if you're not ready.") is therapeutic`
+],
+correctIndices:[0,2,3,6],
+rationale:`Therapeutic principles for psychosis: focus on feelings behind delusions, not content (A), gently orient to reality without confrontation (C), respond to paranoia by acknowledging the fear without confirming or denying the belief (D), and offer quiet non-demanding presence (G). Option B is wrong — saying "I hear the voices too" reinforces the hallucination, which is non-therapeutic and worsens the psychotic process. Option E is wrong — direct disagreement with paranoid thinking increases anxiety and strengthens the delusion's tenacity. Option F is wrong — acute psychosis is not a teachable moment; all health education must be postponed until the client is stabilized.`
+},
+
+{type:'sata',
+stem:`A nurse reviews the concept of the least restrictive environment for a client being discharged from inpatient psychiatric treatment. Which levels of care represent options along this continuum? Select all that apply.`,
+choices:[
+  `Partial hospitalization — intensive daytime programming with the client returning home each night`,
+  `Residential crisis centers — 24-hour support in a home-like, less restrictive environment`,
+  `Halfway houses or group homes — supervised community living with structured support`,
+  `Day treatment programs — outpatient structured activities, therapy, and medication management`,
+  `Inpatient involuntary commitment to a locked unit for all clients with schizophrenia`,
+  `Assertive Community Treatment (ACT) — community-based team care accessible 24 hours per day`
+],
+correctIndices:[0,1,2,3,5],
+rationale:`The least restrictive environment continuum for psychiatric care includes: partial hospitalization (A), residential crisis centers (B), halfway houses/group homes (C), day treatment programs (D), and Assertive Community Treatment (ACT) — a community-based team model with 24-hour availability proven clinically and economically effective (F). Option E (involuntary commitment for all clients with schizophrenia) is wrong — inpatient involuntary treatment is only appropriate when a client poses an imminent danger to themselves or others; the goal of psychiatric care is always to use the least restrictive appropriate level of care.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing PTSD important considerations per the course slides. Which assessment domains should be evaluated for every client diagnosed with PTSD? Select all that apply.`,
+choices:[
+  `Patient safety — is the client depressed or suicidal, and is there a distinct plan with method and timeline?`,
+  `Physiological integrity — is the condition causing the client to neglect nutrition, hydration, and sleep?`,
+  `Functional ability — is the condition affecting the client's ability to work, parent, or maintain relationships?`,
+  `Financial status — does the client have adequate insurance coverage for therapy?`,
+  `Further screenings — comorbid substance use disorder, domestic violence, additional trauma history`,
+  `Access to lethal means — does the client have access to firearms, medications, or other means?`
+],
+correctIndices:[0,1,2,4,5],
+rationale:`The PTSD important considerations framework from the course slides includes: patient safety (A — depression, suicidality, specific plan), physiological integrity (B — nutrition, sleep, hydration neglect), functional ability (C — work, parenting, relationships), further screenings (E — substance use, domestic violence, PCL-5), and assessment of access to lethal means as part of suicide risk evaluation (F). Financial/insurance status (option D) may be relevant to care coordination but is not part of the clinical safety assessment framework emphasized in the course.`
+},
+
+{type:'sata',
+stem:`A nurse is preparing a client for long-term management of schizophrenia with a long-acting injectable (LAI) antipsychotic. Which points should be included in the patient and family education? Select all that apply.`,
+choices:[
+  `LAI formulations may improve medication adherence for clients who struggle with daily oral administration`,
+  `Once receiving the LAI, the client no longer requires any psychiatric follow-up or monitoring visits`,
+  `EPS monitoring continues with LAI formulations — report unusual muscle stiffness, movements, or restlessness`,
+  `Signs of NMS — fever, severe muscle rigidity, altered consciousness — require immediate emergency care even with LAIs`,
+  `LAI formulations are available for both first-generation and second-generation antipsychotics`,
+  `Skipping a scheduled injection is not clinically significant and will not affect symptom control`
+],
+correctIndices:[0,2,3,4],
+rationale:`LAI education includes: improved adherence as the primary benefit (A), continued EPS monitoring (C), NMS risk remains with LAI formulations (D), and LAI availability in both generations (E). Option B is wrong — ongoing psychiatric follow-up, monitoring, and supportive care remain essential regardless of formulation. Option F is wrong — missing a LAI dose is clinically significant; LAIs release medication over weeks to months, and missed doses can result in sub-therapeutic drug levels and relapse.`
+},
+
+{type:'sata',
+stem:`A nurse is reviewing crisis intervention principles with a nursing student. Which statements accurately describe the goals of crisis intervention? Select all that apply.`,
+choices:[
+  `The immediate goal is psychological resolution of the current crisis — deal with the "here and now," not the entire trauma history`,
+  `A successful outcome is restoration of the client to at least the level of functioning present before the crisis`,
+  `The nurse should conduct detailed exploration of all previous traumas during the acute crisis to maximize therapeutic efficiency`,
+  `Once the acute crisis is resolved, a long-term goal is for the client to improve functioning above their pre-crisis baseline`,
+  `During the crisis phase, the nurse guides the client toward available resources and support systems for recovery`,
+  `False reassurance such as "everything will work out fine" is an appropriate crisis communication technique`
+],
+correctIndices:[0,1,3,4],
+rationale:`Crisis intervention goals: (A) immediate "here and now" psychological resolution, (B) restoration to pre-crisis functioning level, (D) improvement above pre-crisis level once stability is achieved, and (E) connecting the client to supportive resources. Option C is wrong — detailed exploration of previous traumas during acute crisis is contraindicated; it risks retraumatization and exceeds the "here and now" focus of crisis intervention. Option F is wrong — false reassurance ("everything will be fine") is explicitly non-therapeutic; the textbook identifies it as destroying therapeutic trust when reality contradicts the promise. Instilling realistic hope is therapeutic; false reassurance is not.`
+},
+
+{type:'sata',
+stem:`A nurse is caring for a client with schizophrenia who reports, "My stomach is killing me. Something is really wrong." Which actions reflect the principle of compassionate care and avoidance of diagnostic overshadowing? Select all that apply.`,
+choices:[
+  `Assess the abdominal complaint fully — perform a physical assessment just as would be done with any other patient`,
+  `Dismiss the complaint as likely a somatic delusion because the client has a history of schizophrenia`,
+  `Obtain vital signs, auscultate bowel sounds, palpate the abdomen, and assess for guarding or rigidity`,
+  `Document the complaint and plan to mention it at the next scheduled care conference in two days`,
+  `Notify the provider about the new physical complaint so appropriate diagnostic evaluation can be ordered`,
+  `Recognize that premature mortality in schizophrenia is partly caused by dismissal of physical symptoms (diagnostic overshadowing)`
+],
+correctIndices:[0,2,4,5],
+rationale:`Compassionate care requires physical assessment of schizophrenic patients' complaints without automatically attributing them to the psychiatric diagnosis. Full physical assessment (A and C) and provider notification (E) are required. Recognizing diagnostic overshadowing as a cause of premature mortality in schizophrenia (F) is a key professional principle emphasized by Prof. Bryan. Option B exemplifies diagnostic overshadowing — this is explicitly identified as a clinical error in the study guide. Option D (waiting 2 days) is inappropriate for a new acute physical complaint — timely assessment and provider notification are required.`
+},
+
+// ──────────────────────────────────────
+//  MATRIX  (15)
+// ──────────────────────────────────────
+
+{type:'matrix',
+stem:`A nurse is evaluating nurse responses to clients in crisis. Indicate whether each nurse response reflects Therapeutic or Non-Therapeutic communication.`,
+columns:['Therapeutic','Non-Therapeutic'],
+rows:[
+  {statement:`Nurse to a panicking client: "You are safe. I will not leave you. Take a slow breath with me."`,correct:0,rationale:`Providing calm presence, safety reassurance, and guided breathing directly activates the PNS — this is therapeutic and addresses all priority interventions for acute panic.`},
+  {statement:`Nurse to a grieving client: "Don't worry, everything is going to be fine."`,correct:1,rationale:`False reassurance cannot be guaranteed and destroys therapeutic trust if reality contradicts it — explicitly identified as non-therapeutic in the textbook.`},
+  {statement:`Nurse to a client with PTSD: "It sounds like you're feeling really overwhelmed. I'm here with you."`,correct:0,rationale:`Validating emotional experience without judgment while communicating presence is the core of therapeutic communication for anxious/traumatized clients.`},
+  {statement:`Nurse to a delusional client: "I agree with you — they ARE trying to harm you. Let's plan how to protect you from them."`,correct:1,rationale:`Agreeing with and reinforcing a delusion deepens the client's false reality, worsens psychosis, and is never therapeutically acceptable.`},
+  {statement:`Nurse to a client experiencing panic: "I'd like to teach you about your diagnosis now since we have time together."`,correct:1,rationale:`Health teaching during a panic attack is contraindicated — the client cannot learn new information at panic anxiety level; this delays de-escalation.`},
+  {statement:`Nurse to a client with command hallucinations: "What is the voice telling you to do?"`,correct:0,rationale:`Directly assessing the specific content of a command hallucination is the priority safety action — this is therapeutic and required.`}
+],
+generalRationale:`Therapeutic communication in psychiatric nursing: validate feelings, provide calm presence, prioritize safety, and avoid false reassurance, reinforcing delusions, or teaching during acute crisis. Every non-therapeutic option here involves one of these errors.`
+},
+
+{type:'matrix',
+stem:`A nurse is comparing the characteristics of first-generation (typical) and second-generation (atypical) antipsychotics. Indicate whether each characteristic belongs to First-Generation or Second-Generation antipsychotics.`,
+columns:['First-Generation','Second-Generation'],
+rows:[
+  {statement:`Primarily treats positive symptoms only — hallucinations, delusions, paranoia`,correct:0,rationale:`First-generation (typical) antipsychotics target D2 receptors in ways that address positive symptoms but do not effectively reduce negative symptoms.`},
+  {statement:`High risk of extrapyramidal side effects including dystonia, pseudoparkinsonism, and tardive dyskinesia`,correct:0,rationale:`First-generation agents have strong D2 blockade in the nigrostriatal pathway, producing significant EPS — a major clinical concern and reason they are no longer first-line.`},
+  {statement:`High metabolic side effect risk — weight gain, hyperglycemia, dyslipidemia`,correct:1,rationale:`Metabolic syndrome is a signature adverse effect of second-generation antipsychotics due to effects on histamine, muscarinic, and other receptor systems beyond D2.`},
+  {statement:`Treats both positive AND negative symptoms via combined D2 and 5-HT2A blockade`,correct:1,rationale:`Second-generation antipsychotics' additional 5-HT2A antagonism confers efficacy against negative symptoms — the major therapeutic advantage over first-generation agents.`},
+  {statement:`Haloperidol (Haldol) and chlorpromazine (Thorazine) are representative examples`,correct:0,rationale:`Haloperidol and chlorpromazine are the classic first-generation (typical) antipsychotics emphasized in the course.`},
+  {statement:`Risperidone (ATI prototype), olanzapine, quetiapine, and aripiprazole are representative examples`,correct:1,rationale:`These are all second-generation (atypical) antipsychotics; aripiprazole is specifically classified as third-generation as a partial D2 agonist.`}
+],
+generalRationale:`Understanding the generation distinction drives prescribing decisions: first-generation for positive symptoms with high EPS risk; second-generation for positive + negative symptoms with metabolic risk and lower EPS risk.`
+},
+
+{type:'matrix',
+stem:`A nurse is monitoring a client on clozapine therapy. For each assessment finding, indicate whether it is Expected (anticipated side effect) or Requires Immediate Provider Notification.`,
+columns:['Expected / Monitor','Notify Provider Immediately'],
+rows:[
+  {statement:`Client reports excessive drooling, especially overnight`,correct:0,rationale:`Sialorrhea (excessive salivation/drooling) is a well-known and expected side effect of clozapine — it is managed but does not require emergency notification.`},
+  {statement:`CBC shows WBC of 2,200 cells/mm³ — markedly decreased from baseline of 7,800`,correct:1,rationale:`This WBC drop indicates potential agranulocytosis — clozapine's most life-threatening adverse effect. Provider must be notified immediately, medication held, and infection protocol initiated.`},
+  {statement:`Client has gained 9 lbs in the first 6 weeks of therapy`,correct:0,rationale:`Significant weight gain is an expected metabolic side effect of clozapine and atypical antipsychotics generally — requires monitoring and metabolic counseling.`},
+  {statement:`Client develops a fever of 101.8°F, sore throat, and reports feeling "very weak"`,correct:1,rationale:`Fever, sore throat, and profound fatigue are classic signs of agranulocytosis-related infection — requires immediate CBC, medication hold, and emergency notification.`},
+  {statement:`Client reports sedation lasting 2–3 hours after the morning dose in the first two weeks`,correct:0,rationale:`Sedation is a common, expected side effect of clozapine, particularly during initiation and dose increases — it typically decreases over time.`},
+  {statement:`Client reports new onset of chest pain, shortness of breath, and ankle swelling at week 4`,correct:1,rationale:`New cardiopulmonary symptoms at week 4 of clozapine raise concern for clozapine-induced myocarditis — a rare but potentially fatal adverse effect. Requires immediate provider notification.`}
+],
+generalRationale:`Clozapine monitoring: agranulocytosis signs (fever, sore throat, weakness), CBC trends, and cardiac symptoms require immediate notification. Drooling, weight gain, and initial sedation are expected effects requiring monitoring and management.`
+},
+
+{type:'matrix',
+stem:`A nurse is differentiating between neuroleptic malignant syndrome (NMS) and serotonin syndrome. Indicate whether each clinical feature is associated with NMS or Serotonin Syndrome.`,
+columns:['NMS','Serotonin Syndrome'],
+rows:[
+  {statement:`Severe "lead-pipe" diffuse muscle rigidity throughout the body`,correct:0,rationale:`Lead-pipe rigidity is the hallmark neuromuscular finding of NMS — the rigid form contrasts with the hyperkinetic findings of serotonin syndrome.`},
+  {statement:`Clonus, hyperreflexia, and myoclonus (hyperkinetic neuromuscular findings)`,correct:1,rationale:`Clonus and hyperreflexia are the hallmark neuromuscular features of serotonin syndrome — these hyperkinetic features distinguish it from NMS's rigid presentation.`},
+  {statement:`Caused by excess serotonergic activity from combining multiple serotonergic agents`,correct:1,rationale:`Serotonin syndrome results from additive/excessive serotonin activity — e.g., SSRI + triptan, SSRI + MAOI.`},
+  {statement:`Caused by idiosyncratic reaction to antipsychotic/neuroleptic medications`,correct:0,rationale:`NMS is an idiosyncratic reaction to neuroleptic (antipsychotic) medications — the pathophysiology involves dopamine hypoactivity.`},
+  {statement:`Markedly elevated temperature — often greater than 104°F — is a cardinal feature`,correct:0,rationale:`High fever is a cardinal feature of NMS; temperature elevation in serotonin syndrome is typically less severe than in NMS.`},
+  {statement:`Treatment includes stopping the serotonergic agent; cyproheptadine may be used`,correct:1,rationale:`Serotonin syndrome treatment: stop the offending serotonergic agents, supportive care, and cyproheptadine (serotonin antagonist).`}
+],
+generalRationale:`The key NMS vs. serotonin syndrome differentiators: (1) NMS = lead-pipe rigidity; serotonin syndrome = clonus/hyperreflexia. (2) NMS = neuroleptic/antipsychotic cause; serotonin syndrome = excess serotonergic agents. (3) NMS = stop antipsychotic + dantrolene; serotonin syndrome = stop serotonergic agents + cyproheptadine.`
+},
+
+{type:'matrix',
+stem:`A nurse is reviewing Peplau's four levels of anxiety and appropriate nursing interventions for each level. Indicate whether each characteristic belongs to Moderate Anxiety or Severe Anxiety.`,
+columns:['Moderate Anxiety','Severe Anxiety'],
+rows:[
+  {statement:`Perceptual field is narrowed but the client can focus with guidance`,correct:0,rationale:`Moderate anxiety narrows the perceptual field — the client can still concentrate with guidance, though not optimally.`},
+  {statement:`The nurse can effectively teach new information using clear, focused, step-by-step instruction`,correct:0,rationale:`Moderate anxiety still allows learning with focused teaching strategies — a key distinction from severe and panic levels where teaching is ineffective.`},
+  {statement:`Significant impairment of attention and problem-solving; client tends to misperceive the environment`,correct:1,rationale:`Severe anxiety markedly impairs attention and judgment, with the client misperceiving environmental stimuli — the nurse uses simple, direct commands at this level.`},
+  {statement:`Visible restlessness and muscle tension, but the client remains functional`,correct:0,rationale:`Restlessness and muscle tension at moderate anxiety still allow functional engagement with nursing support.`},
+  {statement:`The nurse uses simple one-at-a-time directions; calm environment is essential`,correct:1,rationale:`At severe anxiety, the client's impaired cognition requires the nurse to give one simple directive at a time and create a calm, low-stimulus environment.`}
+],
+generalRationale:`Anxiety nursing care is level-dependent: mild = no intervention; moderate = refocus/educate; severe = simple directions, calm environment; panic = stay, minimize stimuli, breathing — never teach at panic level.`
+},
+
+{type:'matrix',
+stem:`A nurse is assessing a client with schizophrenia. For each clinical finding, indicate whether it represents a Positive Symptom or Negative Symptom of schizophrenia.`,
+columns:['Positive Symptom','Negative Symptom'],
+rows:[
+  {statement:`Client believes they are receiving secret communications from the television anchor (ideas of reference)`,correct:0,rationale:`Ideas of reference are a positive symptom — a delusional belief that external events have special personal meaning directed at the client.`},
+  {statement:`Client has not bathed, eaten, or initiated any activity in 3 days due to profound lack of motivation (avolition)`,correct:1,rationale:`Avolition is one of the Five A's of negative symptoms — the loss of motivation to initiate goal-directed activities, including self-care.`},
+  {statement:`Client repeats the nurse's exact words back immediately after they are spoken (echolalia)`,correct:0,rationale:`Echolalia is a positive symptom — a disordered speech pattern representing pathological repetition of others' words.`},
+  {statement:`Client speaks in brief, empty responses with no elaboration and cannot sustain conversation (alogia)`,correct:1,rationale:`Alogia (poverty of speech) is one of the Five A's of negative symptoms — representing the loss of normal speech output.`},
+  {statement:`Client reports hearing a voice telling them the nurses are trying to poison them (command hallucination)`,correct:0,rationale:`Hallucinations, including command hallucinations, are positive symptoms — perceptual distortions representing an excess of abnormal experience.`}
+],
+generalRationale:`Positive = added to/distortion of normal experience (hallucinations, delusions, disorganized speech). Negative = absent from normal function (Five A's: affect, alogia, avolition, anhedonia, anergia). This distinction drives antipsychotic selection.`
+},
+
+{type:'matrix',
+stem:`A client is receiving education on anxiety medications prior to discharge. For each client statement, indicate whether it reflects Effective or Ineffective understanding of medication teaching.`,
+columns:['Effective Understanding','Ineffective Understanding'],
+rows:[
+  {statement:`"I know my Paxil won't work right away — it could take a few weeks before I feel better."`,correct:0,rationale:`Understanding the 4–6 week delayed onset of SSRIs is critical for adherence — this reflects effective teaching.`},
+  {statement:`"I can take my lorazepam every morning as a preventive measure so anxiety doesn't develop."`,correct:1,rationale:`Daily preventive benzodiazepine use leads to dependence and tolerance — lorazepam is for acute/PRN crisis use, not daily scheduled prevention.`},
+  {statement:`"Buspirone starts working right away, so I'll take it if I feel a panic attack starting."`,correct:1,rationale:`Buspirone has a 1–4 week delayed onset and is absolutely not appropriate for acute panic relief — this reflects a dangerous misunderstanding.`},
+  {statement:`"If I suddenly feel much worse or start having dark thoughts after starting my SSRI, I should call my provider right away."`,correct:0,rationale:`Recognizing early activation syndrome (increased anxiety, agitation, suicidal thoughts) with SSRI initiation and knowing to report immediately reflects highly effective teaching.`},
+  {statement:`"I should avoid caffeine and alcohol because both can worsen my anxiety symptoms."`,correct:0,rationale:`Understanding that caffeine (stimulant) and alcohol (rebound anxiety) exacerbate anxiety reflects effective teaching comprehension.`}
+],
+generalRationale:`Key medication teaching: SSRIs = 4–6 weeks onset; benzos = fast/PRN/not daily prevention; buspirone = 1–4 weeks onset/not for acute use; SSRI activation syndrome requires immediate reporting.`
+},
+
+{type:'matrix',
+stem:`A nurse is reviewing nursing interventions for a client with PTSD. Indicate whether each intervention is most appropriate for the Acute Phase or the Long-Term Phase of PTSD care.`,
+columns:['Acute Phase','Long-Term Phase'],
+rows:[
+  {statement:`Provide a quiet, safe environment and remain calmly present with the client`,correct:0,rationale:`Safety, calm presence, and environmental comfort are immediate priorities during the acute PTSD crisis phase.`},
+  {statement:`Assist the client in identifying and working through maladaptive defense mechanisms interfering with recovery`,correct:1,rationale:`Identifying and modifying maladaptive defenses is a therapeutic goal requiring a stable, trusting relationship — a long-term phase objective.`},
+  {statement:`Assess for suicidal ideation including indirect cues and statements of hopelessness`,correct:0,rationale:`Safety assessment including suicide risk is always an acute priority — especially at admission and crisis presentation.`},
+  {statement:`Help the client establish meaningful future goals and develop a sense of hope`,correct:1,rationale:`Future orientation and hope-building are long-term recovery goals, not acute crisis priorities.`},
+  {statement:`Postpone all health teaching and psychoeducation until acute anxiety subsides`,correct:0,rationale:`The acute phase requires intervention, not education — clients in crisis cannot learn new information. Teaching must be postponed.`},
+  {statement:`Support the client in progressing through the grief process and renewing significant relationships`,correct:1,rationale:`Grief work and relationship renewal are deep therapeutic processes requiring sustained engagement — long-term phase objectives.`}
+],
+generalRationale:`Acute PTSD = safety, grounding, presence, crisis assessment, defer teaching. Long-term = processing, grief, relationship renewal, goal-setting, coping skill development.`
+},
+
+{type:'matrix',
+stem:`A nurse is reviewing documentation of a client with schizophrenia's speech patterns. For each example, indicate which speech pattern is being demonstrated: Word Salad or Clang Association.`,
+columns:['Word Salad','Clang Association'],
+rows:[
+  {statement:`"The purple elephant bicycle sky runs tomorrow because Tuesday."`,correct:0,rationale:`Word salad is a random, incoherent mix of words with no logical connection — the hallmark is complete absence of coherent meaning.`},
+  {statement:`"I need a cat with a hat on a mat who sat and ate a bat."`,correct:1,rationale:`Clang association involves choosing words based on sound and rhyming rather than meaning — the words share sound but not logic.`},
+  {statement:`"River mountain clock paper telephone runs yes green before."`,correct:0,rationale:`Another example of word salad — a string of unrelated words with no semantic connection.`},
+  {statement:`"My head is dead and fed with dread in bed instead."`,correct:1,rationale:`This string of rhyming words demonstrates clang association — sound drives word selection, not meaning.`}
+],
+generalRationale:`Word salad = incoherent jumble of unrelated words (no sound or meaning connection). Clang association = words connected by sound/rhyme rather than meaning. Both are positive symptoms representing disorganized thought processes that are frightening and frustrating for the client.`
+},
+
+{type:'matrix',
+stem:`A nurse is reviewing EPS type, onset, and treatment. For each EPS presentation, indicate whether the correct treatment is Benztropine or Propranolol.`,
+columns:['Benztropine (Cogentin)','Propranolol (Inderal)'],
+rows:[
+  {statement:`Client develops sudden eye deviation upward and neck twisting (oculogyric crisis, torticollis) 2 hours after first haloperidol dose`,correct:0,rationale:`Acute dystonia is treated with benztropine (anticholinergic) or diphenhydramine — restores dopamine-acetylcholine balance in the basal ganglia.`},
+  {statement:`Client is pacing, cannot sit still, reports "driven to keep moving," and is extremely distressed`,correct:1,rationale:`Akathisia — inner restlessness — does NOT respond well to anticholinergics; beta-blockers (propranolol) have the best clinical success.`},
+  {statement:`Client develops cogwheel rigidity, mask-like face, shuffling gait, and drooling after 2 weeks of risperidone`,correct:0,rationale:`Pseudoparkinsonism is treated with benztropine (anticholinergic) — the same mechanism that restores dopamine-acetylcholine balance that is disrupted by D2 blockade.`},
+  {statement:`Client reports inner restlessness that makes it impossible to stay still during clinic visits or sit through meals`,correct:1,rationale:`Another akathisia presentation — the subjective inner drive to move that is distressing and often leads to medication non-adherence. Treated with propranolol (beta-blocker).`}
+],
+generalRationale:`EPS treatment rule: Dystonia and pseudoparkinsonism → benztropine (anticholinergic, restores dopamine/ACh balance). Akathisia → propranolol (beta-blocker). Tardive dyskinesia → neither; monitor with AIMS, consider VMAT2 inhibitors.`
+},
+
+{type:'matrix',
+stem:`A nurse is evaluating a client with panic disorder at a 6-week follow-up visit. Indicate whether each client statement suggests the panic disorder treatment is Effective or Requires Further Follow-Up.`,
+columns:['Indicates Effective Treatment','Requires Further Follow-Up'],
+rows:[
+  {statement:`"I had one panic attack this week, but I used my breathing and it passed faster than before."`,correct:0,rationale:`Shorter duration and successful use of coping strategies during panic attacks indicate effective treatment progress.`},
+  {statement:`"I've stopped going to work because I'm terrified of having a panic attack there."`,correct:1,rationale:`Occupational avoidance represents agoraphobic behavior that is expanding — this indicates worsening functional impairment requiring treatment reassessment.`},
+  {statement:`"I've been exercising four days a week and I really think it's helping my mood and anxiety."`,correct:0,rationale:`Regular exercise is an evidence-based component of panic disorder management and reflects adaptive, health-promoting behavior.`},
+  {statement:`"I've been taking my lorazepam twice a day every day, not just when I have a panic attack."`,correct:1,rationale:`Daily scheduled benzodiazepine use — not PRN use — is a concerning pattern indicating developing dependence behavior requiring provider discussion.`},
+  {statement:`"I recognize when my heart starts racing that it might be the beginning of anxiety, and I can usually manage it now."`,correct:0,rationale:`Early recognition of escalating anxiety and successful self-management represent the core long-term treatment goal of panic disorder management.`}
+],
+generalRationale:`Indicators of improvement: coping use during attacks, exercise adoption, early recognition. Red flags: expanding avoidance, daily scheduled benzodiazepine use, increased functional impairment.`
+},
+
+{type:'matrix',
+stem:`A nurse is reviewing a client's plan of care for relapse prevention in schizophrenia. For each client statement, indicate whether it reflects Effective or Ineffective understanding of relapse prevention.`,
+columns:['Effective','Ineffective'],
+rows:[
+  {statement:`"I know my medications are working right now, which is exactly why I need to keep taking them."`,correct:0,rationale:`Understanding that medications are working BECAUSE of ongoing adherence — not that adherence is no longer needed — demonstrates effective understanding.`},
+  {statement:`"Once I feel stable, I plan to stop the medication and just use therapy alone."`,correct:1,rationale:`Stopping antipsychotic medication when feeling stable is the most common cause of relapse in schizophrenia — this reflects a dangerous misunderstanding.`},
+  {statement:`"If I start sleeping less or start feeling uncomfortable around people again, I'll contact my provider."`,correct:0,rationale:`Recognizing early relapse warning signs (reduced sleep, increasing social discomfort) and knowing to contact the provider promptly reflects effective teaching.`},
+  {statement:`"My family knows that if I start giving things away or acting more suspicious, they should take me to the hospital."`,correct:0,rationale:`Incorporating family into relapse surveillance — with specific warning signs — is a key and effective component of relapse prevention education.`},
+  {statement:`"Drinking a few beers on weekends is fine because alcohol doesn't really affect my antipsychotic."`,correct:1,rationale:`Alcohol can worsen psychotic symptoms, impair judgment, increase non-adherence risk, and interact with antipsychotics — this reflects an important misconception to address.`}
+],
+generalRationale:`Effective relapse prevention: continue medication despite feeling well, know warning signs and act early, involve family, avoid substances. The most critical misconception: stopping medication when feeling better.`
+},
+
+{type:'matrix',
+stem:`A nurse is preparing teaching for a client about anxiety medications. For each clinical situation, indicate whether administering a Benzodiazepine or an SSRI is the most appropriate choice.`,
+columns:['Benzodiazepine','SSRI'],
+rows:[
+  {statement:`A client in the emergency department is having an acute panic attack with severe physiological symptoms requiring immediate relief`,correct:0,rationale:`Benzodiazepines are fast-acting (30–60 min onset) and appropriate for acute PRN anxiolytic use — this is the emergency/crisis indication.`},
+  {statement:`A client newly diagnosed with panic disorder needs a first-line maintenance medication to prevent future episodes long-term`,correct:1,rationale:`SSRIs are the first-line long-term pharmacologic treatment for panic disorder — they address the neurobiological basis of anxiety without dependence risk.`},
+  {statement:`A client with PTSD requires long-term pharmacologic treatment; their provider is choosing based on evidence-based guidelines`,correct:1,rationale:`SSRIs are the first-line pharmacotherapy for PTSD per evidence-based guidelines — specifically sertraline and paroxetine have FDA indications.`},
+  {statement:`A client is experiencing a brief severe anxiety episode in the clinic and non-pharmacologic methods have not provided sufficient relief`,correct:0,rationale:`For acute anxiety crisis when non-pharmacologic measures are insufficient, a short-acting benzodiazepine is the appropriate PRN intervention.`}
+],
+generalRationale:`Benzodiazepines: acute, fast, PRN — not for long-term use. SSRIs: long-term, first-line, maintenance — not for acute/PRN relief. Understanding this distinction is fundamental for pharmacology questions.`
+},
+
+{type:'matrix',
+stem:`The nurse is evaluating a client's responses during a teaching session on panic attack management. For each client statement, indicate whether it is a Correct or Incorrect understanding of panic attack physiology and management.`,
+columns:['Correct Understanding','Incorrect Understanding'],
+rows:[
+  {statement:`"When I have a panic attack, my sympathetic nervous system is activated — that's what causes my racing heart and sweating."`,correct:0,rationale:`Sympathetic nervous system activation produces the classic fight-or-flight symptoms of panic — this is an accurate physiological understanding.`},
+  {statement:`"Deep breathing during a panic attack helps because it activates my parasympathetic nervous system to counteract the fight-or-flight response."`,correct:0,rationale:`Correct — diaphragmatic breathing stimulates the vagus nerve, activating the PNS to counter the SNS activation driving panic symptoms.`},
+  {statement:`"If I don't go to the ER when I have a panic attack, something bad will happen to me because I might be having a heart attack."`,correct:1,rationale:`This is the core cognitive distortion in panic disorder — catastrophic misinterpretation of benign physiological sensations as dangerous. While cardiac causes must be ruled out initially, this ongoing belief maintains the panic cycle.`},
+  {statement:`"My panic attacks peak within about 10 minutes of starting, which is why they feel so intense."`,correct:0,rationale:`Correct — panic attacks are defined by abrupt onset with peak intensity within 10 minutes; understanding this can help the client ride out the attack rather than escalating fear.`},
+  {statement:`"I should stay home and rest during my panic attack to avoid making it worse by exerting myself."`,correct:1,rationale:`Avoidance and isolation during panic attacks reinforce agoraphobic behaviors that worsen panic disorder long-term. Evidence-based management supports gradual engagement, not avoidance.`}
+],
+generalRationale:`Panic physiology: SNS activation → fight-or-flight symptoms; PNS (breathing/relaxation) counteracts. Panic attacks peak at 10 min. The cycle of avoidance and catastrophic misinterpretation maintains the disorder — CBT targets these cognitive patterns.`
+},
+
+// ──────────────────────────────────────
+//  BOWTIE  (5)
+// ──────────────────────────────────────
+
+{type:'bowtie',
+stem:`A nurse on a psychiatric unit is caring for a client with schizophrenia who received their first dose of haloperidol 2 hours ago. The client is now screaming, "My eyes are rolling back — I can't control it!" and has visible neck twisting and a fixed upward gaze. The nurse identifies the priority concern as acute dystonia.`,
+centerLabel:`Priority Concern`,
+centerText:`Acute Dystonia from Haloperidol`,
+leftLabel:`Priority Nursing Actions`,
+rightLabel:`Parameters to Monitor`,
+leftOptions:[
+  `Administer propranolol (Inderal) as ordered for EPS symptom relief`,
+  `Stay with the client and administer benztropine (Cogentin) or diphenhydramine (Benadryl) IM as ordered`,
+  `Notify the HCP immediately, document the reaction, and prepare to administer anticholinergic medication`,
+  `Apply cooling measures and prepare the client for ICU transfer`,
+  `Administer the next scheduled dose of haloperidol to reassess response`
+],
+rightOptions:[
+  `Vital signs, temperature, and level of consciousness for signs of NMS progression`,
+  `Serum lithium level for toxicity`,
+  `Resolution of muscle spasms and return to normal posture following anticholinergic administration`,
+  `CBC with differential for agranulocytosis`,
+  `Fasting glucose for metabolic syndrome`
+],
+correctLeft:[1,2],
+correctRight:[0,2],
+rationale:`Acute dystonia (oculogyric crisis, torticollis) is an acute EPS emergency caused by D2 blockade in the nigrostriatal pathway. Priority nursing actions: (1) stay with the client and administer anticholinergic medication (benztropine IM or diphenhydramine IV/IM) as ordered — these restore the dopamine-acetylcholine balance; (2) notify the HCP immediately and document the adverse reaction. Parameters to monitor: vital signs and LOC to ensure this is acute dystonia and not the early presentation of NMS (which would indicate a different, more serious emergency), and resolution of muscle spasms following anticholinergic administration to confirm treatment effectiveness. Propranolol treats akathisia, not dystonia. Cooling measures and ICU transfer are for NMS. Continuing haloperidol is contraindicated until the reaction is assessed.`
+},
+
+{type:'bowtie',
+stem:`A nurse is caring for a client with a history of PTSD who is brought to the psychiatric emergency unit by a family member. The client is shaking, hyperventilating, and states, "I just want everything to stop — there's no point anymore." The family member reports the client gave away personal belongings yesterday. The nurse identifies the priority concern as acute crisis with suicidal ideation.`,
+centerLabel:`Priority Concern`,
+centerText:`Acute PTSD Crisis with Suicidal Ideation`,
+leftLabel:`Priority Nursing Actions`,
+rightLabel:`Parameters to Monitor`,
+leftOptions:[
+  `Begin comprehensive health teaching about PTSD symptom management`,
+  `Administer lorazepam PRN and send the client to group therapy`,
+  `Assess for suicidal plan, method, timeline, and access to lethal means immediately`,
+  `Provide a calm, quiet, safe environment and remain present with the client`,
+  `Ask the family to leave to give the client privacy to express their feelings`
+],
+rightOptions:[
+  `Client's ability to identify three coping skills before discharge`,
+  `Ongoing behavioral and verbal indicators of suicidal intent throughout the visit`,
+  `Client's fasting glucose and lipid panel`,
+  `Resolution of hyperventilation and restoration of calm breathing with interventions`,
+  `WBC count for infection risk`
+],
+correctLeft:[2,3],
+correctRight:[1,3],
+rationale:`The client's indirect suicidal statement ("there's no point anymore") combined with the behavioral cue of giving away possessions constitutes an urgent psychiatric safety situation. Priority nursing actions: (1) immediate direct safety assessment — asking about plan, method, timeline, and access to lethal means (the behavioral cue of giving away possessions significantly elevates risk); (2) providing a calm, safe, quiet environment with therapeutic presence. Parameters to monitor: ongoing behavioral and verbal indicators of suicidal intent throughout the visit (this client's risk is dynamic and continuous) and physiological response including resolution of hyperventilation as a marker of de-escalation. Beginning health teaching (option 1) is contraindicated during acute crisis — the client cannot process information. Sending to group therapy is inappropriate. Asking family to leave removes a potential safety observer and support resource.`
+},
+
+{type:'bowtie',
+stem:`A nurse is caring for a client who was started on haloperidol 3 days ago and is now presenting with a temperature of 104.6°F, severe diffuse muscle rigidity, tachycardia of 128, labile blood pressure, diaphoresis, and a declining level of consciousness. The nurse identifies the priority concern as neuroleptic malignant syndrome.`,
+centerLabel:`Priority Concern`,
+centerText:`Neuroleptic Malignant Syndrome (NMS)`,
+leftLabel:`Priority Nursing Actions`,
+rightLabel:`Parameters to Monitor`,
+leftOptions:[
+  `Administer benztropine (Cogentin) intramuscularly to treat the muscle rigidity`,
+  `Stop all antipsychotic medications immediately and notify the HCP for ICU transfer`,
+  `Reduce the dose of haloperidol by half and observe for the next 12 hours`,
+  `Stay with the client, apply cooling measures, and initiate IV fluids and cardiac monitoring`,
+  `Administer the next scheduled antipsychotic dose, then reassess temperature and rigidity`
+],
+rightOptions:[
+  `Temperature trend in response to cooling measures`,
+  `Serum creatine kinase (CK), urine output, and urine color for rhabdomyolysis and renal complications`,
+  `Fasting blood glucose for metabolic syndrome development`,
+  `WBC count for agranulocytosis from haloperidol`,
+  `Lower extremity edema and signs of DVT given immobility, fever, and rigidity`
+],
+correctLeft:[1,3],
+correctRight:[0,1],
+rationale:`NMS is a life-threatening emergency with mortality rates of 10–20% without treatment. Priority nursing actions: (1) immediately stop all antipsychotic medications — this is the essential first pharmacological intervention — and notify the HCP with preparation for ICU transfer; (2) stay with the critically unstable patient, apply cooling measures (ice packs, cooling blankets), initiate IV fluids for hydration/renal protection, begin cardiac monitoring. Parameters to monitor: temperature trend response to cooling (fever management is essential) and CK, urine output, and urine color for rhabdomyolysis (muscle breakdown releases myoglobin → can cause acute kidney injury — this is a critical NMS complication). Benztropine does NOT treat NMS — it is for acute EPS/dystonia. Dose reduction or continuing the medication is contraindicated in NMS.`
+},
+
+{type:'bowtie',
+stem:`A nurse is discharging a client newly diagnosed with panic disorder with prescriptions for paroxetine (Paxil) and lorazepam (Ativan) PRN. The client is anxious and asks multiple questions about the medications. The nurse identifies the priority concern as preventing medication misunderstanding and promoting safe adherence.`,
+centerLabel:`Priority Concern`,
+centerText:`Safe Medication Use: Paroxetine + PRN Lorazepam`,
+leftLabel:`Priority Teaching Actions`,
+rightLabel:`Parameters to Monitor`,
+leftOptions:[
+  `Teach that paroxetine works immediately for acute panic and lorazepam is for long-term maintenance`,
+  `Clarify that paroxetine takes 4–6 weeks for full effect and lorazepam is for acute PRN use only — not daily`,
+  `Instruct the client to take lorazepam every morning to prevent panic attacks from developing throughout the day`,
+  `Teach the client to recognize early activation syndrome with paroxetine — increased anxiety or dark thoughts require immediate provider contact`,
+  `Instruct the client that both medications can be doubled in dose if a panic attack is severe`
+],
+rightOptions:[
+  `Frequency and scheduling pattern of lorazepam use — escalating use may indicate dependence`,
+  `Paroxetine adherence and client report of mood and anxiety level at 4–6 weeks`,
+  `Weekly complete blood count for SSRI bone marrow toxicity`,
+  `Daily blood pressure for lorazepam hypertensive effect`,
+  `Urine toxicology screen at every follow-up visit`
+],
+correctLeft:[1,3],
+correctRight:[0,1],
+rationale:`Priority teaching for this medication combination: (1) clarify the onset distinction — paroxetine takes 4–6 weeks (not immediate), and lorazepam is PRN/acute use only, not scheduled daily (prevents dependence development); (2) teach early SSRI activation syndrome — clients starting SSRIs can experience increased anxiety, agitation, or suicidal ideation early in treatment, requiring immediate provider contact. Parameters to monitor: lorazepam use pattern (escalating frequency signals developing dependence and requires provider review) and paroxetine adherence and therapeutic response at the 4–6 week mark. Weekly CBC and daily BP monitoring (options C and D) are not standard monitoring requirements for these medications. Urine tox screens at every visit are not standard practice.`
+},
+
+{type:'bowtie',
+stem:`A nurse is caring for a client with schizophrenia on the inpatient psychiatric unit who suddenly becomes increasingly agitated, begins pacing, and shouts, "They are all coming to get me! I can see them through the walls!" The client moves toward a window. The nurse identifies the priority concern as acute psychotic agitation with paranoid delusions and safety risk.`,
+centerLabel:`Priority Concern`,
+centerText:`Acute Psychotic Agitation with Paranoid Delusions`,
+leftLabel:`Priority Nursing Actions`,
+rightLabel:`Parameters to Monitor`,
+leftOptions:[
+  `Begin comprehensive teaching about schizophrenia and medication management to redirect the client`,
+  `Maintain a safe distance, position near the exit, and use a calm, low-pitched, non-threatening tone`,
+  `Argue with the client about the impossibility of seeing people through walls to reorient to reality`,
+  `Immediately notify the treatment team and ensure additional staff are available per safety protocol`,
+  `Approach the client from behind quickly and attempt to guide them away from the window`
+],
+rightOptions:[
+  `Client's verbalizations for escalating suicidal or homicidal content`,
+  `Client's body language, posturing, and behavioral cues for escalation to physical aggression`,
+  `Client's serum glucose level for hypoglycemia as a cause of agitation`,
+  `Client's lipid panel for metabolic syndrome from antipsychotic therapy`,
+  `Time of last antipsychotic dose and next scheduled administration`
+],
+correctLeft:[1,3],
+correctRight:[0,1],
+rationale:`Acute paranoid psychosis with safety proximity to a window requires immediate, strategic intervention. Priority actions: (1) maintain safe distance, position near the exit to protect nurse safety, and use calm non-threatening communication — paranoid clients may act violently if they feel cornered or threatened; (2) immediately notify the treatment team and ensure additional staff availability per unit safety protocol. Parameters to monitor: client verbalizations for escalating threats (suicidal or homicidal content requires immediate safety protocol activation) and body language/behavioral cues for escalation toward physical aggression. Teaching during acute psychosis (option A) is contraindicated. Arguing against delusions (option C) increases anxiety and strengthens the delusion. Approaching from behind (option E) could startle a paranoid client and trigger violent self-protective behavior.`
+}
+
+]; // end RAW_Q
+
+/* ═══════════════════════════════════════════════
+   ENGINE
+═══════════════════════════════════════════════ */
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+let questions=[];
+function buildQuestions(){
+  questions=RAW_Q.map((q,qi)=>{
+    if(q.type==='mcq'){
+      const idx=shuffle([0,1,2,3]);
+      return{...q,choices:idx.map(i=>q.choices[i]),correctIndex:idx.indexOf(q.correctIndex),originalIndex:qi};
+    }
+    if(q.type==='sata'){
+      const idx=shuffle(q.choices.map((_,i)=>i));
+      return{...q,choices:idx.map(i=>q.choices[i]),correctIndices:q.correctIndices.map(ci=>idx.indexOf(ci)),originalIndex:qi};
+    }
+    if(q.type==='matrix'||q.type==='bowtie') return{...q,originalIndex:qi};
+    return q;
+  });
+  // update header count
+  document.getElementById('progressLabel').textContent=`0 of ${questions.length} answered`;
+}
+
+let answeredCount=0;
+const answered={};
+
+function updateProgress(){
+  const pct=Math.round((answeredCount/questions.length)*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressLabel').textContent=`${answeredCount} of ${questions.length} answered`;
+}
+
+function render(){
+  buildQuestions();
+  answeredCount=0;Object.keys(answered).forEach(k=>delete answered[k]);
+  const C=document.getElementById('questionsContainer');C.innerHTML='';
+  document.getElementById('score-panel').style.display='none';document.getElementById('score-panel').innerHTML='';
+  document.getElementById('unanswered-warning').style.display='none';
+  document.getElementById('submitBtn').disabled=false;document.getElementById('submitBtn').style.opacity='1';
+  updateProgress();
+
+  questions.forEach((q,qi)=>{
+    const card=document.createElement('div');card.className='q-card';card.id=`qcard-${qi}`;
+    let html=`<div class="q-result-badge" id="badge-${qi}"></div>
+      <div class="q-header"><div class="q-number">${qi+1}</div><div class="q-text">${q.stem}</div></div>`;
+
+    if(q.type==='mcq'){
+      html+=`<ul class="choices-list" id="choices-${qi}">`;
+      q.choices.forEach((ch,ci)=>{html+=`<li class="choice-item" id="choice-${qi}-${ci}" onclick="selectMCQ(${qi},${ci})"><input type="radio" name="q${qi}" id="r${qi}-${ci}" value="${ci}"><label for="r${qi}-${ci}">${ch}</label></li>`;});
+      html+=`</ul>`;
+    }
+    if(q.type==='sata'){
+      html+=`<p class="q-instruction">Select all that apply.</p><ul class="choices-list" id="choices-${qi}">`;
+      q.choices.forEach((ch,ci)=>{html+=`<li class="choice-item" id="choice-${qi}-${ci}" onclick="toggleSATA(${qi},${ci})"><input type="checkbox" name="q${qi}" id="cb${qi}-${ci}" value="${ci}"><label for="cb${qi}-${ci}">${ch}</label></li>`;});
+      html+=`</ul>`;
+    }
+    if(q.type==='matrix'){
+      html+=`<div class="matrix-wrap"><table class="matrix-table"><thead><tr><th>Finding / Action / Statement</th>${q.columns.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>`;
+      q.rows.forEach((row,ri)=>{html+=`<tr id="matrow-${qi}-${ri}"><td>${row.statement}<div class="mat-row-rationale" id="matrat-${qi}-${ri}">${row.rationale}</div></td>${q.columns.map((_,ci)=>`<td class="col-radio"><input type="radio" name="mat${qi}r${ri}" value="${ci}" onchange="matChange(${qi},${ri})"></td>`).join('')}</tr>`;});
+      html+=`</tbody></table></div>`;
+    }
+    if(q.type==='bowtie'){
+      // shuffle option arrays (keep indices mapped)
+      const leftIdx=shuffle(q.leftOptions.map((_,i)=>i));
+      const rightIdx=shuffle(q.rightOptions.map((_,i)=>i));
+      const leftOpts=leftIdx.map(i=>q.leftOptions[i]);
+      const rightOpts=rightIdx.map(i=>q.rightOptions[i]);
+      // store shuffled mapping on card for grading
+      card.dataset.leftMap=JSON.stringify(leftIdx);
+      card.dataset.rightMap=JSON.stringify(rightIdx);
+      html+=`<div class="bowtie-wrap"><div class="bowtie-grid">
+        <div>
+          <div class="bowtie-col-label">${q.leftLabel}</div>
+          <div class="bowtie-select-group">
+            <div class="bt-select-wrap"><label>Action 1</label><select class="bt-select" id="bt-L1-${qi}" onchange="btChange(${qi})"><option value="">— Select —</option>${leftOpts.map((o,i)=>`<option value="${i}">${o}</option>`).join('')}</select></div>
+            <div class="bt-select-wrap"><label>Action 2</label><select class="bt-select" id="bt-L2-${qi}" onchange="btChange(${qi})"><option value="">— Select —</option>${leftOpts.map((o,i)=>`<option value="${i}">${o}</option>`).join('')}</select></div>
+          </div>
+        </div>
+        <div class="bowtie-center"><span class="bt-label">${q.centerLabel}</span>${q.centerText}</div>
+        <div>
+          <div class="bowtie-col-label right">${q.rightLabel}</div>
+          <div class="bowtie-select-group">
+            <div class="bt-select-wrap"><label>Monitor 1</label><select class="bt-select" id="bt-R1-${qi}" onchange="btChange(${qi})"><option value="">— Select —</option>${rightOpts.map((o,i)=>`<option value="${i}">${o}</option>`).join('')}</select></div>
+            <div class="bt-select-wrap"><label>Monitor 2</label><select class="bt-select" id="bt-R2-${qi}" onchange="btChange(${qi})"><option value="">— Select —</option>${rightOpts.map((o,i)=>`<option value="${i}">${o}</option>`).join('')}</select></div>
+          </div>
+        </div>
+      </div></div>`;
+    }
+    html+=`<div class="rationale-block" id="rat-${qi}"><span class="rat-label">Rationale</span>${q.type==='matrix'?q.generalRationale:(q.type==='bowtie'?q.rationale:q.rationale)}</div>`;
+    card.innerHTML=html;
+    C.appendChild(card);
+  });
+}
+
+function selectMCQ(qi,ci){
+  if(answered[qi]!==undefined)return;
+  document.getElementById(`r${qi}-${ci}`).checked=true;
+  answered[qi]=ci;answeredCount++;updateProgress();
+}
+function toggleSATA(qi,ci){
+  const cb=document.getElementById(`cb${qi}-${ci}`);cb.checked=!cb.checked;
+  const any=document.querySelectorAll(`input[name="q${qi}"]:checked`).length>0;
+  if(answered[qi]===undefined&&any){answered[qi]=true;answeredCount++;updateProgress();}
+  if(!any&&answered[qi]!==undefined){delete answered[qi];answeredCount--;updateProgress();}
+}
+function matChange(qi,ri){
+  const q=questions[qi];let filled=0;
+  q.rows.forEach((_,r)=>{if(document.querySelector(`input[name="mat${qi}r${r}"]:checked`))filled++;});
+  if(filled===1&&answered[qi]===undefined){answered[qi]=true;answeredCount++;updateProgress();}
+}
+function btChange(qi){
+  const l1=document.getElementById(`bt-L1-${qi}`).value;
+  const l2=document.getElementById(`bt-L2-${qi}`).value;
+  const r1=document.getElementById(`bt-R1-${qi}`).value;
+  const r2=document.getElementById(`bt-R2-${qi}`).value;
+  const hasAny=l1||l2||r1||r2;
+  const hasAll=l1&&l2&&r1&&r2;
+  if(hasAny&&answered[qi]===undefined){answered[qi]=true;answeredCount++;updateProgress();}
+  if(!hasAny&&answered[qi]!==undefined){delete answered[qi];answeredCount--;updateProgress();}
+}
+
+function submitExam(){
+  const unanswered=[];
+  questions.forEach((q,qi)=>{
+    let has=false;
+    if(q.type==='mcq')has=!!document.querySelector(`input[name="q${qi}"]:checked`);
+    if(q.type==='sata')has=document.querySelectorAll(`input[name="q${qi}"]:checked`).length>0;
+    if(q.type==='matrix')has=q.rows.every((_,ri)=>!!document.querySelector(`input[name="mat${qi}r${ri}"]:checked`));
+    if(q.type==='bowtie'){const l1=document.getElementById(`bt-L1-${qi}`).value,l2=document.getElementById(`bt-L2-${qi}`).value,r1=document.getElementById(`bt-R1-${qi}`).value,r2=document.getElementById(`bt-R2-${qi}`).value;has=!!(l1&&l2&&r1&&r2);}
+    if(!has)unanswered.push(qi+1);
+  });
+  if(unanswered.length>0){
+    const w=document.getElementById('unanswered-warning');w.style.display='block';
+    w.textContent=`⚠ Questions ${unanswered.slice(0,12).join(', ')}${unanswered.length>12?'…':''} are unanswered or incomplete. Click here to submit anyway.`;
+    w.onclick=()=>{w.style.display='none';gradeExam();};return;
+  }
+  gradeExam();
+}
+
+function gradeExam(){
+  let total=0,mcqS=0,mcqT=0,sataS=0,sataT=0,matS=0,matT=0,btS=0,btT=0;
+  questions.forEach((q,qi)=>{
+    const card=document.getElementById(`qcard-${qi}`);
+    const badge=document.getElementById(`badge-${qi}`);
+    const rat=document.getElementById(`rat-${qi}`);
+    badge.style.display='inline-block';rat.style.display='block';
+
+    if(q.type==='mcq'){
+      mcqT++;
+      const sel=document.querySelector(`input[name="q${qi}"]:checked`);
+      const v=sel?parseInt(sel.value):-1;const ok=v===q.correctIndex;
+      if(ok){mcqS++;total++;}
+      card.classList.add(ok?'correct-card':'incorrect-card');badge.classList.add(ok?'correct':'incorrect');badge.textContent=ok?'✓ Correct':'✗ Incorrect';
+      q.choices.forEach((_,ci)=>{const it=document.getElementById(`choice-${qi}-${ci}`);it.querySelector('input').disabled=true;if(ci===q.correctIndex)it.classList.add('correct-choice');else if(ci===v&&v!==q.correctIndex)it.classList.add('incorrect-choice');});
+    }
+    if(q.type==='sata'){
+      sataT++;
+      const checked=[...document.querySelectorAll(`input[name="q${qi}"]:checked`)].map(el=>parseInt(el.value));
+      const cSet=new Set(q.correctIndices);const kSet=new Set(checked);
+      const ok=q.correctIndices.every(i=>kSet.has(i))&&checked.every(i=>cSet.has(i));
+      if(ok){sataS++;total++;}
+      card.classList.add(ok?'correct-card':'incorrect-card');badge.classList.add(ok?'correct':'incorrect');badge.textContent=ok?'✓ Correct':'✗ Incorrect';
+      q.choices.forEach((_,ci)=>{const it=document.getElementById(`choice-${qi}-${ci}`);it.querySelector('input').disabled=true;if(cSet.has(ci)&&kSet.has(ci))it.classList.add('correct-choice');else if(kSet.has(ci)&&!cSet.has(ci))it.classList.add('incorrect-choice');else if(cSet.has(ci)&&!kSet.has(ci))it.classList.add('missed-choice');});
+    }
+    if(q.type==='matrix'){
+      matT++;let rowsOk=0;
+      q.rows.forEach((row,ri)=>{
+        const el=document.querySelector(`input[name="mat${qi}r${ri}"]:checked`);const v=el?parseInt(el.value):-1;const ok=v===row.correct;
+        if(ok)rowsOk++;
+        document.getElementById(`matrow-${qi}-${ri}`).classList.add(ok?'mat-correct':'mat-incorrect');
+        const cr=document.querySelector(`input[name="mat${qi}r${ri}"][value="${row.correct}"]`);if(cr)cr.parentElement.style.background='rgba(74,222,128,0.2)';
+        document.querySelectorAll(`input[name="mat${qi}r${ri}"]`).forEach(el=>el.disabled=true);
+        document.getElementById(`matrat-${qi}-${ri}`).style.display='block';
+      });
+      const ok=rowsOk===q.rows.length;if(ok){matS++;total++;}
+      card.classList.add(ok?'correct-card':'incorrect-card');badge.classList.add(ok?'correct':'incorrect');badge.textContent=ok?'✓ All Correct':`${rowsOk}/${q.rows.length} Rows Correct`;
+    }
+    if(q.type==='bowtie'){
+      btT++;
+      const cardEl=document.getElementById(`qcard-${qi}`);
+      const leftMap=JSON.parse(cardEl.dataset.leftMap);
+      const rightMap=JSON.parse(cardEl.dataset.rightMap);
+      const l1v=document.getElementById(`bt-L1-${qi}`).value;
+      const l2v=document.getElementById(`bt-L2-${qi}`).value;
+      const r1v=document.getElementById(`bt-R1-${qi}`).value;
+      const r2v=document.getElementById(`bt-R2-${qi}`).value;
+      // map shuffled display indices back to original
+      const selLeft=new Set([l1v,l2v].filter(v=>v!=='').map(v=>leftMap[parseInt(v)]));
+      const selRight=new Set([r1v,r2v].filter(v=>v!=='').map(v=>rightMap[parseInt(v)]));
+      const cLeft=new Set(q.correctLeft);const cRight=new Set(q.correctRight);
+      const leftOk=[...cLeft].every(i=>selLeft.has(i))&&[...selLeft].every(i=>cLeft.has(i));
+      const rightOk=[...cRight].every(i=>selRight.has(i))&&[...selRight].every(i=>cRight.has(i));
+      const ok=leftOk&&rightOk;
+      if(ok){btS++;total++;}
+      card.classList.add(ok?'correct-card':'incorrect-card');badge.classList.add(ok?'correct':'incorrect');badge.textContent=ok?'✓ Correct':`${(leftOk?1:0)+(rightOk?1:0)}/2 Sides Correct`;
+      // color the selects
+      ['L1','L2'].forEach(side=>{
+        const sel=document.getElementById(`bt-${side}-${qi}`);sel.disabled=true;
+        sel.classList.add(leftOk?'correct-sel':'incorrect-sel');
+      });
+      ['R1','R2'].forEach(side=>{
+        const sel=document.getElementById(`bt-${side}-${qi}`);sel.disabled=true;
+        sel.classList.add(rightOk?'correct-sel':'incorrect-sel');
+      });
+    }
+  });
+
+  document.getElementById('submitBtn').disabled=true;document.getElementById('submitBtn').style.opacity='.5';
+  const pct=Math.round((total/questions.length)*100);
+  let gc,gt;
+  if(pct>=90){gc='grade-a';gt='A — Excellent';}else if(pct>=80){gc='grade-b';gt='B — Proficient';}else if(pct>=70){gc='grade-c';gt='C — Developing';}else{gc='grade-d';gt='Below 70 — Keep Reviewing';}
+
+  const panel=document.getElementById('score-panel');panel.style.display='block';
+  panel.innerHTML=`
+    <div class="score-headline">${pct}%</div>
+    <div class="score-sub">${total} of ${questions.length} questions fully correct</div>
+    <div class="score-grade ${gc}">${gt}</div>
+    <div class="score-breakdown">
+      <div class="score-breakdown-item"><span class="val">${mcqS}/${mcqT}</span><span class="lbl">Multiple Choice</span></div>
+      <div class="score-breakdown-item"><span class="val">${sataS}/${sataT}</span><span class="lbl">Select All That Apply</span></div>
+      <div class="score-breakdown-item"><span class="val">${matS}/${matT}</span><span class="lbl">Matrix</span></div>
+      <div class="score-breakdown-item"><span class="val">${btS}/${btT}</span><span class="lbl">Bowtie</span></div>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--text-muted);">Scroll down to review answers and rationales for every question.</p>`;
+  document.getElementById('unanswered-warning').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function resetExam(){render();}
+window.addEventListener('scroll',()=>{const b=document.getElementById('scrolltop-btn');b.style.display=window.scrollY>400?'flex':'none';});
+render();
+</script>
+</body>
+</html>

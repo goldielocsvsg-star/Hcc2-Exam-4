@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HCC2 Anxiety + Psychosis Interactive Exam</title>
+<style>
+:root{
+  --bg:#f6f8fc;
+  --surface:#ffffff;
+  --surface-2:#f2f5fb;
+  --text:#172033;
+  --muted:#5f6f8f;
+  --line:#dde4f0;
+  --accent:#7c4dff;
+  --accent-2:#ff5ea8;
+  --good:#179b69;
+  --good-bg:#e8fbf4;
+  --bad:#d64545;
+  --bad-bg:#fff1f1;
+  --warn:#8c6b00;
+  --warn-bg:#fff8db;
+  --shadow:0 10px 28px rgba(26,41,76,.10);
+}
+[data-theme="dark"]{
+  --bg:#0d1220;
+  --surface:#151c2f;
+  --surface-2:#10172a;
+  --text:#eef3ff;
+  --muted:#b2bddb;
+  --line:rgba(255,255,255,.12);
+  --accent:#9b78ff;
+  --accent-2:#ff78bc;
+  --good:#56d3a5;
+  --good-bg:rgba(86,211,165,.12);
+  --bad:#ff8080;
+  --bad-bg:rgba(255,128,128,.12);
+  --warn:#ffdf73;
+  --warn-bg:rgba(255,223,115,.10);
+  --shadow:0 12px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(124,77,255,.14), transparent 28%),
+    radial-gradient(circle at top left, rgba(255,94,168,.10), transparent 24%),
+    var(--bg);
+  color:var(--text);
+}
+.container{max-width:1100px;margin:0 auto;padding:28px 18px 54px}
+.topbar{
+  display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line); background:rgba(124,77,255,.08);
+  color:var(--text); border-radius:999px; padding:8px 12px; font-size:.84rem; font-weight:700;
+}
+h1{margin:0 0 8px;font-size:clamp(1.65rem, 2vw + 1rem, 2.25rem);line-height:1.15}
+.sub{color:var(--muted);line-height:1.65;font-size:.98rem}
+.card{
+  background:linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.start{
+  display:grid;grid-template-columns:1.3fr .9fr;gap:18px;align-items:stretch;
+}
+.start-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px;
+}
+.stat{
+  border:1px solid var(--line);
+  background:rgba(124,77,255,.06);
+  border-radius:18px;
+  padding:16px;
+}
+.stat .label{
+  color:var(--muted);font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em
+}
+.stat .value{font-size:1.75rem;font-weight:900;margin-top:6px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.btn{
+  border:none;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;
+  transition:transform .14s ease, opacity .14s ease, filter .14s ease;
+}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+.note{
+  margin-top:16px;padding:14px 16px;border-radius:18px;background:var(--warn-bg);border:1px solid var(--line);
+  color:var(--text);line-height:1.6;font-size:.94rem
+}
+.hidden{display:none !important}
+.progress-row{
+  display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px
+}
+.progress-label{font-size:.94rem;font-weight:800}
+.progress{
+  width:100%;height:12px;border-radius:999px;background:rgba(124,77,255,.12);overflow:hidden;border:1px solid var(--line);margin-bottom:18px
+}
+#progressBar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.context{
+  padding:14px 16px;border-radius:16px;background:rgba(124,77,255,.07);border:1px solid var(--line);
+  color:var(--text);line-height:1.6;margin-bottom:14px
+}
+.stem{font-size:1.1rem;line-height:1.7;font-weight:700;margin-bottom:10px}
+.micro{
+  color:var(--muted);font-size:.9rem;line-height:1.55;margin-bottom:14px
+}
+.option-list{display:grid;gap:12px}
+.option{
+  border:1px solid var(--line);border-radius:18px;padding:14px 16px;background:rgba(255,255,255,.02)
+}
+.option label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;width:100%}
+.option input{margin-top:2px;transform:scale(1.15)}
+.option.correct{border-color:var(--good);background:var(--good-bg)}
+.option.incorrect{border-color:var(--bad);background:var(--bad-bg)}
+.matrix-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}
+.matrix-table{width:100%;border-collapse:collapse;min-width:670px}
+.matrix-table th,.matrix-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+.matrix-table tr:last-child td{border-bottom:none}
+.matrix-table th{text-align:left;background:rgba(124,77,255,.08)}
+.matrix-row-label{font-weight:700}
+.matrix-choice{display:flex;justify-content:center}
+.matrix-choice input{transform:scale(1.1)}
+.bowtie-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.bowtie-part{
+  border:1px solid var(--line);border-radius:18px;padding:14px;background:rgba(124,77,255,.05)
+}
+.bowtie-part h3{margin:0 0 10px;font-size:.98rem}
+.bowtie-option{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.03);margin-top:8px}
+.bowtie-option label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.feedback{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line)
+}
+.feedback-head{
+  font-weight:900;font-size:1.02rem;margin-bottom:10px
+}
+.feedback-head.good{color:var(--good)}
+.feedback-head.bad{color:var(--bad)}
+.rationale-block{display:grid;gap:10px}
+.rationale-item{
+  border:1px solid var(--line);border-radius:16px;padding:12px 14px;line-height:1.6;background:rgba(124,77,255,.04)
+}
+.rationale-item.good{border-color:rgba(23,155,105,.45)}
+.rationale-item.bad{border-color:rgba(214,69,69,.45)}
+.answer-chip{
+  display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 10px;
+  border:1px solid var(--line);font-size:.84rem;font-weight:800;margin:4px 8px 0 0
+}
+.nav-row{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px
+}
+.review-list{display:grid;gap:14px;margin-top:18px}
+.review-card{
+  border:1px solid var(--line);border-radius:18px;padding:16px;background:rgba(124,77,255,.04)
+}
+.review-card.good{border-color:rgba(23,155,105,.45)}
+.review-card.bad{border-color:rgba(214,69,69,.45)}
+.review-q{font-weight:800;line-height:1.55;margin-bottom:8px}
+.review-answer{
+  margin-top:10px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.03);line-height:1.6
+}
+.score-hero{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px
+}
+.score-card{
+  border:1px solid var(--line);border-radius:18px;padding:16px;background:rgba(124,77,255,.06)
+}
+.score-card .label{font-size:.82rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.score-card .value{font-size:2rem;font-weight:900;margin-top:6px}
+.toggle{margin-left:auto}
+.footer-note{margin-top:14px;color:var(--muted);line-height:1.6}
+@media (max-width:950px){
+  .start{grid-template-columns:1fr}
+  .score-hero{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .bowtie-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .container{padding:18px 12px 40px}
+  .start-grid,.score-hero{grid-template-columns:1fr}
+  .stem{font-size:1rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div>
+      <div class="badges">
+        <span class="badge">HCC2</span>
+        <span class="badge">Anxiety + Psychosis</span>
+        <span class="badge">60 questions</span>
+        <span class="badge">SATA-heavy</span>
+      </div>
+      <h1>HCC2 interactive anxiety and psychosis exam</h1>
+      <div class="sub">
+        Built from the accessible HCC2 anxiety, PTSD, panic, psychosis, schizophrenia, medication-safety, and module-objective materials in this conversation. This version is application-heavy, heavily safety-focused, and keeps the question screens unlabeled so it feels closer to an exam.
+      </div>
+    </div>
+    <button class="btn btn-secondary toggle" id="themeBtn">Dark mode</button>
+  </div>
+
+  <div class="card start" id="startScreen">
+    <div>
+      <div class="sub">
+        One item appears at a time. Answer order reshuffles every fresh run. Each item includes immediate feedback, the correct answer, and teaching-style rationales that explain why the right answer is right and why the distractors are wrong. Missed items can be retried at the end.
+      </div>
+
+      <div class="start-grid">
+        <div class="stat"><div class="label">Total questions</div><div class="value">60</div></div>
+        <div class="stat"><div class="label">SATA</div><div class="value">30</div></div>
+        <div class="stat"><div class="label">Multiple choice</div><div class="value">15</div></div>
+        <div class="stat"><div class="label">Matrix + bowtie</div><div class="value">15</div></div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" id="startBtn">Start exam</button>
+        <button class="btn btn-secondary" id="shuffleBtn">Shuffle question order too</button>
+      </div>
+
+      <div class="note">
+        Focus areas built into the exam bank include panic assessment and priority, suicide screening, PTSD treatment and safety, defense mechanisms, therapeutic communication, command hallucinations, paranoia, relapse prevention, benzodiazepines versus buspirone versus SSRIs, antipsychotic teaching, EPS, clozapine safety, NMS, provider notification, and objective-aligned nursing judgment.
+      </div>
+    </div>
+
+    <div>
+      <div class="note" style="background:rgba(124,77,255,.08)">
+        <strong>Exam feel:</strong> many stems lean into what requires follow-up, what should be reported, what the nurse should do first, and what teaching shows understanding. Distractors are intentionally close to course logic, so careful reading matters.
+      </div>
+      <div class="note">
+        <strong>Heads up:</strong> I could not verify a separate dedicated question-stem file inside the files accessible here, so this build mirrors the HCC2-style phrasing and testing patterns reflected across the lecture questions, study guides, and module objectives that were available.
+      </div>
+    </div>
+  </div>
+
+  <div class="card exam-wrap hidden" id="examScreen">
+    <div class="progress-row">
+      <div class="progress-label" id="qCount">Question 1 of 60</div>
+      <div class="progress-label" id="scoreMini">Score: 0 / 0</div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div id="contextBox" class="context hidden"></div>
+    <div class="stem" id="stem"></div>
+    <div class="micro" id="instruction"></div>
+    <div id="answerArea"></div>
+    <div id="feedbackBox" class="feedback hidden"></div>
+
+    <div class="nav-row">
+      <button class="btn btn-secondary" id="submitBtn">Submit answer</button>
+      <button class="btn btn-primary hidden" id="nextBtn">Next question</button>
+    </div>
+
+    <div class="footer-note">
+      Answer choices reshuffle every fresh run. Once you submit an item, it locks and the rationale appears immediately.
+    </div>
+  </div>
+
+  <div class="card results hidden" id="resultsScreen">
+    <h2 style="margin:0 0 8px">Exam results</h2>
+    <div class="sub">You can retry only the missed items with new answer randomization, or restart the full exam from the beginning.</div>
+
+    <div class="score-hero">
+      <div class="score-card"><div class="label">Correct</div><div class="value" id="finalCorrect">0</div></div>
+      <div class="score-card"><div class="label">Incorrect</div><div class="value" id="finalIncorrect">0</div></div>
+      <div class="score-card"><div class="label">Score</div><div class="value" id="finalPct">0%</div></div>
+      <div class="score-card"><div class="label">Missed items</div><div class="value" id="finalMissed">0</div></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn-primary" id="retryMissedBtn">Retry missed questions</button>
+      <button class="btn btn-secondary" id="restartBtn">Restart full exam</button>
+      <button class="btn btn-secondary" id="reviewToggleBtn">Show full review</button>
+    </div>
+
+    <div class="review-list hidden" id="reviewList"></div>
+  </div>
+</div>
+
+<script>
+const SOURCE_QUESTIONS = [{"id": 1, "type": "sata", "stem": "A client with panic disorder is being discharged with sertraline daily and lorazepam as needed for severe panic. Which teaching points should the nurse include? Select all that apply.", "choices": ["Take sertraline consistently even if relief is not immediate.", "Use lorazepam as the preferred long-term daily medication to prevent relapse.", "Avoid alcohol while taking lorazepam.", "Expect sertraline to reach full effect after the first dose.", "Learn to recognize early warning signs of rising anxiety.", "Do not stop lorazepam abruptly after prolonged use without provider guidance."], "correct": [0, 2, 4, 5], "rationales": ["Correct. The materials describe SSRIs as first-line long-term therapy that require time to work, so consistency matters.", "Incorrect. Benzodiazepines are presented as quick-acting short-term or crisis medications because dependence can develop.", "Correct. The lecture notes and study guide warn about additive CNS depression with alcohol.", "Incorrect. SSRIs are not immediate-relief drugs.", "Correct. Long-term panic teaching includes recognizing symptoms early so interventions can start before panic level.", "Correct. Abrupt discontinuation after ongoing use can trigger serious withdrawal."], "topic": "Panic/medication teaching", "context": null}, {"id": 2, "type": "mcq", "stem": "A client in the emergency department is pacing, trembling, clutching the chest, and saying, \"I am dying right now.\" Which action should the nurse take first?", "choices": ["Teach guided imagery so the client can lower anxiety.", "Stay with the client, use brief calm directive communication, and begin assessment for medical causes.", "Ask the client to explain the trigger in detail.", "Place the client alone in a dark room so the client can calm down independently."], "correct": [1], "rationales": ["Incorrect. Teaching is not the priority during panic-level anxiety because learning is impaired.", "Correct. The materials emphasize staying with the client, calm brief communication, and ruling out serious medical causes before assuming anxiety.", "Incorrect. Detailed exploration is not realistic during acute panic.", "Incorrect. Leaving the client alone is not the recommended immediate intervention."], "topic": "Panic/priority", "context": null}, {"id": 3, "type": "sata", "stem": "Which nursing actions are appropriate while a client is actively experiencing panic-level anxiety? Select all that apply.", "choices": ["Remain with the client until the intense anxiety subsides.", "Provide long explanations about the physiology of panic attacks.", "Reduce environmental stimuli.", "Use short, simple statements.", "Ask multiple open-ended questions to build insight.", "Reassure the client of safety in a calm voice."], "correct": [0, 2, 3, 5], "rationales": ["Correct. Staying with the client is part of the recommended acute response.", "Incorrect. Panic-level anxiety prevents effective learning from long explanations.", "Correct. Lowering stimulation is a core intervention.", "Correct. Brief directive communication matches the client's reduced ability to process information.", "Incorrect. Open-ended exploration can overwhelm the client at this level of anxiety.", "Correct. Calm reassurance of safety is therapeutic during acute panic."], "topic": "Panic/interventions", "context": null}, {"id": 4, "type": "sata", "stem": "Which findings are more consistent with a typical panic presentation rather than a reason to assume a medical emergency has already been ruled out? Select all that apply.", "choices": ["Fear of dying that peaks within minutes", "Palpitations and trembling during an abrupt surge of terror", "Assuming chest pain is psychiatric without any cardiopulmonary assessment", "Assuming shortness of breath is only panic before assessing for other causes", "Sense of impending doom during the episode", "Needing to rule out serious medical causes before labeling the symptoms as anxiety"], "correct": [0, 1, 4], "rationales": ["Correct. Sudden intense fear with a rapid peak fits panic disorder presentation.", "Correct. Palpitations and trembling are listed panic symptoms.", "Incorrect. This is unsafe reasoning, not a typical panic finding.", "Incorrect. The materials stress that high-risk medical causes must be considered first.", "Correct. A sense of doom is a classic panic feature.", "Incorrect. This is a correct clinical principle, but it is not itself a panic symptom."], "topic": "Panic/medical-vs-psychiatric", "context": null}, {"id": 5, "type": "sata", "stem": "Which client statements show correct understanding of PTSD teaching? Select all that apply.", "choices": ["If I start feeling overwhelmed, grounding and relaxation strategies may help.", "I can stop my SSRI once I have one good week.", "I should tell my provider right away if thoughts of self-harm increase.", "Focusing on the present can help during intense distress.", "Alcohol is a useful long-term way to keep PTSD symptoms controlled.", "Treatments such as CBT, cognitive processing therapy, EMDR, or prolonged exposure may be part of care."], "correct": [0, 2, 3, 5], "rationales": ["Correct. Relaxation and grounding strategies are part of the supported management approaches.", "Incorrect. SSRIs should not be stopped just because the client feels temporarily better.", "Correct. Suicide assessment and escalation are major priorities in the materials.", "Correct. The nurse helps the client focus on present safety during acute distress.", "Incorrect. Substance use is presented as maladaptive coping and a complication, not treatment.", "Correct. These are specifically listed evidence-based PTSD treatments."], "topic": "PTSD/teaching", "context": null}, {"id": 6, "type": "matrix", "stem": "For each nurse response to a client with PTSD who says, \"I should be over this by now. I'm just weak,\" indicate whether the response is therapeutic or nontherapeutic.", "categories": ["Therapeutic", "Nontherapeutic"], "rows": [{"label": "\"Everything will be fine. You just need more confidence.\"", "correct": 1}, {"label": "\"You should avoid talking about the trauma so you don't get upset.\"", "correct": 1}, {"label": "\"You've been carrying a lot. We can work on ways to manage what you're feeling right now.\"", "correct": 0}, {"label": "\"That reaction doesn't make sense because the trauma happened a long time ago.\"", "correct": 1}], "rowRationales": ["Correct. False reassurance is nontherapeutic.", "Correct. Encouraging avoidance reinforces the problem rather than recovery.", "Correct. This validates distress and stays present focused without false reassurance.", "Correct. This is dismissive and judgmental."], "topic": "PTSD/communication", "context": null}, {"id": 7, "type": "sata", "stem": "A client with PTSD started sertraline 1 week ago. Which findings require immediate provider notification? Select all that apply.", "choices": ["New thoughts of self-harm", "Hyperthermia with agitation and clonus", "Mild nausea on day 2 of therapy", "Marked worsening anxiety with unusual behavior change", "Slight decrease in appetite the first few days", "Rash with facial swelling"], "correct": [0, 1, 3, 5], "rationales": ["Correct. New self-harm thoughts are urgent.", "Correct. This pattern is concerning for serotonin syndrome.", "Incorrect. Mild nausea may occur and is less urgent than the other findings.", "Correct. Significant behavior worsening after starting an SSRI requires escalation.", "Incorrect. This may occur early and is not the most urgent finding here.", "Correct. Signs of allergic reaction require immediate follow-up."], "topic": "SSRI/safety", "context": null}, {"id": 8, "type": "mcq", "stem": "A client suddenly experiences severe anxiety on the unit. Which medication would be most appropriate for as-needed acute anxiolysis based on the course materials?", "choices": ["Buspirone", "Lorazepam", "Fluoxetine", "Amitriptyline"], "correct": [1], "rationales": ["Incorrect. Buspirone is not used for immediate PRN relief because onset is delayed.", "Correct. Lorazepam is presented as a quick-acting benzodiazepine used for acute panic or crisis anxiety.", "Incorrect. Fluoxetine is a long-term SSRI, not a rapid PRN medication.", "Incorrect. Amitriptyline is not the preferred PRN anxiolytic in the provided materials."], "topic": "Anxiety/pharmacology", "context": null}, {"id": 9, "type": "sata", "stem": "The nurse is assessing a client with a history of panic attacks. Which assessment components are specifically emphasized in the course materials? Select all that apply.", "choices": ["Event or situation causing stress or crisis", "Client's subjective experience of the stressor", "Presence of suicidal ideation", "Coping style and strengths", "Support systems available", "Routine dietary recall as the priority assessment item"], "correct": [0, 1, 2, 3, 4], "rationales": ["Correct. Identifying the precipitating event is part of the assessment framework.", "Correct. The slides emphasize exploring what the situation means to the client.", "Correct. Suicidal ideation is highlighted as the priority concern.", "Correct. The nurse should assess whether coping is adaptive or maladaptive.", "Correct. Support availability is part of the recommended assessment.", "Incorrect. Diet may matter clinically, but it is not the emphasized priority assessment item in these materials."], "topic": "Panic/assessment", "context": null}, {"id": 10, "type": "matrix", "stem": "For each intervention for a client with panic-level anxiety, indicate whether it is appropriate during the acute episode or better delayed until the client is calmer.", "categories": ["Appropriate during acute episode", "Better delayed until calmer"], "rows": [{"label": "Stay with the client and speak in a low calm voice", "correct": 0}, {"label": "Provide detailed health teaching about maintenance medication timing", "correct": 1}, {"label": "Reduce stimuli and encourage slow breathing", "correct": 0}, {"label": "Ask the client to analyze maladaptive coping patterns in depth", "correct": 1}], "rowRationales": ["Correct. This is part of the immediate nursing response.", "Correct. Teaching is postponed until acute anxiety subsides.", "Correct. These are acute panic interventions.", "Correct. Insight work is not the priority during panic-level anxiety."], "topic": "Panic/timing of interventions", "context": null}, {"id": 11, "type": "sata", "stem": "A nurse plans health teaching for a client prescribed lorazepam for panic disorder. Which points should be included? Select all that apply.", "choices": ["Use caution with driving or operating machinery.", "Follow a tyramine-free diet.", "Restrict caffeine because it can worsen panic symptoms.", "Avoid alcoholic beverages.", "Take the medication at the same time every day because it is the long-term first-line treatment.", "Understand that this medication works quickly but is generally for short-term use."], "correct": [0, 2, 3, 5], "rationales": ["Correct. Sedation and slowed reaction time are important safety concerns.", "Incorrect. Tyramine restrictions are not benzodiazepine teaching.", "Correct. The materials specifically include caffeine restriction.", "Correct. Alcohol increases CNS depression and should be avoided.", "Incorrect. Benzodiazepines are not the first-line long-term treatment for anxiety disorders.", "Correct. Fast onset and short-term use are key teaching points."], "topic": "Benzodiazepine teaching", "context": null}, {"id": 12, "type": "bowtie", "stem": "A client with PTSD tells the nurse, \"Everyone would be better off without me. I have a gun at home.\" Complete the clinical judgment item by selecting the highest-priority cue, the immediate nursing action, and the most important additional factor to assess next.", "parts": [{"label": "Priority cue", "options": ["Reduced appetite", "Indirect suicidal statement with access to lethal means", "History of nightmares", "Avoidance of group therapy"], "correct": 1, "rationales": ["Incorrect. Appetite matters, but it is not the top priority here.", "Correct. Suicidal language plus access to a gun is the highest-priority cue.", "Incorrect. Nightmares matter clinically, but not as much as current suicide risk.", "Incorrect. Avoidance is important in PTSD, but it is not the top immediate danger cue."]}, {"label": "Immediate nursing action", "options": ["Begin teaching on SSRI onset expectations", "Ask directly about plan, method, and timeline while maintaining safety", "Tell the client not to think that way", "Encourage journaling alone"], "correct": 1, "rationales": ["Incorrect. Teaching is not the first action in a suicide-risk situation.", "Correct. The materials emphasize direct suicide assessment, including plan, means, and timeline.", "Incorrect. This is nontherapeutic and unsafe.", "Incorrect. Leaving the client to cope alone is not appropriate."]}, {"label": "Most important next factor", "options": ["Favorite relaxation technique", "Access to the firearm and other lethal means", "Preferred meal choices", "Past school performance"], "correct": 1, "rationales": ["Incorrect. Useful later, but not the next highest priority.", "Correct. Access to lethal means significantly increases imminent risk and must be assessed.", "Incorrect. Nutrition matters, but not ahead of lethal means assessment.", "Incorrect. This does not address the immediate safety issue."]}], "topic": "PTSD/suicide bowtie", "context": null}, {"id": 13, "type": "mcq", "stem": "Which statement correctly distinguishes first-line from first-generation medications based on the course materials?", "choices": ["First-line means the oldest drugs in a class.", "First-generation means the drug should be tried first because it is safest.", "First-line refers to the treatment preferred first based on evidence, whereas first-generation refers to an older class within a medication group.", "First-line and first-generation mean the same thing in psych nursing."], "correct": [2], "rationales": ["Incorrect. Oldest drugs in a class are described as first-generation, not first-line.", "Incorrect. First-generation drugs are older agents and are not necessarily the preferred first choice.", "Correct. The study guide explicitly separates these terms and warns students not to confuse them.", "Incorrect. The materials specifically teach that these terms can point in different directions."], "topic": "Medication terminology", "context": null}, {"id": 14, "type": "sata", "stem": "The nurse reviews coping and defense mechanisms with a client who has anxiety. Which statements are accurate based on the book notes? Select all that apply.", "choices": ["Defense mechanisms are automatic coping styles that protect against anxiety.", "All defense mechanisms are always maladaptive.", "Whether a defense mechanism is adaptive or maladaptive depends in part on frequency, intensity, and duration.", "Individuals with anxiety disorders may use rigid, repetitive, ineffective behaviors to try to control anxiety.", "Defense mechanisms have no effect on self-image.", "People usually rely on only one defense mechanism all the time."], "correct": [0, 2, 3], "rationales": ["Correct. This is directly supported in the book notes.", "Incorrect. The book notes say defense mechanisms may be adaptive or maladaptive.", "Correct. The materials specifically tie adaptive versus maladaptive use to frequency, intensity, and duration.", "Correct. This is a course point about anxiety disorders and maladaptive coping.", "Incorrect. Defense mechanisms are described as protecting self-image.", "Incorrect. The book notes say people generally use a variety of defense mechanisms."], "topic": "Defense mechanisms", "context": null}, {"id": 15, "type": "sata", "stem": "Which findings are more consistent with panic-level anxiety rather than severe anxiety? Select all that apply.", "choices": ["Possible hallucinations or feeling out of touch with reality", "Loss of ability to process what is happening in the environment", "Difficulty learning and problem solving with a narrowed perceptual field", "Erratic, impulsive, or dysregulated behavior", "Sense of impending doom with increased somatic complaints", "Marked behavioral disorganization"], "correct": [0, 1, 3, 5], "rationales": ["Correct. Panic may include hallucinations or loss of touch with reality.", "Correct. In panic, the client may be unable to process the environment.", "Incorrect. This is more consistent with severe anxiety than full panic.", "Correct. Panic-level anxiety can produce dysregulated, impulsive behavior.", "Incorrect. This is more aligned with severe anxiety in the course notes.", "Correct. Severe disorganization is more consistent with panic-level anxiety."], "topic": "Levels of anxiety", "context": null}, {"id": 16, "type": "sata", "stem": "Which findings in a client with psychosis require immediate nursing follow-up? Select all that apply.", "choices": ["The client says, \"The voices are telling me to stab the staff before they kill me.\"", "The client reports hearing music but denies fear or command content.", "The client says, \"My food is poisoned, so I am not taking my medication.\"", "The client wears the same soiled clothes for several days.", "The client becomes suddenly more paranoid and difficult to redirect.", "The client quietly paces but follows directions."], "correct": [0, 2, 4], "rationales": ["Correct. Command hallucinations with violent content create an immediate safety emergency.", "Incorrect. This still needs assessment, but it is less urgent than dangerous command content.", "Correct. Paranoid refusal of food and medication threatens safety and treatment adherence.", "Incorrect. Poor hygiene needs care planning but is not the most immediate threat here.", "Correct. Sudden escalation in paranoia and loss of redirection can signal acute crisis.", "Incorrect. Pacing deserves monitoring, but this option lacks the higher-risk danger cues seen in the correct answers."], "topic": "Psychosis/priority", "context": null}, {"id": 17, "type": "mcq", "stem": "A client with schizophrenia says, \"The staff put cameras in my room to spy on me.\" Which nurse response is best?", "choices": ["\"That is not true. No one is spying on you.\"", "\"Why do you think they would want to watch you?\"", "\"That sounds frightening. I do not see cameras, but I can stay with you right now.\"", "\"If you stop talking about cameras, you will feel better.\""], "correct": [2], "rationales": ["Incorrect. Arguing with delusional content is not therapeutic.", "Incorrect. Asking the client to explain the delusion may reinforce it.", "Correct. This acknowledges emotion, avoids validating the delusion, and gently orients to reality.", "Incorrect. This dismisses distress and damages rapport."], "topic": "Psychosis/therapeutic communication", "context": null}, {"id": 18, "type": "matrix", "stem": "For each nursing action with a hallucinating client, indicate whether the action is indicated or contraindicated.", "categories": ["Indicated", "Contraindicated"], "rows": [{"label": "Ask what the voices are telling the client to do", "correct": 0}, {"label": "Pretend to hear the voices too so the client feels understood", "correct": 1}, {"label": "Reduce environmental stimuli and offer a quieter space", "correct": 0}, {"label": "Argue that the hallucination is not real and must stop", "correct": 1}], "rowRationales": ["Correct. Assessing command content is essential for safety.", "Correct. Reinforcing hallucinations is contraindicated.", "Correct. Lowering stimulation is recommended.", "Correct. Arguing tends to increase fear and mistrust."], "topic": "Psychosis/actions", "context": null}, {"id": 19, "type": "sata", "stem": "A client with schizophrenia is prescribed clozapine. Which teaching points are appropriate? Select all that apply.", "choices": ["Report fever, chills, or sore throat immediately.", "Expect to have regular blood count monitoring.", "Rapid weight gain or increased thirst should be reported.", "Stop the medication abruptly if symptoms improve.", "Rise slowly from sitting or lying positions.", "Minor signs of infection can be ignored for several days."], "correct": [0, 1, 2, 4], "rationales": ["Correct. These symptoms may indicate agranulocytosis or infection risk.", "Correct. Clozapine requires ongoing lab monitoring.", "Correct. Metabolic complications are important teaching points.", "Incorrect. Abrupt stopping increases relapse risk and is not safe self-management.", "Correct. Orthostatic hypotension teaching is appropriate.", "Incorrect. Infection symptoms with clozapine should not be ignored."], "topic": "Clozapine teaching", "context": null}, {"id": 20, "type": "sata", "stem": "A client taking an antipsychotic develops new findings. Which findings require the nurse to hold the medication and notify the provider immediately? Select all that apply.", "choices": ["High fever with severe muscle rigidity", "New involuntary tongue movements and lip smacking", "Sore throat and fever while taking clozapine", "Dry mouth after the first dose", "Marked restlessness and inability to sit still", "Mild drowsiness at bedtime"], "correct": [0, 1, 2, 4], "rationales": ["Correct. Fever and rigidity suggest neuroleptic malignant syndrome, a medical emergency.", "Correct. New involuntary oral-facial movements suggest tardive dyskinesia and require follow-up.", "Correct. Fever and sore throat on clozapine may signal agranulocytosis.", "Incorrect. Dry mouth may occur, but it is not the most urgent finding listed.", "Correct. Severe akathisia is an important adverse effect that needs escalation and treatment review.", "Incorrect. Mild sedation is not the most urgent finding here."], "topic": "Antipsychotic adverse effects", "context": null}, {"id": 21, "type": "mcq", "stem": "A nurse receives report on four clients. Which client should be assessed first?", "choices": ["A client with schizophrenia who has not showered in 3 days", "A client with PTSD who reports poor sleep and recurring nightmares", "A client with schizophrenia who says, \"The voices say everyone here is trying to kill me.\"", "A client with panic disorder who wants more teaching about meditation exercises"], "correct": [2], "rationales": ["Incorrect. Poor hygiene is important but not the top immediate priority.", "Incorrect. Nightmares matter, but no immediate danger is identified in this option.", "Correct. Persecutory hallucinations or paranoia raise immediate safety concerns and require first assessment.", "Incorrect. Teaching can wait when another client may be at risk for violence or severe psychotic crisis."], "topic": "Psychosis/who first", "context": null}, {"id": 22, "type": "sata", "stem": "Which statements by a client and family about schizophrenia show correct understanding of relapse prevention and home management? Select all that apply.", "choices": ["Stopping the antipsychotic medication is a common cause of relapse.", "If early warning signs appear, contacting the provider early is important.", "A predictable daily routine may help support stability.", "If voices begin returning, we should wait a few weeks to see whether they go away on their own.", "Some antipsychotics require monitoring for weight gain and blood sugar changes.", "Medication education is only useful when the client is acutely psychotic."], "correct": [0, 1, 2, 4], "rationales": ["Correct. Medication nonadherence is highlighted as the leading modifiable relapse factor.", "Correct. Early contact can prevent a full relapse.", "Correct. Structure is a core principle of milieu and community management.", "Incorrect. Waiting can allow symptoms to escalate and worsen outcomes.", "Correct. Metabolic monitoring is important with several second-generation agents.", "Incorrect. Education is best reinforced while the client is stable enough to learn."], "topic": "Schizophrenia/family teaching", "context": null}, {"id": 23, "type": "matrix", "stem": "The nurse has implemented interventions for a client with auditory hallucinations. Indicate whether each reassessment finding suggests the plan is effective or ineffective.", "categories": ["Effective", "Ineffective"], "rows": [{"label": "The client tells staff as soon as voices begin", "correct": 0}, {"label": "The client becomes less redirectable and more fearful", "correct": 1}, {"label": "The client participates in a simple reality-based activity", "correct": 0}, {"label": "The client keeps responding to command voices with escalating agitation", "correct": 1}], "rowRationales": ["Correct. Reporting hallucinations early shows increased insight and collaboration.", "Correct. Worsening fear and poor redirection indicate the plan is not working.", "Correct. Engagement in reality-based activity suggests better grounding.", "Correct. Continued response to dangerous command content means the interventions are ineffective so far."], "topic": "Psychosis/evaluation", "context": null}, {"id": 24, "type": "sata", "stem": "Which findings increase the risk for violence or crisis escalation in a client with psychosis? Select all that apply.", "choices": ["Command hallucinations directing harm", "Paranoid delusions that staff are persecutors", "A history of violence", "Concurrent substance intoxication", "Flat affect without agitation", "Catatonic excitement"], "correct": [0, 1, 2, 3, 5], "rationales": ["Correct. Harm-related command hallucinations are high-risk findings.", "Correct. Persecutory paranoia may trigger defensive violence.", "Correct. Past violence increases current concern.", "Correct. Intoxication can worsen disinhibition and instability.", "Incorrect. Flat affect alone does not signal the same level of violence risk.", "Correct. Catatonic excitement is associated with severe behavioral dysregulation and danger."], "topic": "Psychosis/violence", "context": null}, {"id": 25, "type": "matrix", "stem": "For each task involving clients with anxiety or psychosis, indicate whether it may be delegated to UAP or requires the licensed nurse.", "categories": ["May delegate to UAP", "Requires licensed nurse"], "rows": [{"label": "Initial suicide risk assessment for a client with PTSD", "correct": 1}, {"label": "Administering a newly prescribed antipsychotic medication", "correct": 1}, {"label": "Obtaining routine vital signs on a stable client", "correct": 0}, {"label": "Teaching a client how to manage returning hallucinations", "correct": 1}], "rowRationales": ["Correct. Initial suicide assessment requires nursing judgment and cannot be delegated.", "Correct. Medication administration requires licensed nursing scope.", "Correct. Routine vital signs on a stable client may be delegated.", "Correct. Teaching and evaluation require the licensed nurse."], "topic": "Delegation", "context": null}, {"id": 26, "type": "sata", "stem": "The nurse is assessing a client with schizophrenia. Which findings are examples of positive symptoms rather than negative symptoms? Select all that apply.", "choices": ["Hallucinations", "Delusions", "Alogia", "Avolition", "Bizarre behavior", "Disorganized speech"], "correct": [0, 1, 4, 5], "rationales": ["Correct. Hallucinations are positive symptoms because they are added experiences.", "Correct. Delusions are positive symptoms.", "Incorrect. Alogia is a negative symptom involving reduced speech output.", "Incorrect. Avolition is a negative symptom involving loss of motivation.", "Correct. Bizarre or disorganized behavior is listed with positive symptom presentations.", "Correct. Disorganized speech patterns are part of positive symptom expression."], "topic": "Schizophrenia/symptoms", "context": null}, {"id": 27, "type": "mcq", "stem": "A client with schizophrenia anxiously says, \"The voice is telling me to do things.\" What is the nurse's priority question?", "choices": ["\"How long has the voice been speaking to you?\"", "\"Are you afraid of the voice?\"", "\"Do you recognize the voice?\"", "\"What is the voice telling you to do?\""], "correct": [3], "rationales": ["Incorrect. Time course matters, but it is not the priority question.", "Incorrect. Fear matters clinically, but first the nurse must determine the safety content of the command.", "Incorrect. Recognizing the voice is less urgent than understanding the command itself.", "Correct. The exact command content determines immediate danger to the client or others."], "topic": "Command hallucinations", "context": null}, {"id": 28, "type": "sata", "stem": "Which nursing strategies are appropriate when caring for a client who is experiencing hallucinations? Select all that apply.", "choices": ["Acknowledge that the experience seems real to the client.", "Argue with the client until the hallucination stops.", "Encourage reality-based distraction such as music or structured activity.", "Assess whether certain triggers or circumstances worsen the hallucinations.", "Teach coping strategies only after the client is calmer and more stable.", "Agree that the nurse hears the voices too so the client feels supported."], "correct": [0, 2, 3, 4], "rationales": ["Correct. Acknowledging the client's experience supports trust without reinforcing the hallucination.", "Incorrect. Arguing is nontherapeutic and can worsen anxiety.", "Correct. Competing auditory or reality-based stimulation is supported in the materials.", "Correct. Identifying triggers can reduce recurrence and help the client anticipate worsening periods.", "Correct. Skills teaching is best done when the client can actually process and retain information.", "Incorrect. Pretending to hear the voices reinforces the symptom and is contraindicated."], "topic": "Hallucination care", "context": null}, {"id": 29, "type": "mcq", "stem": "Which statement best compares first-generation and second-generation antipsychotics?", "choices": ["First-generation antipsychotics treat both positive and negative symptoms and carry the highest metabolic risk.", "Second-generation antipsychotics are first-line because they better address positive and some negative symptoms and usually carry lower EPS risk than first-generation agents.", "Second-generation antipsychotics eliminate the need for metabolic monitoring.", "First-generation antipsychotics are first-line because they cause fewer side effects."], "correct": [1], "rationales": ["Incorrect. This reverses the comparison taught in the materials.", "Correct. This reflects the course emphasis: second-generation agents are first-line, help positive and negative symptoms better, and generally have lower EPS risk, though metabolic risk is higher.", "Incorrect. Metabolic monitoring remains important with second-generation agents.", "Incorrect. First-generation agents are not presented as first-line because of the side-effect burden, especially EPS."], "topic": "Antipsychotic comparison", "context": null}, {"id": 30, "type": "bowtie", "stem": "A client taking haloperidol becomes febrile, rigid, confused, and tachycardic. Complete the item by selecting the most likely complication, the immediate nursing action, and the priority treatment direction.", "parts": [{"label": "Most likely complication", "options": ["Acute dystonia", "Neuroleptic malignant syndrome", "Mild anticholinergic effect", "Orthostatic hypotension"], "correct": 1, "rationales": ["Incorrect. Dystonia can be severe, but the fever and global instability point elsewhere.", "Correct. Fever, rigidity, autonomic instability, and decreased consciousness fit NMS.", "Incorrect. Mild anticholinergic effects do not explain this presentation.", "Incorrect. Orthostatic hypotension does not cause severe rigidity and hyperthermia."]}, {"label": "Immediate nursing action", "options": ["Give the next dose early to control agitation", "Stop the antipsychotic and notify the provider immediately", "Ask the client to walk to reduce stiffness", "Delay action until lab work is back"], "correct": 1, "rationales": ["Incorrect. Giving more antipsychotic could worsen a life-threatening reaction.", "Correct. The first action is to stop the causative antipsychotic and escalate care.", "Incorrect. Ambulation is unsafe and inappropriate in this emergency.", "Incorrect. This is too urgent to delay."]}, {"label": "Priority treatment direction", "options": ["ICU-level monitoring with cooling, IV fluids, and dantrolene support", "Routine bedtime observation only", "Teaching on caffeine restriction", "Begin EMDR therapy"], "correct": 0, "rationales": ["Correct. This matches the emergency treatment emphasis in the lecture notes.", "Incorrect. Observation alone is unsafe.", "Incorrect. Caffeine teaching is unrelated to this crisis.", "Incorrect. EMDR is unrelated to acute NMS."]}], "topic": "NMS bowtie", "context": null}, {"id": 31, "type": "mcq", "stem": "A client newly prescribed risperidone weighs 204 lb and asks what the nurse thinks is most important to watch for over time. Which response is best?", "choices": ["\"The most important concern is always constipation.\"", "\"Weight management and monitoring for metabolic changes are especially important with this medication.\"", "\"This drug has no significant long-term risks if it helps your symptoms.\"", "\"The main concern is that it usually causes severe agranulocytosis.\""], "correct": [1], "rationales": ["Incorrect. Constipation may occur with some medications, but it is not the emphasized priority concern here.", "Correct. The materials repeatedly highlight metabolic syndrome, weight gain, glucose changes, and lipids with second-generation antipsychotics such as risperidone.", "Incorrect. The course materials emphasize important long-term monitoring needs.", "Incorrect. Agranulocytosis is the key special warning for clozapine, not routine risperidone teaching."], "topic": "Risperidone teaching", "context": null}, {"id": 32, "type": "sata", "stem": "Which findings are characteristic of tardive dyskinesia? Select all that apply.", "choices": ["Irregular repetitive mouth or tongue movements", "Chewing motions and lip smacking", "Usually emerges after longer-term exposure rather than immediately after the first dose", "Lead-pipe rigidity with very high fever", "Potential to persist or become irreversible", "Best treated with benztropine in the provided psychosis study guide"], "correct": [0, 1, 2, 4], "rationales": ["Correct. These are classic oral-facial features of tardive dyskinesia.", "Correct. Lip smacking and chewing movements are specifically described.", "Correct. Tardive dyskinesia is a chronic syndrome rather than an immediate first-dose reaction.", "Incorrect. That pattern is more consistent with NMS, not tardive dyskinesia.", "Correct. The slides emphasize that tardive dyskinesia may be persistent or irreversible.", "Incorrect. The psychosis study guide specifically says benztropine does not treat tardive dyskinesia."], "topic": "Tardive dyskinesia", "context": null}, {"id": 33, "type": "matrix", "stem": "For each extrapyramidal symptom, indicate the best treatment emphasized in the psychosis study guide.", "categories": ["Benztropine or diphenhydramine", "Beta-blocker such as propranolol", "VMAT2 inhibitor / med reevaluation"], "rows": [{"label": "Acute dystonia", "correct": 0}, {"label": "Akathisia", "correct": 1}, {"label": "Tardive dyskinesia", "correct": 2}, {"label": "Pseudoparkinsonism", "correct": 0}], "rowRationales": ["Correct. Acute dystonia is treated with anticholinergic rescue such as benztropine or diphenhydramine.", "Correct. The study guide emphasizes beta-blockers rather than anticholinergics for akathisia.", "Correct. Tardive dyskinesia calls for medication reevaluation and VMAT2-type treatment support in the study guide.", "Correct. Benztropine is the highlighted treatment for pseudoparkinsonism."], "topic": "EPS treatment", "context": null}, {"id": 34, "type": "sata", "stem": "A nurse is reinforcing general family teaching about schizophrenia. Which points are appropriate? Select all that apply.", "choices": ["Progress may be slow and recovery can take months.", "Small gains should still be recognized.", "Medication adherence is important even after positive symptoms improve.", "Physical complaints should be automatically dismissed because they are usually part of psychosis.", "Collaboration and involving the client as a partner in care can improve buy-in.", "The family should expect all symptoms to resolve quickly once the first antipsychotic is started."], "correct": [0, 1, 2, 4], "rationales": ["Correct. The book notes emphasize slow recovery and the importance of recognizing small gains.", "Correct. Small measurable improvement is still meaningful progress.", "Correct. Adherence remains critical even when symptoms begin to improve.", "Incorrect. The materials explicitly warn against dismissing physical complaints without physiologic assessment.", "Correct. Partnering with the client improves trust and treatment adherence.", "Incorrect. Antipsychotic response can take weeks and recovery is not always rapid."], "topic": "Schizophrenia/family education", "context": null}, {"id": 35, "type": "mcq", "stem": "Which nursing response is most therapeutic when a client with persecutory delusions says, \"They're all plotting to destroy me. Isn't that true?\"", "choices": ["\"Everyone here is trying to help you. No one wants to harm you.\"", "\"Feeling that people want to destroy you must be very frightening.\"", "\"That is not true. People here are trying to help you if you will let them.\"", "\"Staff are professionals, so you do not need to think that way.\""], "correct": [1], "rationales": ["Incorrect. This focuses on arguing with the delusion rather than the emotion.", "Correct. The materials repeatedly emphasize focusing on feelings rather than delusional content.", "Incorrect. Direct contradiction tends to increase anxiety and the hold of the delusion.", "Incorrect. This is dismissive and not the most therapeutic response."], "topic": "Delusions/communication", "context": null}, {"id": 36, "type": "sata", "stem": "A client with psychosis is increasingly agitated and paranoid. Which safety-focused nursing actions are appropriate? Select all that apply.", "choices": ["Maintain a calm tone and safe distance.", "Position self with access to the exit.", "Corner the client quickly so the client cannot move away.", "Reduce unnecessary stimuli and bystanders.", "Force the client to accept care immediately to demonstrate authority.", "Offer simple choices when possible."], "correct": [0, 1, 3, 5], "rationales": ["Correct. Calm tone and physical space reduce perceived threat.", "Correct. Maintaining access to the exit protects both client and nurse.", "Incorrect. Crowding or cornering may escalate violence.", "Correct. Lowering stimulation is helpful during acute psychosis or paranoia.", "Incorrect. Force and confrontation increase paranoia and agitation.", "Correct. Simple choices support control without reinforcing delusions."], "topic": "Psychosis/safety", "context": null}, {"id": 37, "type": "matrix", "stem": "For each client finding, indicate whether it reflects a positive symptom or a negative symptom of schizophrenia.", "categories": ["Positive symptom", "Negative symptom"], "rows": [{"label": "Hallucinations", "correct": 0}, {"label": "Alogia", "correct": 1}, {"label": "Anhedonia", "correct": 1}, {"label": "Paranoia", "correct": 0}], "rowRationales": ["Correct. Hallucinations are positive symptoms.", "Correct. Alogia is a negative symptom involving reduced speech or thought expression.", "Correct. Anhedonia is a negative symptom involving inability to experience pleasure.", "Correct. Paranoia is grouped with positive symptom expression."], "topic": "Positive vs negative symptoms", "context": null}, {"id": 38, "type": "bowtie", "stem": "A client with schizophrenia says, \"The voices get worse at night and tell me I don't deserve to live.\" Complete the item by selecting the priority problem, the best immediate nursing response, and the most useful coping strategy to reinforce once the client is calmer.", "parts": [{"label": "Priority problem", "options": ["Risk for self-harm related to command hallucinations", "Imbalanced nutrition less than body requirements", "Need for sleep-hygiene teaching only", "Ineffective group participation"], "correct": 0, "rationales": ["Correct. The command content suggests immediate suicide-related safety risk.", "Incorrect. Nutrition matters, but not ahead of possible self-harm commands.", "Incorrect. Sleep issues are important but not the top priority when the voices include self-harm themes.", "Incorrect. Group participation is not the immediate problem."]}, {"label": "Best immediate response", "options": ["\"Tell me exactly what the voices are saying to you.\"", "\"Ignore them and they will stop.\"", "\"You're imagining things.\"", "\"You should go rest in your room alone.\""], "correct": 0, "rationales": ["Correct. Immediate assessment of the command content is the safest response.", "Incorrect. The client needs assessment and support, not dismissal.", "Incorrect. Denial damages trust and does not improve safety.", "Incorrect. Isolation is not the safest first step when self-harm content is possible."]}, {"label": "Useful coping strategy to reinforce later", "options": ["Music or another competing auditory stimulus", "Arguing with the hallucination until it disappears", "Stopping medication once the voices improve", "Avoiding all staff interaction"], "correct": 0, "rationales": ["Correct. Competing auditory stimulation is supported in the book notes.", "Incorrect. Arguing is not therapeutic.", "Incorrect. Stopping medication increases relapse risk.", "Incorrect. Avoidance is not a helpful coping strategy."]}], "topic": "Hallucinations bowtie", "context": null}, {"id": 39, "type": "mcq", "stem": "Which statement about antipsychotic onset is most accurate based on the provided materials?", "choices": ["Antipsychotics usually become fully effective within a few hours.", "Antipsychotics are addictive and should never be used long term.", "Antipsychotics often require weeks to become effective, and dosage adjustment is needed to balance benefit and side effects.", "Antipsychotics only work if two are started together from the beginning."], "correct": [2], "rationales": ["Incorrect. The materials state these drugs generally do not work within hours in that way.", "Incorrect. The book notes say antipsychotics are not addictive, although discontinuation should still be gradual.", "Correct. The book notes say antipsychotics often take 2 to 6 weeks and may need individualized dose adjustment.", "Incorrect. Monotherapy is the recommended starting approach in the materials."], "topic": "Antipsychotic onset", "context": null}, {"id": 40, "type": "sata", "stem": "The nurse is caring for a client with schizophrenia who is reluctant to take medication because the client says, \"It makes me tired and I can't have sex.\" Which nursing responses are appropriate? Select all that apply.", "choices": ["Acknowledge the client's concerns and explore them without arguing.", "Teach that stopping medication without a plan can increase relapse risk.", "Dismiss the concern because side effects are less important than symptom control.", "Collaborate with the provider about possible medication adjustment if side effects are limiting adherence.", "Use shame to pressure the client into taking the medication.", "Assess whether poor adherence has contributed to return of symptoms."], "correct": [0, 1, 3, 5], "rationales": ["Correct. Acknowledging concerns supports trust and therapeutic communication.", "Correct. Relapse risk with nonadherence is a key teaching point.", "Incorrect. Dismissing side effects undermines adherence and trust.", "Correct. Significant side effects should be assessed and escalated appropriately.", "Incorrect. Shame and coercion are not therapeutic.", "Correct. The nurse should assess the relationship between nonadherence and symptom return."], "topic": "Medication adherence", "context": null}, {"id": 41, "type": "matrix", "stem": "Indicate whether each nurse statement to a paranoid client is therapeutic or nontherapeutic.", "categories": ["Therapeutic", "Nontherapeutic"], "rows": [{"label": "\"You are in a safe place where you will be helped.\"", "correct": 0}, {"label": "\"Facebook is not dangerous, and Homeland Security is not after you.\"", "correct": 1}, {"label": "\"That sounds frightening. Tell me what is happening right now.\"", "correct": 0}, {"label": "\"You don't need to worry about any of that.\"", "correct": 1}], "rowRationales": ["Correct. This response grounds the client in safety without arguing.", "Correct. This directly disputes the delusion and is not the most therapeutic response.", "Correct. This focuses on the client's fear and current experience.", "Correct. This dismisses distress and does not build therapeutic rapport."], "topic": "Paranoia/communication", "context": null}, {"id": 42, "type": "sata", "stem": "A client with PTSD is being assessed during follow-up. Which findings are emphasized in the course materials as needing careful safety evaluation? Select all that apply.", "choices": ["Suicidal thoughts", "Specific plan or method for self-harm", "Access to weapons or other lethal means", "Ability to maintain nutrition, hydration, and sleep", "Whether the client prefers morning or evening therapy appointments", "Functional ability to work, parent, or maintain relationships"], "correct": [0, 1, 2, 3, 5], "rationales": ["Correct. Suicidal thoughts are a high-priority concern in PTSD assessment.", "Correct. Plan and method increase urgency and must be assessed directly.", "Correct. Access to lethal means is a crucial risk factor.", "Correct. The study guide highlights physiologic integrity including sleep, hydration, and nutrition.", "Incorrect. Scheduling preference is not a core safety screen.", "Correct. Functional ability is specifically included in the assessment framework."], "topic": "PTSD/assessment", "context": null}, {"id": 43, "type": "mcq", "stem": "Which intervention best reflects the goal of crisis intervention taught in the anxiety materials?", "choices": ["Process the client's entire trauma history in one session.", "Focus on the here and now, restore functioning, and then support growth after the crisis passes.", "Avoid discussing coping until all symptoms are gone permanently.", "Encourage the client to make major life changes immediately while still in crisis."], "correct": [1], "rationales": ["Incorrect. The materials do not frame crisis care as exhaustive trauma processing in the acute moment.", "Correct. The goals include resolving the immediate crisis, restoring pre-crisis functioning, and then helping the client improve beyond that level.", "Incorrect. Coping support is part of crisis work and recovery.", "Incorrect. Major decisions are not the priority during active crisis."], "topic": "Crisis intervention", "context": null}, {"id": 44, "type": "sata", "stem": "Which statements correctly compare buspirone and benzodiazepines? Select all that apply.", "choices": ["Buspirone is not appropriate for immediate PRN relief of panic.", "Benzodiazepines are generally used for short-term or crisis anxiety because of dependence risk.", "Buspirone usually causes the same dependence pattern as benzodiazepines.", "Buspirone may be used long term and does not carry the same abuse potential described for benzodiazepines.", "Benzodiazepines should be mixed with alcohol for stronger anxiolysis.", "Buspirone typically has a delayed onset over days to weeks."], "correct": [0, 1, 3, 5], "rationales": ["Correct. Buspirone is not an acute PRN medication.", "Correct. Benzodiazepines are quick acting but dependence risk limits long-term routine use.", "Incorrect. The materials distinguish buspirone from benzodiazepines partly because of lower abuse potential.", "Correct. Long-term use without the same dependence concern is part of buspirone teaching.", "Incorrect. Alcohol should be avoided with benzodiazepines.", "Correct. Delayed onset is a major buspirone teaching point."], "topic": "Buspirone vs benzos", "context": null}, {"id": 45, "type": "matrix", "stem": "For each nursing action with an anxious client, indicate whether the action primarily supports immediate acute management or longer-term maintenance management.", "categories": ["Immediate acute management", "Longer-term maintenance management"], "rows": [{"label": "Use calm directive communication and stay with the client during panic", "correct": 0}, {"label": "Teach the client to recognize early warning signs before panic escalates", "correct": 1}, {"label": "Reduce environmental stimuli during severe anxiety", "correct": 0}, {"label": "Promote adherence to ongoing pharmacologic and psychotherapeutic treatment", "correct": 1}], "rowRationales": ["Correct. This is acute panic management.", "Correct. Early recognition skills are part of long-term prevention.", "Correct. Stimulus reduction is an immediate intervention.", "Correct. Adherence promotion is a maintenance goal."], "topic": "Anxiety acute vs long-term", "context": null}, {"id": 46, "type": "sata", "stem": "Which findings from the history and mental status exam are important when assessing a client for anxiety according to the textbook framework? Select all that apply.", "choices": ["Substance use history", "Current medical problems", "Appearance, behavior, mood, and affect", "Thought content, perceptions, cognition, insight, and judgment", "Whether the client prefers television or radio for entertainment", "Vital signs and focused physical examination"], "correct": [0, 1, 2, 3, 5], "rationales": ["Correct. Substance use is part of the history because it may mimic or worsen anxiety symptoms.", "Correct. Current medical conditions may contribute to anxiety or mimic it.", "Correct. These are part of the mental status examination.", "Correct. These are also part of the mental status exam framework.", "Incorrect. Entertainment preference is not a core assessment component.", "Correct. Physical assessment and vital signs are part of the full nursing assessment."], "topic": "Anxiety assessment", "context": null}, {"id": 47, "type": "mcq", "stem": "Which finding best supports the nurse's conclusion that a client is experiencing paranoia with possible danger to others?", "choices": ["\"I hear angels playing harps.\"", "\"The voices say everyone is trying to kill me.\"", "\"My dead father tells me I am a bad person.\"", "\"The voices talk only at night when I'm trying to sleep.\""], "correct": [1], "rationales": ["Incorrect. This does not specifically suggest the same level of defensive violence risk toward others.", "Correct. Persecutory themes can lead the client to act violently to protect self.", "Incorrect. This is concerning but is not the strongest indicator of danger to others in the provided options.", "Incorrect. Timing alone does not identify the highest risk for harm to others."], "topic": "Paranoia/violence", "context": null}, {"id": 48, "type": "sata", "stem": "Which nonpharmacologic interventions for anxiety are supported in the course materials? Select all that apply.", "choices": ["Cognitive behavioral therapy", "Grounding or relaxation techniques", "Prolonged exposure therapy for trauma-related symptoms", "EMDR for PTSD", "Reinforcing avoidance of all trauma-related discussion forever", "Support groups or group participation when the client is stable enough to benefit"], "correct": [0, 1, 2, 3, 5], "rationales": ["Correct. CBT is repeatedly emphasized in the materials.", "Correct. Relaxation and grounding are supported interventions.", "Correct. Prolonged exposure is listed as an evidence-based PTSD treatment.", "Correct. EMDR is also specifically named.", "Incorrect. Avoidance is part of the disorder and is not the long-term therapeutic goal.", "Correct. Group participation is part of the objectives when the client is ready."], "topic": "Anxiety/nonpharmacologic care", "context": null}, {"id": 49, "type": "matrix", "stem": "For each statement about medication-related findings, indicate whether the nurse should mainly continue routine monitoring or notify the provider promptly.", "categories": ["Continue routine monitoring", "Notify provider promptly"], "rows": [{"label": "New sore throat and fever in a client taking clozapine", "correct": 1}, {"label": "Rapid weight gain and increased thirst on an atypical antipsychotic", "correct": 1}, {"label": "Mild dry mouth after starting an antipsychotic", "correct": 0}, {"label": "Marked worsening agitation after starting an SSRI", "correct": 1}], "rowRationales": ["Correct. This may indicate agranulocytosis and requires prompt escalation.", "Correct. Significant metabolic change warrants provider follow-up.", "Correct. Mild dry mouth may be monitored unless more serious findings develop.", "Correct. Significant worsening after starting an SSRI requires prompt provider notification."], "topic": "Provider notification", "context": null}, {"id": 50, "type": "sata", "stem": "The nurse is reviewing relapse prevention with a client and family after hospitalization for psychosis. Which early warning signs of relapse are emphasized in the materials? Select all that apply.", "choices": ["Reduced sleep", "Reduced concentration", "Troubling or unusual thoughts returning", "Hearing voices again or worsening of voices", "Increasing restlessness or discomfort around others", "Sudden improved insight with better adherence"], "correct": [0, 1, 2, 3, 4], "rationales": ["Correct. Reduced sleep is specifically listed as an early warning sign.", "Correct. Poor concentration is also listed.", "Correct. Return of troubling thoughts is part of relapse teaching.", "Correct. Re-emergence of voices is a major sign.", "Correct. Restlessness and discomfort around others are included in the relapse teaching list.", "Incorrect. Improved insight and adherence do not suggest relapse."], "topic": "Relapse prevention", "context": null}, {"id": 51, "type": "bowtie", "stem": "A client with panic disorder says, \"I know my chest is tight, but maybe I should just go home because it's probably only anxiety.\" Complete the item by selecting the priority concern, the best immediate nurse action, and the key teaching point after stabilization.", "parts": [{"label": "Priority concern", "options": ["Need for long-term coping-skill review", "Possible medical condition being misattributed to anxiety", "Lack of interest in group therapy", "Mild boredom on the unit"], "correct": 1, "rationales": ["Incorrect. Coping review matters later, but not before urgent assessment.", "Correct. The materials stress ruling out serious medical causes before assuming anxiety.", "Incorrect. Group therapy interest is not the priority concern in this moment.", "Incorrect. Boredom is unrelated to the top concern here."]}, {"label": "Best immediate nurse action", "options": ["Encourage the client to leave and rest at home", "Begin long teaching about breathing physiology", "Assess the client and rule out high-risk medical explanations", "Tell the client to stop focusing on symptoms"], "correct": 2, "rationales": ["Incorrect. Sending the client home before assessment is unsafe.", "Incorrect. Teaching is not the first action before urgent assessment.", "Correct. High-risk causes such as cardiac or pulmonary emergencies must be considered first.", "Incorrect. Dismissing symptoms is unsafe and nontherapeutic."]}, {"label": "Key teaching point after stabilization", "options": ["Any chest symptoms should always be ignored if the client has a panic history", "Medical causes still need consideration because anxiety symptoms are not specific", "The safest plan is never to report chest discomfort again", "Panic disorder removes the need for future assessment"], "correct": 1, "rationales": ["Incorrect. This would be dangerous teaching.", "Correct. The course materials repeatedly emphasize that autonomic symptoms are not specific to anxiety.", "Incorrect. Discouraging symptom reporting is unsafe.", "Incorrect. A panic history does not eliminate the need for clinical assessment."]}], "topic": "Panic bowtie", "context": null}, {"id": 52, "type": "mcq", "stem": "Which statement about compassionate care for a client with psychosis is most accurate based on the slides?", "choices": ["Physical complaints should be ignored until hallucinations are under control.", "Clients with psychosis rarely have true medical comorbidities.", "Even if the client is psychotic, physical complaints should be assessed because there may be a physiologic basis.", "Holistic care is less important in psychosis because safety is the only focus."], "correct": [2], "rationales": ["Incorrect. The slides warn specifically against dismissing physical symptoms.", "Incorrect. The materials note that psychotic clients can have medical comorbidities.", "Correct. Compassionate care includes not automatically dismissing complaints without assessment.", "Incorrect. Safety matters greatly, but the care approach is still holistic and compassionate."], "topic": "Compassionate care", "context": null}, {"id": 53, "type": "sata", "stem": "A client with schizophrenia is taking a second-generation antipsychotic. Which teaching points are appropriate? Select all that apply.", "choices": ["Weight, glucose, lipids, and cardiovascular risk are important monitoring concerns.", "Orthostatic hypotension precautions may be needed.", "EPS risk is zero with this class.", "Some agents still carry a lower but real risk of tardive dyskinesia.", "These medications are used only for positive symptoms and never help negative symptoms.", "Report significant weight gain to the provider."], "correct": [0, 1, 3, 5], "rationales": ["Correct. Metabolic syndrome teaching is a key point for atypical antipsychotics.", "Correct. Orthostatic hypotension is also emphasized in teaching.", "Incorrect. EPS risk is lower, not zero.", "Correct. The materials say tardive dyskinesia can still occur.", "Incorrect. Second-generation agents are taught as helping positive and negative symptoms better than first-generation agents.", "Correct. Significant weight gain should be reported."], "topic": "Atypical antipsychotic teaching", "context": null}, {"id": 54, "type": "matrix", "stem": "For each nurse statement, indicate whether it reflects therapeutic communication or a nontherapeutic response to an anxious or psychotic client.", "categories": ["Therapeutic", "Nontherapeutic"], "rows": [{"label": "\"You are safe. I will stay with you.\"", "correct": 0}, {"label": "\"Calm down. You are overreacting.\"", "correct": 1}, {"label": "\"That sounds very frightening. Tell me what is happening right now.\"", "correct": 0}, {"label": "\"None of this is real, so you need to stop talking about it.\"", "correct": 1}], "rowRationales": ["Correct. This communicates safety and presence.", "Correct. This is minimizing and invalidating.", "Correct. This validates feeling and stays in the present.", "Correct. This is dismissive and argumentative."], "topic": "Therapeutic communication", "context": null}, {"id": 55, "type": "sata", "stem": "The nurse is preparing a care plan for a client with anxiety. Which nursing approaches are supported in the materials? Select all that apply.", "choices": ["Provide a safe milieu.", "Promote self-care activities.", "Use counseling, teaching, and health-promotion strategies at the appropriate time.", "Assume the client can learn effectively during panic-level anxiety.", "Assess support systems and available resources.", "Evaluate whether coping and defense mechanisms are adaptive or maladaptive."], "correct": [0, 1, 2, 4, 5], "rationales": ["Correct. A safe milieu is part of basic nursing care for anxiety.", "Correct. Self-care support is included in the book notes.", "Correct. Counseling, health teaching, and promotion are part of care when the client can learn.", "Incorrect. Panic-level anxiety impairs learning, so teaching should be delayed.", "Correct. Support-system assessment is one of the stated objectives.", "Correct. Evaluating coping and defense mechanisms is also part of the objectives."], "topic": "Anxiety/care planning", "context": null}, {"id": 56, "type": "mcq", "stem": "A client with psychosis refuses care and says, \"You're trying to poison me.\" Which action is best at this time?", "choices": ["Force the medication because refusal proves lack of insight.", "Argue that the medication is safe and the delusion is false.", "Offer simple choices when possible, avoid arguing, and return later if needed.", "Tell the client that refusing care will only make staff distrust the client more."], "correct": [2], "rationales": ["Incorrect. Force and coercion increase paranoia and agitation.", "Incorrect. Arguing about delusional content is nontherapeutic.", "Correct. The study guide specifically recommends simple choices, avoiding argument, and returning later if possible.", "Incorrect. This is shaming and nontherapeutic."], "topic": "Refusal of care", "context": null}, {"id": 57, "type": "sata", "stem": "A client with acute anxiety is preparing for discharge. Which outcomes or reassessment findings best suggest improvement? Select all that apply.", "choices": ["Reports reduced fear and improved concentration", "Can identify early anxiety symptoms before escalation", "Shows better adherence to the treatment plan", "Insists that all teaching must be given during peak panic episodes", "Uses relaxation or grounding skills appropriately", "Becomes more disorganized and unable to focus"], "correct": [0, 1, 2, 4], "rationales": ["Correct. Reduced fear and improved concentration reflect response to treatment.", "Correct. Early recognition is a meaningful long-term improvement marker.", "Correct. Adherence improvement is an important positive outcome.", "Incorrect. Peak panic is not the time for effective learning.", "Correct. Appropriate use of coping skills suggests progress.", "Incorrect. Worsening disorganization suggests deterioration, not improvement."], "topic": "Anxiety/evaluation", "context": null}, {"id": 58, "type": "sata", "stem": "Which findings fit the avoidance cluster of PTSD rather than the hyperarousal cluster? Select all that apply.", "choices": ["Avoiding people, places, or conversations tied to the trauma", "Exaggerated startle response", "Not wanting to talk about the traumatic event", "Irritability and anger", "Withdrawal from trauma-related reminders", "Trying to stay away from situations that trigger recollections"], "correct": [0, 2, 4, 5], "rationales": ["Correct. Avoiding reminders is a hallmark avoidance symptom.", "Incorrect. Exaggerated startle fits hyperarousal.", "Correct. Refusal to discuss the event fits avoidance.", "Incorrect. Irritability is more consistent with increased arousal.", "Correct. Withdrawal from reminders fits avoidance.", "Correct. Staying away from triggers is another example of avoidance."], "topic": "PTSD symptom clusters", "context": null}, {"id": 59, "type": "sata", "stem": "The nurse is teaching a client about SSRI therapy for anxiety or PTSD. Which points are accurate? Select all that apply.", "choices": ["SSRIs are considered first-line long-term pharmacotherapy in the provided materials.", "They may take several weeks to reach fuller effect.", "They can be used as the best PRN medication for an abrupt panic attack.", "They should not be stopped abruptly without guidance.", "Serotonergic combinations may increase risk for serotonin syndrome.", "Because they are first-line, side effects never require provider notification."], "correct": [0, 1, 3, 4], "rationales": ["Correct. SSRIs are described as first-line long-term agents.", "Correct. Delayed onset over weeks is a key teaching point.", "Incorrect. SSRIs are not the acute PRN treatment of choice for sudden panic.", "Correct. Abrupt discontinuation is not recommended.", "Correct. Serotonin syndrome risk is part of the teaching.", "Incorrect. Serious side effects or concerning changes still require provider notification."], "topic": "SSRI teaching", "context": null}, {"id": 60, "type": "mcq", "stem": "Which statement by a nursing student best reflects the kind of reasoning emphasized across the anxiety and psychosis objectives?", "choices": ["\"I mainly need to memorize labels and definitions.\"", "\"My priority is to connect assessment findings, safety risk, medication judgment, therapeutic communication, and what the nurse should do first.\"", "\"If the diagnosis is obvious, provider notification and reassessment are less important.\"", "\"Teaching should happen immediately, even when the client is panicking or severely disorganized.\""], "correct": [1], "rationales": ["Incorrect. The objectives and course materials emphasize applied clinical reasoning rather than isolated memorization.", "Correct. This captures the repeated course emphasis on assessment, safety, medication implications, communication, prioritization, and follow-up.", "Incorrect. Reassessment and escalation remain central parts of safe nursing care.", "Incorrect. Timing matters, and the materials specifically say to delay teaching when anxiety is too acute."], "topic": "Meta/objective-aligned reasoning", "context": null}];
+
+const state = {
+  questionBank: [],
+  currentIndex: 0,
+  answered: 0,
+  correct: 0,
+  results: [],
+  shuffleOrder: false
+};
+
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+const savedTheme = localStorage.getItem('hcc2-exam-theme');
+if(savedTheme){ root.setAttribute('data-theme', savedTheme); updateThemeBtn(); }
+themeBtn.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('hcc2-exam-theme', next);
+  updateThemeBtn();
+});
+function updateThemeBtn(){
+  const dark = root.getAttribute('data-theme') === 'dark';
+  themeBtn.textContent = dark ? 'Light mode' : 'Dark mode';
+}
+
+function escapeHtml(text){
+  return String(text)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'","&#39;");
+}
+function shuffleArray(input){
+  const a = [...input];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function clone(obj){
+  return JSON.parse(JSON.stringify(obj));
+}
+function sortedNumeric(arr){
+  return [...arr].sort((a,b)=>a-b);
+}
+function arraysEqual(a,b){
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+function prepQuestion(q){
+  const copy = clone(q);
+
+  if(copy.type === 'mcq' || copy.type === 'sata'){
+    const combined = copy.choices.map((choice, idx) => ({
+      choice,
+      rationale: copy.rationales[idx],
+      wasCorrect: copy.correct.includes(idx)
+    }));
+    const shuffled = shuffleArray(combined);
+    copy.choices = shuffled.map(x => x.choice);
+    copy.rationales = shuffled.map(x => x.rationale);
+    copy.correct = shuffled.map((x, idx) => x.wasCorrect ? idx : null).filter(x => x !== null);
+  }
+
+  if(copy.type === 'bowtie'){
+    copy.parts = copy.parts.map(part => {
+      const combined = part.options.map((option, idx) => ({
+        option,
+        rationale: part.rationales[idx],
+        wasCorrect: idx === part.correct
+      }));
+      const shuffled = shuffleArray(combined);
+      return {
+        label: part.label,
+        options: shuffled.map(x => x.option),
+        rationales: shuffled.map(x => x.rationale),
+        correct: shuffled.findIndex(x => x.wasCorrect)
+      };
+    });
+  }
+
+  if(copy.type === 'matrix'){
+    copy.rows = shuffleArray(copy.rows.map((row, idx) => ({
+      label: row.label,
+      correct: row.correct,
+      rationale: copy.rowRationales[idx]
+    })));
+  }
+
+  return copy;
+}
+function buildQuestionBank(source, shuffleOrder){
+  let bank = source.map(prepQuestion);
+  if(shuffleOrder){
+    bank = shuffleArray(bank);
+  }
+  return bank;
+}
+function resetState(questionBank){
+  state.questionBank = questionBank;
+  state.currentIndex = 0;
+  state.answered = 0;
+  state.correct = 0;
+  state.results = [];
+}
+function startExam(shuffleOrder=false, providedBank=null){
+  const bank = providedBank || buildQuestionBank(SOURCE_QUESTIONS, shuffleOrder);
+  resetState(bank);
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('resultsScreen').classList.add('hidden');
+  document.getElementById('reviewList').classList.add('hidden');
+  document.getElementById('reviewToggleBtn').textContent = 'Show full review';
+  document.getElementById('examScreen').classList.remove('hidden');
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('startBtn').addEventListener('click', () => startExam(false));
+document.getElementById('shuffleBtn').addEventListener('click', () => startExam(true));
+
+function getInstruction(q){
+  if(q.type === 'mcq') return 'Choose the single best answer.';
+  if(q.type === 'sata') return 'More than one option may be correct.';
+  if(q.type === 'matrix') return 'Choose one answer in each row.';
+  if(q.type === 'bowtie') return 'Complete all three parts before you submit.';
+  return '';
+}
+function progressPct(){
+  return ((state.currentIndex) / state.questionBank.length) * 100;
+}
+function renderQuestion(){
+  const q = state.questionBank[state.currentIndex];
+  document.getElementById('qCount').textContent = 'Question ' + (state.currentIndex + 1) + ' of ' + state.questionBank.length;
+  document.getElementById('scoreMini').textContent = 'Score: ' + state.correct + ' / ' + state.answered;
+  document.getElementById('progressBar').style.width = progressPct() + '%';
+  document.getElementById('stem').innerHTML = escapeHtml(q.stem);
+  document.getElementById('instruction').textContent = getInstruction(q);
+  const contextBox = document.getElementById('contextBox');
+  if(q.context){
+    contextBox.classList.remove('hidden');
+    contextBox.innerHTML = escapeHtml(q.context);
+  } else {
+    contextBox.classList.add('hidden');
+    contextBox.innerHTML = '';
+  }
+  document.getElementById('submitBtn').classList.remove('hidden');
+  document.getElementById('nextBtn').classList.add('hidden');
+  const fb = document.getElementById('feedbackBox');
+  fb.classList.add('hidden');
+  fb.innerHTML = '';
+  document.getElementById('answerArea').innerHTML = buildAnswerMarkup(q);
+}
+function buildAnswerMarkup(q){
+  if(q.type === 'mcq' || q.type === 'sata'){
+    const inputType = q.type === 'mcq' ? 'radio' : 'checkbox';
+    let html = '<div class="option-list">';
+    q.choices.forEach((choice, idx) => {
+      html += `
+        <div class="option" data-opt="${idx}">
+          <label>
+            <input type="${inputType}" name="choice" value="${idx}">
+            <span><strong>${String.fromCharCode(65+idx)}.</strong> ${escapeHtml(choice)}</span>
+          </label>
+        </div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+  if(q.type === 'matrix'){
+    let html = '<div class="matrix-wrap"><table class="matrix-table"><thead><tr><th>Finding / statement</th>';
+    q.categories.forEach((cat, idx) => {
+      html += `<th>${escapeHtml(cat)}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+    q.rows.forEach((row, rowIdx) => {
+      html += `<tr><td class="matrix-row-label">${escapeHtml(row.label)}</td>`;
+      q.categories.forEach((cat, colIdx) => {
+        html += `<td><div class="matrix-choice"><input type="radio" name="row_${rowIdx}" value="${colIdx}"></div></td>`;
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    return html;
+  }
+  if(q.type === 'bowtie'){
+    let html = '<div class="bowtie-grid">';
+    q.parts.forEach((part, partIdx) => {
+      html += `<div class="bowtie-part"><h3>${escapeHtml(part.label)}</h3>`;
+      part.options.forEach((opt, optIdx) => {
+        html += `
+          <div class="bowtie-option" data-part="${partIdx}" data-opt="${optIdx}">
+            <label>
+              <input type="radio" name="part_${partIdx}" value="${optIdx}">
+              <span>${escapeHtml(opt)}</span>
+            </label>
+          </div>`;
+      });
+      html += `</div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+  return '';
+}
+function getUserAnswer(q){
+  if(q.type === 'mcq'){
+    const chosen = document.querySelector('input[name="choice"]:checked');
+    return chosen ? [Number(chosen.value)] : [];
+  }
+  if(q.type === 'sata'){
+    return sortedNumeric([...document.querySelectorAll('input[name="choice"]:checked')].map(el => Number(el.value)));
+  }
+  if(q.type === 'matrix'){
+    const vals = [];
+    for(let i=0;i<q.rows.length;i++){
+      const chosen = document.querySelector(`input[name="row_${i}"]:checked`);
+      vals.push(chosen ? Number(chosen.value) : null);
+    }
+    return vals;
+  }
+  if(q.type === 'bowtie'){
+    const vals = [];
+    for(let i=0;i<q.parts.length;i++){
+      const chosen = document.querySelector(`input[name="part_${i}"]:checked`);
+      vals.push(chosen ? Number(chosen.value) : null);
+    }
+    return vals;
+  }
+  return [];
+}
+function isCompleteAnswer(q, ans){
+  if(q.type === 'mcq') return ans.length === 1;
+  if(q.type === 'sata') return ans.length > 0;
+  return ans.every(v => v !== null);
+}
+function isCorrectAnswer(q, ans){
+  if(q.type === 'mcq' || q.type === 'sata'){
+    return arraysEqual(sortedNumeric(ans), sortedNumeric(q.correct));
+  }
+  if(q.type === 'matrix'){
+    return ans.every((v, idx) => v === q.rows[idx].correct);
+  }
+  if(q.type === 'bowtie'){
+    return ans.every((v, idx) => v === q.parts[idx].correct);
+  }
+  return false;
+}
+function disableInputs(){
+  document.querySelectorAll('#answerArea input').forEach(el => el.disabled = true);
+}
+function markSelections(q, ans){
+  if(q.type === 'mcq' || q.type === 'sata'){
+    document.querySelectorAll('.option').forEach((card, idx) => {
+      const isCorrect = q.correct.includes(idx);
+      const isChosen = ans.includes(idx);
+      if(isCorrect) card.classList.add('correct');
+      if(isChosen && !isCorrect) card.classList.add('incorrect');
+    });
+  }
+  if(q.type === 'bowtie'){
+    q.parts.forEach((part, partIdx) => {
+      document.querySelectorAll(`.bowtie-option[data-part="${partIdx}"]`).forEach((card, idx) => {
+        if(idx === part.correct) card.classList.add('correct');
+        if(ans[partIdx] === idx && idx !== part.correct) card.classList.add('incorrect');
+      });
+    });
+  }
+}
+function letterList(indices){
+  if(!indices || !indices.length) return 'No selection';
+  return indices.map(i => String.fromCharCode(65+i)).join(', ');
+}
+function buildFeedback(q, ans, correct){
+  const praise = ['Nice work.', 'Strong pick.', 'Good catch.', 'That tracks.', 'You read that exactly right.'];
+  const correction = ['Not quite.', 'Close, but not the best answer.', 'That one needs a tighter read.', 'A safer nursing choice is shown below.'];
+  let html = `<div class="feedback-head ${correct ? 'good' : 'bad'}">${correct ? praise[Math.floor(Math.random()*praise.length)] : correction[Math.floor(Math.random()*correction.length)]}</div>`;
+
+  if(q.type === 'mcq' || q.type === 'sata'){
+    html += `<div style="margin-bottom:10px">
+      <span class="answer-chip"><strong>Your answer:</strong> ${escapeHtml(letterList(ans))}</span>
+      <span class="answer-chip"><strong>Correct answer:</strong> ${escapeHtml(letterList(q.correct))}</span>
+    </div>`;
+    html += '<div class="rationale-block">';
+    q.choices.forEach((choice, idx) => {
+      const cls = q.correct.includes(idx) ? 'good' : 'bad';
+      html += `<div class="rationale-item ${cls}">
+        <strong>${String.fromCharCode(65+idx)}. ${escapeHtml(choice)}</strong><br>
+        ${escapeHtml(q.rationales[idx])}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  if(q.type === 'matrix'){
+    html += '<div class="rationale-block">';
+    q.rows.forEach((row, idx) => {
+      const userText = ans[idx] === null ? 'No selection' : q.categories[ans[idx]];
+      const correctText = q.categories[row.correct];
+      const good = ans[idx] === row.correct;
+      html += `<div class="rationale-item ${good ? 'good' : 'bad'}">
+        <strong>${escapeHtml(row.label)}</strong><br>
+        <strong>Your answer:</strong> ${escapeHtml(userText)}<br>
+        <strong>Correct answer:</strong> ${escapeHtml(correctText)}<br>
+        ${escapeHtml(row.rationale)}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  if(q.type === 'bowtie'){
+    html += '<div class="rationale-block">';
+    q.parts.forEach((part, idx) => {
+      const userText = ans[idx] === null ? 'No selection' : part.options[ans[idx]];
+      const correctText = part.options[part.correct];
+      const good = ans[idx] === part.correct;
+      html += `<div class="rationale-item ${good ? 'good' : 'bad'}">
+        <strong>${escapeHtml(part.label)}</strong><br>
+        <strong>Your answer:</strong> ${escapeHtml(userText)}<br>
+        <strong>Correct answer:</strong> ${escapeHtml(correctText)}<br>
+        ${escapeHtml(part.rationales[part.correct])}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  return html;
+}
+function submitCurrent(){
+  const q = state.questionBank[state.currentIndex];
+  const ans = getUserAnswer(q);
+  if(!isCompleteAnswer(q, ans)){
+    alert('Pick an answer before submitting.');
+    return;
+  }
+  const correct = isCorrectAnswer(q, ans);
+  state.answered += 1;
+  if(correct) state.correct += 1;
+  disableInputs();
+  markSelections(q, ans);
+  const fb = document.getElementById('feedbackBox');
+  fb.innerHTML = buildFeedback(q, ans, correct);
+  fb.classList.remove('hidden');
+  document.getElementById('submitBtn').classList.add('hidden');
+  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('scoreMini').textContent = 'Score: ' + state.correct + ' / ' + state.answered;
+  document.getElementById('progressBar').style.width = (((state.currentIndex + 1) / state.questionBank.length) * 100) + '%';
+  state.results.push({
+    id: q.id,
+    isCorrect: correct,
+    userAnswer: clone(ans),
+    question: clone(q)
+  });
+}
+document.getElementById('submitBtn').addEventListener('click', submitCurrent);
+
+function nextQuestion(){
+  state.currentIndex += 1;
+  if(state.currentIndex >= state.questionBank.length){
+    showResults();
+    return;
+  }
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+
+function buildReviewCard(result){
+  const q = result.question;
+  let html = `<div class="review-card ${result.isCorrect ? 'good' : 'bad'}">
+    <div class="review-q">${escapeHtml(q.stem)}</div>
+    <div class="micro">${result.isCorrect ? 'Answered correctly' : 'Missed'}</div>`;
+
+  if(q.type === 'mcq' || q.type === 'sata'){
+    html += `<div class="review-answer"><strong>Your answer:</strong> ${escapeHtml(letterList(result.userAnswer))}<br><strong>Correct answer:</strong> ${escapeHtml(letterList(q.correct))}</div>`;
+    html += '<div class="rationale-block" style="margin-top:10px">';
+    q.choices.forEach((choice, idx) => {
+      html += `<div class="rationale-item ${q.correct.includes(idx) ? 'good' : 'bad'}">
+        <strong>${String.fromCharCode(65+idx)}. ${escapeHtml(choice)}</strong><br>
+        ${escapeHtml(q.rationales[idx])}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  if(q.type === 'matrix'){
+    html += '<div class="rationale-block" style="margin-top:10px">';
+    q.rows.forEach((row, idx) => {
+      const userText = result.userAnswer[idx] === null ? 'No selection' : q.categories[result.userAnswer[idx]];
+      const correctText = q.categories[row.correct];
+      html += `<div class="rationale-item ${result.userAnswer[idx] === row.correct ? 'good' : 'bad'}">
+        <strong>${escapeHtml(row.label)}</strong><br>
+        <strong>Your answer:</strong> ${escapeHtml(userText)}<br>
+        <strong>Correct answer:</strong> ${escapeHtml(correctText)}<br>
+        ${escapeHtml(row.rationale)}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  if(q.type === 'bowtie'){
+    html += '<div class="rationale-block" style="margin-top:10px">';
+    q.parts.forEach((part, idx) => {
+      const userText = result.userAnswer[idx] === null ? 'No selection' : part.options[result.userAnswer[idx]];
+      const correctText = part.options[part.correct];
+      html += `<div class="rationale-item ${result.userAnswer[idx] === part.correct ? 'good' : 'bad'}">
+        <strong>${escapeHtml(part.label)}</strong><br>
+        <strong>Your answer:</strong> ${escapeHtml(userText)}<br>
+        <strong>Correct answer:</strong> ${escapeHtml(correctText)}<br>
+        ${escapeHtml(part.rationales[part.correct])}
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+function showResults(){
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('resultsScreen').classList.remove('hidden');
+
+  const incorrect = state.answered - state.correct;
+  const pct = state.answered ? Math.round((state.correct / state.answered) * 100) : 0;
+  const missed = state.results.filter(r => !r.isCorrect).length;
+
+  document.getElementById('finalCorrect').textContent = state.correct;
+  document.getElementById('finalIncorrect').textContent = incorrect;
+  document.getElementById('finalPct').textContent = pct + '%';
+  document.getElementById('finalMissed').textContent = missed;
+
+  const reviewList = document.getElementById('reviewList');
+  reviewList.innerHTML = state.results.map(buildReviewCard).join('');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  document.getElementById('resultsScreen').classList.add('hidden');
+  startExam(false);
+});
+document.getElementById('retryMissedBtn').addEventListener('click', () => {
+  const missedIds = state.results.filter(r => !r.isCorrect).map(r => r.id);
+  const missedQuestions = SOURCE_QUESTIONS.filter(q => missedIds.includes(q.id));
+  if(!missedQuestions.length){
+    alert('You did not miss any questions on that run.');
+    return;
+  }
+  document.getElementById('resultsScreen').classList.add('hidden');
+  startExam(false, buildQuestionBank(missedQuestions, true));
+});
+document.getElementById('reviewToggleBtn').addEventListener('click', () => {
+  const review = document.getElementById('reviewList');
+  const hidden = review.classList.contains('hidden');
+  review.classList.toggle('hidden');
+  document.getElementById('reviewToggleBtn').textContent = hidden ? 'Hide full review' : 'Show full review';
+});
+</script>
+</body>
+</html>

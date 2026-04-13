@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCC II Exam 4 — Mood Disorders</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf5;
+  --white: #ffffff;
+  --ink: #1c1917;
+  --ink2: #44403c;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --border2: #d6d3d1;
+
+  --coral: #f05039;
+  --coral-bg: #fff3f1;
+  --coral-mid: #fdd9d4;
+
+  --teal: #0d9488;
+  --teal-bg: #f0fdfa;
+  --teal-mid: #99f6e4;
+
+  --indigo: #4f46e5;
+  --indigo-bg: #eef2ff;
+  --indigo-mid: #c7d2fe;
+
+  --amber: #d97706;
+  --amber-bg: #fffbeb;
+  --amber-mid: #fde68a;
+
+  --rose: #e11d48;
+  --rose-bg: #fff1f2;
+  --rose-mid: #fecdd3;
+
+  --sage: #16a34a;
+  --sage-bg: #f0fdf4;
+  --sage-mid: #bbf7d0;
+
+  --plum: #7c3aed;
+  --plum-bg: #f5f3ff;
+  --plum-mid: #ddd6fe;
+
+  --sky: #0284c7;
+  --sky-bg: #f0f9ff;
+  --sky-mid: #bae6fd;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ─── LAYOUT ─── */
+#app { display: flex; min-height: 100vh; }
+
+/* ─── SIDEBAR ─── */
+#sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--white);
+  border-right: 2px solid var(--border);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.sb-brand {
+  padding: 24px 20px 18px;
+  border-bottom: 2px solid var(--border);
+  background: var(--ink);
+}
+.sb-brand .eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a8a29e;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.sb-brand h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.sb-brand .badge {
+  display: inline-block;
+  background: var(--coral);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.sb-section-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 20px 6px;
+}
+
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink2);
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.sb-item:hover { background: var(--cream); color: var(--ink); }
+.sb-item.active { background: var(--cream); color: var(--ink); border-left-color: var(--coral); font-weight: 700; }
+.sb-item .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ─── TIMER WIDGET ─── */
+.timer-widget {
+  margin: 16px 12px;
+  background: var(--ink);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.timer-label { font-family: 'Fira Code', monospace; font-size: 9px; color: #a8a29e; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.timer-display { font-family: 'Fira Code', monospace; font-size: 26px; color: var(--white); margin-bottom: 10px; }
+.timer-btns { display: flex; gap: 6px; justify-content: center; }
+.timer-btn {
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.timer-btn:hover { background: rgba(255,255,255,0.22); }
+.timer-btn.start { background: var(--teal); }
+
+/* ─── MAIN ─── */
+#main {
+  margin-left: 240px;
+  flex: 1;
+  overflow-x: hidden;
+}
+
+.page { display: none; animation: slideIn 0.3s ease; }
+.page.active { display: block; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── PAGE HEADER BANNERS ─── */
+.page-banner {
+  padding: 56px 56px 40px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--border);
+}
+.page-banner::after {
+  content: attr(data-emoji);
+  position: absolute;
+  right: 56px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 100px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.page-banner .eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.page-banner h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.page-banner p { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
+
+/* banner colors */
+.banner-coral { background: linear-gradient(135deg, var(--coral-bg), #fff8f6); }
+.banner-coral .eyebrow { color: var(--coral); }
+.banner-teal { background: linear-gradient(135deg, var(--teal-bg), #f5fffe); }
+.banner-teal .eyebrow { color: var(--teal); }
+.banner-rose { background: linear-gradient(135deg, var(--rose-bg), #fff5f7); }
+.banner-rose .eyebrow { color: var(--rose); }
+.banner-indigo { background: linear-gradient(135deg, var(--indigo-bg), #f5f4ff); }
+.banner-indigo .eyebrow { color: var(--indigo); }
+.banner-amber { background: linear-gradient(135deg, var(--amber-bg), #fffdf5); }
+.banner-amber .eyebrow { color: var(--amber); }
+.banner-plum { background: linear-gradient(135deg, var(--plum-bg), #f8f5ff); }
+.banner-plum .eyebrow { color: var(--plum); }
+.banner-sage { background: linear-gradient(135deg, var(--sage-bg), #f5fff8); }
+.banner-sage .eyebrow { color: var(--sage); }
+
+/* ─── BODY WRAPPER ─── */
+.page-body { padding: 40px 56px 80px; max-width: 1080px; }
+
+/* ─── TABS ─── */
+.tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 12px 22px;
+  border: none;
+  background: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--ink); border-bottom-color: var(--coral); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeUp 0.2s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-title .icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ─── GRID ─── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+
+/* ─── CALLOUT BOXES ─── */
+.callout {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 14px; line-height: 1.65; }
+.callout-body strong { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+
+.callout-red { background: var(--rose-bg); border: 1.5px solid var(--rose-mid); }
+.callout-red .callout-body { color: #9f1239; }
+.callout-red .callout-body strong { color: var(--rose); }
+
+.callout-teal { background: var(--teal-bg); border: 1.5px solid var(--teal-mid); }
+.callout-teal .callout-body { color: #134e4a; }
+.callout-teal .callout-body strong { color: var(--teal); }
+
+.callout-amber { background: var(--amber-bg); border: 1.5px solid var(--amber-mid); }
+.callout-amber .callout-body { color: #92400e; }
+.callout-amber .callout-body strong { color: var(--amber); }
+
+.callout-indigo { background: var(--indigo-bg); border: 1.5px solid var(--indigo-mid); }
+.callout-indigo .callout-body { color: #312e81; }
+.callout-indigo .callout-body strong { color: var(--indigo); }
+
+.callout-sage { background: var(--sage-bg); border: 1.5px solid var(--sage-mid); }
+.callout-sage .callout-body { color: #14532d; }
+.callout-sage .callout-body strong { color: var(--sage); }
+
+.callout-plum { background: var(--plum-bg); border: 1.5px solid var(--plum-mid); }
+.callout-plum .callout-body { color: #4c1d95; }
+.callout-plum .callout-body strong { color: var(--plum); }
+
+.callout-sky { background: var(--sky-bg); border: 1.5px solid var(--sky-mid); }
+.callout-sky .callout-body { color: #0c4a6e; }
+.callout-sky .callout-body strong { color: var(--sky); }
+
+/* ─── STAT TILES ─── */
+.stat-tile {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.stat-coral::before { background: var(--coral); }
+.stat-teal::before { background: var(--teal); }
+.stat-rose::before { background: var(--rose); }
+.stat-indigo::before { background: var(--indigo); }
+.stat-amber::before { background: var(--amber); }
+.stat-plum::before { background: var(--plum); }
+.stat-sage::before { background: var(--sage); }
+.stat-sky::before { background: var(--sky); }
+
+.stat-tile .big { font-family: 'Fraunces', serif; font-size: 38px; font-weight: 900; line-height: 1; margin-bottom: 4px; color: var(--ink); }
+.stat-tile .label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.stat-tile .sub { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* ─── PILL TAGS ─── */
+.pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin: 2px; }
+.p-coral { background: var(--coral-mid); color: #9a1810; }
+.p-teal { background: var(--teal-mid); color: #134e4a; }
+.p-rose { background: var(--rose-mid); color: #881337; }
+.p-indigo { background: var(--indigo-mid); color: #312e81; }
+.p-amber { background: var(--amber-mid); color: #78350f; }
+.p-plum { background: var(--plum-mid); color: #4c1d95; }
+.p-sage { background: var(--sage-mid); color: #14532d; }
+
+/* ─── SYMPTOM CHIPS ─── */
+.chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.chip {
+  background: var(--cream);
+  border: 1.5px solid var(--border2);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--ink2);
+  font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.15s;
+}
+.chip:hover { border-color: var(--coral); background: var(--coral-bg); }
+
+/* ─── TABLE ─── */
+.tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.tbl th { background: var(--cream); color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--border); }
+.tbl td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--ink2); vertical-align: top; line-height: 1.55; }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr:hover td { background: var(--cream); }
+.tbl strong { color: var(--ink); }
+
+/* ─── ACCORDION ─── */
+.acc { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.acc-head {
+  padding: 14px 18px;
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  user-select: none;
+  transition: background 0.15s;
+}
+.acc-head:hover { background: var(--cream); }
+.acc-head .arr { transition: transform 0.25s; color: var(--muted); font-size: 11px; }
+.acc.open .acc-head .arr { transform: rotate(180deg); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--cream); }
+.acc.open .acc-body { max-height: 900px; }
+.acc-body-inner { padding: 18px 20px; font-size: 13.5px; line-height: 1.65; color: var(--ink2); }
+
+/* ─── LIST ─── */
+ul.lst { list-style: none; padding: 0; }
+ul.lst li {
+  padding: 9px 0 9px 22px;
+  position: relative;
+  font-size: 14px;
+  color: var(--ink2);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+ul.lst li:last-child { border-bottom: none; }
+ul.lst li::before { content: '›'; position: absolute; left: 0; color: var(--coral); font-weight: 700; font-size: 16px; top: 7px; }
+ul.lst li strong { color: var(--ink); }
+
+/* ─── FACT ROWS ─── */
+.fr { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; gap: 12px; }
+.fr:last-child { border-bottom: none; }
+.fr .fl { color: var(--muted); flex-shrink: 0; }
+.fr .fv { font-weight: 600; color: var(--ink); text-align: right; }
+
+/* ─── STAGE TRACK ─── */
+.stage-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.stage-card {
+  border-radius: 14px;
+  padding: 20px;
+  border: 2px solid;
+  position: relative;
+}
+.s1 { background: #fffbeb; border-color: #fde68a; }
+.s1 .s-num { color: var(--amber); }
+.s2 { background: #fff3f1; border-color: var(--coral-mid); }
+.s2 .s-num { color: var(--coral); }
+.s3 { background: var(--rose-bg); border-color: var(--rose-mid); }
+.s3 .s-num { color: var(--rose); }
+.s-num { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; font-weight: 500; }
+.s-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.s-desc { font-size: 12px; color: var(--ink2); line-height: 1.5; }
+
+/* ─── MNEMONIC ─── */
+.mnemonic {
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+  border: 2px solid var(--indigo-mid);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.mnemonic-word {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  letter-spacing: 8px;
+  color: var(--indigo);
+  margin-bottom: 20px;
+}
+.mn-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(79,70,229,0.1);
+}
+.mn-row:last-child { border-bottom: none; }
+.mn-letter {
+  width: 38px; height: 38px; min-width: 38px;
+  background: var(--indigo);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+.mn-text { font-size: 14px; color: var(--ink2); line-height: 1.5; }
+.mn-text strong { color: var(--ink); font-size: 15px; }
+
+/* ─── LITHIUM LEVEL BAR ─── */
+.level-bar { display: flex; border-radius: 10px; overflow: hidden; height: 52px; border: 2px solid var(--border); margin: 16px 0; }
+.level-seg { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; font-size: 10px; font-weight: 700; color: white; text-align: center; padding: 4px 8px; }
+.level-seg .seg-l { font-size: 8px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; }
+
+/* ─── DRUG CARDS ─── */
+.drug-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.drug-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+.dc-ssri::before { background: linear-gradient(90deg, var(--sky), #38bdf8); }
+.dc-maoi::before { background: linear-gradient(90deg, var(--rose), #fb7185); }
+.dc-lithium::before { background: linear-gradient(90deg, var(--teal), #34d399); }
+.dc-other::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.dc-antipsych::before { background: linear-gradient(90deg, var(--plum), #a78bfa); }
+.drug-name { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); margin-bottom: 3px; }
+.drug-class { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+
+/* ─── COMPARE GRID ─── */
+.compare { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
+.compare-col { padding: 24px; }
+.compare-col:first-child { border-right: 2px solid var(--border); background: #f8f7ff; }
+.compare-col:last-child { background: #fff8f6; }
+.compare-col h4 { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 14px; }
+
+/* ─── PRIORITY BADGES ─── */
+.prio { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; margin-bottom: 10px; }
+.prio-red { background: var(--rose-bg); color: var(--rose); border: 1.5px solid var(--rose-mid); }
+.prio-amber { background: var(--amber-bg); color: var(--amber); border: 1.5px solid var(--amber-mid); }
+.prio-teal { background: var(--teal-bg); color: var(--teal); border: 1.5px solid var(--teal-mid); }
+
+/* ─── HOME GRID ─── */
+.home-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 32px; }
+.hnc {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.hnc::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; transform: scaleX(0); transition: transform 0.2s; }
+.hnc:hover { border-color: transparent; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.hnc:hover::after { transform: scaleX(1); }
+.hnc-coral::after { background: var(--coral); }
+.hnc-teal::after { background: var(--teal); }
+.hnc-rose::after { background: var(--rose); }
+.hnc-indigo::after { background: var(--indigo); }
+.hnc-amber::after { background: var(--amber); }
+.hnc-plum::after { background: var(--plum); }
+
+.hnc .ico { font-size: 30px; margin-bottom: 10px; }
+.hnc .ht { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.hnc .hd { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* ─── NCLEX QUESTIONS ─── */
+.q-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.2s;
+}
+.q-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.q-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.q-num { font-family: 'Fira Code', monospace; font-size: 11px; color: var(--muted); }
+.q-type { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+.qt-sata { background: var(--plum-mid); color: #4c1d95; }
+.qt-priority { background: var(--rose-mid); color: #881337; }
+.qt-appropriate { background: var(--teal-mid); color: #134e4a; }
+.qt-expected { background: var(--amber-mid); color: #78350f; }
+.qt-teaching { background: var(--sky-mid); color: #0c4a6e; }
+
+.q-stem { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.6; margin-bottom: 18px; }
+.q-opts { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.q-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--cream);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink2);
+  user-select: none;
+  transition: all 0.15s;
+}
+.q-opt:hover { border-color: var(--indigo); background: var(--indigo-bg); }
+.q-opt.sc { border-color: var(--sage); background: var(--sage-bg); color: #14532d; }
+.q-opt.si { border-color: var(--rose); background: var(--rose-bg); color: #881337; }
+.q-opt.rc { border-color: var(--sage); background: var(--sage-bg); color: #14532d; }
+.opt-ltr {
+  width: 26px; height: 26px; min-width: 26px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px; font-weight: 600;
+  color: var(--muted);
+  background: var(--white);
+}
+.q-opt.sc .opt-ltr { background: var(--sage); border-color: var(--sage); color: white; }
+.q-opt.si .opt-ltr { background: var(--rose); border-color: var(--rose); color: white; }
+.q-opt.rc .opt-ltr { background: var(--sage-mid); border-color: var(--sage); color: #14532d; }
+
+/* SATA checkbox */
+.opt-chk {
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border2);
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  color: transparent;
+  margin-top: 2px;
+}
+.q-opt.ss .opt-chk { background: var(--indigo); border-color: var(--indigo); color: white; }
+.q-opt.sata-correct-r { border-color: var(--sage); background: var(--sage-bg); color: #14532d; }
+.q-opt.sata-correct-r .opt-chk { background: var(--sage); border-color: var(--sage); color: white; }
+.q-opt.sata-wrong-r { border-color: var(--rose); background: var(--rose-bg); color: #881337; }
+
+.check-btn {
+  margin-top: 14px;
+  background: var(--ink);
+  color: white;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.check-btn:hover { background: var(--coral); }
+.check-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--ink) !important; }
+
+.rationale {
+  display: none;
+  margin-top: 14px;
+  background: linear-gradient(135deg, #fffbeb, #fefce8);
+  border: 1.5px solid var(--amber-mid);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #78350f;
+}
+.rationale .rl { font-family: 'Fira Code', monospace; font-size: 9px; letter-spacing: 2px; color: var(--amber); text-transform: uppercase; margin-bottom: 6px; display: block; font-weight: 500; }
+.rationale strong { color: var(--ink); }
+
+/* ─── SCORE BAR ─── */
+.score-bar {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 28px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.score-big { font-family: 'Fraunces', serif; font-size: 40px; color: var(--ink); }
+.score-big span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: var(--muted); }
+.reset-btn { background: var(--cream); border: 2px solid var(--border); color: var(--muted); padding: 9px 18px; border-radius: 8px; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 600; transition: all 0.15s; }
+.reset-btn:hover { color: var(--ink); border-color: var(--border2); }
+
+/* ─── TIMELINE (LIFESPAN) ─── */
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-item::before { content: ''; position: absolute; left: -24px; top: 5px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--border2); background: var(--white); }
+.tl-item.tl-children::before { background: var(--teal); box-shadow: 0 0 0 2px var(--teal-mid); }
+.tl-item.tl-teen::before { background: var(--amber); box-shadow: 0 0 0 2px var(--amber-mid); }
+.tl-item.tl-elderly::before { background: var(--indigo); box-shadow: 0 0 0 2px var(--indigo-mid); }
+.tl-item.tl-pp::before { background: var(--rose); box-shadow: 0 0 0 2px var(--rose-mid); }
+.tl-label { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.tl-body { font-size: 13.5px; color: var(--ink2); line-height: 1.55; }
+.tl-key { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 4px; display: inline-block; margin-top: 6px; }
+
+/* ─── EMERGENCY TABLE ─── */
+.emer-row { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 0; border-bottom: 1px solid var(--border); }
+.emer-row:last-child { border-bottom: none; }
+.emer-cell { padding: 14px 16px; font-size: 13px; color: var(--ink2); line-height: 1.5; vertical-align: top; }
+.emer-cell:not(:last-child) { border-right: 1px solid var(--border); }
+.emer-cell strong { color: var(--ink); }
+.emer-head { background: var(--cream); }
+.emer-head .emer-cell { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 10px 16px; }
+
+/* ─── QUICK REF FINAL CHEAT SHEET ─── */
+.cheat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cheat-block {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+}
+.cheat-block h4 { font-family: 'Fraunces', serif; font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.cheat-block ul { list-style: none; padding: 0; }
+.cheat-block ul li { font-size: 13px; color: var(--ink2); padding: 5px 0 5px 16px; position: relative; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.cheat-block ul li:last-child { border-bottom: none; }
+.cheat-block ul li::before { content: '•'; position: absolute; left: 0; color: var(--coral); font-weight: 700; }
+.cheat-block ul li strong { color: var(--ink); }
+
+/* ─── DIVIDER ─── */
+hr.div { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+
+/* ─── SECTION SUBTITLE ─── */
+.section-sub { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; margin-top: 28px; display: flex; align-items: center; gap: 8px; }
+.section-sub::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ─── MOBILE ─── */
+@media(max-width: 768px) {
+  #sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; }
+  .page-banner { padding: 32px 24px 28px; }
+  .page-banner h1 { font-size: 36px; }
+  .page-banner::after { display: none; }
+  .page-body { padding: 24px 20px 60px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .stage-track { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .home-nav-grid { grid-template-columns: 1fr 1fr; }
+  .cheat-grid { grid-template-columns: 1fr; }
+  .emer-row { grid-template-columns: 1fr; }
+}
+
+#mob-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px; right: 20px;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+@media(max-width: 768px) { #mob-btn { display: flex; align-items: center; justify-content: center; } }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav id="sidebar">
+  <div class="sb-brand">
+    <div class="eyebrow">HCC II · Exam 4</div>
+    <h2>Mood Disorders<br>Study Guide</h2>
+    <span class="badge">Spring 2026</span>
+  </div>
+
+  <!-- TIMER -->
+  <div class="timer-widget">
+    <div class="timer-label">Study Timer</div>
+    <div class="timer-display" id="timer-disp">00:00</div>
+    <div class="timer-btns">
+      <button class="timer-btn start" id="timer-start" onclick="timerToggle()">Start</button>
+      <button class="timer-btn" onclick="timerReset()">Reset</button>
+    </div>
+  </div>
+
+  <div class="sb-section-label">Overview</div>
+  <a class="sb-item active" onclick="show('home')"><span class="dot" style="background:#1c1917"></span>Home</a>
+  <div class="sb-section-label">Core Content</div>
+  <a class="sb-item" onclick="show('concepts')"><span class="dot" style="background:var(--indigo)"></span>Core Concepts</a>
+  <a class="sb-item" onclick="show('depression')"><span class="dot" style="background:var(--sky)"></span>Depression</a>
+  <a class="sb-item" onclick="show('mania')"><span class="dot" style="background:var(--coral)"></span>Mania & Bipolar</a>
+  <a class="sb-item" onclick="show('suicide')"><span class="dot" style="background:var(--rose)"></span>Suicide — Priority</a>
+  <div class="sb-section-label">Pharmacology</div>
+  <a class="sb-item" onclick="show('meds')"><span class="dot" style="background:var(--teal)"></span>Medications</a>
+  <a class="sb-item" onclick="show('ect')"><span class="dot" style="background:var(--amber)"></span>ECT & Therapy</a>
+  <div class="sb-section-label">Practice</div>
+  <a class="sb-item" onclick="show('nclex')"><span class="dot" style="background:var(--plum)"></span>NCLEX Questions</a>
+  <a class="sb-item" onclick="show('quickref')"><span class="dot" style="background:var(--sage)"></span>Quick Reference</a>
+</nav>
+
+<button id="mob-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+
+<!-- ════ HOME ════ -->
+<div id="pg-home" class="page active">
+  <div class="page-banner banner-coral" data-emoji="🧠">
+    <div class="eyebrow">Exam 4 · HCC II</div>
+    <h1>Mood Disorders<br>Master Guide</h1>
+    <p>Depression · Mania · Bipolar Disorder · Suicide Prevention. Everything your exam needs — assessments, interventions, pharmacology & NCLEX practice.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="home-nav-grid">
+      <div class="hnc hnc-indigo" onclick="show('concepts')"><div class="ico">🧩</div><div class="ht">Core Concepts</div><div class="hd">Mood vs affect, anhedonia, affect types</div></div>
+      <div class="hnc hnc-coral" onclick="show('depression')"><div class="ico">😞</div><div class="ht">Depression</div><div class="hd">DSM criteria, risk factors, lifespan assessment</div></div>
+      <div class="hnc hnc-rose" onclick="show('mania')"><div class="ico">⚡</div><div class="ht">Mania & Bipolar</div><div class="hd">3 stages, symptoms, nursing interventions</div></div>
+      <div class="hnc hnc-rose" onclick="show('suicide')"><div class="ico">🚨</div><div class="ht">Suicide — #1 Priority</div><div class="hd">Plan/Means/Intent, safety plan, inpatient care</div></div>
+      <div class="hnc hnc-teal" onclick="show('meds')"><div class="ico">💊</div><div class="ht">Medications</div><div class="hd">SSRIs, MAOIs, Lithium, toxicity levels</div></div>
+      <div class="hnc hnc-plum" onclick="show('nclex')"><div class="ico">📝</div><div class="ht">NCLEX Practice</div><div class="hd">12 questions with rationales — SATA, Priority, more</div></div>
+    </div>
+
+    <div class="g4">
+      <div class="stat-tile stat-coral">
+        <div class="label">Depression Duration</div>
+        <div class="big">≥2</div>
+        <div class="sub">weeks + 5 symptoms</div>
+      </div>
+      <div class="stat-tile stat-teal">
+        <div class="label">Lithium Therapeutic</div>
+        <div class="big" style="font-size:26px">0.4–1.4</div>
+        <div class="sub">mEq/L · Toxic ≥1.5</div>
+      </div>
+      <div class="stat-tile stat-rose">
+        <div class="label">Suicide #1 Risk</div>
+        <div class="big" style="font-size:22px">Prior<br>Attempt</div>
+        <div class="sub">Biggest predictor</div>
+      </div>
+      <div class="stat-tile stat-amber">
+        <div class="label">Mania Stages</div>
+        <div class="big">3</div>
+        <div class="sub">Hypo → Acute → Delirious</div>
+      </div>
+    </div>
+
+    <div class="section-sub">⚠️ Exam Traps to Avoid</div>
+    <div class="card">
+      <table class="tbl">
+        <tr><th>Wrong Answer</th><th>Why It Fails</th><th>✅ Correct Choice</th></tr>
+        <tr><td>Ignore inappropriate manic behavior</td><td>Never therapeutic — no limit is set</td><td><strong>"That behavior is inappropriate"</strong> — calm, firm, direct</td></tr>
+        <tr><td>Let suicidal patient refuse care</td><td>Safety always overrides autonomy</td><td>Protect the patient. Safety first.</td></tr>
+        <tr><td>Safety contract for suicidal patient</td><td>Contracts are outdated & ineffective</td><td>Use a <strong>Safety PLAN</strong> with contacts & steps</td></tr>
+        <tr><td>Serve manic patient a full meal tray</td><td>They can't sit still long enough</td><td><strong>Finger foods</strong> — high calorie, portable</td></tr>
+        <tr><td>MAOI + tyramine foods</td><td>→ Hypertensive Crisis</td><td>Avoid aged cheese, cured meats, alcohol</td></tr>
+        <tr><td>MAOI + SSRI together</td><td>→ Serotonin Syndrome</td><td>Require 2-week washout period</td></tr>
+        <tr><td>Sudden calmness = patient improving</td><td>May signal decision to act on suicide</td><td>Assess immediately — RED FLAG</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CONCEPTS ════ -->
+<div id="pg-concepts" class="page">
+  <div class="page-banner banner-indigo" data-emoji="🧩">
+    <div class="eyebrow">Foundation</div>
+    <h1>Core Concepts</h1>
+    <p>Get the vocabulary right before anything else — the exam will test whether you know what the patient feels vs. what you observe.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="tab(this,'tc','t-mood')">Mood vs Affect</button>
+      <button class="tab-btn" onclick="tab(this,'tc','t-types')">Types of Affect</button>
+      <button class="tab-btn" onclick="tab(this,'tc','t-anhedonia')">Anhedonia</button>
+      <button class="tab-btn" onclick="tab(this,'tc','t-consequences')">Consequences</button>
+    </div>
+
+    <div id="t-mood" class="tab-panel active" data-tg="tc">
+      <div class="g2">
+        <div class="card">
+          <div class="card-title"><span class="icon" style="background:var(--indigo-bg);font-size:20px">😌</span>Mood — Subjective</div>
+          <div class="callout callout-indigo"><div class="callout-icon">💬</div><div class="callout-body"><strong>Definition</strong>What the patient <em>tells you</em> they feel internally. It is self-reported and subjective.</div></div>
+          <ul class="lst">
+            <li>Reported by the patient, not observed by the nurse</li>
+            <li>Documented using the patient's own words in quotes</li>
+            <li>Example: "I feel hopeless and empty"</li>
+            <li>Can be inconsistent with what you observe</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon" style="background:var(--coral-bg);font-size:20px">👀</span>Affect — Objective</div>
+          <div class="callout callout-teal"><div class="callout-icon">📋</div><div class="callout-body"><strong>Definition</strong>What <em>you observe</em> about the patient's emotional expression — body language, voice, face.</div></div>
+          <ul class="lst">
+            <li>Assessed by the nurse through direct observation</li>
+            <li>Documented using descriptive clinical terms</li>
+            <li>Example: "Patient sits slumped, monotone voice, no eye contact"</li>
+            <li>May mismatch reported mood (important clinical finding)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>NCLEX Tip</strong>If a question says the patient says something → that's mood (subjective). If the question says the nurse observes something → that's affect (objective). This distinction matters for documentation and assessment questions.</div></div>
+    </div>
+
+    <div id="t-types" class="tab-panel" data-tg="tc">
+      <div class="g3">
+        <div class="stat-tile stat-indigo"><div class="label">Flat Affect</div><div class="big" style="font-size:24px">😐</div><div class="sub">No emotional expression whatsoever — no smiling, no frowning, monotone voice</div></div>
+        <div class="stat-tile stat-sky"><div class="label">Blunted Affect</div><div class="big" style="font-size:24px">😑</div><div class="sub">Some expression present, but very minimal and reduced in range</div></div>
+        <div class="stat-tile stat-amber"><div class="label">Labile Affect</div><div class="big" style="font-size:24px">😂😭</div><div class="sub">Rapid, unpredictable shifts — laughing then crying then angry</div></div>
+        <div class="stat-tile stat-coral"><div class="label">Inappropriate Affect</div><div class="big" style="font-size:24px">😆❌</div><div class="sub">Emotion doesn't match situation — laughing at sad news</div></div>
+        <div class="stat-tile stat-plum"><div class="label">Restricted Affect</div><div class="big" style="font-size:24px">😶</div><div class="sub">Narrowed range of expression — some present but noticeably limited</div></div>
+        <div class="stat-tile stat-rose"><div class="label">Anhedonia</div><div class="big" style="font-size:24px">💔</div><div class="sub">Loss of pleasure in previously enjoyed activities — ⭐ CORE DSM symptom</div></div>
+      </div>
+    </div>
+
+    <div id="t-anhedonia" class="tab-panel" data-tg="tc">
+      <div class="callout callout-red"><div class="callout-icon">⭐</div><div class="callout-body"><strong>Why This Is High-Yield</strong>Anhedonia is one of TWO core symptoms required to diagnose major depressive disorder. Every NCLEX question on depression can reference it. Know it cold.</div></div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">What Anhedonia Looks Like</div>
+          <ul class="lst">
+            <li>Stops hobbies they previously loved (reading, sports, music)</li>
+            <li>No interest in socializing or spending time with family</li>
+            <li>Does not respond to things that used to bring joy</li>
+            <li>Food, sex, humor — nothing feels pleasurable</li>
+            <li>Distinct from sadness — it's <strong>emptiness</strong>, not pain</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Clinical Significance</div>
+          <div class="callout callout-teal"><div class="callout-icon">💬</div><div class="callout-body"><strong>Screening Question</strong>"Have you lost interest in activities you used to enjoy?" — This directly assesses for anhedonia.</div></div>
+          <div class="callout callout-amber"><div class="callout-icon">⚡</div><div class="callout-body"><strong>In Mania — The Opposite</strong>Patients pursue excessive pleasurable activities with poor judgment: spending sprees, risky sex, impulsive projects.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="t-consequences" class="tab-panel" data-tg="tc">
+      <div class="g3">
+        <div class="card"><div class="card-title"><span class="icon" style="background:var(--rose-bg)">👥</span>Social</div><ul class="lst"><li>Poor quality relationships</li><li>Social withdrawal and isolation</li><li>Family stress and conflict</li><li>Loss of friendships</li></ul></div>
+        <div class="card"><div class="card-title"><span class="icon" style="background:var(--amber-bg)">💼</span>Functional</div><ul class="lst"><li>Decreased work productivity</li><li>Job loss or academic failure</li><li>Inability to perform ADLs</li><li>Financial consequences</li></ul></div>
+        <div class="card"><div class="card-title"><span class="icon" style="background:var(--rose-bg)">🏥</span>Health</div><ul class="lst"><li>↑ Healthcare utilization</li><li>Chronic illness worsening</li><li>Substance abuse comorbidity</li><li><strong>HIGH SUICIDE RISK</strong></li></ul></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ DEPRESSION ════ -->
+<div id="pg-depression" class="page">
+  <div class="page-banner banner-coral" data-emoji="😞">
+    <div class="eyebrow">Core Content</div>
+    <h1>Depression</h1>
+    <p>Know the DSM criteria cold, recognize every symptom category, and understand how presentation changes across the lifespan.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="tab(this,'td','td-dsm')">DSM Criteria</button>
+      <button class="tab-btn" onclick="tab(this,'td','td-sig')">SIG E CAPS</button>
+      <button class="tab-btn" onclick="tab(this,'td','td-risk')">Risk Factors</button>
+      <button class="tab-btn" onclick="tab(this,'td','td-assess')">Assessment</button>
+      <button class="tab-btn" onclick="tab(this,'td','td-lifespan')">Lifespan</button>
+    </div>
+
+    <div id="td-dsm" class="tab-panel active" data-tg="td">
+      <div class="callout callout-red"><div class="callout-icon">📋</div><div class="callout-body"><strong>The Formula</strong>≥ 2 WEEKS duration · Must include ≥1 core symptom · Total of ≥5 symptoms</div></div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">Must Have At Least ONE Core Symptom</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+            <div style="background:var(--coral-bg);border:2px solid var(--coral-mid);border-radius:12px;padding:18px;text-align:center">
+              <div style="font-size:30px;margin-bottom:6px">😞</div>
+              <div style="font-weight:700;color:var(--ink);font-size:13px">Depressed Mood</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:4px">Most of the day, nearly every day</div>
+            </div>
+            <div style="background:var(--rose-bg);border:2px solid var(--rose-mid);border-radius:12px;padding:18px;text-align:center">
+              <div style="font-size:30px;margin-bottom:6px">💔</div>
+              <div style="font-weight:700;color:var(--ink);font-size:13px">Anhedonia</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:4px">Loss of interest or pleasure</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Additional Symptoms (need ≥5 total)</div>
+          <div class="chip-grid">
+            <div class="chip">😴 Insomnia / Hypersomnia</div>
+            <div class="chip">⚖️ Weight change (&gt;5%/month)</div>
+            <div class="chip">😩 Fatigue, loss of energy</div>
+            <div class="chip">🐢 Psychomotor retardation</div>
+            <div class="chip">🧠 Poor concentration</div>
+            <div class="chip">🤔 Indecisiveness</div>
+            <div class="chip">💔 Worthlessness / Guilt</div>
+            <div class="chip">🌑 Hopelessness</div>
+            <div class="chip">☠️ Suicidal ideation</div>
+          </div>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="stat-tile stat-coral"><div class="label">Duration</div><div class="big">2 wks</div><div class="sub">Minimum to diagnose</div></div>
+        <div class="stat-tile stat-rose"><div class="label">Symptoms Required</div><div class="big">≥ 5</div><div class="sub">Including core symptom</div></div>
+        <div class="stat-tile stat-indigo"><div class="label">Core Symptoms</div><div class="big">2</div><div class="sub">Must have at least 1</div></div>
+      </div>
+    </div>
+
+    <div id="td-sig" class="tab-panel" data-tg="td">
+      <div class="mnemonic">
+        <div class="mnemonic-word">SIG E CAPS</div>
+        <div class="mn-row"><div class="mn-letter">S</div><div class="mn-text"><strong>Sleep</strong> — insomnia or hypersomnia; changes in sleep pattern</div></div>
+        <div class="mn-row"><div class="mn-letter">I</div><div class="mn-text"><strong>Interest</strong> — loss of interest (anhedonia) in previously enjoyed activities</div></div>
+        <div class="mn-row"><div class="mn-letter">G</div><div class="mn-text"><strong>Guilt</strong> — feelings of worthlessness, excessive or inappropriate guilt</div></div>
+        <div class="mn-row"><div class="mn-letter">E</div><div class="mn-text"><strong>Energy</strong> — fatigue, loss of energy nearly every day</div></div>
+        <div class="mn-row"><div class="mn-letter">C</div><div class="mn-text"><strong>Concentration</strong> — difficulty thinking, focusing, or making decisions</div></div>
+        <div class="mn-row"><div class="mn-letter">A</div><div class="mn-text"><strong>Appetite</strong> — significant weight loss or gain without dieting</div></div>
+        <div class="mn-row"><div class="mn-letter">P</div><div class="mn-text"><strong>Psychomotor</strong> — retardation (slowed) or agitation (restless, can't sit still)</div></div>
+        <div class="mn-row"><div class="mn-letter">S</div><div class="mn-text"><strong>Suicidality</strong> — recurrent thoughts of death, suicidal ideation, plan, attempt</div></div>
+      </div>
+      <div class="callout callout-amber"><div class="callout-icon">💡</div><div class="callout-body"><strong>How to Use This Mnemonic</strong>"SIG E CAPS" is like a prescription — "SIG" means directions on a prescription label. Write it like a prescription: "Sig: Energy Caps" — you're prescribing energy capsules to a depressed patient. The letters = the 8 additional criteria beyond core mood symptoms.</div></div>
+    </div>
+
+    <div id="td-risk" class="tab-panel" data-tg="td">
+      <div class="g2">
+        <div>
+          <div class="callout callout-red"><div class="callout-icon">🔴</div><div class="callout-body"><strong>Strongest Predictors</strong>Prior depressive episode · Family history · Female gender · Age &lt;40</div></div>
+          <div class="card">
+            <div class="card-title">All Risk Factors</div>
+            <ul class="lst">
+              <li><strong>Prior depressive episode</strong> — strongest predictor of recurrence</li>
+              <li><strong>Family history</strong> of depression or mood disorders</li>
+              <li><strong>Female gender</strong> — 2× more likely than males</li>
+              <li><strong>Age &lt;40</strong> — peak onset in young adulthood</li>
+              <li><strong>Postpartum period</strong> — hormonal changes + stress + sleep deprivation</li>
+              <li><strong>Chronic illness</strong> — cancer, diabetes, heart disease, chronic pain</li>
+              <li><strong>Substance abuse</strong> — self-medication, worsens depression</li>
+              <li><strong>Lack of social support</strong> — isolation is a major driver</li>
+              <li><strong>Trauma / abuse history</strong> — ACEs strongly correlated</li>
+              <li><strong>Medications</strong> — steroids, antihypertensives, hormonal contraceptives</li>
+              <li><strong>Medical conditions</strong> — thyroid disorders, vitamin deficiencies</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-title">Medical Causes — Always Screen</div>
+            <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Rule Out Medical First</strong>Thyroid disorders, anemia, vitamin D deficiency, and chronic pain can all mimic or cause depression. The nurse assesses for these before attributing symptoms purely to psychiatric cause.</div></div>
+            <ul class="lst">
+              <li>Hypothyroidism → fatigue, weight gain, low mood</li>
+              <li>Anemia → fatigue, cognitive slowing</li>
+              <li>Chronic pain syndromes</li>
+              <li>Neurological disorders (Parkinson's, dementia)</li>
+              <li>Corticosteroids — mood changes are common side effect</li>
+              <li>Antihypertensives — beta-blockers linked to depression</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="td-assess" class="tab-panel" data-tg="td">
+      <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Priority #1 — Always Assess Suicide Risk First</strong>Before ANY other nursing action — assess for suicidal ideation. This is non-negotiable in any patient with depression.</div></div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">Assessment Framework</div>
+          <div class="prio prio-red">🚨 First — Suicide Risk</div>
+          <ul class="lst">
+            <li>Do they have a <strong>plan</strong>?</li>
+            <li>Do they have access to <strong>means</strong>?</li>
+            <li>Do they have <strong>intent</strong> to act?</li>
+          </ul>
+          <div class="prio prio-amber" style="margin-top:14px">⚠️ Also Assess</div>
+          <ul class="lst">
+            <li>Substance use history</li>
+            <li>Medical causes — thyroid, chronic illness</li>
+            <li>Medications causing mood changes</li>
+            <li>Support system and living situation</li>
+          </ul>
+          <div class="prio prio-teal" style="margin-top:14px">📋 Screening Questions</div>
+          <ul class="lst">
+            <li>"Have you been feeling depressed or hopeless?"</li>
+            <li>"Have you lost interest in things you used to enjoy?"</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Screening Tools</div>
+          <div class="fr"><span class="fl">PHQ-9</span><span class="fv">Gold standard 9-item depression scale</span></div>
+          <div class="fr"><span class="fl">PHQ-2</span><span class="fv">2-question rapid screen (anhedonia + mood)</span></div>
+          <div class="fr"><span class="fl">Edinburgh Scale</span><span class="fv">Postpartum depression screening</span></div>
+          <div class="fr"><span class="fl">Columbia Scale</span><span class="fv">Suicide severity rating scale</span></div>
+          <hr class="div">
+          <div class="callout callout-indigo"><div class="callout-icon">💡</div><div class="callout-body"><strong>PHQ-2 Questions</strong>"Over the last 2 weeks, have you had little interest or pleasure in doing things?" and "Feeling down, depressed, or hopeless?" Score ≥3 → full PHQ-9.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="td-lifespan" class="tab-panel" data-tg="td">
+      <div class="timeline">
+        <div class="tl-item tl-children">
+          <div class="tl-label">Children</div>
+          <div class="tl-body">Crying spells, social withdrawal, school refusal, somatic complaints (stomachache, headache). Rarely say "I feel sad" — look for behavioral changes.</div>
+          <span class="tl-key" style="background:var(--teal-mid);color:#134e4a">Pearl: Look for behavior, not words</span>
+        </div>
+        <div class="tl-item tl-teen">
+          <div class="tl-label">Adolescents</div>
+          <div class="tl-body"><strong>Irritability — NOT sadness — is the hallmark.</strong> Risk-taking behavior, substance experimentation, academic decline, isolating from peers. Easily missed as "just a phase."</div>
+          <span class="tl-key" style="background:var(--amber-mid);color:#78350f">Pearl: Irritability in teens = rule out depression</span>
+        </div>
+        <div class="tl-item tl-elderly">
+          <div class="tl-label">Elderly</div>
+          <div class="tl-body">Often presents as physical complaints — pain, fatigue, cognitive slowing. Frequently <strong>underdiagnosed</strong> because symptoms are attributed to "normal aging." May not report sadness.</div>
+          <span class="tl-key" style="background:var(--indigo-mid);color:#312e81">Pearl: Never assume it's just aging — screen with PHQ-9</span>
+        </div>
+        <div class="tl-item tl-pp">
+          <div class="tl-label">Postpartum</div>
+          <div class="tl-body">"Baby blues" = mild, resolves within <strong>2 weeks</strong>. <strong>Postpartum depression</strong> = severe, persistent beyond 2 weeks, requires treatment. Can escalate to postpartum psychosis — hallucinations, delusions = EMERGENCY.</div>
+          <span class="tl-key" style="background:var(--rose-mid);color:#881337">Pearl: Screening at every postpartum visit; ask about thoughts of harming self or baby</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ MANIA ════ -->
+<div id="pg-mania" class="page">
+  <div class="page-banner banner-teal" data-emoji="⚡">
+    <div class="eyebrow">Core Content</div>
+    <h1>Mania &amp; Bipolar</h1>
+    <p>Three stages of severity, each requiring a different response. Know when to hospitalize, how to set limits, and how to safely nourish and de-escalate.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="tab(this,'tm','tm-stages')">3 Stages</button>
+      <button class="tab-btn" onclick="tab(this,'tm','tm-symptoms')">Symptoms</button>
+      <button class="tab-btn" onclick="tab(this,'tm','tm-nursing')">Nursing Care</button>
+      <button class="tab-btn" onclick="tab(this,'tm','tm-compare')">vs. Depression</button>
+    </div>
+
+    <div id="tm-stages" class="tab-panel active" data-tg="tm">
+      <div class="stage-track">
+        <div class="stage-card s1">
+          <div class="s-num">Stage 1</div>
+          <div class="s-name">🌤 Hypomania</div>
+          <div class="s-desc">Elevated mood, increased energy, <em>still functional</em>. May feel like they're at their best. Does NOT yet require hospitalization.</div>
+          <div style="margin-top:12px"><span class="pill p-amber">Mild</span><span class="pill p-amber">Functional</span><span class="pill p-amber">Outpatient</span></div>
+        </div>
+        <div class="stage-card s2">
+          <div class="s-num">Stage 2</div>
+          <div class="s-name">⚡ Acute Mania</div>
+          <div class="s-desc">Severe impairment. Flight of ideas, grandiosity, pressured speech, poor judgment. <strong>Hospitalization required.</strong></div>
+          <div style="margin-top:12px"><span class="pill p-coral">Severe</span><span class="pill p-coral">Hospitalize</span><span class="pill p-coral">Impaired</span></div>
+        </div>
+        <div class="stage-card s3">
+          <div class="s-num">Stage 3 🚨</div>
+          <div class="s-name">🔥 Delirious Mania</div>
+          <div class="s-desc">Hallucinations + Delusions + Extreme agitation + Panic = <strong>Psychiatric Emergency.</strong> Full crisis intervention.</div>
+          <div style="margin-top:12px"><span class="pill p-rose">Emergency</span><span class="pill p-rose">Psychotic Features</span></div>
+        </div>
+      </div>
+      <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Recognize Stage 3 on Your Exam</strong>The combination of hallucinations + delusions + extreme agitation + panic together = Delirious Mania. This is a psychiatric emergency. Not just "bad mania" — it requires emergency-level intervention immediately.</div></div>
+    </div>
+
+    <div id="tm-symptoms" class="tab-panel" data-tg="tm">
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">Mood & Cognitive</div>
+          <ul class="lst">
+            <li><strong>Elevated or irritable mood</strong> — can swing between euphoric and explosive</li>
+            <li><strong>Grandiosity</strong> — inflated self-esteem, believes they have special powers or status</li>
+            <li><strong>Flight of ideas</strong> — rapid topic-jumping, thoughts racing faster than speech</li>
+            <li><strong>Pressured speech</strong> — talks non-stop, hard or impossible to interrupt</li>
+            <li><strong>Distractibility</strong> — pulled to every irrelevant stimuli in the environment</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Behavioral</div>
+          <ul class="lst">
+            <li><strong>Decreased need for sleep</strong> — feels fully rested after 2–3 hours</li>
+            <li><strong>Impulsivity</strong> — acts without thinking through consequences</li>
+            <li><strong>Poor judgment</strong> — spending sprees, risky investments, reckless driving</li>
+            <li><strong>Hypersexuality</strong> — inappropriate sexual behavior toward others</li>
+            <li><strong>Psychomotor agitation</strong> — constant movement, can't sit still</li>
+            <li><strong>Poor nutrition</strong> — too distracted/energized to eat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tm-nursing" class="tab-panel" data-tg="tm">
+      <div class="g2">
+        <div>
+          <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Safety — Always First</strong>Monitor for risky behaviors (financial, sexual, reckless). Remove opportunities for poor judgment. This is priority #1.</div></div>
+
+          <div class="card" style="margin-bottom:16px">
+            <div class="card-title">🌙 Sleep</div>
+            <ul class="lst">
+              <li>Encourage rest periods and naps throughout the day</li>
+              <li>Monitor total sleep — deprivation worsens mania</li>
+              <li>Dim lights in evenings, reduce stimulation at night</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title">🔇 Environment — Key Intervention</div>
+            <div class="callout callout-teal"><div class="callout-icon">🔑</div><div class="callout-body"><strong>LOW STIMULUS = Most Important Intervention</strong>Private, quiet room away from high-traffic areas. Reduce noise, people, and sensory input. This directly reduces agitation.</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:16px">
+            <div class="card-title">🍔 Nutrition Strategy</div>
+            <div class="callout callout-amber"><div class="callout-icon">✅</div><div class="callout-body"><strong>Finger Foods Only</strong>Manic patients cannot sit still for a full meal. Provide high-calorie, portable snacks: sandwiches, granola bars, cheese, fruit, protein bars.</div></div>
+            <ul class="lst">
+              <li>Daily weights to detect nutritional decline</li>
+              <li>Monitor I&O — dehydration risk</li>
+              <li>Hydration throughout the day</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title">🗣️ Communication</div>
+            <ul class="lst">
+              <li><strong>Never argue</strong> — escalates agitation immediately</li>
+              <li>Set clear, firm, consistent limits</li>
+              <li>Stay calm — don't mirror their energy</li>
+              <li>Use short, simple, direct sentences</li>
+            </ul>
+            <div class="callout callout-red" style="margin-top:12px"><div class="callout-icon">📢</div><div class="callout-body"><strong>Inappropriate Behavior Script</strong>Say: "That behavior is inappropriate." — Direct, calm, non-argumentative. Never ignore it. Never lecture at length.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tm-compare" class="tab-panel" data-tg="tm">
+      <div class="compare">
+        <div class="compare-col">
+          <h4 style="color:var(--indigo)">😞 Depression</h4>
+          <ul class="lst">
+            <li>Low energy, constant fatigue</li>
+            <li>Psychomotor <em>retardation</em> (slowed down)</li>
+            <li>Decreased, slow speech</li>
+            <li>Hypersomnia OR insomnia</li>
+            <li>Poor appetite, weight change</li>
+            <li>Hopeless, worthless, guilty</li>
+            <li>Social withdrawal</li>
+            <li>Flat or blunted affect</li>
+            <li>Loss of pleasure (anhedonia)</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <h4 style="color:var(--coral)">⚡ Mania</h4>
+          <ul class="lst">
+            <li>High energy, feels invincible</li>
+            <li>Psychomotor <em>agitation</em> (can't sit still)</li>
+            <li>Pressured, rapid, non-stop speech</li>
+            <li>Decreased <em>need</em> for sleep (feels rested)</li>
+            <li>Neglects eating (too busy)</li>
+            <li>Grandiose, inflated self-esteem</li>
+            <li>Over-involved with everyone</li>
+            <li>Labile or elevated affect</li>
+            <li>Pursues excessive pleasures</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-plum"><div class="callout-icon">🧠</div><div class="callout-body"><strong>Bipolar Disorder</strong>Patients cycle between depression and mania. They may present at either pole, or experience mixed states. Treatment requires mood stabilizers (lithium, valproate) — not just antidepressants, which can precipitate mania.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ SUICIDE ════ -->
+<div id="pg-suicide" class="page">
+  <div class="page-banner banner-rose" data-emoji="🚨">
+    <div class="eyebrow">Highest Priority</div>
+    <h1>Suicide Assessment<br>&amp; Prevention</h1>
+    <p>The #1 nursing priority in psychiatric care. Safety always beats autonomy. Know how to assess, intervene, and protect.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Non-Negotiable NCLEX Rule</strong>Suicide risk assessment is ALWAYS the FIRST nursing priority with any psychiatric patient — before medication, before education, before any other assessment. Period.</div></div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="tab(this,'ts','ts-risk')">Risk Factors</button>
+      <button class="tab-btn" onclick="tab(this,'ts','ts-assess')">Assessment</button>
+      <button class="tab-btn" onclick="tab(this,'ts','ts-inpatient')">Inpatient Safety</button>
+      <button class="tab-btn" onclick="tab(this,'ts','ts-warning')">Warning Signs</button>
+      <button class="tab-btn" onclick="tab(this,'ts','ts-family')">Family Teaching</button>
+    </div>
+
+    <div id="ts-risk" class="tab-panel active" data-tg="ts">
+      <div class="g2">
+        <div>
+          <div class="callout callout-red"><div class="callout-icon">🔴</div><div class="callout-body"><strong>Biggest Risk Factor</strong>Previous suicide attempt — the single strongest predictor of future attempts. ALWAYS ask about history.</div></div>
+          <div class="card">
+            <div class="card-title">All Risk Factors</div>
+            <ul class="lst">
+              <li><strong>Previous attempt</strong> — #1 predictor</li>
+              <li>Depression or major mood disorder</li>
+              <li>Substance abuse (↑ impulsivity + hopelessness)</li>
+              <li>Lack of social support / isolation</li>
+              <li>Access to lethal means (firearms, stockpiled meds)</li>
+              <li>Family history of suicide</li>
+              <li>Chronic pain or terminal illness</li>
+              <li>Recent significant loss (job, relationship, death)</li>
+              <li>Male gender (higher completion rate)</li>
+              <li>History of trauma or abuse</li>
+              <li>LGBTQ+ youth — significantly elevated risk</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="g2" style="margin-bottom:16px">
+            <div class="stat-tile stat-rose"><div class="label">Attempt History</div><div class="big">#1</div><div class="sub">Biggest risk factor</div></div>
+            <div class="stat-tile stat-amber"><div class="label">Completion Rate</div><div class="big">♂</div><div class="sub">Males complete at higher rates</div></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Protective Factors</div>
+            <ul class="lst">
+              <li>Strong social support network</li>
+              <li>Religious or spiritual beliefs against suicide</li>
+              <li>Children or dependents at home</li>
+              <li>Engaged in treatment</li>
+              <li>Sense of purpose and future plans</li>
+              <li>Restricted access to lethal means</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ts-assess" class="tab-panel" data-tg="ts">
+      <div class="callout callout-sage"><div class="callout-icon">💬</div><div class="callout-body"><strong>Ask Directly — It's Safe</strong>"Are you thinking about killing yourself?" Direct questioning does NOT increase suicide risk — research proves it. It opens the door for help.</div></div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">The 4 Assessment Points</div>
+          <div class="fr"><span class="fl" style="font-weight:700;color:var(--rose)">PLAN</span><span class="fv">Is there a specific method, time, and place?</span></div>
+          <div class="fr"><span class="fl" style="font-weight:700;color:var(--rose)">MEANS</span><span class="fv">Do they have access to that method? (gun, pills, etc.)</span></div>
+          <div class="fr"><span class="fl" style="font-weight:700;color:var(--rose)">INTENT</span><span class="fv">Do they actually intend to carry it out?</span></div>
+          <div class="fr"><span class="fl" style="font-weight:700;color:var(--rose)">TIMELINE</span><span class="fv">Is there a specific time they're planning?</span></div>
+          <hr class="div">
+          <div class="callout callout-amber"><div class="callout-icon">📊</div><div class="callout-body"><strong>Risk Level Guides Action</strong>The more specific the plan + means + intent + timeline → the higher the immediate risk → the more intensive the intervention required.</div></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Outpatient Interventions</div>
+          <div class="callout callout-plum"><div class="callout-icon">📋</div><div class="callout-body"><strong>Safety PLAN — Not Contract</strong>Outdated "no-harm contracts" are ineffective. A safety plan includes: warning signs to watch for, coping strategies, contacts to call (988), places to go, means restriction steps.</div></div>
+          <ul class="lst">
+            <li>Involve trusted family members in the safety plan</li>
+            <li>Schedule frequent follow-up appointments</li>
+            <li>Means restriction counseling — remove firearms, lock medications</li>
+            <li>Provide 988 Suicide & Crisis Lifeline number</li>
+            <li>Document everything thoroughly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="ts-inpatient" class="tab-panel" data-tg="ts">
+      <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>1:1 Constant Observation — Never Leave Alone</strong>A suicidal inpatient requires continuous, uninterrupted 1:1 observation. Not "checking every 15 minutes" — constant, visual observation at all times.</div></div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">Environment — Remove Immediately</div>
+          <div class="chip-grid">
+            <div class="chip">🔪 Sharp objects</div>
+            <div class="chip">👔 Belts & ties</div>
+            <div class="chip">👟 Shoelaces</div>
+            <div class="chip">💊 All medications</div>
+            <div class="chip">🪢 Cords & strings</div>
+            <div class="chip">🛍️ Plastic bags</div>
+            <div class="chip">🔌 Electronics cords</div>
+            <div class="chip">🧥 Drawstrings</div>
+          </div>
+          <div class="callout callout-amber" style="margin-top:14px"><div class="callout-icon">📦</div><div class="callout-body"><strong>Search Belongings on Admission</strong>This is standard of care — not optional, not requiring a separate order. Done immediately on admission for all suicidal patients.</div></div>
+        </div>
+        <div class="card">
+          <div class="card-title">NCLEX Priority Rules</div>
+          <div style="background:var(--rose-bg);border:2px solid var(--rose-mid);border-radius:12px;padding:18px;text-align:center;margin-bottom:14px">
+            <div style="font-family:'Fraunces',serif;font-size:22px;color:var(--rose);margin-bottom:4px">SAFETY</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:4px">always beats</div>
+            <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--muted)">AUTONOMY</div>
+          </div>
+          <ul class="lst">
+            <li>Patient refuses search → search anyway — safety overrides</li>
+            <li>Patient refuses medication → address safety first, then rights</li>
+            <li>Patient says they're "fine now" → increased vigilance, not decreased</li>
+            <li>Sudden calm in depressed patient → RED FLAG, not reassurance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="ts-warning" class="tab-panel" data-tg="ts">
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">Verbal Warning Signs</div>
+          <ul class="lst">
+            <li>"I wish I were dead"</li>
+            <li>"Everyone would be better off without me"</li>
+            <li>"I can't take it anymore"</li>
+            <li>"I won't be a problem much longer"</li>
+            <li>"What's the point of anything?"</li>
+            <li>Asking about lethal doses of medications</li>
+            <li>"I just want it all to stop"</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Behavioral Warning Signs</div>
+          <ul class="lst">
+            <li><strong>Sudden calm after severe depression</strong> — may have decided to act</li>
+            <li>Giving away prized possessions</li>
+            <li>Saying unusual goodbyes</li>
+            <li>Getting affairs in order (will, finances)</li>
+            <li>Stockpiling medications</li>
+            <li>Researching methods</li>
+            <li>Withdrawing from loved ones</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-red"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Sudden Calmness = RED FLAG</strong>A severely depressed patient who suddenly seems peaceful and content may have made a decision to act on suicide. This is NOT improvement — assess immediately and increase observation level.</div></div>
+    </div>
+
+    <div id="ts-family" class="tab-panel" data-tg="ts">
+      <div class="card">
+        <div class="card-title">Family Education Points</div>
+        <div class="g2">
+          <ul class="lst">
+            <li><strong>Take ALL threats seriously</strong> — "they're just saying it" is dangerous thinking</li>
+            <li><strong>Never keep secrets</strong> — if patient asks them not to tell anyone, they MUST tell</li>
+            <li><strong>Remove all weapons</strong> from home — especially firearms</li>
+            <li><strong>Lock or remove medications</strong> — dispense one dose at a time if possible</li>
+          </ul>
+          <ul class="lst">
+            <li>Know the warning signs and what to do</li>
+            <li>Save 988 in their phone (Suicide & Crisis Lifeline)</li>
+            <li>Know the closest ER with psychiatric services</li>
+            <li>Don't leave the person alone if in immediate crisis</li>
+          </ul>
+        </div>
+        <div class="callout callout-teal" style="margin-top:14px"><div class="callout-icon">📞</div><div class="callout-body"><strong>988 Suicide & Crisis Lifeline</strong>Available 24/7. Call or text 988. Available in English and Spanish. Provide this number to both patient and family members as part of the safety plan.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ MEDICATIONS ════ -->
+<div id="pg-meds" class="page">
+  <div class="page-banner banner-teal" data-emoji="💊">
+    <div class="eyebrow">Pharmacology</div>
+    <h1>Psychiatric<br>Medications</h1>
+    <p>Antidepressants, mood stabilizers, and lithium. Know your drug classes, critical safety points, and patient teaching.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="tab(this,'tk','tk-ssri')">SSRIs / SNRIs</button>
+      <button class="tab-btn" onclick="tab(this,'tk','tk-maoi')">MAOIs</button>
+      <button class="tab-btn" onclick="tab(this,'tk','tk-tca')">TCAs</button>
+      <button class="tab-btn" onclick="tab(this,'tk','tk-lithium')">Lithium ⭐</button>
+      <button class="tab-btn" onclick="tab(this,'tk','tk-other')">Other Stabilizers</button>
+    </div>
+
+    <div id="tk-ssri" class="tab-panel active" data-tg="tk">
+      <div class="drug-card dc-ssri">
+        <div class="drug-name">SSRIs & SNRIs</div>
+        <div class="drug-class">First-Line Antidepressants</div>
+        <div class="g2">
+          <div>
+            <div class="fr"><span class="fl">SSRI Examples</span><span class="fv">Fluoxetine, Sertraline, Escitalopram</span></div>
+            <div class="fr"><span class="fl">SNRI Examples</span><span class="fv">Venlafaxine, Duloxetine</span></div>
+            <div class="fr"><span class="fl">Mechanism (SSRI)</span><span class="fv">↑ Serotonin</span></div>
+            <div class="fr"><span class="fl">Mechanism (SNRI)</span><span class="fv">↑ Serotonin + Norepinephrine</span></div>
+            <div class="fr"><span class="fl">Therapeutic Onset</span><span class="fv">2–4 weeks</span></div>
+            <div class="fr"><span class="fl">Common Side Effects</span><span class="fv">Nausea, sexual dysfunction, insomnia</span></div>
+          </div>
+          <div>
+            <div class="callout callout-red"><div class="callout-icon">⬛</div><div class="callout-body"><strong>Black Box Warning</strong>Increased suicidal ideation in patients under 25 years old — especially in the first 1–2 weeks of treatment. Monitor closely at initiation and with dose changes.</div></div>
+            <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Serotonin Syndrome</strong>Signs: Hyperthermia, agitation, muscle clonus, tachycardia, diaphoresis. Risk ↑ when combined with MAOIs, triptans, or other serotonergic drugs.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tk-maoi" class="tab-panel" data-tg="tk">
+      <div class="drug-card dc-maoi">
+        <div class="drug-name">MAOIs — Monoamine Oxidase Inhibitors</div>
+        <div class="drug-class">Most Dangerous Antidepressant Class</div>
+        <div class="g2">
+          <div>
+            <div class="fr"><span class="fl">Examples</span><span class="fv">Phenelzine (Nardil), Tranylcypromine</span></div>
+            <div class="fr"><span class="fl">Use</span><span class="fv">Treatment-resistant depression</span></div>
+            <div class="fr"><span class="fl">Mechanism</span><span class="fv">Block MAO → ↑ serotonin, NE, dopamine</span></div>
+            <div class="callout callout-red" style="margin-top:12px"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Hypertensive Crisis</strong>MAOI + Tyramine-rich foods → blocked tyramine breakdown → massive NE release → BP ↑↑↑ → stroke, death. Avoid tyramine foods strictly.</div></div>
+            <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>MAOI + SSRI = Serotonin Syndrome</strong>Fatal combination. Requires 2-week washout period between drugs.</div></div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-title">Foods to AVOID (Tyramine)</div>
+              <div class="chip-grid">
+                <div class="chip">🧀 Aged cheese</div>
+                <div class="chip">🥩 Cured/smoked meats</div>
+                <div class="chip">🍷 Red wine & beer</div>
+                <div class="chip">🐟 Smoked salmon</div>
+                <div class="chip">🫙 Fermented foods</div>
+                <div class="chip">🫘 Fava beans</div>
+                <div class="chip">🫒 Pickled items</div>
+                <div class="chip">🍺 Tap beer</div>
+              </div>
+              <div class="callout callout-teal" style="margin-top:12px"><div class="callout-icon">✅</div><div class="callout-body"><strong>Safe Foods</strong>Fresh meats, fresh fish, fresh fruit, fresh vegetables, fresh dairy products — nothing aged, cured, fermented, or smoked.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tk-tca" class="tab-panel" data-tg="tk">
+      <div class="drug-card dc-other">
+        <div class="drug-name">TCAs — Tricyclic Antidepressants</div>
+        <div class="drug-class">Older Class — Used When Others Fail</div>
+        <div class="g2">
+          <div>
+            <div class="fr"><span class="fl">Examples</span><span class="fv">Amitriptyline, Nortriptyline, Imipramine</span></div>
+            <div class="fr"><span class="fl">Uses</span><span class="fv">Depression, neuropathic pain, migraines</span></div>
+            <div class="callout callout-red" style="margin-top:12px"><div class="callout-icon">💀</div><div class="callout-body"><strong>Overdose Risk</strong>Very narrow therapeutic window. Overdose causes fatal cardiac arrhythmias (QT prolongation). Never prescribe large amounts to suicidal patients.</div></div>
+          </div>
+          <div>
+            <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Anticholinergic Side Effects</strong>Dry mouth · Constipation · Urinary retention · Blurred vision · Confusion. Use "ABCDE" to remember: Anticholinergic effects, Blurred vision, Constipation, Dry mouth, Elevated HR.</div></div>
+            <div class="callout callout-amber"><div class="callout-icon">🧍</div><div class="callout-body"><strong>Orthostatic Hypotension</strong>Major fall risk — especially in elderly. Teach patient to rise slowly, dangle legs before standing.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tk-lithium" class="tab-panel" data-tg="tk">
+      <div class="drug-card dc-lithium">
+        <div class="drug-name">Lithium Carbonate ⭐</div>
+        <div class="drug-class">Gold Standard Mood Stabilizer — Know Everything</div>
+        <div class="g2">
+          <div>
+            <div class="fr"><span class="fl">Primary Use</span><span class="fv">Controls mania; prevents suicide</span></div>
+            <div class="fr"><span class="fl">Also Used</span><span class="fv">Bipolar maintenance, depression augmentation</span></div>
+            <div class="fr"><span class="fl">Labs Draw Timing</span><span class="fv">12 hours after last dose (trough)</span></div>
+            <div class="fr"><span class="fl">Also Monitor</span><span class="fv">Kidney function, Thyroid function</span></div>
+            <div class="level-bar">
+              <div class="level-seg" style="background:#94a3b8;flex:1.2"><span class="seg-l">Sub-therapeutic</span>&lt;0.4</div>
+              <div class="level-seg" style="background:var(--teal);flex:2"><span class="seg-l">✅ Therapeutic</span>0.4–1.4 mEq/L</div>
+              <div class="level-seg" style="background:var(--amber);flex:0.4"><span class="seg-l">⚠️</span>1.4–1.5</div>
+              <div class="level-seg" style="background:var(--rose);flex:1"><span class="seg-l">🚨 TOXIC</span>≥1.5 mEq/L</div>
+            </div>
+          </div>
+          <div>
+            <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Early Toxicity (1.5–2.0)</strong>Nausea · Vomiting · Diarrhea · Fine hand tremor · Polyuria · Mild drowsiness</div></div>
+            <div class="callout callout-red"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Late Toxicity (&gt;2.0) — Emergency</strong>Coarse tremor · Confusion/delirium · Muscle twitching · Ataxia (unstable gait) · Seizures · Coma · Death</div></div>
+          </div>
+        </div>
+        <hr class="div">
+        <div class="card-title">Critical Patient Teaching</div>
+        <div class="g2">
+          <ul class="lst">
+            <li><strong>Consistent sodium</strong> — low Na → kidneys retain Li → toxicity</li>
+            <li><strong>Stay hydrated</strong> — dehydration concentrates lithium → toxicity</li>
+            <li><strong>Avoid diuretics</strong> — especially thiazides → ↑ lithium retention</li>
+            <li><strong>Avoid NSAIDs</strong> — ibuprofen ↑ lithium levels dangerously</li>
+          </ul>
+          <ul class="lst">
+            <li>Take with food to reduce GI upset</li>
+            <li>Never skip doses — blood levels must stay stable</li>
+            <li>Report N/V/tremor/confusion immediately</li>
+            <li>Do NOT go on a low-sodium diet without provider guidance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tk-other" class="tab-panel" data-tg="tk">
+      <div class="g2">
+        <div class="drug-card dc-other">
+          <div class="drug-name">Antiepileptics as Mood Stabilizers</div>
+          <div class="drug-class">Second-Line — Especially Bipolar</div>
+          <div class="fr"><span class="fl">Valproate (Depakote)</span><span class="fv">Mania, rapid cycling</span></div>
+          <div class="fr"><span class="fl">Lamotrigine (Lamictal)</span><span class="fv">Bipolar depression, maintenance</span></div>
+          <div class="fr"><span class="fl">Carbamazepine</span><span class="fv">Less used due to interactions</span></div>
+          <div class="callout callout-red" style="margin-top:12px"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Lamotrigine — Stevens-Johnson Syndrome</strong>Severe, life-threatening skin rash. Teach patient: any rash → STOP medication and call provider immediately.</div></div>
+        </div>
+        <div class="drug-card dc-antipsych">
+          <div class="drug-name">Atypical Antipsychotics</div>
+          <div class="drug-class">Dual Use: Mania + Psychosis</div>
+          <div class="fr"><span class="fl">Quetiapine (Seroquel)</span><span class="fv">Bipolar, depression, schizophrenia</span></div>
+          <div class="fr"><span class="fl">Olanzapine (Zyprexa)</span><span class="fv">Acute mania</span></div>
+          <div class="fr"><span class="fl">Risperidone</span><span class="fv">Mania, aggression</span></div>
+          <div class="fr"><span class="fl">Benzodiazepines</span><span class="fv">Short-term acute agitation only</span></div>
+          <div class="callout callout-amber" style="margin-top:12px"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Metabolic Side Effects</strong>Weight gain, hyperglycemia, hyperlipidemia. Monitor glucose, lipids, and weight regularly.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ ECT & THERAPY ════ -->
+<div id="pg-ect" class="page">
+  <div class="page-banner banner-amber" data-emoji="⚡">
+    <div class="eyebrow">Treatment</div>
+    <h1>ECT &amp; Psychotherapy</h1>
+    <p>Electroconvulsive therapy nursing care plus CBT and other therapeutic modalities. The nursing role for ECT is very testable.</p>
+  </div>
+  <div class="page-body">
+    <div class="g2">
+      <div>
+        <div class="card">
+          <div class="card-title">⚡ ECT — Overview</div>
+          <div class="fr"><span class="fl">Uses</span><span class="fv">Severe depression, suicidal patients, mania, treatment-resistant</span></div>
+          <div class="fr"><span class="fl">Contraindication</span><span class="fv">↑ Intracranial pressure</span></div>
+          <div class="fr"><span class="fl">Mechanism</span><span class="fv">Controlled seizure → resets neurotransmitter circuits</span></div>
+          <div class="fr"><span class="fl">Sessions</span><span class="fv">Usually 6–12 treatments, 3×/week</span></div>
+        </div>
+
+        <div class="acc open">
+          <div class="acc-head" onclick="toggleAcc(this)"><span>PRE-ECT Nursing Care</span><span class="arr">▼</span></div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <ul class="lst">
+                <li><strong>NPO for 8 hours</strong> — aspiration risk during procedure</li>
+                <li>Obtain written informed consent</li>
+                <li>Baseline vital signs documented</li>
+                <li>Remove dentures, hairpins, jewelry</li>
+                <li>Empty bladder before procedure</li>
+                <li>Pre-medications as ordered: anesthetic, muscle relaxant, atropine</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc">
+          <div class="acc-head" onclick="toggleAcc(this)"><span>DURING ECT Nursing Care</span><span class="arr">▼</span></div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <ul class="lst">
+                <li>Administer oxygen</li>
+                <li>Muscle relaxant (succinylcholine) to prevent injury during seizure</li>
+                <li>Anesthesia provider present throughout</li>
+                <li>Continuous vital sign monitoring</li>
+                <li>Bite block placed before procedure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc">
+          <div class="acc-head" onclick="toggleAcc(this)"><span>POST-ECT Nursing Care ⭐</span><span class="arr">▼</span></div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <ul class="lst">
+                <li><strong>Vital signs q15 minutes</strong> until stable</li>
+                <li><strong>Side-lying position</strong> — prevents aspiration</li>
+                <li><strong>Reorient the patient</strong> — confusion is EXPECTED and normal</li>
+                <li>Inform patient that short-term memory loss is normal and usually temporary</li>
+                <li>Headache is common — treat symptomatically</li>
+                <li>Monitor for prolonged confusion or seizure activity (unexpected)</li>
+              </ul>
+              <div class="callout callout-teal" style="margin-top:12px"><div class="callout-icon">✅</div><div class="callout-body"><strong>Post-ECT confusion = Expected</strong>When patient asks "Where am I?" after ECT, the nurse reorients them calmly. This is NOT a crisis — it's the expected effect of the induced seizure.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-title">🧠 CBT — Cognitive Behavioral Therapy</div>
+          <div class="callout callout-indigo"><div class="callout-icon">🎯</div><div class="callout-body"><strong>Purpose</strong>Identify and change negative, distorted thinking patterns. The cycle: Thoughts → Feelings → Behaviors. Change the thought, change the feeling.</div></div>
+          <div class="fr"><span class="fl">Best For</span><span class="fv">Depression, anxiety, PTSD, OCD, eating disorders</span></div>
+          <div class="fr"><span class="fl">Evidence Base</span><span class="fv">Equal to medications for mild-moderate depression</span></div>
+          <hr class="div">
+          <div class="section-sub">Nursing Role</div>
+          <ul class="lst">
+            <li>Teach <strong>thought stopping</strong> — interrupt automatic negative thoughts</li>
+            <li>Help patient <strong>reframe thinking</strong> — identify cognitive distortions</li>
+            <li>Reinforce that <em>thoughts are not facts</em></li>
+            <li>Support behavioral activation — scheduling positive activities</li>
+          </ul>
+          <hr class="div">
+          <div class="section-sub">Cognitive Distortions</div>
+          <div class="chip-grid">
+            <div class="chip">Catastrophizing</div>
+            <div class="chip">All-or-nothing thinking</div>
+            <div class="chip">Mind reading</div>
+            <div class="chip">Overgeneralization</div>
+            <div class="chip">Magnification</div>
+            <div class="chip">Personalization</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Other Therapeutic Modalities</div>
+          <div class="fr"><span class="fl">DBT</span><span class="fv">Borderline personality, emotion regulation, distress tolerance</span></div>
+          <div class="fr"><span class="fl">Group Therapy</span><span class="fv">Reduces isolation, builds social skills, normalization</span></div>
+          <div class="fr"><span class="fl">Milieu Therapy</span><span class="fv">Therapeutic inpatient community environment</span></div>
+          <div class="fr"><span class="fl">Family Therapy</span><span class="fv">Communication, support structures, education</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NCLEX ════ -->
+<div id="pg-nclex" class="page">
+  <div class="page-banner banner-plum" data-emoji="📝">
+    <div class="eyebrow">Practice</div>
+    <h1>NCLEX-Style<br>Questions</h1>
+    <p>Select your answer, then reveal the rationale. Includes SATA, priority, expected/unexpected outcomes, and appropriate/inappropriate responses.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="score-bar">
+      <div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Score</div>
+        <div class="score-big"><span id="sc">0</span><span> / </span><span id="st">0</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:var(--muted)"> answered</span></div>
+      </div>
+      <button class="reset-btn" onclick="location.reload()">↺ Reset All</button>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q1</span><span class="q-type qt-priority">Priority / First Action</span></div>
+      <div class="q-stem">A nurse is caring for a 34-year-old client admitted with major depressive disorder. The client states, "Things have just been so hard lately." What is the nurse's PRIORITY action?</div>
+      <ul class="q-opts" id="o1">
+        <li class="q-opt" onclick="pick(this,'o1','A')"><span class="opt-ltr">A</span>Administer prescribed antidepressant medication</li>
+        <li class="q-opt" onclick="pick(this,'o1','B')"><span class="opt-ltr">B</span>Ask the client directly if they are thinking about suicide</li>
+        <li class="q-opt" onclick="pick(this,'o1','C')"><span class="opt-ltr">C</span>Encourage the client to engage in group therapy activities</li>
+        <li class="q-opt" onclick="pick(this,'o1','D')"><span class="opt-ltr">D</span>Notify the physician of the client's statement</li>
+      </ul>
+      <button class="check-btn" id="b1" onclick="chk('o1','B','b1','r1')">Check Answer</button>
+      <div class="rationale" id="r1"><span class="rl">Rationale</span><strong>B is correct.</strong> The NCLEX priority is always to assess suicide risk first. When a depressed patient signals distress, ask directly: "Are you thinking about killing yourself?" Research confirms direct questioning does NOT increase suicide risk — it opens the door to intervention. Medications and therapy are important but secondary to immediate safety assessment.</div>
+    </div>
+
+    <!-- Q2 SATA -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q2</span><span class="q-type qt-sata">Select All That Apply</span></div>
+      <div class="q-stem">A nurse is assessing a client with major depressive disorder. Which findings are consistent with this diagnosis? <em>Select all that apply.</em></div>
+      <ul class="q-opts" id="o2">
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client reports sleeping 12–14 hours daily and still feels exhausted</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client has lost 8 lbs in 3 weeks without dieting</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client states "I don't see the point in anything anymore"</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client reports feeling invincible and needs only 3 hours of sleep</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client cannot concentrate enough to read a page</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Client exhibits psychomotor retardation on exam</li>
+      </ul>
+      <button class="check-btn" id="b2" onclick="chkS('o2',[0,1,2,4,5],'b2','r2')">Check Answer</button>
+      <div class="rationale" id="r2"><span class="rl">Rationale</span><strong>A, B, C, E, F are correct.</strong> Hypersomnia, significant weight loss, hopelessness/anhedonia ("don't see the point"), poor concentration, and psychomotor retardation are all DSM-5 depressive criteria.<br><br><strong>D is WRONG</strong> — feeling invincible + needing only 3 hours of sleep describes mania, not depression. These are opposite findings.</div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q3</span><span class="q-type qt-appropriate">Appropriate Response</span></div>
+      <div class="q-stem">A manic inpatient makes a sexually inappropriate comment toward the nurse. Which response is MOST appropriate?</div>
+      <ul class="q-opts" id="o3">
+        <li class="q-opt" onclick="pick(this,'o3','A')"><span class="opt-ltr">A</span>Ignore the comment to avoid escalating the patient</li>
+        <li class="q-opt" onclick="pick(this,'o3','B')"><span class="opt-ltr">B</span>"That behavior is inappropriate. Let's refocus on your care."</li>
+        <li class="q-opt" onclick="pick(this,'o3','C')"><span class="opt-ltr">C</span>Lecture the patient extensively about appropriate boundaries</li>
+        <li class="q-opt" onclick="pick(this,'o3','D')"><span class="opt-ltr">D</span>Leave the room immediately without addressing the comment</li>
+      </ul>
+      <button class="check-btn" id="b3" onclick="chk('o3','B','b3','r3')">Check Answer</button>
+      <div class="rationale" id="r3"><span class="rl">Rationale</span><strong>B is correct.</strong> Set clear, calm, firm limits: "That behavior is inappropriate." Direct, non-argumentative, and immediate.<br><br><strong>A</strong> — Ignoring never sets limits. <strong>C</strong> — Lengthy lectures escalate manic agitation. <strong>D</strong> — Leaving without responding provides no therapeutic feedback.</div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q4</span><span class="q-type qt-expected">Expected vs Unexpected</span></div>
+      <div class="q-stem">A client on lithium has a serum level of 1.6 mEq/L and reports nausea with a coarse hand tremor noted on assessment. Which best describes this finding?</div>
+      <ul class="q-opts" id="o4">
+        <li class="q-opt" onclick="pick(this,'o4','A')"><span class="opt-ltr">A</span>Expected therapeutic response to lithium</li>
+        <li class="q-opt" onclick="pick(this,'o4','B')"><span class="opt-ltr">B</span>Unexpected finding — the level is within normal range</li>
+        <li class="q-opt" onclick="pick(this,'o4','C')"><span class="opt-ltr">C</span>Unexpected finding indicating lithium toxicity — notify provider immediately</li>
+        <li class="q-opt" onclick="pick(this,'o4','D')"><span class="opt-ltr">D</span>Expected — tremor is always normal at any lithium level</li>
+      </ul>
+      <button class="check-btn" id="b4" onclick="chk('o4','C','b4','r4')">Check Answer</button>
+      <div class="rationale" id="r4"><span class="rl">Rationale</span><strong>C is correct.</strong> Therapeutic range = 0.4–1.4 mEq/L. A level of <strong>1.6 is TOXIC</strong>. Coarse tremor (not fine tremor) + GI symptoms at this level = lithium toxicity. This is UNEXPECTED and requires immediate provider notification, holding the next dose, and close monitoring. Fine tremor can be a normal side effect at therapeutic levels, but coarse tremor + 1.6 = toxicity.</div>
+    </div>
+
+    <!-- Q5 SATA -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q5</span><span class="q-type qt-sata">Select All That Apply</span></div>
+      <div class="q-stem">A nurse teaches a client prescribed phenelzine (Nardil, MAOI) which foods to avoid. Which should the client AVOID? <em>Select all that apply.</em></div>
+      <ul class="q-opts" id="o5">
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Aged cheddar cheese</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Fresh grilled chicken breast</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Pepperoni and salami</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Red wine and beer</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Fresh apple</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Smoked salmon</li>
+      </ul>
+      <button class="check-btn" id="b5" onclick="chkS('o5',[0,2,3,5],'b5','r5')">Check Answer</button>
+      <div class="rationale" id="r5"><span class="rl">Rationale</span><strong>A, C, D, F are correct</strong> — aged cheese, cured meats, alcohol, and smoked fish are high in tyramine. MAOIs block the breakdown of tyramine → massive NE release → hypertensive crisis.<br><br><strong>B (fresh chicken) and E (fresh apple)</strong> are SAFE — they are not fermented, aged, cured, or smoked.</div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q6</span><span class="q-type qt-priority">Priority Action — Admission</span></div>
+      <div class="q-stem">A nurse is admitting a client following a suicide attempt today. The client is now calm and cooperative. Which action should the nurse perform FIRST?</div>
+      <ul class="q-opts" id="o6">
+        <li class="q-opt" onclick="pick(this,'o6','A')"><span class="opt-ltr">A</span>Orient the client to the unit rules and daily schedule</li>
+        <li class="q-opt" onclick="pick(this,'o6','B')"><span class="opt-ltr">B</span>Assign a roommate to provide social support</li>
+        <li class="q-opt" onclick="pick(this,'o6','C')"><span class="opt-ltr">C</span>Search all personal belongings for sharp objects and medications</li>
+        <li class="q-opt" onclick="pick(this,'o6','D')"><span class="opt-ltr">D</span>Ask the client their preferred room temperature and meal choices</li>
+      </ul>
+      <button class="check-btn" id="b6" onclick="chk('o6','C','b6','r6')">Check Answer</button>
+      <div class="rationale" id="r6"><span class="rl">Rationale</span><strong>C is correct.</strong> The FIRST action when admitting any suicidal patient is environmental safety — search belongings for sharps, belts, medications, cords, and anything potentially lethal. This is standard of care, not optional, and does not require a separate physician order. Orientation, social assignments, and comfort are all appropriate later steps — safety comes first.</div>
+    </div>
+
+    <!-- Q7 SATA -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q7</span><span class="q-type qt-sata">Select All That Apply — Interventions</span></div>
+      <div class="q-stem">A nurse cares for a client in acute mania on an inpatient unit. Which nursing interventions are appropriate? <em>Select all that apply.</em></div>
+      <ul class="q-opts" id="o7">
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Provide a quiet, low-stimulation environment</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Offer high-calorie portable finger foods throughout the day</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Place the client near the nurses' station for extra stimulation</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Argue with the client to correct their grandiose thinking</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Monitor daily weight to assess nutritional status</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>Set clear, consistent limits on inappropriate behavior</li>
+      </ul>
+      <button class="check-btn" id="b7" onclick="chkS('o7',[0,1,4,5],'b7','r7')">Check Answer</button>
+      <div class="rationale" id="r7"><span class="rl">Rationale</span><strong>A, B, E, F are correct.</strong><br>✅ Low stimulus reduces agitation · ✅ Finger foods maintain nutrition while mobile · ✅ Daily weights detect nutritional decline · ✅ Limits are always set for inappropriate behavior<br><br><strong>C is WRONG</strong> — nurses' station = high stimulation = worsens mania. Use a quiet private room.<br><strong>D is WRONG</strong> — arguing with manic patients escalates agitation. Never argue.</div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q8</span><span class="q-type qt-expected">Expected vs Unexpected</span></div>
+      <div class="q-stem">Post-ECT, a client is confused and asks "Where am I?" Which nursing interpretation is CORRECT?</div>
+      <ul class="q-opts" id="o8">
+        <li class="q-opt" onclick="pick(this,'o8','A')"><span class="opt-ltr">A</span>Unexpected — call a rapid response immediately</li>
+        <li class="q-opt" onclick="pick(this,'o8','B')"><span class="opt-ltr">B</span>Expected — post-ECT confusion is normal; reorient the client calmly</li>
+        <li class="q-opt" onclick="pick(this,'o8','C')"><span class="opt-ltr">C</span>Unexpected — the client should be alert and oriented immediately after ECT</li>
+        <li class="q-opt" onclick="pick(this,'o8','D')"><span class="opt-ltr">D</span>This means the ECT was ineffective and must be repeated</li>
+      </ul>
+      <button class="check-btn" id="b8" onclick="chk('o8','B','b8','r8')">Check Answer</button>
+      <div class="rationale" id="r8"><span class="rl">Rationale</span><strong>B is correct.</strong> Post-ECT confusion and disorientation are EXPECTED. The nurse positions the patient on their side (prevents aspiration), monitors VS q15 min, and reorients the patient calmly as they wake. Memory loss and confusion are normal effects of the controlled seizure and typically resolve within minutes to an hour. A rapid response is not needed for expected post-procedure findings.</div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q9</span><span class="q-type qt-appropriate">Appropriate Response</span></div>
+      <div class="q-stem">At a 3-week postpartum visit, a mother says: "I feel so sad all the time. I cry for no reason and feel like I'm failing as a mother." Which response is MOST appropriate?</div>
+      <ul class="q-opts" id="o9">
+        <li class="q-opt" onclick="pick(this,'o9','A')"><span class="opt-ltr">A</span>"These baby blues are completely normal — they'll go away in a day or two."</li>
+        <li class="q-opt" onclick="pick(this,'o9','B')"><span class="opt-ltr">B</span>"Ask your partner to take the baby more so you can rest."</li>
+        <li class="q-opt" onclick="pick(this,'o9','C')"><span class="opt-ltr">C</span>"What you're describing sounds like more than baby blues. How long has this been happening, and have you had thoughts of harming yourself or the baby?"</li>
+        <li class="q-opt" onclick="pick(this,'o9','D')"><span class="opt-ltr">D</span>"This is very common and will get better. Just sleep when the baby sleeps."</li>
+      </ul>
+      <button class="check-btn" id="b9" onclick="chk('o9','C','b9','r9')">Check Answer</button>
+      <div class="rationale" id="r9"><span class="rl">Rationale</span><strong>C is correct.</strong> Baby blues resolve within <strong>2 weeks</strong> — this patient is 3 weeks postpartum. These persistent symptoms indicate <strong>postpartum depression</strong>, which requires clinical assessment and treatment. The nurse must assess duration, severity, and critically — ask about thoughts of self-harm or harm to the baby (postpartum psychosis can develop). <br><br>A and D minimize symptoms incorrectly. B gives practical advice but does not address the clinical concern at all.</div>
+    </div>
+
+    <!-- Q10 SATA -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q10</span><span class="q-type qt-teaching">Patient Teaching — SATA</span></div>
+      <div class="q-stem">A nurse teaches a client starting lithium carbonate. Which statements reflect accurate teaching? <em>Select all that apply.</em></div>
+      <ul class="q-opts" id="o10">
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"Do not suddenly decrease your salt intake while on lithium."</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"You may take ibuprofen freely for pain while on lithium."</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"Stay well hydrated — dehydration can cause dangerous lithium levels."</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"Blood levels are drawn 12 hours after your last dose."</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"Report nausea, vomiting, or tremor to your provider right away."</li>
+        <li class="q-opt sata" onclick="togS(this)"><span class="opt-chk">✓</span>"Avoid diuretics unless specifically prescribed by your doctor."</li>
+      </ul>
+      <button class="check-btn" id="b10" onclick="chkS('o10',[0,2,3,4,5],'b10','r10')">Check Answer</button>
+      <div class="rationale" id="r10"><span class="rl">Rationale</span><strong>A, C, D, E, F are correct.</strong><br>✅ Consistent Na = prevents lithium retention · ✅ Hydration prevents toxic concentration · ✅ 12-hr trough is most accurate · ✅ Early toxicity signs must be reported · ✅ Diuretics ↑ lithium retention → toxicity<br><br><strong>B is WRONG.</strong> NSAIDs (including ibuprofen) decrease lithium clearance, raising blood levels dangerously. Use acetaminophen instead.</div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q11</span><span class="q-type qt-priority">Safety vs Autonomy</span></div>
+      <div class="q-stem">A suicidal inpatient refuses to have their belongings searched on admission. What should the nurse do?</div>
+      <ul class="q-opts" id="o11">
+        <li class="q-opt" onclick="pick(this,'o11','A')"><span class="opt-ltr">A</span>Respect the refusal and do not search belongings</li>
+        <li class="q-opt" onclick="pick(this,'o11','B')"><span class="opt-ltr">B</span>Search belongings anyway — patient safety supersedes autonomy here</li>
+        <li class="q-opt" onclick="pick(this,'o11','C')"><span class="opt-ltr">C</span>Call the physician before making any decision</li>
+        <li class="q-opt" onclick="pick(this,'o11','D')"><span class="opt-ltr">D</span>Allow the client to keep belongings and monitor closely</li>
+      </ul>
+      <button class="check-btn" id="b11" onclick="chk('o11','B','b11','r11')">Check Answer</button>
+      <div class="rationale" id="r11"><span class="rl">Rationale</span><strong>B is correct.</strong> Core NCLEX principle: <strong>SAFETY &gt; AUTONOMY</strong> when there is imminent risk to life. Searching belongings on psychiatric admission is standard of care — not optional and not subject to patient refusal when suicidality is involved. The right to refuse doesn't extend to creating lethal risk in a supervised inpatient setting. No separate physician order is needed for this standard admission safety check.</div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="q-card">
+      <div class="q-meta"><span class="q-num">Q12</span><span class="q-type qt-priority">Recognize the Emergency</span></div>
+      <div class="q-stem">A bipolar patient is pacing frantically, shouting at people who aren't there, expressing belief they are a world prophet, and appears terrified. How should the nurse classify this?</div>
+      <ul class="q-opts" id="o12">
+        <li class="q-opt" onclick="pick(this,'o12','A')"><span class="opt-ltr">A</span>Hypomania — mildly elevated, needs redirection</li>
+        <li class="q-opt" onclick="pick(this,'o12','B')"><span class="opt-ltr">B</span>Acute mania — needs medication adjustment</li>
+        <li class="q-opt" onclick="pick(this,'o12','C')"><span class="opt-ltr">C</span>Delirious mania — psychiatric emergency requiring immediate intervention</li>
+        <li class="q-opt" onclick="pick(this,'o12','D')"><span class="opt-ltr">D</span>Schizophrenic episode — unrelated to bipolar disorder</li>
+      </ul>
+      <button class="check-btn" id="b12" onclick="chk('o12','C','b12','r12')">Check Answer</button>
+      <div class="rationale" id="r12"><span class="rl">Rationale</span><strong>C is correct.</strong> The triad of <strong>hallucinations + delusions + extreme agitation/panic</strong> = Stage 3 (Delirious) Mania — psychiatric emergency.<br><br>Hypomania (A) is mild and functional — no psychotic features. Acute mania (B) does not typically include hallucinations. Delirious mania = psychotic features + extreme agitation + panic together. This patient needs immediate safety intervention, emergency medications, and psychiatric team involvement.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ QUICK REF ════ -->
+<div id="pg-quickref" class="page">
+  <div class="page-banner banner-sage" data-emoji="⚡">
+    <div class="eyebrow">Reference</div>
+    <h1>Quick Reference<br>Cheat Sheet</h1>
+    <p>Everything in one place. Review this before your exam for rapid recall of the highest-yield facts.</p>
+  </div>
+  <div class="page-body">
+
+    <div class="g4" style="margin-bottom:28px">
+      <div class="stat-tile stat-coral"><div class="label">Lithium Therapeutic</div><div class="big" style="font-size:26px">0.4–1.4</div><div class="sub">mEq/L</div></div>
+      <div class="stat-tile stat-rose"><div class="label">Lithium Toxic</div><div class="big">≥1.5</div><div class="sub">mEq/L → hold & notify</div></div>
+      <div class="stat-tile stat-indigo"><div class="label">Depression Duration</div><div class="big">≥2 wks</div><div class="sub">+ ≥5 symptoms</div></div>
+      <div class="stat-tile stat-amber"><div class="label">#1 Suicide Risk</div><div class="big" style="font-size:20px">Prior<br>Attempt</div><div class="sub">Strongest predictor</div></div>
+    </div>
+
+    <div class="cheat-grid">
+      <div class="cheat-block">
+        <h4 style="color:var(--indigo)">😞 Depression</h4>
+        <ul>
+          <li>≥ 2 weeks + ≥ 5 symptoms (must include depressed mood OR anhedonia)</li>
+          <li>Teens → irritability, not sadness</li>
+          <li>Elderly → physical complaints, often missed</li>
+          <li>Baby blues ends at 2 weeks → beyond = postpartum depression</li>
+          <li>Always screen for suicide FIRST</li>
+          <li>SSRIs = first-line; 2–4 week onset</li>
+          <li>Black box warning &lt;25 yrs on SSRIs</li>
+        </ul>
+      </div>
+      <div class="cheat-block">
+        <h4 style="color:var(--coral)">⚡ Mania</h4>
+        <ul>
+          <li>3 stages: Hypomania → Acute → Delirious (emergency)</li>
+          <li>Delirious = hallucinations + delusions + agitation</li>
+          <li><strong>Low-stimulus environment</strong> — #1 intervention</li>
+          <li>Finger foods — never full meal trays</li>
+          <li>Set limits — never ignore inappropriate behavior</li>
+          <li>Never argue — stay calm, short sentences</li>
+          <li>Daily weights to monitor nutrition</li>
+        </ul>
+      </div>
+      <div class="cheat-block">
+        <h4 style="color:var(--rose)">🚨 Suicide</h4>
+        <ul>
+          <li>Previous attempt = #1 risk factor</li>
+          <li>Assess: Plan → Means → Intent → Timeline</li>
+          <li>Ask directly: "Are you thinking about killing yourself?"</li>
+          <li>Safety PLAN (not contract)</li>
+          <li>1:1 observation — never leave alone</li>
+          <li>Search belongings — remove all sharps, strings, meds</li>
+          <li>Safety always &gt; Autonomy</li>
+          <li>Sudden calm = RED FLAG</li>
+        </ul>
+      </div>
+      <div class="cheat-block">
+        <h4 style="color:var(--teal)">💊 Medications</h4>
+        <ul>
+          <li>Lithium therapeutic: 0.4–1.4 mEq/L</li>
+          <li>Lithium toxic: ≥1.5 → N/V/D → tremor → ataxia → seizure → coma</li>
+          <li>Low Na → ↑ lithium level → toxicity</li>
+          <li>NSAIDs + lithium → ↑ lithium toxicity</li>
+          <li>MAOI + tyramine → hypertensive crisis</li>
+          <li>MAOI + SSRI → serotonin syndrome</li>
+          <li>Lamotrigine → Stevens-Johnson rash (stop immediately)</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="div">
+    <div class="section-sub">⚠️ Emergency Recognition</div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="emer-row emer-head">
+        <div class="emer-cell">Situation</div>
+        <div class="emer-cell">Signs & Symptoms</div>
+        <div class="emer-cell">Priority Nursing Action</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-rose">Lithium Toxicity</span></div>
+        <div class="emer-cell">Level ≥1.5 · coarse tremor · confusion · ataxia · N/V/D · seizures</div>
+        <div class="emer-cell">Hold dose · notify provider · IV fluids · seizure precautions</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-rose">Hypertensive Crisis</span></div>
+        <div class="emer-cell">Severe headache · ↑↑ BP · diaphoresis · palpitations (after MAOI + tyramine)</div>
+        <div class="emer-cell">Hold MAOI · notify provider · antihypertensive as ordered · VS q15min</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-amber">Serotonin Syndrome</span></div>
+        <div class="emer-cell">Hyperthermia · agitation · clonus · tachycardia · diaphoresis</div>
+        <div class="emer-cell">D/C serotonergic agent · notify provider · cooling · supportive care</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-coral">Delirious Mania</span></div>
+        <div class="emer-cell">Hallucinations + delusions + extreme agitation + panic</div>
+        <div class="emer-cell">Low-stimulus · safety · emergency meds · psychiatric team</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-rose">Active Suicidal Crisis</span></div>
+        <div class="emer-cell">Plan + means + intent · giving away items · sudden calm</div>
+        <div class="emer-cell">1:1 observation · remove means · notify provider · psychiatric emergency</div>
+      </div>
+      <div class="emer-row">
+        <div class="emer-cell"><span class="pill p-rose">Postpartum Psychosis</span></div>
+        <div class="emer-cell">Hallucinations · delusions · confusion within weeks of delivery</div>
+        <div class="emer-cell">Psychiatric emergency · hospitalize · ensure baby's safety</div>
+      </div>
+    </div>
+
+    <div class="callout callout-sage" style="margin-top:28px;font-size:15px;padding:24px">
+      <div class="callout-icon" style="font-size:24px">💚</div>
+      <div class="callout-body"><strong>You've Got This, Jacqueline!</strong>Exam 4 is yours. Safety first, set your limits, watch your lithium, never ignore manic behavior, and always ask directly about suicide. Trust your training — you've put in the work. 🩺</div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// ── Navigation ──
+function show(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('pg-' + id).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(item => {
+    if (item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + id + "'")) item.classList.add('active');
+  });
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo(0,0);
+}
+
+// ── Tabs ──
+function tab(btn, group, panelId) {
+  document.querySelectorAll(`.tab-btn`).forEach(b => { if (b.closest('.tab-bar') === btn.closest('.tab-bar')) b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll(`[data-tg="${group}"]`).forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}
+
+// ── Accordion ──
+function toggleAcc(head) { head.parentElement.classList.toggle('open'); }
+
+// ── Timer ──
+let timerRunning = false, timerSecs = 0, timerInterval;
+function timerToggle() {
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    document.getElementById('timer-start').textContent = 'Resume';
+  } else {
+    timerInterval = setInterval(() => {
+      timerSecs++;
+      const m = String(Math.floor(timerSecs/60)).padStart(2,'0');
+      const s = String(timerSecs%60).padStart(2,'0');
+      document.getElementById('timer-disp').textContent = m + ':' + s;
+    }, 1000);
+    timerRunning = true;
+    document.getElementById('timer-start').textContent = 'Pause';
+  }
+}
+function timerReset() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timerSecs = 0;
+  document.getElementById('timer-disp').textContent = '00:00';
+  document.getElementById('timer-start').textContent = 'Start';
+}
+
+// ── Quiz ──
+let correct = 0, total = 0;
+const answered = {};
+
+function updateScore() {
+  document.getElementById('sc').textContent = correct;
+  document.getElementById('st').textContent = total;
+}
+
+function pick(el, qid, letter) {
+  if (answered[qid]) return;
+  const opts = document.querySelectorAll(`#${qid} .q-opt`);
+  opts.forEach(o => { o.removeAttribute('data-sel'); });
+  el.setAttribute('data-sel', letter);
+}
+
+function chk(qid, correctLetter, btnId, ratId) {
+  if (answered[qid]) return;
+  const opts = document.querySelectorAll(`#${qid} .q-opt`);
+  const letters = ['A','B','C','D','E','F'];
+  let selectedEl = null;
+  opts.forEach((o, i) => { if (o.getAttribute('data-sel')) { selectedEl = o; } });
+  if (!selectedEl) { alert('Please select an answer first.'); return; }
+  answered[qid] = true;
+  opts.forEach((o, i) => {
+    if (letters[i] === correctLetter) o.classList.add('rc');
+    if (o.getAttribute('data-sel') && letters[i] !== correctLetter) o.classList.add('si');
+    if (o.getAttribute('data-sel') && letters[i] === correctLetter) { o.classList.remove('rc'); o.classList.add('sc'); }
+  });
+  total++;
+  if (selectedEl.getAttribute('data-sel') === correctLetter) correct++;
+  updateScore();
+  document.getElementById(ratId).style.display = 'block';
+  document.getElementById(btnId).disabled = true;
+}
+
+function togS(el) {
+  const qcard = el.closest('.q-card');
+  if (qcard.dataset.answered) return;
+  el.classList.toggle('ss');
+}
+
+function chkS(qid, correctIdx, btnId, ratId) {
+  const qcard = document.getElementById(btnId).closest('.q-card');
+  if (qcard.dataset.answered) return;
+  qcard.dataset.answered = true;
+  const opts = document.querySelectorAll(`#${qid} .q-opt`);
+  let userSel = 0, userRight = 0;
+  opts.forEach((o, i) => {
+    const isSel = o.classList.contains('ss');
+    const isRight = correctIdx.includes(i);
+    if (isSel) userSel++;
+    if (isRight) o.classList.add('sata-correct-r');
+    if (isSel && !isRight) o.classList.add('sata-wrong-r');
+    if (isSel && isRight) userRight++;
+  });
+  total++;
+  if (userRight === correctIdx.length && userSel === correctIdx.length) correct++;
+  updateScore();
+  document.getElementById(ratId).style.display = 'block';
+  document.getElementById(btnId).disabled = true;
+}
+</script>
+</body>
+</html>

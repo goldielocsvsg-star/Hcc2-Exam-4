@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HCC2 — Depression, Mania & Suicide Management | Comprehensive Study Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --primary-light: #dbeafe;
+  --primary-mid: #60a5fa;
+  --teal: #0f766e;
+  --teal-light: #ccfbf1;
+  --violet: #7c3aed;
+  --violet-light: #ede9fe;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --green: #047857;
+  --green-light: #d1fae5;
+  --rose: #be185d;
+  --rose-light: #fce7f3;
+  --slate: #334155;
+  --slate-light: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(37,99,235,0.18);
+}
+
+body.dark {
+  --primary: #93c5fd;
+  --primary-light: #172554;
+  --primary-mid: #60a5fa;
+  --teal: #5eead4;
+  --teal-light: #0f2d2b;
+  --violet: #c4b5fd;
+  --violet-light: #2a1845;
+  --red: #f87171;
+  --red-light: #3a1414;
+  --amber: #fbbf24;
+  --amber-light: #3a2b10;
+  --green: #6ee7b7;
+  --green-light: #103326;
+  --rose: #f9a8d4;
+  --rose-light: #3a1730;
+  --slate: #e2e8f0;
+  --slate-light: #111827;
+  --border: #334155;
+  --text: #e5eefc;
+  --text-muted: #a9b8cf;
+  --bg: #0b1120;
+  --white: #111827;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow: 0 4px 10px rgba(0,0,0,0.35);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; }
+
+.site-header {
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 28%, #2563eb 62%, #7c3aed 100%);
+  padding: 34px 48px 26px;
+  position: relative; z-index: 20;
+  box-shadow: 0 4px 24px rgba(67,56,202,0.30);
+}
+.header-inner { max-width: 1100px; margin: 0 auto; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+.header-badge { display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.3); }
+.site-header h1 { font-family: 'Playfair Display', serif; font-size: 1.95rem; color: white; line-height: 1.15; margin-bottom: 6px; }
+.site-header p { color: rgba(255,255,255,0.82); font-size: 0.88rem; }
+.header-controls { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.toggle-btn { border:none; background:rgba(255,255,255,0.14); color:#fff; padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm); }
+.toggle-btn:hover { background:rgba(255,255,255,0.22); }
+
+.nav-wrap { background: var(--white); border-bottom: 1px solid var(--border); position: relative; z-index: 15; box-shadow: var(--shadow-sm); }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 16px; }
+.nav-btn { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); background: none; border: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.18s; letter-spacing: 0.2px; }
+.nav-btn:hover { background: var(--primary-light); color: var(--primary); }
+.nav-btn.active { background: var(--primary-light); color: var(--primary); font-weight: 700; }
+
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 20px 60px; }
+.section { display: none; }
+.section.active { display: block; }
+
+.card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 30px 34px; margin-bottom: 24px; box-shadow: var(--shadow); }
+.card-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); margin-bottom: 4px; }
+.card-subtitle { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+
+.sh { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+p.body { font-size: 0.95rem; line-height: 1.75; margin-bottom: 12px; }
+strong { color: var(--slate); font-weight: 700; }
+.note-inline { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+ul.content-list { list-style: none; padding: 0; margin: 0; }
+ul.content-list li { padding: 5px 0 5px 20px; position: relative; font-size: 0.93rem; line-height: 1.65; color: var(--text); }
+ul.content-list li::before { content: '›'; position: absolute; left: 4px; color: var(--primary-mid); font-weight: 700; font-size: 1rem; top: 4px; }
+ul.content-list li + li { border-top: 1px solid rgba(148,163,184,0.12); }
+
+.callout { border-radius: 10px; padding: 16px 20px; margin: 18px 0; font-size: 0.92rem; line-height: 1.65; }
+.callout-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; }
+.callout.priority { background: var(--red-light); border-left: 4px solid var(--red); }
+.callout.priority .callout-label { color: var(--red); }
+.callout.book { background: var(--green-light); border-left: 4px solid var(--green); }
+.callout.book .callout-label { color: var(--green); }
+.callout.exam { background: var(--teal-light); border-left: 4px solid var(--teal); }
+.callout.exam .callout-label { color: var(--teal); }
+.callout.prof { background: var(--amber-light); border-left: 4px solid var(--amber); }
+.callout.prof .callout-label { color: var(--amber); }
+.callout.info { background: var(--primary-light); border-left: 4px solid var(--primary); }
+.callout.info .callout-label { color: var(--primary); }
+.callout.emergency { background: #fff0f0; border: 2px solid var(--red); border-radius: 10px; }
+.callout.emergency .callout-label { color: var(--red); font-size: 0.72rem; }
+
+.qa-block { margin: 16px 0; }
+.qa-question { background: var(--amber-light); border: 1.5px solid rgba(251,191,36,0.45); border-radius: 10px; padding: 14px 18px; font-size: 0.93rem; font-weight: 600; color: #7c4a03; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; user-select: none; transition: background 0.15s; }
+body.dark .qa-question { color: #f8d988; }
+.qa-question:hover { filter: brightness(1.03); }
+.qa-question .qa-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 2px; color: var(--amber); }
+.qa-answer { display: none; background: var(--white); border: 1.5px solid rgba(251,191,36,0.45); border-top: none; border-radius: 0 0 10px 10px; padding: 16px 20px; font-size: 0.91rem; line-height: 1.7; color: var(--text); }
+.qa-answer.open { display: block; }
+.qa-answer ul { list-style: none; padding: 0; }
+.qa-answer ul li { padding: 3px 0 3px 18px; position: relative; }
+.qa-answer ul li::before { content: '•'; position: absolute; left: 4px; color: var(--amber); font-weight: 700; }
+.qa-answer .answer-tag { display: inline-block; background: #059669; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.qa-answer .wrong-tag { display: inline-block; background: var(--red); color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; margin-right: 4px; }
+
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 0.88rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.data-table th { background: linear-gradient(135deg, var(--violet), var(--primary)); color: white; padding: 11px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.3px; }
+.data-table td { padding: 10px 16px; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tr:nth-child(even) td { background: rgba(148,163,184,0.05); }
+.data-table tr:hover td { background: var(--primary-light); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+@media(max-width: 780px) { .grid-2, .grid-3, .header-inner { grid-template-columns: 1fr; display:block; } .site-header { padding:30px 20px 22px; } }
+
+.mini-panel { background: var(--slate-light); border-radius: 10px; padding: 16px 18px; border-top: 3px solid var(--primary); }
+.mini-panel.green { border-top-color: var(--green); }
+.mini-panel.teal { border-top-color: var(--teal); }
+.mini-panel.red { border-top-color: var(--red); }
+.mini-panel.amber { border-top-color: var(--amber); }
+.mini-panel.violet { border-top-color: var(--violet); }
+.mini-panel.rose { border-top-color: var(--rose); }
+.mini-panel h4 { font-size: 0.83rem; font-weight: 700; color: var(--slate); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.4px; }
+.mini-panel ul { list-style: none; padding: 0; }
+.mini-panel ul li { font-size: 0.88rem; padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+.mini-panel ul li::before { content: '·'; position: absolute; left: 2px; color: var(--primary); font-weight: 900; font-size: 1.1rem; line-height: 1.3; }
+
+.pill { display: inline-block; font-size: 0.67rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin: 0 3px 3px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.pill.blue { background: var(--primary); color: white; }
+.pill.teal { background: var(--teal); color: white; }
+.pill.violet { background: var(--violet); color: white; }
+.pill.green { background: var(--green); color: white; }
+.pill.red { background: var(--red); color: white; }
+.pill.amber { background: #d97706; color: white; }
+.pill.gray { background: #64748b; color: white; }
+.pill.rose { background: var(--rose); color: white; }
+.drug-box { display: inline-block; background: var(--teal-light); color: var(--teal); font-weight: 700; font-size: 0.85rem; padding: 1px 8px; border-radius: 6px; margin: 1px 2px; }
+
+.btt { position: fixed; bottom: 28px; right: 28px; background: linear-gradient(135deg, var(--violet), var(--primary)); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.1rem; cursor: pointer; box-shadow: var(--shadow-lg); transition: transform 0.2s; z-index: 100; }
+.btt:hover { transform: translateY(-3px); }
+.nav-float { position: fixed; bottom: 84px; right: 28px; background: linear-gradient(135deg, var(--primary), var(--violet)); color: white; border: none; border-radius: 999px; min-width: 58px; height: 38px; padding: 0 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-lg); transition: transform 0.2s; z-index: 101; }
+.nav-float:hover { transform: translateY(-3px); }
+@media(max-width: 700px) { .nav-float { bottom: 78px; right: 20px; min-width: 54px; height: 36px; padding: 0 12px; } .btt { right: 20px; bottom: 24px; } }
+footer { text-align: center; padding: 32px 20px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-badge">HCC2 — Spring 2026 | Prof. Bryan</div>
+      <h1>Depression, Mania &amp; Suicide Management</h1>
+      <p>Comprehensive Study Guide — Slides, Module Objectives &amp; Textbook Expansion Integrated</p>
+    </div>
+    <div class="header-controls">
+      <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-wrap" id="topNav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('p1',this)">Overview</button>
+    <button class="nav-btn" onclick="showSection('p2',this)">Depression</button>
+    <button class="nav-btn" onclick="showSection('p3',this)">Assessment</button>
+    <button class="nav-btn" onclick="showSection('p4',this)">Mania</button>
+    <button class="nav-btn" onclick="showSection('p5',this)">Antidepressants</button>
+    <button class="nav-btn" onclick="showSection('p6',this)">Lithium &amp; Mood Stabilizers</button>
+    <button class="nav-btn" onclick="showSection('p7',this)">ECT &amp; Therapies</button>
+    <button class="nav-btn" onclick="showSection('p8',this)">Suicide Management</button>
+    <button class="nav-btn" onclick="showSection('p9',this)">Exam Priority Review</button>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<div id="p1" class="section active">
+  <div class="card">
+    <p class="card-subtitle">Slides 1–5 + Module Objectives + Mood &amp; Affect Textbook Notes</p>
+    <h2 class="card-title">Mood &amp; Affect: Definition, Scope, Consequences, and Risk</h2>
+
+    <div class="sh">Slide 1–2 — Concept Introduction + Goals</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>CONCEPT: MOOD AND AFFECT</li>
+        <li>Exemplars: Depression, Suicide, &amp; Mania</li>
+        <li>Goals for This Concept Presentation</li>
+        <li>1. Describe the concept and exemplars.</li>
+        <li>2. risk factors for mood disturbances.</li>
+        <li>3. Recognize when an individual is experiencing a mood disturbance.</li>
+        <li>4. Provide appropriate nursing and collaborative interventions to minimize the impact of mood and affect disorders.</li>
+      </ul>
+    </div>
+
+    <div class="sh">Slide 3 — Terms</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Mood – how a person feels</li>
+        <li>Affect - the observable response a person has to her or his feelings</li>
+        <li>Flat</li>
+        <li>Blunted</li>
+        <li>Inappropriate - example?</li>
+        <li>Labile</li>
+        <li>Restricted</li>
+        <li>Anhedonia - complete loss of interest in things that used to give you pleasure</li>
+      </ul>
+    </div>
+
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">Your notes make a big distinction between <strong>mood</strong> and <strong>affect</strong>. Mood is subjective and comes from the patient’s self-report. Affect is what the nurse can observe. This matters because nurses do not diagnose bipolar disorder or major depressive disorder, but nurses absolutely are expected to notice <strong>affective instability</strong>, changes in function, and danger signals that need immediate follow-up.</p>
+      <p class="body">Mood regulation depends on coordinated function of the <strong>prefrontal cortex, anterior cingulate cortex, limbic system, and key neurotransmitters such as serotonin, norepinephrine, and dopamine</strong>. When those systems become dysregulated, the patient may move downward into melancholy/depression or upward into hypomania/mania. As mood shifts farther from euthymia, <strong>functional status falls</strong>.</p>
+    </div>
+
+    <div class="sh">Slide 4–5 — Consequences + Risk Factors for Development of Depression</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Change in interpersonal relationships</li>
+        <li>Limited productivity</li>
+        <li>Reduced functional ability</li>
+        <li>Higher use and need for medical care</li>
+        <li>Increased potential for suicide</li>
+        <li>Prior episodes of depression</li>
+        <li>Family history</li>
+        <li>Prior suicide attempt</li>
+        <li>Female gender</li>
+        <li>Age of onset – under 40 years</li>
+        <li>Postpartum</li>
+        <li>Medical co-morbidity- chronic illness</li>
+        <li>Lack of social support</li>
+        <li>Stressful life situations</li>
+        <li>Current alcohol or substance abuse</li>
+        <li>Populations at greatest risk: Female gender; Individuals in the second and sixth decades of life</li>
+        <li>Individual risk factors: Stress, early trauma, neglect, abuse, family history, comorbid medical and psychiatric disorders, personality disorders, substance dependence</li>
+      </ul>
+    </div>
+
+    <div class="grid-2">
+      <div class="mini-panel violet">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>Reduced function matters just as much as sad mood. A patient who cannot eat, sleep, work, or perform ADLs is not “just having a bad week.”</li>
+          <li>Previous suicide attempt is one of the strongest red flags.</li>
+          <li>Chronic illness, substance use, and poor support systems can worsen depression and complicate treatment response.</li>
+          <li>Do not minimize postpartum symptoms or symptoms in older adults.</li>
+        </ul>
+      </div>
+      <div class="mini-panel red">
+        <h4>Exam Tips / NCLEX Traps</h4>
+        <ul>
+          <li><strong>This is a trap:</strong> calling normal sadness “depression” without looking at duration and functional impairment.</li>
+          <li>They will test whether you know <strong>affect is what you observe</strong>, not what the patient reports.</li>
+          <li>If the stem includes hopelessness, anhedonia, worthlessness, impaired ADLs, or prior attempt, move your brain toward <strong>suicide assessment first</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout exam">
+      <span class="callout-label">🎯 How This Shows Up on Exams</span>
+      <p>The instructor is likely to connect the concept back to the module objectives by asking you to identify <strong>abnormal mood/psychomotor changes, assess support systems, recognize crisis, and use safety precautions</strong>. If a stem asks what the nurse should do first, the safest first move is usually to assess <strong>self-harm risk, violence risk, functional decline, and contributing factors</strong> rather than jumping straight to reassurance or teaching.</p>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p><strong>Mood = inside. Affect = outside.</strong> If you can see it, it is affect. If they tell you how they feel, that is mood. For consequences of mood disorders, think <strong>“LIFE”</strong>: <strong>L</strong>imited productivity, <strong>I</strong>nterpersonal damage, <strong>F</strong>unction drops, <strong>E</strong>nd-of-life risk by suicide.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p2" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 6–11 + Textbook Notes</p>
+    <h2 class="card-title">Depression: Symptoms, Developmental Patterns, and Postpartum Considerations</h2>
+
+    <div class="sh">Slide 6–7 — Major Depression Symptoms</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>DSM Criteria - lasts 2 weeks minimum</li>
+        <li>has one of 1st 2 symptoms &amp; 5 of others</li>
+        <li>Feelings of melancholy (Depressed mood) most of day, nearly Q D</li>
+        <li>Children &amp; adolescents - irritable mood</li>
+        <li>↓ interest &amp; pleasure almost all activities – most Q D &amp; most of day</li>
+        <li>Expression of hopelessness, feelings of worthlessness, ↓ self esteem, ↓ attentiveness to oneself &amp; one’s tasks</li>
+        <li>↓ energy, fatigue</li>
+        <li>↓ ability to concentrate, indecisiveness</li>
+        <li>Excessive, recurrent thoughts of death, suicide</li>
+        <li>Significant weight loss/gain</li>
+        <li>Change sleep patterns – insomnia – early morning awakenings, hypersomnia</li>
+        <li>Psychomotor retardation/agitation – slowed physical movements, slow speech, ↓ interest grooming, slumped posture</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">The key pattern in depression is not just sadness. It is <strong>persistent mood disturbance + disturbed vegetative function + impaired function</strong>. The vegetative pieces are huge: sleep, appetite, energy, libido, and concentration. That is why exam questions often disguise depression as fatigue, chronic pain, sleep change, appetite change, or inability to keep up with work or ADLs.</p>
+      <p class="body">Depression also has a neurobiologic piece. Low or dysregulated serotonin, norepinephrine, and dopamine contribute to changes in mood, concentration, sleep, motivation, reward processing, and energy. Clinically, that is why depressed patients may look slowed down, stop bathing, stop eating, or report that “nothing feels good anymore.”</p>
+    </div>
+
+    <div class="sh">Slide 10–11 — Developmental Implications + Postpartum Depression</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Childhood depression (e.g. crying, withdrawal)</li>
+        <li>Adolescence (e.g. irritability, insomnia, low self esteem, chronic pain with no physiological origin)</li>
+        <li>Senescence (assoc w/ aging) (their emotional pain may be overlooked)</li>
+        <li>Postpartum depression (“baby blues” versus depression?)</li>
+        <li>May last for a few weeks to several months</li>
+        <li>Associated with hormonal changes, tryptophan metabolism, or cell alterations</li>
+      </ul>
+      <div class="callout.book">
+      <span class="callout-label">📖 Cross-Analysis Addition from Book Notes</span>
+      <p class="body">The book adds that depression does not always look purely slowed down. Some patients show <strong>mixed features</strong> such as agitation, insomnia, or increased activation even while their mood remains persistently low. That is why the safer clinical pattern is to link symptoms back to <strong>persistent low mood, impaired function, and abnormal vegetative changes</strong> rather than expecting one stereotyped presentation.</p>
+    </div>
+
+    </div>
+
+    <div class="grid-2">
+      <div class="mini-panel green">
+        <h4>Clinical Connection</h4>
+        <ul>
+          <li>A depressed adult may not say “I am depressed.” They may say “I can’t sleep,” “I can’t think,” “I don’t care anymore,” or “I’m so tired.”</li>
+          <li>An adolescent may show depression as <strong>irritability</strong>, not tearfulness.</li>
+          <li>An older adult may present with somatic complaints, low energy, poor concentration, or withdrawal and get overlooked because people assume it is “just aging.”</li>
+          <li>Postpartum depression is not the same as brief “baby blues.” Ongoing sadness, inability to function, impaired bonding, hopelessness, or thoughts of harm require urgent evaluation.</li>
+        </ul>
+      </div>
+      <div class="mini-panel amber">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>Any mention of death, worthlessness, hopelessness, or giving up = assess suicide risk right away.</li>
+          <li>Psychomotor retardation can look calm, but it may actually reflect severe depression with impaired self-care.</li>
+          <li>Psychomotor agitation is dangerous too because low mood + rising energy can increase suicide capability.</li>
+          <li>In postpartum patients, assess infant safety, maternal bonding, sleep deprivation, support system, and intrusive thoughts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> assuming depression always looks like crying. It can look like irritability, apathy, insomnia, indecisiveness, or body complaints.</li>
+        <li>They will try to test you on the <strong>2-week minimum</strong> for major depressive symptoms.</li>
+        <li>They love the difference between normal postpartum adjustment and postpartum depression with persistent impairment.</li>
+        <li>When you see <strong>anhedonia + hopelessness + worthlessness</strong>, think severe depression and suicide screening.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p><strong>Depression = SLOW + EMPTY.</strong> Slow speech, slow movement, sleep disruption, sad thoughts, and loss of enjoyment. For children/adolescents, remember: <strong>“sad may look mad.”</strong> In younger patients, irritability can be the clue.</p>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">🎯 How This Shows Up on Exams</span>
+      <p>You may get stems asking the nurse to identify which patient is at highest risk, which finding requires immediate follow-up, or which patient response suggests worsening depression. The high-yield cues are <strong>hopelessness, recurrent thoughts of death, severe sleep change, weight change, poor grooming, and inability to function</strong>. These map directly to the module objectives on behavioral assessment, coping, crisis recognition, and psychosocial education.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p3" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 8–9 + Module Objectives + Textbook Notes</p>
+    <h2 class="card-title">Assessment of Depression: What the Nurse Must Check First</h2>
+
+    <div class="sh">Slide 8–9 — Assessment for Depression</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Self harm or harm to others - IMPORTANT</li>
+        <li>Determine other contributing factors</li>
+        <li>Psychosis</li>
+        <li>Drugs or alcohol</li>
+        <li>Medical conditions (e.g. cardiac disease, diabetes, irritable bowel, chronic liver, Alzheimer’s, AIDS, other chronic illnesses)</li>
+        <li>Medications -( e.g. CNS depressants, antihypertensives, oral contraceptives, antianxiety meds, psychostimulants, corticosteroids, Digoxin )</li>
+        <li>History of psychiatric conditions</li>
+        <li>History of depression and suicidal behavior</li>
+        <li>Support systems</li>
+        <li>Screening tools- Routine screening recommended for all adults</li>
+        <li>Over the past two weeks, have you ever felt down, depressed, or hopeless?</li>
+        <li>Have you ever felt little interest or pleasure in doing things?</li>
+        <li>Observe for other symptoms</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">Depression assessment is not just “Do you feel sad?” The nurse has to separate <strong>primary mood disorder</strong> from <strong>substance-related, medication-related, psychotic, or medical causes</strong>. That is why the slide specifically points you toward alcohol/drugs, chronic medical illness, and medication review. A patient on corticosteroids, for example, may have mood changes related to treatment. A patient with chronic illness may have depression that shows up as fatigue and poor adherence.</p>
+      <p class="body">Your textbook also emphasizes that mood screening tools do not diagnose the disorder. They are helpful for detecting risk and tracking severity, but they do not replace assessment of <strong>affect, function, judgment, cognition, and violence potential</strong>.</p>
+      <p class="body">Another key book note is to treat mental status almost like a <strong>sixth vital sign</strong>. Appearance, motor activity, speech, alertness, orientation, judgment, and reasoning should be reassessed over time, especially when the patient has worsening mood, poor coping, psychosis, or safety concerns.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Assessment Area</th><th>What the Nurse Is Looking For</th><th>Why It Matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Safety</strong></td><td>Suicidal thoughts, homicidal thoughts, plan, means, prior attempts</td><td>Immediate priority; determines observation level and need for emergency action</td></tr>
+        <tr><td><strong>Psychosis</strong></td><td>Hallucinations, delusions, disorganized thinking</td><td>Psychotic depression and mania can dramatically increase danger and impair judgment</td></tr>
+        <tr><td><strong>Substance Use</strong></td><td>Alcohol, stimulants, sedatives, misuse of prescribed meds</td><td>Can worsen mood symptoms, increase impulsivity, and alter treatment choices</td></tr>
+        <tr><td><strong>Medical Contributors</strong></td><td>Cardiac disease, diabetes, chronic liver disease, dementia, AIDS, chronic pain</td><td>Depression may be secondary, worsened by, or masked within chronic illness</td></tr>
+        <tr><td><strong>Medication Review</strong></td><td>CNS depressants, corticosteroids, antihypertensives, others from the slide</td><td>Some meds can contribute to mood changes or complicate treatment</td></tr>
+        <tr><td><strong>Support Systems</strong></td><td>Family, friends, housing, access to follow-up</td><td>Poor support increases risk and reduces safety after discharge</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>If self-harm risk is even possible, do not move on casually to long-term teaching first.</li>
+          <li>A patient with low mood + psychosis needs a higher index of concern because judgment may be impaired.</li>
+          <li>Always ask directly about suicide. Direct questions do <strong>not</strong> put the idea into the patient’s head.</li>
+          <li>Support system assessment matters for both outpatient planning and relapse prevention.</li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <h4>Clinical Connection</h4>
+        <ul>
+          <li>You may see a medical-surgical patient with chronic illness who stops eating, stops engaging, and misses meds. That could be depression, not “noncompliance.”</li>
+          <li>An overwhelmed patient with vague somatic complaints and insomnia may screen positive when you ask the two simple depression questions.</li>
+          <li>A patient who says “I’m fine” but looks flat, withdrawn, and poorly groomed still needs further assessment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> choosing a comforting statement before performing a suicide assessment.</li>
+        <li>They love asking what additional information is needed. The best answers usually clarify <strong>plan, means, history, supports, and contributing conditions</strong>.</li>
+        <li>Routine adult screening is fair game. Know the two classic screening questions.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p>For depression assessment, think <strong>“SAD PMHS”</strong>: <strong>S</strong>uicide, <strong>A</strong>lcohol/drugs, <strong>D</strong>elusions/psychosis, <strong>P</strong>ast history, <strong>M</strong>edical issues/meds, <strong>H</strong>elp/supports, <strong>S</strong>creening questions.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p4" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 12–16 + Bipolar Textbook Notes</p>
+    <h2 class="card-title">Mania: Stages, Presentation, and Acute Nursing Care</h2>
+
+    <div class="sh">Slides 12–13 — Symptoms of Bipolar Disorder + Manic States</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Symptoms of Bipolar Disorder</li>
+        <li>What are the symptoms of mania?</li>
+        <li>Stage I—Hypomania: Symptoms not severe, able to function</li>
+        <li>Stage II—Acute mania: Marked impairment in functioning of mood, cognition, perception, activity, &amp; behavior; usually requires hospitalization</li>
+        <li>Stage III—Delirious mania: labile mood, despair to ecstasy, panic anxiety, auditory &amp; visual hallucinations, delusions, incoherent, distractible, frenzied psychomotor activity</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">Mania is not just “happy” or “energized.” The core issue is a state of <strong>abnormally elevated, expansive, or irritable mood with persistently increased energy and goal-directed activity</strong>. As mania escalates, insight drops, sleep decreases, judgment becomes impaired, and the patient may become reckless, sexually disinhibited, grandiose, or psychotic.</p>
+      <p class="body">The textbook notes that early mania may look euphoric and exciting, but it often progresses into <strong>agitation, irritability, impulsivity, distractibility, psychosis, and eventually exhaustion</strong>. Severe mania is a psychiatric emergency because the patient may no longer accurately perceive reality and may engage in dangerous behavior.</p>
+      <p class="body">Cross-analysis with the bipolar notes also adds relapse teaching: even during remission, the patient and family need teaching on <strong>medication adherence, sleep hygiene, early warning signs of mania, and the effect of alcohol/drugs/OTC products on stability</strong>. Families often notice decreased sleep, pressured speech, spending, or irritability before the patient does.</p>
+    </div>
+
+    <div class="sh">Slides 14–16 — Nursing Interventions in Acute Mania + Sample Question</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Do not overreact to client.</li>
+        <li>Set simple limits to inappropriate behavior.</li>
+        <li>Be kind, but firm (client may try to bend rules)</li>
+        <li>Monitor safety – delusions of grandeur</li>
+        <li>High calorie, high vitamin diet (frequent finger foods might be helpful - why?)</li>
+        <li>Non-competitive activities – can be very irritable</li>
+        <li>Teach client: to monitor self and have family assist – recognize mania; monitor sleep (may need frequent naps if cannot sleep well at night)</li>
+        <li>Maintain a low stimuli environment</li>
+        <li>Weigh client daily</li>
+        <li>Monitor vital signs every 1-2 hours throughout the day</li>
+        <li>Sample Question answer: Calmly tell the client that it is inappropriate to speak to any nurse that way.</li>
+      </ul>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Finding in Mania</th><th>What the Nurse May Actually See</th><th>Nursing Response</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Decreased need for sleep</strong></td><td>Patient says they feel "great" after 2–3 hours of sleep</td><td>Monitor escalating mania; promote rest, reduce stimulation, medicate as ordered</td></tr>
+        <tr><td><strong>Grandiosity</strong></td><td>Claims of power, status, special mission, unrealistic plans</td><td>Do not argue; set limits; redirect to reality-based tasks; protect patient and others</td></tr>
+        <tr><td><strong>Hypersexual / inappropriate behavior</strong></td><td>Sexual comments, touching, flirting, intrusive behavior</td><td>Respond calmly and directly; state behavior is inappropriate; maintain boundaries</td></tr>
+        <tr><td><strong>Poor intake</strong></td><td>Too busy to sit, forgets to eat, loses weight</td><td>Offer high-calorie finger foods and fluids; daily weights</td></tr>
+        <tr><td><strong>Psychosis in severe mania</strong></td><td>Hallucinations, delusions, severe distractibility</td><td>Low-stimulus setting, safety precautions, medication, possible hospitalization</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>In acute mania, <strong>physical needs and safety come first</strong>: food, fluids, rest, boundaries, protection from impulsive acts.</li>
+          <li>Low-stimulus environment is not just comfort care; it reduces escalation.</li>
+          <li>Daily weights matter because manic clients may burn calories constantly and neglect intake.</li>
+          <li>Frequent VS monitoring matters because agitation, dehydration, overactivity, and medication effects can destabilize the patient.</li>
+        </ul>
+      </div>
+      <div class="mini-panel amber">
+        <h4>Exam Tips / NCLEX Traps</h4>
+        <ul>
+          <li><strong>This is a trap:</strong> choosing “ignore the behavior” when a patient says something sexually inappropriate. Ignoring does not set limits.</li>
+          <li>They will test whether you know to be <strong>kind, neutral, and firm</strong> instead of shaming, debating, or overreacting.</li>
+          <li>Finger foods are used because the patient often will not sit long enough for a meal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p>Think <strong>“MANIA = FAST”</strong>: <strong>F</strong>light of ideas / food neglect, <strong>A</strong>gitation, <strong>S</strong>leep decreased, <strong>T</strong>alkative / thoughts racing. For care, think <strong>“REST”</strong>: <strong>R</strong>educe stimuli, <strong>E</strong>nforce limits, <strong>S</strong>afety first, <strong>T</strong>hrow in finger foods.</p>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">🎯 How This Shows Up on Exams</span>
+      <p>Mania questions often ask what the nurse should do first when the patient is intrusive, inappropriate, not sleeping, or refusing meals. The best answers usually protect safety, preserve dignity, and meet physical needs. This directly ties to your objectives on behavioral intervention, anxiety reduction, abnormal mood recognition, crisis management, and nonthreatening care.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p5" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slide 17 + Textbook Pharmacology Notes</p>
+    <h2 class="card-title">Antidepressants: What to Know for Nursing Safety and Hard Exam Questions</h2>
+
+    <div class="sh">Slide 17 — Antidepressants</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Selective serotonin reuptake inhibitors (SSRIs) e.g. Paroxetine, Fluoxetine *serotonin syndrome risk</li>
+        <li>SNRIs (selective norepinephrine reuptake inhibitors)</li>
+        <li>Tricyclics (e.g. amitryptyline)</li>
+        <li>MAO inhibitors (e.g. phenalzine)</li>
+        <li>What is most dangerous potential side effect? (Hypertensive crisis caused by _______?)</li>
+        <li>Patient education?</li>
+        <li>Avoid concurrent use with SSRIs! May cause serotonin syndrome!</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">SSRIs are often first-line because they are generally better tolerated than older antidepressants. But the nurse has to teach patients that improvement is not immediate. Early benefit may begin in <strong>2–3 weeks</strong>, but full effect often takes <strong>4–8 weeks</strong>. That delay matters because some patients stop the medication too early, assume it is not working, or remain suicidal while waiting for mood improvement.</p>
+      <p class="body">The older classes matter because they are high-yield on exams. <strong>TCAs</strong> are more dangerous in overdose. <strong>MAOIs</strong> are not first-line because of potentially fatal interactions with tyramine-containing foods and other serotonergic medications. <strong>Serotonin syndrome</strong> can occur with serotonergic excess and may begin abruptly with tachycardia, diaphoresis, shivering, dilated pupils, hyperreflexia, myoclonus, and hyperthermia.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Drug / Class</th><th>Mechanism</th><th>High-Yield Nursing Points</th><th>When to Hold / Call Provider</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SSRIs</strong><br><span class="drug-box">fluoxetine</span><span class="drug-box">paroxetine</span></td>
+          <td>Increase serotonin by inhibiting reuptake</td>
+          <td>Common mild early effects: insomnia, abdominal discomfort, dry mouth, headache; full effect may take weeks; do not stop abruptly</td>
+          <td>Call provider for worsening suicidal ideation, severe agitation, serotonin syndrome signs, allergic reaction, inability to tolerate intake</td>
+        </tr>
+        <tr>
+          <td><strong>SNRIs</strong></td>
+          <td>Increase serotonin and norepinephrine by inhibiting reuptake</td>
+          <td>Used when depression is refractory or accompanied by anxiety symptoms</td>
+          <td>Hold/notify for severe adverse effects per order set, serotonin syndrome symptoms, or concerning BP/activation changes depending on agent</td>
+        </tr>
+        <tr>
+          <td><strong>TCAs</strong><br><span class="drug-box">amitriptyline</span></td>
+          <td>Increase norepinephrine and serotonin; also hit other receptors, causing more side effects</td>
+          <td>Rarely first-line now; overdose can be lethal; requires suicide-risk thinking before dispensing or discharge teaching</td>
+          <td>Call provider for overdose concern, severe sedation, cardiac concerns, or inability to take safely</td>
+        </tr>
+        <tr>
+          <td><strong>MAOIs</strong><br><span class="drug-box">phenelzine</span></td>
+          <td>Inhibit monoamine oxidase, increasing monoamines</td>
+          <td>Tyramine interaction can cause hypertensive crisis; avoid concurrent SSRIs because serotonin syndrome risk</td>
+          <td><strong>Hold and notify immediately</strong> for severe headache, hypertensive symptoms, chest pain, or suspected interaction</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Most Dangerous Things to Know</h4>
+        <ul>
+          <li><strong>Serotonin syndrome:</strong> tachycardia, shivering, diaphoresis, dilated pupils, myoclonus, hyperreflexia, hyperthermia.</li>
+          <li><strong>MAOI + tyramine = hypertensive crisis.</strong></li>
+          <li><strong>MAOI + SSRI = serotonin syndrome risk.</strong></li>
+          <li><strong>TCA overdose can be lethal.</strong></li>
+          <li>Do not stop antidepressants abruptly because discontinuation symptoms can occur.</li>
+        </ul>
+      </div>
+      <div class="mini-panel green">
+        <h4>Patient Education</h4>
+        <ul>
+          <li>Take medication exactly as prescribed; do not stop abruptly.</li>
+          <li>Do not expect instant relief; improvement may take several weeks.</li>
+          <li>Report new/worsening suicidal thoughts, severe restlessness, fever, tremor, or unusual confusion.</li>
+          <li>MAOI patients need strict dietary and drug-interaction teaching.</li>
+          <li>St. John’s wort is not harmless just because it is herbal; it can interact with antidepressants.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>A patient taking phenelzine says, “I had wine and aged cheese at dinner and now I have a pounding headache.” What is the safest interpretation?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Possible hypertensive crisis</span>
+        <p>This is a classic MAOI + tyramine danger pattern. The nurse should treat this as urgent, not as routine med teaching. This is one of those exam cues designed to see whether you immediately connect <strong>MAOI</strong> to <strong>tyramine restriction</strong>.</p>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> picking a vague side effect when the question is really testing the dangerous one. For MAOIs, think <strong>hypertensive crisis</strong>; for SSRIs, think <strong>serotonin syndrome</strong>.</li>
+        <li>They may ask which statement by the patient needs correction. Anything suggesting abrupt discontinuation or careless mixing of antidepressants should jump out.</li>
+        <li>They love stems where mood is still low but energy starts to return. That can be a suicide risk window when starting antidepressants.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p><strong>MAOI = “M” for meat, mature cheese, and major BP risk.</strong> <strong>SSRI = serotonin.</strong> <strong>TCA = toxicity in overdose.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div id="p6" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slide 18 + Bipolar Textbook Notes</p>
+    <h2 class="card-title">Lithium, Mood Stabilizers, and Acute Mania Med Safety</h2>
+
+    <div class="sh">Slide 18 — Mood Stabilizing Drugs</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Lithium carbonate - controls mania, decreases incidence of suicide</li>
+        <li>Therapeutic blood level: 0.4 to 1.4 mEq/L</li>
+        <li>Toxic blood level: 1.5 mEq/L and above</li>
+        <li>Blood levels should be obtained in the morning, usually 12 hours after last dose</li>
+        <li>Antiepileptics</li>
+        <li>Second generation Antipsychotics</li>
+        <li>Atypical Antipsychotics - can help promote sleep and decrease anxiety and agitation. May also help with mood stabilization (example - quetiapine)</li>
+        <li>Anxiolytics (e.g. benzodiazepines)- can be useful with acute mania</li>
+        <li>Antidepressants - may be used during depressive phase</li>
+        <li>Antiseizure meds - e.g. lamotrigene</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">Lithium remains a classic mood stabilizer and is especially high-yield because it has a <strong>narrow therapeutic range</strong>. Your notes emphasize that <strong>kidney and thyroid function</strong> should be checked before and during therapy. It is lost with perspiration and affected by fluid/electrolyte status, so dehydration can push the patient into toxicity.</p>
+      <p class="body">The textbook lists early lithium toxicity signs as <strong>diarrhea, vomiting, drowsiness, muscular weakness, and lack of coordination</strong>. More severe toxicity can progress to <strong>ataxia, blurred vision, tinnitus, marked neurologic change, and large amounts of dilute urine</strong>. This is not “watch and wait” territory. It requires immediate provider notification and usually holding the medication.</p>
+      <p class="body">Cross-analysis with the bipolar notes adds that <strong>lithium is avoided in pregnancy/breastfeeding, blood levels are checked about 12 hours after the last dose, kidney and thyroid labs need ongoing follow-up, and second-generation antipsychotics require metabolic screening</strong>. Family teaching should also cover relapse signs, sleep changes, hydration, and adherence even when the patient feels well.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Medication / Group</th><th>Therapeutic Use</th><th>High-Yield Adverse Effects / Risks</th><th>Teaching / Monitoring</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Lithium carbonate</strong></td>
+          <td>Controls mania; decreases incidence of suicide</td>
+          <td>Narrow therapeutic range; early and severe toxicity; long-term thirst, tremor, frequent urination, diarrhea, weight gain, edema</td>
+          <td>Check levels 12 hr after last dose; monitor kidney and thyroid function; maintain steady fluids and sodium; avoid dehydration</td>
+        </tr>
+        <tr>
+          <td><strong>Antiepileptics / antiseizure meds</strong><br><span class="drug-box">lamotrigine</span></td>
+          <td>Mood stabilization / maintenance depending on agent</td>
+          <td>Overdose may be lethal; hepatic/renal concerns per notes</td>
+          <td>Baseline and intermittent hepatic/renal tests depending on agent; teach adherence and monitoring</td>
+        </tr>
+        <tr>
+          <td><strong>Second-generation antipsychotics</strong><br><span class="drug-box">quetiapine</span></td>
+          <td>Help with sleep, anxiety, agitation, and mood stabilization</td>
+          <td>Sedation; metabolic concerns; safety monitoring</td>
+          <td>Monitor response, oversedation, intake, sleep, and adherence</td>
+        </tr>
+        <tr>
+          <td><strong>Benzodiazepines</strong></td>
+          <td>Short-term use in acute mania/anxiety</td>
+          <td>Sedation, fall risk, CNS depression, misuse potential</td>
+          <td>Use cautiously; monitor respiratory/CNS status and safety</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>When to Hold / Call Provider Immediately</h4>
+        <ul>
+          <li><strong>Lithium:</strong> diarrhea, vomiting, drowsiness, muscular weakness, lack of coordination, ataxia, blurred vision, tinnitus, marked neuro change.</li>
+          <li>Hold lithium and report if dehydration, major fluid loss, or toxicity is suspected.</li>
+          <li>Do not give lithium casually to pregnant or breastfeeding patients per your notes.</li>
+          <li>Any severe oversedation or respiratory/CNS depression with benzodiazepines needs prompt action.</li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <h4>Patient &amp; Family Teaching</h4>
+        <ul>
+          <li>Maintain consistent fluid and electrolyte intake.</li>
+          <li>Do not suddenly change sodium intake without guidance.</li>
+          <li>Recognize early toxicity and report it right away.</li>
+          <li>Keep lab appointments. Lithium without lab follow-up is unsafe.</li>
+          <li>Family should help monitor sleep, irritability, spending, hyperactivity, and early relapse cues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>A client on lithium has had vomiting and diarrhea for 24 hours and now seems unsteady. What should the nurse think first?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Suspect lithium toxicity</span>
+        <p>Fluid loss can raise lithium concentration. The safest response is to treat this as potential toxicity, hold further doses per protocol, and notify the provider. This is one of the cleanest exam patterns in psych pharmac.</p>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> assuming tremor or GI upset is always mild and expected when the stem is actually describing toxicity escalation.</li>
+        <li>They will absolutely test the lithium level ranges and the 12-hour post-dose blood draw concept.</li>
+        <li>Questions often mix in dehydration, sweating, diarrhea, or poor intake to see if you recognize toxicity risk.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p><strong>Li = likes liquids.</strong> If fluids fall, lithium can rise. For toxicity progression, remember <strong>“GI then neuro”</strong>: vomiting/diarrhea first, then coordination and neurologic problems.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p7" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 19–24 + Textbook Notes</p>
+    <h2 class="card-title">ECT, CBT, and Other Therapies for Depression and Mania</h2>
+
+    <div class="sh">Slides 19–21 — ECT + Role of the Nurse</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Grand mal seizure (25 sec) induced by electrical current</li>
+        <li>Theory - ↑ availability of neurotransmitters</li>
+        <li>Usually QOD three X/week; 6 to 12 treatments</li>
+        <li>Indicated for depression &amp; mania when medication is ineffective</li>
+        <li>Contraindications – Increased intracranial pressure (e.g. Brain tumor, CVA w/in 3 months)</li>
+        <li>Caution – severe heart disease, pulmonary disease, severe underlying hypertension, and heart failure</li>
+        <li>Pre-procedure: assess mood, anxiety, thought and communication patterns, baseline VS, describe procedure, short term memory loss - common side effect, NPO – 8 hours prior, informed consent, remove dentures, etc.</li>
+        <li>During: muscle paralyzing agent (usually succinylcholine), anesthesia, supplemental oxygen</li>
+        <li>Post-care: VS Q 15 min/1 hour, remain with client until fully awake, side lying, orient client to time, place, and situation</li>
+      </ul>
+    </div>
+
+    <div class="sh">Slides 22–24 — CBT + Other Therapies</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>Cognitive Behavioral Therapy — based upon changing distorted thinking, mood &amp; behavior</li>
+        <li>Goal to learn to identify &amp; alter dysfunctional beliefs that predispose them to distort experiences</li>
+        <li>Highly structured &amp; short-term, 12 to 16 weeks</li>
+        <li>Role of nurse with CBT: explain connection between thoughts and emotions and behavior; recognize thoughts; thought recording; imagery; teach thought stopping</li>
+        <li>Other therapies: Exercise, Transcranial Magnetic Stimulation, Vagus Nerve Stimulation, Deep Brain Stimulation, Light Therapy, St. John’s Wort</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">ECT is used when symptoms are severe, dangerous, or treatment-resistant. Nursing care is basically peri-anesthesia care plus mental status support. The nurse teaches before the procedure, protects airway and safety after the procedure, and reorients the patient as they wake. Short-term memory problems are common and expected.</p>
+      <p class="body">CBT works by targeting maladaptive thought patterns and behaviors that feed depression. It is especially useful because it teaches the patient to notice automatic negative thoughts, challenge distortions, and replace them with more accurate thinking. That makes it highly testable in psych nursing because it connects directly to coping, self-control, and treatment adherence.</p>
+      <p class="body">The book notes also strengthen this section by showing that outcomes are often best when <strong>psychotherapy and pharmacotherapy are combined</strong>. Interpersonal therapy is especially useful for <strong>grief issues and postpartum depression</strong>, and family-focused therapy supports communication, problem solving, and adherence.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="mini-panel teal">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>ECT contraindication from the slide: <strong>increased intracranial pressure</strong>.</li>
+          <li>Post-ECT, protect airway, monitor VS, place side-lying, and reorient.</li>
+          <li>Do not forget informed consent and NPO teaching before ECT.</li>
+          <li>Do not present St. John’s wort as risk-free because it can interact with prescribed meds.</li>
+        </ul>
+      </div>
+      <div class="mini-panel amber">
+        <h4>Clinical Connection</h4>
+        <ul>
+          <li>ECT may be chosen when the patient is severely depressed, suicidal, psychotically depressed, or not responding to meds quickly enough.</li>
+          <li>CBT shows up in practice as thought logs, identifying distortions, and reframing self-defeating thoughts.</li>
+          <li>Exercise and light therapy may be adjunctive, but they do not replace emergency safety management.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> forgetting that ECT care includes routine anesthesia-style pre/post safety steps.</li>
+        <li>They love asking why the patient is placed side-lying after ECT — airway protection.</li>
+        <li>Thought stopping and reframing are classic CBT items.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p><strong>ECT = “airway, awake, orient.”</strong> <strong>CBT = “catch it, check it, change it.”</strong></p>
+    </div>
+  </div>
+</div>
+
+<div id="p8" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 25–30 + Mood &amp; Affect Textbook Notes + Module Objectives</p>
+    <h2 class="card-title">Suicide Management: Risk Factors, Outpatient/Inpatient Guidelines, and Family Teaching</h2>
+
+    <div class="sh">Slides 25–30 — Suicide Risk and Treatment Guidelines</div>
+    <div class="callout info">
+      <span class="callout-label">📊 Slide Content — Exactly as Presented</span>
+      <ul class="content-list">
+        <li>RISK FACTORS FOR COMMITTING SUICIDE</li>
+        <li>GUIDELINES FOR TREATMENT OF THE SUICIDAL CLIENT (OUTPATIENT)</li>
+        <li>Assess lethality – Plan? Means?</li>
+        <li>Do not leave the person alone if …</li>
+        <li>Establish a Safety Plan instead of a no-suicide contract with the client.</li>
+        <li>Enlist the help of family or friends.</li>
+        <li>Schedule frequent appointments.</li>
+        <li>Establish rapport and promote a trusting relationship.</li>
+        <li>Be direct and talk matter-of-factly about suicide (talking does not make it more likely).</li>
+        <li>Discuss the current crisis situation in the client’s life.</li>
+        <li>Identify areas of self-control.</li>
+        <li>Give antidepressant medications.</li>
+        <li>Information for Family and Friends of the Suicidal Client: Take any hint of suicide seriously. Do not keep secrets. Be a good listener. Express to the client feelings of personal worth. Know about suicide intervention resources. Restrict access to firearms or other means of self-harm.</li>
+        <li>Interventions with Family and Friends of Suicide Victims: Encourage them to talk about the suicide. Discourage blaming and scapegoating. Listen to feelings of guilt and self-perception. Talk about personal relationships with the victim. Recognize differences in styles of grieving. Assist with development of adaptive coping strategies. Identify resources that provide support. SUPPORT, SUPPORT, SUPPORT</li>
+        <li>GUIDELINES FOR TREATMENT OF THE SUICIDAL CLIENT (INPATIENT)</li>
+        <li>Do not leave the person alone</li>
+        <li>Carefully assess environment</li>
+        <li>Search personal belongings for dangerous items</li>
+      </ul>
+    </div>
+
+    <div class="callout.book">
+      <span class="callout-label">📖 Textbook Expansion</span>
+      <p class="body">The textbook emphasizes that patients with affective instability should be assessed for suicide whenever functional status drops and mood disturbance is significant. The nurse should ask directly about thoughts of suicide and other violence. Direct conversation is therapeutic and can reduce isolation; it does <strong>not</strong> increase the likelihood of a suicide attempt.</p>
+      <p class="body">A very testable concept from your notes is that <strong>low mood with increasing energy/cognition can be especially dangerous</strong>. A person who is severely depressed but now has enough energy to plan and act may actually be at greater acute risk. Another ominous clue is sudden unexplained calm or euthymia after severe distress, especially if paired with giving away belongings or farewell behaviors.</p>
+      <p class="body">The book also adds practical safety details: high-risk patients may need <strong>limited medication quantities, family supervision, and mouth checks if medication hoarding is a concern</strong>. A written safety plan is more appropriate than a casual no-suicide promise because it identifies warning signs, coping steps, support people, and crisis resources.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Suicide Assessment Question</th><th>Why It Matters</th><th>What to Do with the Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Are you thinking about killing yourself?</strong></td><td>Clarifies ideation directly</td><td>If yes, continue urgently with plan/means/timeframe assessment</td></tr>
+        <tr><td><strong>Do you have a plan?</strong></td><td>Higher specificity = higher lethality risk</td><td>More detailed plan raises urgency and observation level</td></tr>
+        <tr><td><strong>Do you have the means?</strong></td><td>Access increases ability to act</td><td>Remove/secure means and escalate care</td></tr>
+        <tr><td><strong>Have you tried before?</strong></td><td>Past attempts strongly increase risk</td><td>Treat history seriously; tighten safety approach</td></tr>
+        <tr><td><strong>What is happening in your life right now?</strong></td><td>Identifies crisis, loss, triggers, supports</td><td>Guides crisis intervention and safety planning</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Nursing Priority / Safety</h4>
+        <ul>
+          <li>Do not leave a high-risk suicidal patient alone.</li>
+          <li>Outpatient safety requires plan/means assessment, safety plan creation, support activation, and close follow-up.</li>
+          <li>Inpatient safety includes environmental sweep and searching belongings for sharps, cords, pills, lighters, belts, and other dangerous items.</li>
+          <li>Restrict access to firearms and overdose-prone medications.</li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <h4>Clinical Connection</h4>
+        <ul>
+          <li>A patient may feel relieved after deciding on suicide. Sudden calm is not always improvement.</li>
+          <li>Family members may promise secrecy. The nurse must teach that suicide threats or hints are never secrets to keep.</li>
+          <li>Support after a suicide death also matters. Survivors need active grief support and nonjudgmental listening.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>A severely depressed patient suddenly appears cheerful, gives away favorite belongings, and says “Everyone will be better off soon.” What is the best nursing interpretation?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Possible escalating suicide risk</span>
+        <p>This is the classic trap. Sudden calm can reflect relief after deciding to die, not true recovery. Treat this as a safety concern, assess directly, and increase protection.</p>
+      </div>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">⭐ Exam Tips / NCLEX Traps</span>
+      <ul class="content-list">
+        <li><strong>This is a trap:</strong> choosing a “no-suicide contract” over a safety plan. Your slide specifically favors a <strong>safety plan</strong>.</li>
+        <li>They will test whether you know that talking about suicide is appropriate and does not make it more likely.</li>
+        <li>Any answer that leaves the patient alone when risk is high is almost certainly wrong.</li>
+        <li>If the question asks about family teaching, “do not keep secrets” is huge.</li>
+      </ul>
+    </div>
+
+    <div class="callout.prof">
+      <span class="callout-label">🧠 Quick Memory Tools</span>
+      <p>For suicide assessment, think <strong>“PMP”</strong>: <strong>P</strong>lan, <strong>M</strong>eans, <strong>P</strong>ast attempts. For safety with loved ones, remember <strong>“No secrets, no weapons, no alone time.”</strong></p>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">🎯 How This Shows Up on Exams</span>
+      <p>This is one of the biggest exam zones in the whole module. Questions will target crisis identification, potential for violence, safety precautions, reality-based and nonjudgmental care, family teaching, and selecting the safest next action. When in doubt, pick the answer that <strong>increases supervision, removes means, assesses directly, and involves supports</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<div id="p9" class="section">
+  <div class="card">
+    <p class="card-subtitle">Module Wrap-Up + Objective Integration</p>
+    <h2 class="card-title">Big Picture Summary, Top 10 Must-Know Exam Points, and Things That Will Get You Questions Wrong</h2>
+
+    <div class="sh">Big Picture Summary</div>
+    <p class="body">This whole module is really about <strong>recognition + safety + function + medication judgment</strong>. Depression lowers mood, energy, and often function. Mania raises energy and activation but destroys judgment and safety. Suicide risk can emerge anywhere on the mood spectrum, but it becomes especially dangerous when hopelessness combines with enough energy and cognition to act. The nurse’s role is not to diagnose the DSM label, but to rapidly identify unstable mood states, assess risk, protect the patient, support the family, and implement collaborative care that is realistic and evidence-based.</p>
+
+    <div class="sh">Top 10 Must-Know Exam Points</div>
+    <div class="grid-2">
+      <div class="mini-panel teal">
+        <ul>
+          <li>1. Mood is subjective; affect is observable.</li>
+          <li>2. Major depression symptoms must persist at least 2 weeks.</li>
+          <li>3. Anhedonia, hopelessness, worthlessness, and recurrent thoughts of death are red flags.</li>
+          <li>4. Children/adolescents may show depression as irritability.</li>
+          <li>5. Acute mania care focuses on safety, limits, fluids/food, sleep, and low stimulation.</li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <ul>
+          <li>6. SSRIs can cause serotonin syndrome; MAOIs can cause hypertensive crisis with tyramine.</li>
+          <li>7. TCA overdose can be lethal.</li>
+          <li>8. Lithium has a narrow therapeutic range and toxicity can start with GI symptoms.</li>
+          <li>9. ECT care includes informed consent, NPO status, airway/VS monitoring, side-lying, and reorientation.</li>
+          <li>10. Never leave a high-risk suicidal patient alone; use a safety plan, not a casual promise.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Things That Will Get You Questions Wrong</div>
+    <div class="callout priority">
+      <span class="callout-label">❌ Common Mistakes</span>
+      <ul class="content-list">
+        <li>Confusing mood with affect.</li>
+        <li>Thinking depression always presents as obvious sadness.</li>
+        <li>Missing irritability as a sign of depression in youth.</li>
+        <li>Ignoring psychomotor changes, poor grooming, or sleep/appetite changes.</li>
+        <li>Choosing to ignore inappropriate manic behavior instead of setting calm limits.</li>
+        <li>Forgetting that finger foods are used because manic patients often cannot sit still.</li>
+        <li>Not connecting MAOIs with tyramine and hypertensive crisis.</li>
+        <li>Not recognizing serotonin syndrome early.</li>
+        <li>Failing to hold/flag lithium when GI losses and coordination problems show up together.</li>
+        <li>Mistaking sudden calm in a suicidal patient for true recovery.</li>
+      </ul>
+    </div>
+
+    <div class="callout.exam">
+      <span class="callout-label">🎯 Course Objectives Connection</span>
+      <p>This guide directly reinforces your module objectives by focusing on support systems, coping, behavioral assessment, response to abnormal mood/psychomotor behavior, anxiety reduction, reality-based care, crisis intervention, safety precautions, medication contraindications/interactions/adverse effects, and post-procedure complication monitoring. In other words, this module is not just “know the symptoms.” It is <strong>recognize, prioritize, intervene, teach, and evaluate</strong>.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<button class="nav-float" onclick="document.getElementById('topNav').scrollIntoView({behavior:'smooth', block:'start'})">Nav</button>
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer>
+  HCC2 Mood &amp; Affect Study Guide — Depression, Mania &amp; Suicide Management<br />
+  
+</footer>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleQA(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector('.qa-icon');
+  answer.classList.toggle('open');
+  icon.textContent = answer.classList.contains('open') ? '▲' : '▼';
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('moodGuideDark', document.body.classList.contains('dark') ? '1' : '0');
+}
+
+if (localStorage.getItem('moodGuideDark') === '1') {
+  document.body.classList.add('dark');
+}
+</script>
+</body>
+</html>

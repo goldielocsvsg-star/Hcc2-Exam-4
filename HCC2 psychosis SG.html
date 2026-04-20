@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCC2 — Psychosis &amp; Schizophrenia | Comprehensive Study Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #1e40af;
+  --primary-light: #dbeafe;
+  --primary-mid: #3b82f6;
+  --teal: #0f766e;
+  --teal-light: #ccfbf1;
+  --violet: #6d28d9;
+  --violet-light: #ede9fe;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --green: #047857;
+  --green-light: #d1fae5;
+  --rose: #be185d;
+  --rose-light: #fce7f3;
+  --slate: #334155;
+  --slate-light: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(30,64,175,0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; }
+
+.site-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #1e40af 70%, #0f766e 100%);
+  padding: 36px 48px 30px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 4px 24px rgba(30,64,175,0.35);
+}
+.header-inner { max-width: 1100px; margin: 0 auto; }
+.header-badge { display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.3); }
+.site-header h1 { font-family: 'Playfair Display', serif; font-size: 1.85rem; color: white; line-height: 1.2; margin-bottom: 6px; }
+.site-header p { color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+
+.nav-wrap { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 190; box-shadow: var(--shadow-sm); }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2px; padding: 10px 16px; }
+.nav-btn { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); background: none; border: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.18s; letter-spacing: 0.2px; }
+.nav-btn:hover { background: var(--primary-light); color: var(--primary); }
+.nav-btn.active { background: var(--primary-light); color: var(--primary); font-weight: 700; }
+
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 20px 60px; }
+.section { display: none; }
+.section.active { display: block; }
+
+.card { background: white; border-radius: 14px; border: 1px solid var(--border); padding: 30px 34px; margin-bottom: 24px; box-shadow: var(--shadow); }
+.card-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); margin-bottom: 4px; }
+.card-subtitle { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+
+.sh { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+.sh:first-child { margin-top: 4px; }
+p.body { font-size: 0.95rem; line-height: 1.75; margin-bottom: 12px; }
+strong { color: var(--slate); font-weight: 700; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+.note-inline { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+ul.content-list { list-style: none; padding: 0; margin: 0; }
+ul.content-list li { padding: 5px 0 5px 20px; position: relative; font-size: 0.93rem; line-height: 1.65; color: var(--text); }
+ul.content-list li::before { content: '›'; position: absolute; left: 4px; color: var(--primary-mid); font-weight: 700; font-size: 1rem; top: 4px; }
+ul.content-list li + li { border-top: 1px solid #f8f8fb; }
+
+.callout { border-radius: 10px; padding: 16px 20px; margin: 18px 0; font-size: 0.92rem; line-height: 1.65; }
+.callout-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; }
+.callout.priority { background: var(--red-light); border-left: 4px solid var(--red); }
+.callout.priority .callout-label { color: var(--red); }
+.callout.book { background: var(--green-light); border-left: 4px solid var(--green); }
+.callout.book .callout-label { color: var(--green); }
+.callout.exam { background: var(--teal-light); border-left: 4px solid var(--teal); }
+.callout.exam .callout-label { color: var(--teal); }
+.callout.prof { background: var(--amber-light); border-left: 4px solid var(--amber); }
+.callout.prof .callout-label { color: var(--amber); }
+.callout.info { background: var(--primary-light); border-left: 4px solid var(--primary); }
+.callout.info .callout-label { color: var(--primary); }
+.callout.emergency { background: #fff0f0; border: 2px solid var(--red); border-radius: 10px; }
+.callout.emergency .callout-label { color: var(--red); font-size: 0.72rem; }
+
+.qa-block { margin: 16px 0; }
+.qa-question { background: var(--amber-light); border: 1.5px solid #fcd34d; border-radius: 10px; padding: 14px 18px; font-size: 0.93rem; font-weight: 600; color: #78350f; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; user-select: none; transition: background 0.15s; }
+.qa-question:hover { background: #fde68a; }
+.qa-question .qa-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 2px; color: var(--amber); }
+.qa-answer { display: none; background: white; border: 1.5px solid #fcd34d; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 20px; font-size: 0.91rem; line-height: 1.7; color: var(--text); }
+.qa-answer.open { display: block; }
+.qa-answer ul { list-style: none; padding: 0; }
+.qa-answer ul li { padding: 3px 0 3px 18px; position: relative; }
+.qa-answer ul li::before { content: '•'; position: absolute; left: 4px; color: var(--amber); font-weight: 700; }
+.qa-answer .answer-tag { display: inline-block; background: #059669; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.qa-answer .wrong-tag { display: inline-block; background: var(--red); color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; margin-right: 4px; }
+
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 0.88rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.data-table th { background: linear-gradient(135deg, var(--primary), var(--teal)); color: white; padding: 11px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.3px; }
+.data-table td { padding: 10px 16px; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tr:nth-child(even) td { background: #fafafa; }
+.data-table tr:hover td { background: var(--primary-light); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+@media(max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+.mini-panel { background: var(--slate-light); border-radius: 10px; padding: 16px 18px; border-top: 3px solid var(--primary); }
+.mini-panel.green { border-top-color: var(--green); }
+.mini-panel.teal { border-top-color: var(--teal); }
+.mini-panel.red { border-top-color: var(--red); }
+.mini-panel.amber { border-top-color: var(--amber); }
+.mini-panel.violet { border-top-color: var(--violet); }
+.mini-panel.rose { border-top-color: var(--rose); }
+.mini-panel h4 { font-size: 0.83rem; font-weight: 700; color: var(--slate); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.4px; }
+.mini-panel ul { list-style: none; padding: 0; }
+.mini-panel ul li { font-size: 0.88rem; padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+.mini-panel ul li::before { content: '·'; position: absolute; left: 2px; color: var(--primary); font-weight: 900; font-size: 1.1rem; line-height: 1.3; }
+
+.pill { display: inline-block; font-size: 0.67rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin: 0 3px 3px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.pill.blue { background: var(--primary); color: white; }
+.pill.teal { background: var(--teal); color: white; }
+.pill.violet { background: var(--violet); color: white; }
+.pill.green { background: var(--green); color: white; }
+.pill.red { background: var(--red); color: white; }
+.pill.amber { background: #d97706; color: white; }
+.pill.gray { background: #64748b; color: white; }
+.pill.rose { background: var(--rose); color: white; }
+.drug-box { display: inline-block; background: var(--teal-light); color: var(--teal); font-weight: 700; font-size: 0.85rem; padding: 1px 8px; border-radius: 6px; margin: 1px 2px; }
+
+.btt { position: fixed; bottom: 28px; right: 28px; background: var(--primary); color: white; border: none; border-radius: 50%; width: 42px; height: 42px; font-size: 1.1rem; cursor: pointer; box-shadow: var(--shadow-lg); transition: transform 0.2s; z-index: 100; }
+.btt:hover { transform: translateY(-3px); }
+
+footer { text-align: center; padding: 32px 20px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">HCC2 — Spring 2026 | Prof. Bryan</div>
+    <h1>Psychosis &amp; Schizophrenia</h1>
+    <p>Comprehensive Study Guide — Slides, Lecture Notes &amp; Textbook Integrated</p>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="show('p1',this)">Definition &amp; Scope</button>
+    <button class="nav-btn" onclick="show('p2',this)">Symptoms</button>
+    <button class="nav-btn" onclick="show('p3',this)">Assessment</button>
+    <button class="nav-btn" onclick="show('p4',this)">Nursing Care</button>
+    <button class="nav-btn" onclick="show('p5',this)">Antipsychotics</button>
+    <button class="nav-btn" onclick="show('p6',this)">EPS &amp; Side Effects</button>
+    <button class="nav-btn" onclick="show('p7',this)">NMS Emergency</button>
+    <button class="nav-btn" onclick="show('p8',this)">Therapeutic Comm.</button>
+    <button class="nav-btn" onclick="show('p9',this)">Exam Priority Review</button>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- ═══════════ SECTION 1: DEFINITION ═══════════ -->
+<div id="p1" class="section active">
+  <div class="card">
+    <p class="card-subtitle">Slides 1–4 + Textbook Chapter 33 (Giddens)</p>
+    <h2 class="card-title">Psychosis: Definition, Scope &amp; Consequences</h2>
+
+    <p class="body">Psychosis is defined in your textbook as <strong>"a syndrome of neurocognitive symptoms that impairs cognitive capacity, leading to deficits of perception, functioning, and social relatedness."</strong> The DSM-5-TR defines psychosis as abnormalities in five symptomatic domains: <strong>delusions, hallucinations, disorganized thought, disorganized or abnormal motor behavior, and negative symptoms.</strong></p>
+
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook: Psychosis is a Syndrome, Not a Diagnosis</span>
+      <p>Stahl defines psychosis as "a syndrome — a mixture of symptoms that can be associated with many different psychiatric disorders, but is not a specific disorder itself." Psychosis can be <strong>primary</strong> (psychiatric etiology — schizophrenia, schizoaffective disorder) or <strong>secondary</strong> (medical etiology — delirium, substance intoxication, dementia, metabolic disorders).</p>
+      <p style="margin-top:10px"><strong>Critical nursing implication:</strong> Always rule out secondary (medical) causes before assuming primary psychosis. A patient on a medical-surgical floor experiencing acute confusion, agitation, and hallucinations may have delirium from a UTI, electrolyte imbalance, or drug toxicity — not schizophrenia.</p>
+    </div>
+
+    <div class="sh">Slide 2: Compassionate Care — A Foundational Principle</div>
+    <p class="body">Prof emphasizes this as the opening principle: <strong>Even though clients with psychosis may be difficult to care for, it is essential to provide holistic, compassionate care.</strong> Do not automatically dismiss complaints or symptoms without first assessing whether there is a physiological basis — patients with schizophrenia can and do have comorbid medical conditions.</p>
+    <div class="callout exam">
+      <span class="callout-label">⭐ Clinical Application — Why This Is Testable</span>
+      <p>A patient with known schizophrenia who says "my stomach hurts" or "my chest hurts" should be assessed the same as any other patient. Attributing all symptoms to the psychiatric disorder without physical assessment is called <strong>diagnostic overshadowing</strong> — it is a clinical error and a major reason schizophrenic patients experience premature mortality. The textbook states this explicitly.</p>
+    </div>
+
+    <div class="sh">Neurobiology — Why Psychosis Occurs</div>
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook — Dopamine and Glutamate Dysregulation</span>
+      <p>A psychobiological definition of psychosis implicates <strong>dopamine and glutamate dysregulation between the limbic system and prefrontal cortex</strong>. Normal regulation of dopamine within the mesocortical and mesolimbic pathways, affected by NMDA receptor activity in the prefrontal cortex and serotonin regulation at 5-HT2A receptors in the cortex, reflects the absence of psychosis. This is why antipsychotics target dopamine (D2) receptors and why second-generation antipsychotics also target serotonin (5-HT2A).</p>
+    </div>
+
+    <div class="sh">Consequences of Psychosis</div>
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Acute Psychosis (Slide 3)</h4>
+        <ul>
+          <li>Outcome depends on etiologic factors</li>
+          <li>Many cases <strong>reversible</strong> — no residual effects (especially secondary psychosis)</li>
+          <li>Problems with daily activities</li>
+          <li>Cognitive dysfunction</li>
+          <li>Impaired personal, social, occupational function</li>
+          <li><strong>Risk for violence to self and/or others</strong></li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <h4>Chronic Psychosis — Schizophrenia (Slide 4)</h4>
+        <ul>
+          <li>High rates of recidivism, homelessness, incarceration, joblessness</li>
+          <li><strong>May be danger to self and/or others</strong></li>
+          <li>Premature mortality (20–25 years shorter lifespan)</li>
+          <li>Costly to family and society</li>
+          <li>Long-term disability; approximately half do not receive care</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 2: SYMPTOMS ═══════════ -->
+<div id="p2" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 5–8 + Textbook Chapter 33 + Lecture Notes</p>
+    <h2 class="card-title">Symptoms of Schizophrenia</h2>
+
+    <div class="callout info">
+      <span class="callout-label">📘 Framework for Understanding Symptoms</span>
+      <p>Schizophrenic symptoms are organized into <strong>positive symptoms</strong> (things that are <em>added</em> to the patient's experience that normally should not be there) and <strong>negative symptoms</strong> (things that are <em>absent</em> from the patient's experience that should normally be present). This distinction is clinically important because <strong>typical (1st-generation) antipsychotics only treat positive symptoms</strong>, while <strong>atypical (2nd-generation) antipsychotics treat both</strong>.</p>
+    </div>
+
+    <div class="sh">Positive Symptoms</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Symptom</th><th>Definition</th><th>Clinical Significance / Safety</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hallucinations</strong></td>
+          <td>Sensory perceptions without external stimuli. Most common type in schizophrenia: <strong>auditory</strong> (hearing voices). Also visual, tactile, olfactory, gustatory.</td>
+          <td>Assess type, content, and command nature. Do NOT deny or fully reinforce.</td>
+        </tr>
+        <tr>
+          <td><strong>Command Hallucinations</strong></td>
+          <td>Voices that instruct the patient to perform specific actions</td>
+          <td><strong>⚠️ SAFETY EMERGENCY</strong> — assess immediately: "What is the voice telling you to do?" Commands to harm self/others = psychiatric emergency</td>
+        </tr>
+        <tr>
+          <td><strong>Delusions</strong></td>
+          <td>Fixed false beliefs held with conviction despite contradicting evidence</td>
+          <td>Do NOT argue or attempt to convince patient the belief is false — this increases anxiety and strengthens the delusion. Focus on feelings instead.</td>
+        </tr>
+        <tr>
+          <td><strong>Paranoia</strong></td>
+          <td>Persistent suspiciousness; belief that others intend harm</td>
+          <td><strong>⚠️ HIGH SAFETY RISK</strong> — patient may harm others out of perceived self-defense. Maintain distance; stay near exit; avoid cornering patient.</td>
+        </tr>
+        <tr>
+          <td><strong>Disordered Thought/Behavior</strong></td>
+          <td>Disorganized, incoherent speech patterns; bizarre behavior</td>
+          <td>Frightening and frustrating for the patient. Approach with empathy.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Types of Delusions — Know All Types</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Type</th><th>Description</th><th>Example</th><th>Safety Concern</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Paranoid</strong></td><td>Belief that one is being persecuted, harassed, or plotted against</td><td>"People are trying to kill me"</td><td>HIGHEST — may act violently to protect self</td></tr>
+        <tr><td><strong>Grandiose</strong></td><td>Exaggerated sense of one's own importance, power, or identity</td><td>"I am God" / "I am the President"</td><td>Moderate — may refuse care from those they consider "beneath" them</td></tr>
+        <tr><td><strong>Somatic</strong></td><td>False beliefs about bodily functions or disease</td><td>"Insects are eating my brain"</td><td>May seek unnecessary invasive procedures</td></tr>
+        <tr><td><strong>Religiosity</strong></td><td>Excessive religious preoccupation; belief in special religious mission</td><td>"God speaks only to me"</td><td>Variable — may refuse medications as "against God's will"</td></tr>
+        <tr><td><strong>Thought Broadcasting</strong></td><td>Belief that one's thoughts are being transmitted and heard by others</td><td>"Everyone can hear what I'm thinking"</td><td>Distress; paranoid overlap</td></tr>
+        <tr><td><strong>Thought Insertion</strong></td><td>Belief that external forces are placing thoughts into one's mind</td><td>"The CIA is putting ideas in my head"</td><td>Distress; paranoid overlap</td></tr>
+        <tr><td><strong>Ideas of Reference</strong></td><td>Belief that neutral events have special personal meaning intended specifically for the patient</td><td>"The news anchor was talking about me specifically"</td><td>Paranoid potential</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Negative Symptoms — The Five A's</div>
+    <div class="callout exam">
+      <span class="callout-label">⭐ Memorize: The Five A's of Negative Symptoms</span>
+      <div class="grid-3">
+        <div class="mini-panel teal"><h4>Affect (Flat/Blunted)</h4><ul><li>Reduced range/intensity of emotional expression</li><li>Blank, expressionless face</li><li>Monotone voice</li></ul></div>
+        <div class="mini-panel"><h4>Alogia</h4><ul><li>Poverty of speech</li><li>Unable to sustain conversation</li><li>Brief, empty responses</li></ul></div>
+        <div class="mini-panel violet"><h4>Avolition</h4><ul><li>Lack of motivation</li><li>Inability to initiate goal-directed activities</li><li>Poor hygiene, unable to self-care</li></ul></div>
+        <div class="mini-panel amber"><h4>Anhedonia</h4><ul><li>Inability to experience pleasure</li><li>Loss of interest in previously enjoyed activities</li></ul></div>
+        <div class="mini-panel rose"><h4>Anergia</h4><ul><li>Lack of energy</li><li>Profound fatigue and inactivity</li></ul></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.9rem"><strong>Key fact:</strong> Typical (1st-gen) antipsychotics do NOT treat negative symptoms. Atypical (2nd-gen) antipsychotics treat both positive AND negative symptoms via 5-HT2A antagonism — this is a major therapeutic advantage.</p>
+    </div>
+
+    <div class="sh">Disordered Thought — Specific Speech Patterns</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Term</th><th>Definition</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Word Salad</strong></td><td>Random, incoherent mix of words with no logical connection</td><td>"The blue sky airplane clock table runs tomorrow"</td></tr>
+        <tr><td><strong>Neologisms</strong></td><td>Made-up words that have meaning only to the patient</td><td>"I need to flurble the zantelweed"</td></tr>
+        <tr><td><strong>Echolalia</strong></td><td>Pathological repetition of words or phrases just spoken by another person</td><td>Nurse: "How are you today?" Patient: "How are you today?"</td></tr>
+        <tr><td><strong>Clang Association</strong></td><td>Choosing words based on sound (rhyming) rather than meaning, with no logical connection</td><td>"I need a cat, hat, bat, sat, fat"</td></tr>
+        <tr><td><strong>Flight of Ideas</strong></td><td>Rapidly shifting thoughts with some loose connections between topics</td><td>Rapid, hard-to-follow topic switching</td></tr>
+        <tr><td><strong>Associative Looseness</strong></td><td>Illogical, disconnected links between thoughts with no discernible connection</td><td>Unrelated ideas strung together</td></tr>
+      </tbody>
+    </table>
+    <p class="note-inline">Textbook note: Incomprehensible language is "scary and frustrating for the patient" — these speech disturbances are not within the patient's control. They require empathetic, non-judgmental communication.</p>
+
+    <div class="sh">Loss of Function — Including Catatonia</div>
+    <ul class="content-list">
+      <li><strong>Cannot maintain social norms</strong> — unpredictable or inappropriate social behavior</li>
+      <li><strong>Disorderly behavior</strong>; inappropriate appearance, dress, and conduct</li>
+      <li><strong>Catatonia</strong> — a state of unresponsiveness to external stimuli. Includes psychomotor retardation, mutism, stupor, and <strong>waxy flexibility</strong> (body can be physically repositioned by another person and held in place like a mannequin). <em>Critical nursing concerns: nutrition, hydration, self-care, aspiration risk.</em></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 3: ASSESSMENT ═══════════ -->
+<div id="p3" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 9 + Textbook Box 33.2 — Nursing Assessment of Psychosis</p>
+    <h2 class="card-title">Assessment of the Psychotic Patient</h2>
+
+    <p class="body">The textbook emphasizes that psychosis involves <strong>progressively compromised neural circuits</strong>, with subclinical symptoms appearing before overt psychosis. Early recognition requires a "critical eye" — the expert nurse may be able to identify symptoms <em>below</em> the clinical threshold, which offers the best opportunity to positively influence the trajectory of care.</p>
+
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook: Do NOT Use Clinical Terminology When Assessing</span>
+      <p>Patients experiencing psychosis often have <strong>anosognosia</strong> — a lack of insight into their own illness. Using clinical terms is contraindicated. Instead:</p>
+      <ul style="margin-top:8px; list-style:none; padding:0;">
+        <li style="padding:3px 0 3px 18px; position:relative;">Instead of "Are you experiencing hallucinations?" → ask: <strong>"Do you ever see or hear things that other people can't see or hear?"</strong></li>
+        <li style="padding:3px 0 3px 18px; position:relative;">Instead of "Are you delusional?" → ask: <strong>"Tell me about any strong beliefs you hold that others might disagree with."</strong></li>
+        <li style="padding:3px 0 3px 18px; position:relative;">Instead of "Are you paranoid?" → ask: <strong>"Are you influenced strongly by the beliefs or intentions of others?"</strong></li>
+      </ul>
+    </div>
+
+    <div class="sh">Slide 9: What to Assess</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Assessment Domain</th><th>What to Look For</th><th>Clinical Significance</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Grooming &amp; Appearance</strong></td><td>Personal hygiene, appropriateness of dress, self-care</td><td>Decline in grooming is a key indicator of negative symptoms (avolition) and functional deterioration; also an early sign of relapse</td></tr>
+        <tr><td><strong>Positive Symptoms</strong></td><td>Presence, type, content, and intensity of hallucinations; presence and type of delusions; paranoia; thought disorder</td><td>Determine immediate safety risk. Ask about command hallucinations directly: "What is the voice telling you to do?"</td></tr>
+        <tr><td><strong>Negative Symptoms</strong></td><td>The Five A's: flat affect, alogia, avolition, anhedonia, anergia</td><td>Indicate degree of functional impairment; predict community functioning outcomes; NOT addressed by 1st-gen antipsychotics</td></tr>
+        <tr><td><strong>Level of Independence &amp; Functioning</strong></td><td>ADLs, employment, relationships, housing stability</td><td>Determines level of care needed; baseline for measuring treatment response</td></tr>
+        <tr><td><strong>Social Support</strong></td><td>Family, friends, community resources, case management</td><td>Strong social support = protective factor; isolation = risk factor for relapse and poor outcomes</td></tr>
+        <tr><td><strong>Medication Compliance</strong></td><td>Is patient taking prescribed antipsychotics? Any missed doses?</td><td><strong>Non-adherence to medication is the #1 cause of relapse in schizophrenia.</strong> Explore reasons (side effects, cost, anosognosia, stigma)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Textbook: Full Nursing Assessment Framework (Box 33.2)</div>
+    <div class="grid-3">
+      <div class="mini-panel">
+        <h4>History</h4>
+        <ul>
+          <li>Risk factors</li>
+          <li>Personal and mental health history</li>
+          <li>Substance use history</li>
+          <li>Perinatal trauma, developmental history</li>
+          <li>Family history (heritability)</li>
+          <li>Trauma exposure</li>
+          <li>Culture and beliefs</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Physical Examination</h4>
+        <ul>
+          <li>Vital signs</li>
+          <li>Cranial nerve assessment</li>
+          <li>Mental status examination (MSE)</li>
+          <li>Appearance, attitude, behavior</li>
+          <li>Mood and affect</li>
+          <li>Speech, thought process/content</li>
+          <li>Cognition, insight, judgment</li>
+        </ul>
+      </div>
+      <div class="mini-panel violet">
+        <h4>Diagnostic Tests</h4>
+        <ul>
+          <li>CBC, Chem18, TFT, RPR, HIV</li>
+          <li>Urine drug screen</li>
+          <li>CT/MRI imaging</li>
+          <li>Used to rule out secondary etiologies</li>
+          <li>PANSS, SAPS, SANS — validated symptom scales</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 4: NURSING CARE ═══════════ -->
+<div id="p4" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slide 10 + Textbook Chapter 33 + Lecture Notes</p>
+    <h2 class="card-title">Nursing Care — Psychosis</h2>
+
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Priority: Safety — Slide 10</span>
+      <p>Watch for themes related to <strong>suicide or homicide</strong> in patient statements. Examples from Prof's slide: "People are trying to kill me" (paranoid delusion — potential for self-protective violence); "My guardian angel told me to kill my doctor" (command hallucination — direct threat to others).</p>
+      <p style="margin-top:8px"><strong>Nurse safety when interacting with an agitated client:</strong> Stay near the exit (never allow the patient to block your path); maintain safe personal distance (at least arm's length plus); use calm, non-threatening body language (open hands, no crossed arms); avoid sudden movements; do not touch without warning; have additional staff available but not crowding the space.</p>
+    </div>
+
+    <div class="sh">How to Help a Patient with Hallucinations</div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "How should the nurse help a patient with hallucinations?" What is the correct nursing approach?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Full Clinical Answer</span>
+        <ul>
+          <li><strong>Do NOT deny the hallucination:</strong> "I don't hear anything" — this invalidates the patient's very real subjective experience and damages trust</li>
+          <li><strong>Do NOT reinforce or play along:</strong> "Oh yes, I hear the voices too" — reinforcing delusion/hallucination worsens it and is non-therapeutic</li>
+          <li><strong>Acknowledge the experience and focus on feelings:</strong> "I understand you are hearing voices. That sounds very frightening. I want to help you feel safe."</li>
+          <li><strong>Orient gently to reality:</strong> "I know the voices feel very real to you. What I can tell you is that you are in the hospital, and you are safe here with me."</li>
+          <li><strong>Provide distraction and activity</strong> to interrupt the hallucination cycle — structured activities, music, conversation about neutral topics</li>
+          <li><strong>Teach coping strategies</strong> (when patient is calm and stable, not during acute episode) — humming, listening to music, snapping fingers, engaging in physical activity can interrupt auditory hallucinations</li>
+          <li>For command hallucinations specifically: assess immediately what the command is and implement safety measures if needed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Milieu Therapy — Slide 10</div>
+    <ul class="content-list">
+      <li><strong>Structure</strong> — a predictable, consistent daily routine reduces anxiety by making the environment comprehensible and safe; important because the psychotic patient has impaired reality testing and cannot create structure independently</li>
+      <li><strong>Safety</strong> — therapeutic environment with removal of dangerous objects; clear rules and consistent boundaries; continuous observation for high-risk patients</li>
+      <li><strong>Learning Skills</strong> — social skills training, ADL retraining, medication education; the textbook notes that group-format social skills training (SST) improves social performance and interaction</li>
+    </ul>
+
+    <div class="sh">Patient and Family Education — Slide 10</div>
+    <div class="callout exam">
+      <span class="callout-label">⭐ Early Signs of Relapse — Prof Explicitly Says to Teach This</span>
+      <ul class="content-list">
+        <li>Reduced sleep and concentration</li>
+        <li>Troubling or unusual thoughts returning</li>
+        <li>Hearing voices again or worsening of voices</li>
+        <li>Increasing restlessness or agitation</li>
+        <li>Becoming more uncomfortable around others, increasing social withdrawal</li>
+        <li><strong>Any decline in medication adherence</strong> — this is the #1 modifiable cause of relapse</li>
+      </ul>
+      <p style="margin-top:10px"><strong>What to do:</strong> Teach patient and family that if ANY of these signs appear, they should contact the provider or go to the nearest mental health crisis service <em>before</em> a full relapse occurs. Early intervention dramatically improves outcomes.</p>
+    </div>
+
+    <div class="sh">Nonpharmacologic Treatments (Textbook)</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Intervention</th><th>Description</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Social Skills Training (SST)</strong></td><td>Group-format training to improve social performance, interaction, and interpersonal skills; often incorporates CBT principles</td><td>Improves social functioning; bridges to long-term symptom management</td></tr>
+        <tr><td><strong>Family-Focused Therapy (FFT)</strong></td><td>Educates family on nature of psychosis, symptoms, management; improves communication within family</td><td>Research shows: improves medication adherence, <strong>reduces relapse rate</strong>, reduces psychiatric readmission rates</td></tr>
+        <tr><td><strong>CBT for Psychosis</strong></td><td>Appropriate only when patient is <em>not</em> in acute psychosis — can go months/years without symptoms; improves medication adherence, insight, and social functioning</td><td>Evidence-based; not contraindicated in schizophrenia during stable phases</td></tr>
+        <tr><td><strong>Cognitive Enhancement Therapy (CET)</strong></td><td>Computer-based exercises targeting attention, memory, problem-solving; group therapy targeting social cognition</td><td>Improves negative symptoms and employment outcomes; for stabilized patients in recovery phase</td></tr>
+        <tr><td><strong>Electroconvulsive Therapy (ECT)</strong></td><td>Electrical stimulation of brain under anesthesia; FDA-indicated for catatonia and depression; used when other treatments fail</td><td>6–12 rounds for symptom improvement; risk of cognitive/memory side effects</td></tr>
+        <tr><td><strong>Vocational Therapy</strong></td><td>Individualized support for employment; addresses cognitive and functional barriers</td><td>Improves cognitive/negative symptoms, clinical outcomes, and social functioning</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Goal: Least Restrictive Environment (Slide 18)</div>
+    <ul class="content-list">
+      <li><strong>Partial hospitalization</strong> — intensive daytime programming; goes home at night</li>
+      <li><strong>Residential crisis centers</strong> — 24-hour support in a home-like environment; less restrictive than inpatient hospital</li>
+      <li><strong>Halfway houses / Group Homes</strong> — supervised community living; structured support while building independence</li>
+      <li><strong>Day treatment programs</strong> — outpatient; structured activities, therapy, medication management</li>
+      <li>Textbook also mentions <strong>Assertive Community Treatment (ACT)</strong> — team of case manager, PCP, mental health provider, and nurse; care is accessible 24 hours/day in community settings; proven clinically and fiscally effective</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 5: ANTIPSYCHOTICS ═══════════ -->
+<div id="p5" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 11–16 + Textbook Chapter 33 + Lecture Notes</p>
+    <h2 class="card-title">Antipsychotic Medications</h2>
+
+    <div class="callout info">
+      <span class="callout-label">📘 How Antipsychotics Work — Mechanism</span>
+      <p><strong>All antipsychotics block dopamine D2 receptors.</strong> First-generation agents do this primarily in 4 dopaminergic pathways — their blockade in the nigrostriatal pathway causes EPS. Second-generation agents block D2 receptors more loosely AND block serotonin 5-HT2A receptors, which confers benefits for negative symptoms and reduces EPS risk. Third-generation (aripiprazole) works as a partial D2 agonist — more nuanced receptor modulation.</p>
+    </div>
+
+    <div class="sh">First vs. Second Generation Antipsychotics — Full Comparison</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Feature</th><th>First-Generation (Typical)</th><th>Second-Generation (Atypical)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mechanism</strong></td>
+          <td>Block D2 receptors (4 dopaminergic pathways)</td>
+          <td>Block D2 (loosely) + 5-HT2A + some 5-HT1A agonism</td>
+        </tr>
+        <tr>
+          <td><strong>Symptoms Treated</strong></td>
+          <td>Positive symptoms ONLY (hallucinations, delusions, paranoia)</td>
+          <td><strong>Positive AND Negative symptoms</strong> — major advantage</td>
+        </tr>
+        <tr>
+          <td><strong>EPS Risk</strong></td>
+          <td><strong>HIGH</strong> — major clinical concern; dystonia, pseudoparkinsonism, akathisia, tardive dyskinesia</td>
+          <td>Lower — but NOT zero; tardive dyskinesia still possible with long-term use</td>
+        </tr>
+        <tr>
+          <td><strong>Metabolic Risk</strong></td>
+          <td>Moderate</td>
+          <td><strong>HIGH</strong> — weight gain, dyslipidemia, elevated glucose/diabetes — requires serial metabolic monitoring</td>
+        </tr>
+        <tr>
+          <td><strong>Current Status</strong></td>
+          <td>No longer considered first-tier; still used in community and forensic settings</td>
+          <td><strong>First-line choice</strong> for treatment of psychosis per textbook</td>
+        </tr>
+        <tr>
+          <td><strong>Cost</strong></td>
+          <td>Lower</td>
+          <td>Higher</td>
+        </tr>
+        <tr>
+          <td><strong>Key Examples</strong></td>
+          <td>Haloperidol (Haldol), Chlorpromazine (Thorazine)</td>
+          <td>Risperidone* (Risperdal), Olanzapine (Zyprexa), Quetiapine (Seroquel), Ziprasidone (Geodon), Aripiprazole** (Abilify), Clozapine† (Clozaril)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note-inline">*Risperidone = ATI prototype for atypical antipsychotics. **Aripiprazole = third-generation (partial D2 agonist). †Clozapine = last resort only — see below.</p>
+
+    <div class="sh">Clozapine — Special Considerations</div>
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Clozapine (Clozaril) — Last Resort Only</span>
+      <ul class="content-list">
+        <li>Used only when other antipsychotics have failed — indicated for treatment-resistant schizophrenia</li>
+        <li>Most serious side effect: <strong>Agranulocytosis</strong> — life-threatening reduction in white blood cells → severe infection risk</li>
+        <li>Requires <strong>regular WBC monitoring</strong> — weekly for 6 months, then biweekly, then monthly</li>
+        <li><strong>Patient teaching:</strong> Report fever, chills, sore throat, or any sign of infection <em>immediately</em> — this may indicate agranulocytosis and the medication must be stopped</li>
+        <li>Also associated with metabolic syndrome, seizures, myocarditis, excessive salivation (sialorrhea)</li>
+      </ul>
+    </div>
+
+    <div class="sh">Second-Generation Side Effect Teaching — Key NCLEX Points</div>
+    <div class="grid-2">
+      <div class="mini-panel amber">
+        <h4>Metabolic Syndrome</h4>
+        <ul>
+          <li>Weight gain (most common SE)</li>
+          <li>↑blood glucose → diabetes risk</li>
+          <li>Dyslipidemia (↑cholesterol/triglycerides)</li>
+          <li>↑cardiovascular disease risk</li>
+          <li><strong>Teaching:</strong> Monitor weight, blood glucose, lipid panel; diet counseling; exercise; report significant weight gain to provider</li>
+          <li>Serial metabolic monitoring: abdominal obesity, triglycerides, HDL, BP, fasting glucose</li>
+        </ul>
+      </div>
+      <div class="mini-panel rose">
+        <h4>Anticholinergic Effects</h4>
+        <ul>
+          <li>Dry mouth (xerostomia)</li>
+          <li>Urinary retention</li>
+          <li>Constipation</li>
+          <li>Blurred vision</li>
+          <li>Tachycardia</li>
+          <li><strong>Teaching:</strong> Increase fluid/fiber intake; use sugarless gum for dry mouth; contact provider if unable to urinate</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Orthostatic Hypotension</h4>
+        <ul>
+          <li>BP drops when rising from sitting or lying position</li>
+          <li><strong>Fall risk — especially in elderly patients</strong></li>
+          <li><strong>Teaching:</strong> Rise slowly; sit on edge of bed for 1–2 min before standing; hold railing or ask for assistance; report dizziness</li>
+        </ul>
+      </div>
+      <div class="mini-panel">
+        <h4>Long-Acting Injectables (LAIs)</h4>
+        <ul>
+          <li>Available for both 1st and 2nd gen antipsychotics</li>
+          <li>Purpose: improves adherence for patients who have difficulty with daily oral medications</li>
+          <li>Examples: Haloperidol decanoate, Risperidone Consta, Aripiprazole Maintena</li>
+          <li>Reserved for patients with history of frequent hospitalizations or confirmed adherence difficulty</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>NCLEX Q: "A patient with schizophrenia begins a new prescription for risperidone. The patient is 5'6" and weighs 204 lbs. Which topic is MOST important for the nurse to include in teaching?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Answer: Weight Management Strategies</span>
+        <p><strong>Reasoning from lecture notes:</strong> Risperidone is a 2nd-generation (atypical) antipsychotic. The most common and clinically significant side effects of 2nd-gen antipsychotics are metabolic — weight gain, elevated blood glucose, dyslipidemia. This patient is already at an elevated BMI (overweight). The most important priority teaching addresses the highest-risk side effect for this specific patient.</p>
+        <ul>
+          <li>✅ <strong>Weight management strategies</strong> — patient is already overweight; risperidone significantly increases metabolic risk</li>
+          <li>Tardive dyskinesia recognition — less immediate concern with 2nd-gen vs. 1st-gen; also patient is newly starting medication (TD appears after 6+ months)</li>
+          <li>Constipation management — anticholinergic concern but not the highest priority for this patient</li>
+          <li>Sleep hygiene — not specific to this medication</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Study tip (from lecture notes):</strong> To answer this, you must know (1) which generation risperidone is, (2) the most common SE of that generation, and (3) which listed SE is most serious/relevant for this particular patient given their clinical context.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 6: EPS ═══════════ -->
+<div id="p6" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 12–15 + Textbook + Lecture Notes</p>
+    <h2 class="card-title">Extrapyramidal Side Effects (EPS)</h2>
+
+    <p class="body">EPS are medication-induced movement disorders caused by <strong>blockade of dopamine D2 receptors in the nigrostriatal pathway</strong> (basal ganglia), which creates an imbalance between dopamine and acetylcholine. They are primarily associated with first-generation antipsychotics but can occur with second-generation agents as well.</p>
+
+    <div class="sh">Complete EPS Reference Table</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>EPS Type</th><th>Clinical Presentation</th><th>Onset</th><th>Mechanism</th><th>Treatment</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Acute Dystonia</strong></td>
+          <td>Involuntary muscle spasms, abnormal posturing; <strong>oculogyric crisis</strong> (eyes rolling upward/sideward); torticollis (neck twisting); opisthotonos (arching of back); tongue protrusion; laryngeal/pharyngeal spasm (can be life-threatening)</td>
+          <td><strong>Acute:</strong> hours to days after initiation or dose increase</td>
+          <td>D2 blockade in nigrostriatal pathway → disrupts dopamine-acetylcholine balance in basal ganglia</td>
+          <td><span class="drug-box">Benztropine (Cogentin)</span> IM/IV — anticholinergic; restores dopamine-ACh balance.<br><span class="drug-box">Diphenhydramine (Benadryl)</span> IV — also anticholinergic; works by blocking acetylcholine</td>
+        </tr>
+        <tr>
+          <td><strong>Pseudoparkinsonism</strong></td>
+          <td>Resembles Parkinson's disease: cogwheel rigidity, akinesia (slow or absent voluntary movement), resting tremor ("pill-rolling"), <strong>mask-like facies</strong>, drooling (sialorrhea), shuffling gait, loss of spontaneous movements, stooped posture</td>
+          <td><strong>Subacute:</strong> days to weeks after initiation</td>
+          <td>D2 blockade in nigrostriatal pathway → mimics dopamine deficiency seen in Parkinson's disease</td>
+          <td><span class="drug-box">Benztropine (Cogentin)</span> — anticholinergic; first-line<br><span class="drug-box">Trihexyphenidyl (Artane)</span> — alternative anticholinergic</td>
+        </tr>
+        <tr>
+          <td><strong>Akathisia</strong></td>
+          <td>Subjective inner restlessness; inability to sit still; compulsive need to be in constant motion; pacing; rocking; crossing/uncrossing legs; extreme distress — can be <em>very distressing and lead to medication non-adherence</em></td>
+          <td><strong>Subacute:</strong> days to weeks after initiation</td>
+          <td>D2 blockade; exact mechanism less certain</td>
+          <td><strong>Does NOT respond well to anticholinergics.</strong> <span class="drug-box">Beta-blockers (propranolol)</span> — best clinical success<br>Dose reduction or switch to lower-EPS medication also considered</td>
+        </tr>
+        <tr>
+          <td><strong>Tardive Dyskinesia (TD)</strong></td>
+          <td>Irregular, repetitive, involuntary movements of mouth, face, and tongue: lip smacking, tongue protrusion, puckering, chewing movements, rapid eye blinking; abnormal finger movements; choreiform limb movements</td>
+          <td><strong>Chronic:</strong> onset after 6+ months of antipsychotic use; also may appear or worsen when antipsychotics are withdrawn</td>
+          <td>Chronic D2 blockade → upregulation/sensitization of D2 receptors → dopamine hypersensitivity when antipsychotic effect fluctuates</td>
+          <td><strong>Potentially irreversible — no definitive cure.</strong> Onset may merit medication reconsideration or dose reduction. Monitor with <strong>AIMS scale</strong> at minimum every 3–6 months. <br>New agents: VMAT2 inhibitors (<span class="drug-box">Valbenazine/Ingrezza</span>, <span class="drug-box">Deutetrabenazine/Austedo</span>) — now available to treat TD (textbook updated information). Benztropine does NOT treat TD.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "Why does Benztropine treat dystonia and pseudoparkinsonism? How does Diphenhydramine work for EPS?" (Lecture notes highlight this mechanism)</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Mechanism Answer from Lecture Notes</span>
+        <p>Antipsychotics block dopamine D2 receptors in the basal ganglia (nigrostriatal pathway). The basal ganglia require a <strong>balanced ratio of dopamine and acetylcholine</strong> for normal movement. When dopamine receptors are blocked, acetylcholine becomes relatively dominant — this imbalance produces EPS (muscle rigidity, spasms, slowness).</p>
+        <ul>
+          <li><strong>Benztropine (anticholinergic)</strong> — blocks acetylcholine receptors → reduces acetylcholine activity → restores the dopamine-acetylcholine balance → EPS resolves</li>
+          <li><strong>Diphenhydramine (Benadryl)</strong> — also has significant anticholinergic properties → blocks acetylcholine → equalizes dopamine/ACh ratio → EPS resolves</li>
+          <li><strong>Akathisia exception:</strong> does NOT respond well to anticholinergics. <strong>Beta-blockers (propranolol)</strong> have the best therapeutic success — mechanism involves blocking peripheral adrenergic activity contributing to restlessness</li>
+          <li><strong>Tardive Dyskinesia:</strong> Benztropine does NOT treat TD — TD involves a different mechanism (D2 receptor sensitization from chronic blockade). Now treated with VMAT2 inhibitors (valbenazine, deutetrabenazine)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout exam">
+      <span class="callout-label">⭐ EPS Treatment Summary — Quick Reference</span>
+      <div class="grid-2">
+        <ul class="content-list">
+          <li>Dystonia → <strong>Benztropine or Diphenhydramine (anticholinergics)</strong></li>
+          <li>Pseudoparkinsonism → <strong>Benztropine (anticholinergic)</strong></li>
+        </ul>
+        <ul class="content-list">
+          <li>Akathisia → <strong>Beta-blockers (propranolol)</strong> — NOT anticholinergics</li>
+          <li>Tardive Dyskinesia → <strong>No cure; VMAT2 inhibitors; AIMS monitoring</strong> — Benztropine does NOT work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 7: NMS ═══════════ -->
+<div id="p7" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slide 17 — Life-Threatening Emergency</p>
+    <h2 class="card-title">Neuroleptic Malignant Syndrome (NMS)</h2>
+
+    <div class="callout emergency">
+      <span class="callout-label">🚨 MEDICAL EMERGENCY — LIFE-THREATENING REACTION TO ANTIPSYCHOTIC MEDICATIONS</span>
+      <p>NMS is a rare but potentially fatal adverse reaction to antipsychotic (neuroleptic) medications. It requires immediate recognition, cessation of the causative drug, and transfer to ICU-level care. Mortality rate without treatment can reach 10–20%.</p>
+    </div>
+
+    <div class="sh">Signs and Symptoms (Slide 17)</div>
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Cardinal Signs — FEVER Mnemonic</h4>
+        <ul>
+          <li><strong>F</strong> — Fever (markedly elevated temperature — often >40°C/104°F)</li>
+          <li><strong>E</strong> — Encephalopathy (altered LOC, confusion, stupor)</li>
+          <li><strong>V</strong> — Vitals unstable (labile hypertension, tachycardia, tachypnea)</li>
+          <li><strong>E</strong> — Elevated labs (leukocytosis, elevated liver enzymes, elevated CK/CPK, myoglobinuria)</li>
+          <li><strong>R</strong> — Rigidity (severe "lead-pipe" muscle rigidity)</li>
+        </ul>
+      </div>
+      <div class="mini-panel amber">
+        <h4>Additional Signs</h4>
+        <ul>
+          <li>Diaphoresis (profuse sweating)</li>
+          <li>Drooling</li>
+          <li>Oculogyric crisis</li>
+          <li>Pallor</li>
+          <li>Dysphagia</li>
+          <li>Rhabdomyolysis (muscle protein breakdown)</li>
+          <li>Myoglobinuria (dark/brown urine)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Nursing Interventions — NMS (Slide 17)</div>
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Priority Order of Nursing Actions</span>
+      <ol style="list-style: decimal; padding-left: 22px; font-size: 0.93rem; line-height: 1.9;">
+        <li><strong>Stay with the patient</strong> — patient is critically unstable; do not leave</li>
+        <li><strong>Notify the HCP immediately</strong> and prepare to transfer to the ICU</li>
+        <li><strong>STOP all antipsychotic medications immediately</strong> — this is the first pharmacologic intervention; removing the causative agent is essential</li>
+        <li><strong>Continuously monitor vital signs</strong> — labile hypertension and tachycardia require close tracking</li>
+        <li><strong>Reduce body temperature</strong> — apply cooling measures: ice packs to axillae/groin, cooling blankets, antipyretics</li>
+        <li><strong>IV fluids</strong> — maintain hydration; prevent acute kidney injury from myoglobinuria</li>
+        <li><strong>Cardiac monitoring</strong> — continuous ECG monitoring in ICU</li>
+        <li><strong>Administer Dantrolene</strong> (dopamine agonist — reduces muscle rigidity by acting directly on skeletal muscle)</li>
+        <li><strong>Monitor for complications: DVT</strong> (immobility + hyperthermia + rigidity = high clot risk) and <strong>rhabdomyolysis</strong> (muscle breakdown releases myoglobin → can cause acute renal failure)</li>
+      </ol>
+    </div>
+
+    <div class="sh">Differentiating NMS from Acute Dystonia and Serotonin Syndrome</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Feature</th><th>Acute Dystonia</th><th>NMS</th><th>Serotonin Syndrome</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Cause</strong></td><td>EPS from antipsychotics — D2 blockade in nigrostriatal pathway</td><td>Idiosyncratic reaction to antipsychotics/neuroleptics — pathophysiology involves dopamine hypoactivity</td><td>Excess serotonergic activity — too many serotonergic agents combined (SSRIs + MAOIs, SSRIs + triptans, etc.)</td></tr>
+        <tr><td><strong>Muscle Findings</strong></td><td>Spasms, abnormal posturing, torticollis — specific muscle groups affected</td><td><strong>Severe, diffuse "lead-pipe" rigidity</strong> — generalized throughout body</td><td>Clonus, hyperreflexia, myoclonus, tremor — hyperactive neuromuscular findings</td></tr>
+        <tr><td><strong>Temperature</strong></td><td>Normal</td><td><strong>MARKEDLY ELEVATED</strong> — high fever (often >40°C)</td><td>Elevated — but typically less severe than NMS</td></tr>
+        <tr><td><strong>Mental Status</strong></td><td>Alert; patient is frightened but conscious</td><td><strong>Altered LOC</strong> — confusion, stupor, coma</td><td>Agitation, confusion, anxiety — altered but typically less severe</td></tr>
+        <tr><td><strong>Autonomic Findings</strong></td><td>Absent or minimal</td><td>Labile hypertension, tachycardia, diaphoresis, pallor</td><td>Tachycardia, diaphoresis, hypertension, diarrhea</td></tr>
+        <tr><td><strong>Onset</strong></td><td>Acute: hours to days after starting/changing dose</td><td>Hours to days after starting/changing antipsychotic; can also develop after long-term use</td><td>Hours after adding/increasing a serotonergic agent</td></tr>
+        <tr><td><strong>Severity</strong></td><td>Distressing but not life-threatening; treatable</td><td><strong>LIFE-THREATENING EMERGENCY</strong></td><td>Can be life-threatening at its most severe (serotonin storm)</td></tr>
+        <tr><td><strong>Treatment</strong></td><td>Benztropine or Diphenhydramine</td><td>Stop antipsychotic; ICU; Dantrolene; cooling; IV fluids</td><td>Stop serotonergic agents; supportive care; cyproheptadine (serotonin antagonist)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 8: THERAPEUTIC COMM. ═══════════ -->
+<div id="p8" class="section">
+  <div class="card">
+    <p class="card-subtitle">Slides 10 + Lecture Notes — NCLEX-Style Application</p>
+    <h2 class="card-title">Therapeutic Communication with Psychotic &amp; Delusional Patients</h2>
+
+    <div class="callout info">
+      <span class="callout-label">📘 Core Principle</span>
+      <p>When communicating with a psychotic patient, the nurse's goal is to <strong>acknowledge the patient's emotional experience without reinforcing or arguing against the content of the delusion or hallucination.</strong> The content is less important than the feeling it generates. Arguing increases anxiety and actually strengthens the tenacity of delusional beliefs.</p>
+    </div>
+
+    <div class="sh">NCLEX Scenario Practice — All from Lecture Notes</div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>SCENARIO: Patient shouts "They're all plotting to destroy me. Isn't that true?" What is the most therapeutic response?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Correct: "Feeling that people want to destroy you must be very frightening."</span>
+        <p><strong>Rationale:</strong> This response acknowledges the <em>feeling</em> (fear/terror) behind the delusion without validating the delusional content or arguing against it. It opens space for the patient to feel heard and begins to de-escalate the emotional intensity.</p>
+        <p style="margin-top:10px"><strong>Why the other options are wrong:</strong></p>
+        <ul>
+          <li><span class="wrong-tag">✗</span> "Everyone here is trying to help you. No one wants to harm you." — argues directly with the delusion → increases anxiety, strengthens delusion</li>
+          <li><span class="wrong-tag">✗</span> "That is not true. People here are trying to help you if you will let them." — same problem; confrontational; provides opportunity for argument</li>
+          <li><span class="wrong-tag">✗</span> "Staff members are healthcare professionals who are qualified to help you." — focuses on content/reasoning, not feelings; still an implied argument</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>SCENARIO: Client says "Facebook has a new tracking capacity. If I use the Internet, Homeland Security will detain me as a terrorist." What is the appropriate initial action?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Correct: "You are in a safe place where you will be helped."</span>
+        <p><strong>Rationale:</strong> The client is experiencing paranoid delusional thinking, which generates profound fear. Explaining that the client is in a safe place addresses the underlying emotional need (safety, security) without arguing about the reality of Facebook/Homeland Security.</p>
+        <ul>
+          <li><span class="wrong-tag">✗</span> "Facebook is not a dangerous website, and Homeland Security is not after you." — directly argues with delusion → patient becomes more defensive and anxious</li>
+          <li><span class="wrong-tag">✗</span> "You don't need to worry about any of that." — dismisses the patient's fear without validation</li>
+          <li><span class="wrong-tag">✗</span> Administer an antipsychotic prn first — medication does not address the immediate emotional/safety concern; communication is the first step; also, giving medication without first attempting de-escalation is not therapeutic</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>SCENARIO: Patient with schizophrenia and auditory hallucinations tells the nurse, "The voice is telling me to do things." What is the PRIORITY assessment question?</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Correct: "What is the voice telling you to do?"</span>
+        <p><strong>Rationale:</strong> Learning the specific content of a command hallucination is the PRIORITY because the command may direct the patient to harm themselves or others — this constitutes an immediate psychiatric emergency. You cannot assess the level of danger without knowing the command.</p>
+        <ul>
+          <li><span class="wrong-tag">✗</span> "How long has the voice been telling you to do things?" — duration is relevant but not the priority; does not assess safety</li>
+          <li><span class="wrong-tag">✗</span> "Are you afraid of the voice?" — emotional assessment; secondary to safety</li>
+          <li><span class="wrong-tag">✗</span> "Do you recognize the voice speaking to you?" — identity of voice is irrelevant to immediate safety</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Principle:</strong> Safety always precedes all other assessment priorities. Identify the specific command before making any other intervention decision.</p>
+      </div>
+    </div>
+
+    <div class="sh">Principles of Therapeutic Communication — Psychosis Summary Table</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Principle</th><th>Correct Approach</th><th>Rationale from Textbook/Lecture</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Delusions</strong></td><td>Focus on feelings; do not argue, do not reinforce</td><td>Arguing increases anxiety and strengthens the tenacity of the delusion; reinforcing worsens the psychosis</td></tr>
+        <tr><td><strong>Hallucinations</strong></td><td>Acknowledge experience ("I understand you hear voices"); orient gently ("I do not hear that, but I can see you are frightened"); provide distraction</td><td>Denying invalidates the patient's subjective reality; reinforcing worsens the hallucination; gentle reality orientation supports therapeutic relationship without confrontation</td></tr>
+        <tr><td><strong>Command Hallucinations</strong></td><td>Immediately assess the specific content: "What is the voice telling you to do?"</td><td>Content determines immediate safety risk level; this is a psychiatric emergency if content involves harm</td></tr>
+        <tr><td><strong>Paranoid Patient</strong></td><td>Do not crowd or corner; maintain safe distance; calm tone; orient to safety: "You are in a safe place"</td><td>Paranoid patients may act violently to protect themselves if they feel threatened; maintaining safety distance protects both patient and nurse</td></tr>
+        <tr><td><strong>Patient Refusing Care</strong></td><td>Do not force; do not argue; offer simple choices when possible; return later</td><td>Coercion increases paranoia and agitation; offering choice restores a sense of control and autonomy, which is especially important for those whose illness involves loss of control</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 9: EXAM REVIEW ═══════════ -->
+<div id="p9" class="section">
+  <div class="card">
+    <p class="card-subtitle">Comprehensive Priority Review for Exam</p>
+    <h2 class="card-title">Exam Priority Review — Psychosis &amp; Schizophrenia</h2>
+
+    <div class="callout exam">
+      <span class="callout-label">⭐ What Prof Tests — Based on Slide Emphasis + Bolded Points + Lecture Questions</span>
+      <ul class="content-list">
+        <li>Positive vs. Negative symptoms — definition, examples, which antipsychotic generation treats which</li>
+        <li>The Five A's of negative symptoms — all five with definitions</li>
+        <li>Speech pattern terms — word salad, neologisms, echolalia, clang association, flight of ideas</li>
+        <li>Types of delusions — paranoid as highest safety risk</li>
+        <li>Command hallucinations — priority question: "What is the voice telling you to do?"</li>
+        <li>Nurse safety with agitated client — position near exit, safe distance, calm demeanor</li>
+        <li>Early signs of relapse (5 signs) — especially medication non-adherence as #1 cause</li>
+        <li>EPS: four types, onset, treatment — especially the Benztropine vs. Beta-blocker distinction; Benztropine does NOT treat TD</li>
+        <li>NMS: FEVER mnemonic, immediate nursing actions (stop drug first, ICU, Dantrolene, cooling)</li>
+        <li>NMS vs. Dystonia vs. Serotonin Syndrome — differentiation</li>
+        <li>Therapeutic communication with delusional/hallucinating patients — focus on feelings, not content</li>
+        <li>Clozapine — last resort, agranulocytosis, WBC monitoring</li>
+        <li>Risperidone teaching — weight management is priority (metabolic syndrome)</li>
+        <li>Compassionate care — do not dismiss physical complaints; rule out physiological basis</li>
+        <li>Least restrictive environment — partial hospitalization, group homes, day treatment</li>
+      </ul>
+    </div>
+
+    <div class="sh">Quick-Reference EPS Summary</div>
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>First-Gen → High EPS Risk</h4>
+        <ul>
+          <li>Haloperidol (Haldol)</li>
+          <li>Chlorpromazine (Thorazine)</li>
+          <li>Treats POSITIVE symptoms only</li>
+          <li>Dystonia → Benztropine or Benadryl</li>
+          <li>Parkinsonism → Benztropine</li>
+          <li>Akathisia → Beta-blockers</li>
+          <li>TD → AIMS monitoring; VMAT2 inhibitors</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Second-Gen → Metabolic Risk</h4>
+        <ul>
+          <li>Risperidone* (ATI prototype)</li>
+          <li>Olanzapine, Quetiapine, Ziprasidone</li>
+          <li>Aripiprazole (3rd gen)</li>
+          <li>Clozapine† (LAST RESORT — agranulocytosis)</li>
+          <li>Treats + AND − symptoms</li>
+          <li>SE: weight gain, ↑glucose, dyslipidemia</li>
+          <li>Monitor: weight, glucose, lipids, BP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Prof's Recurring Teaching Themes — Know These Cold</div>
+    <div class="callout priority">
+      <span class="callout-label">🎓 High-Priority Concepts — Appear Across Multiple Questions</span>
+      <ul class="content-list">
+        <li><strong>Safety always first:</strong> command hallucinations and paranoid delusions both carry violence risk — assess, then intervene</li>
+        <li><strong>Compassionate care principle:</strong> never attribute all symptoms to psychiatric diagnosis without physical assessment first</li>
+        <li><strong>Communication is always before medication:</strong> de-escalate verbally before reaching for PRN antipsychotic</li>
+        <li><strong>Positive vs. negative symptoms:</strong> 1st-gen treats positive only; 2nd-gen treats both — this drives prescribing decisions</li>
+        <li><strong>NMS is a MEDICAL EMERGENCY:</strong> FEVER, stop the drug, ICU, Dantrolene</li>
+        <li><strong>Medication non-adherence = #1 cause of relapse</strong> — explore reasons and address barriers; consider LAIs for high-risk patients</li>
+        <li><strong>Do NOT argue with delusions:</strong> always focus on the feeling, not the content</li>
+        <li><strong>Least restrictive environment</strong> is always the goal for community reintegration</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+
+<footer>
+  <p>HCC2 — Psychosis &amp; Schizophrenia | Comprehensive Study Guide | Spring 2026</p>
+</footer>
+
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function toggleQA(el) {
+  const ans = el.nextElementSibling;
+  const icon = el.querySelector('.qa-icon');
+  ans.classList.toggle('open');
+  icon.textContent = ans.classList.contains('open') ? '▲' : '▼';
+}
+</script>
+</body>
+</html>

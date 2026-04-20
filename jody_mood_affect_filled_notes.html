@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jody's Mood & Affect Notes — Filled-In Reference Guide | HCC2 Spring '26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-purple: #3a2673;
+    --royal-purple: #5b3fb8;
+    --lavender: #9b87d6;
+    --soft-lavender: #d8cef0;
+    --pale-lilac: #ede8f7;
+    --sky: #a8c5ea;
+    --powder-blue: #cfe0f2;
+    --mint: #b8dcc7;
+    --sage: #7fb396;
+    --deep-sage: #4f8a6a;
+    --forest: #2f5e45;
+    --cream: #fcfbf8;
+    --ink: #1d1835;
+    --soft-ink: #3b3450;
+    --warning: #b8445e;
+    --warning-bg: #f9e4ea;
+
+    --grad-hero: linear-gradient(135deg, #3a2673 0%, #5b3fb8 25%, #7a7fc9 50%, #a8c5ea 75%, #b8dcc7 100%);
+    --grad-section: linear-gradient(135deg, #ede8f7 0%, #ffffff 50%, #e4f0e9 100%);
+    --grad-card: linear-gradient(135deg, rgba(155, 135, 214, 0.08) 0%, rgba(168, 197, 234, 0.06) 50%, rgba(184, 220, 199, 0.08) 100%);
+    --grad-accent: linear-gradient(90deg, #5b3fb8 0%, #7a7fc9 50%, #7fb396 100%);
+    --grad-answer: linear-gradient(135deg, #f4f0fb 0%, #ffffff 50%, #ecf5f0 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    background: linear-gradient(180deg, #f7f4fc 0%, #ffffff 40%, #f0f7f3 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* ============ HEADER ============ */
+  .hero {
+    background: var(--grad-hero);
+    color: white;
+    padding: 4rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(184,220,199,0.2) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .hero h1 em {
+    font-weight: 600;
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #d8cef0 50%, #b8dcc7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: inline-flex;
+    gap: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-meta span { opacity: 0.92; }
+  .hero-meta span + span::before {
+    content: '·';
+    margin-right: 2rem;
+    margin-left: -1rem;
+    opacity: 0.5;
+  }
+
+  /* ============ NAV ============ */
+  nav.toc {
+    max-width: 1080px;
+    margin: -2.5rem auto 3rem;
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px -20px rgba(58, 38, 115, 0.25);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(155, 135, 214, 0.15);
+  }
+  nav.toc h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    margin-bottom: 1rem;
+  }
+  nav.toc ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+  nav.toc a {
+    color: var(--soft-ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+  }
+  nav.toc a:hover {
+    background: var(--pale-lilac);
+    border-left-color: var(--royal-purple);
+    color: var(--deep-purple);
+    padding-left: 1rem;
+  }
+
+  /* ============ MAIN LAYOUT ============ */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  section.topic {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(155, 135, 214, 0.25);
+    position: relative;
+  }
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 120px;
+    height: 2px;
+    background: var(--grad-accent);
+  }
+  .section-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--lavender);
+    font-style: italic;
+  }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--deep-purple);
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--deep-sage);
+    padding: 0.3rem 0.75rem;
+    background: rgba(184, 220, 199, 0.3);
+    border-radius: 999px;
+  }
+
+  /* ============ Q & A BLOCKS ============ */
+  .qa {
+    margin-bottom: 1.75rem;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px -8px rgba(58, 38, 115, 0.1);
+    border: 1px solid rgba(155, 135, 214, 0.1);
+  }
+  .qa-question {
+    background: linear-gradient(135deg, #5b3fb8 0%, #7a7fc9 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  .qa-question::before {
+    content: 'Q';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+  .qa-answer {
+    padding: 1.5rem;
+    background: var(--grad-answer);
+    border-top: 2px solid var(--mint);
+  }
+  .qa-answer p { margin-bottom: 0.8rem; }
+  .qa-answer p:last-child { margin-bottom: 0; }
+  .qa-answer strong { color: var(--deep-purple); font-weight: 600; }
+
+  /* lists */
+  .qa-answer ul, .qa-answer ol {
+    margin: 0.5rem 0 0.75rem 1.25rem;
+  }
+  .qa-answer li { margin-bottom: 0.45rem; }
+  .qa-answer li::marker { color: var(--royal-purple); }
+
+  /* ============ PRACTICE QUESTION ============ */
+  .practice {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 2px solid var(--sage);
+    box-shadow: 0 8px 30px -10px rgba(79, 138, 106, 0.2);
+  }
+  .practice-header {
+    background: linear-gradient(135deg, #4f8a6a 0%, #7fb396 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .practice-body {
+    padding: 1.5rem;
+  }
+  .practice-stem {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .practice-options {
+    list-style: none;
+    margin-bottom: 1.25rem;
+  }
+  .practice-options li {
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--cream);
+    border-radius: 10px;
+    border: 1px solid #eae3f3;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    display: flex;
+    gap: 0.75rem;
+    transition: all 0.2s;
+  }
+  .practice-options li:hover {
+    border-color: var(--lavender);
+    transform: translateX(2px);
+  }
+  .practice-options .letter {
+    font-weight: 700;
+    color: var(--royal-purple);
+    font-family: 'Fraunces', serif;
+    flex-shrink: 0;
+  }
+  .practice-options .correct {
+    background: linear-gradient(90deg, rgba(184,220,199,0.4) 0%, rgba(184,220,199,0.1) 100%);
+    border-color: var(--sage);
+    border-left: 4px solid var(--deep-sage);
+  }
+  .practice-options .correct .letter { color: var(--deep-sage); }
+  .practice-options .correct::after {
+    content: '✓ correct';
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep-sage);
+    align-self: center;
+  }
+  details.rationale {
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: var(--pale-lilac);
+    border: 1px solid rgba(91, 63, 184, 0.15);
+  }
+  details.rationale summary {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--royal-purple);
+    letter-spacing: 0.05em;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  details.rationale summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+  }
+  details.rationale[open] summary::before { transform: rotate(90deg); }
+  details.rationale[open] summary { border-bottom: 1px solid rgba(91, 63, 184, 0.15); }
+  details.rationale summary::-webkit-details-marker { display: none; }
+  .rationale-content {
+    padding: 1rem 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .rationale-content p { margin-bottom: 0.7rem; }
+  .rationale-content p:last-child { margin-bottom: 0; }
+  .rationale-content strong { color: var(--deep-purple); }
+
+  /* ============ CALLOUTS ============ */
+  .callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .callout-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .callout.priority {
+    background: linear-gradient(135deg, #f9e4ea 0%, #fcf0f3 100%);
+    border-left: 4px solid var(--warning);
+  }
+  .callout.priority .callout-label { color: var(--warning); }
+  .callout.priority .icon { color: var(--warning); }
+
+  .callout.clinical {
+    background: linear-gradient(135deg, #ede8f7 0%, #f4f0fb 100%);
+    border-left: 4px solid var(--royal-purple);
+  }
+  .callout.clinical .callout-label { color: var(--royal-purple); }
+
+  .callout.teaching {
+    background: linear-gradient(135deg, #e4f0e9 0%, #edf5ef 100%);
+    border-left: 4px solid var(--sage);
+  }
+  .callout.teaching .callout-label { color: var(--deep-sage); }
+
+  .callout.mnemonic {
+    background: linear-gradient(135deg, #e0edf8 0%, #eef4fa 100%);
+    border-left: 4px solid #5a8bbb;
+  }
+  .callout.mnemonic .callout-label { color: #3d6d9c; }
+
+  .icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .callout-body { flex: 1; }
+  .callout-body strong { color: inherit; font-weight: 600; }
+
+  /* ============ TABLES ============ */
+  .table-wrap {
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+    box-shadow: 0 2px 12px -4px rgba(58, 38, 115, 0.08);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: white;
+  }
+  th {
+    background: linear-gradient(135deg, #ede8f7 0%, #e4f0e9 100%);
+    color: var(--deep-purple);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(91, 63, 184, 0.15);
+  }
+  td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(155, 135, 214, 0.1);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(237, 232, 247, 0.25); }
+  td strong { color: var(--royal-purple); }
+
+  /* ============ STICKY SIDEBAR FEATURE ============ */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 700px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  .mini-card {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+  }
+  .mini-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--deep-purple);
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--pale-lilac);
+  }
+  .mini-card ul { margin-left: 1.1rem; font-size: 0.9rem; }
+  .mini-card li { margin-bottom: 0.35rem; }
+
+  /* ============ CHECKLIST ============ */
+  .checklist {
+    list-style: none;
+    margin: 0.75rem 0;
+  }
+  .checklist li {
+    padding: 0.55rem 0 0.55rem 2rem;
+    position: relative;
+    border-bottom: 1px dashed rgba(155, 135, 214, 0.2);
+    font-size: 0.93rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--lavender);
+    border-radius: 4px;
+    background: white;
+  }
+  .checklist li.key::before {
+    background: var(--sage);
+    border-color: var(--deep-sage);
+  }
+  .checklist li.key::after {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    top: 0.55rem;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* ============ KEY TERM ============ */
+  .keyterm {
+    background: linear-gradient(180deg, transparent 60%, rgba(184, 220, 199, 0.4) 60%);
+    font-weight: 600;
+    color: var(--deep-purple);
+    padding: 0 2px;
+  }
+
+  /* ============ LABEL BADGES ============ */
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-right: 0.4rem;
+  }
+  .badge-purple { background: var(--pale-lilac); color: var(--deep-purple); }
+  .badge-green { background: rgba(184, 220, 199, 0.5); color: var(--forest); }
+  .badge-blue { background: var(--powder-blue); color: #2c5479; }
+  .badge-alert { background: var(--warning-bg); color: var(--warning); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.8rem;
+    color: var(--soft-ink);
+    opacity: 0.7;
+    background: linear-gradient(180deg, transparent 0%, rgba(237, 232, 247, 0.4) 100%);
+  }
+  footer em {
+    font-family: 'Fraunces', serif;
+    color: var(--royal-purple);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 700px) {
+    .hero { padding: 3rem 1.25rem 4rem; }
+    main { padding: 0 1rem 3rem; }
+    nav.toc { margin: -2rem 1rem 2rem; padding: 1.25rem; }
+    .section-header { flex-wrap: wrap; gap: 0.75rem; }
+    .section-number { font-size: 2.25rem; }
+    .hero-meta { flex-direction: column; gap: 0.3rem; padding: 0.75rem 1rem; }
+    .hero-meta span + span::before { display: none; }
+  }
+
+  @media print {
+    body { background: white; }
+    .hero { background: var(--deep-purple); }
+    nav.toc { display: none; }
+    .qa, .practice, .table-wrap { break-inside: avoid; }
+  }
+
+  /* ============ FOOTNOTES ============ */
+  sup.fn {
+    font-size: 0.65em;
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    padding: 1px 5px;
+    border-radius: 6px;
+    margin-left: 3px;
+    vertical-align: super;
+    line-height: 1;
+    cursor: help;
+    letter-spacing: 0.02em;
+  }
+  .legend {
+    max-width: 1080px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #fffdf7 0%, #ffffff 50%, #f7fcf9 100%);
+    border: 1px dashed rgba(91, 63, 184, 0.3);
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: var(--soft-ink);
+  }
+  .legend h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    margin-bottom: 0.75rem;
+  }
+  .legend dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    align-items: start;
+  }
+  .legend dt {
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    justify-self: start;
+  }
+  .legend dd { font-size: 0.88rem; line-height: 1.5; }
+  @media (max-width: 700px) {
+    .legend { margin: 0 1rem 2rem; padding: 1.25rem; }
+  }
+
+  /* ============ FOOTNOTES SECTION ============ */
+  .footnotes {
+    max-width: 1080px;
+    margin: 3rem auto 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+  }
+  .footnotes h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--deep-purple);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--pale-lilac);
+  }
+  .footnotes ol {
+    list-style: none;
+    counter-reset: fn;
+  }
+  .footnotes ol li {
+    counter-increment: fn;
+    padding: 0.7rem 0 0.7rem 2.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-bottom: 1px dashed rgba(155, 135, 214, 0.15);
+  }
+  .footnotes ol li:last-child { border-bottom: none; }
+  .footnotes ol li::before {
+    content: counter(fn);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  .footnotes strong { color: var(--deep-purple); }
+  @media (max-width: 700px) {
+    .footnotes { margin: 2rem 1rem; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">HCC2 · Spring 2026 · Mood & Affect</p>
+    <h1>Jody's Lecture Notes, <em>Filled In</em></h1>
+    <p class="hero-sub">A complete reference guide answering every question from Prof. Bryan's Mood & Affect lecture with evidence from the textbook — organized for quick review, NCLEX application, and clinical reasoning.</p>
+    <div class="hero-meta">
+      <span>Depression</span>
+      <span>Bipolar &amp; Mania</span>
+      <span>Suicide &amp; Safety</span>
+      <span>ECT · PPD</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <h3>Guide Contents</h3>
+  <ul>
+    <li><a href="#depression">01 · Depression Overview</a></li>
+    <li><a href="#assessment">02 · Assessment &amp; S/S</a></li>
+    <li><a href="#adolescents">03 · Adolescent Considerations</a></li>
+    <li><a href="#nursing-care-dep">04 · Nursing Care — Acute</a></li>
+    <li><a href="#communication-dep">05 · Therapeutic Communication</a></li>
+    <li><a href="#medications-dep">06 · Antidepressant Medications</a></li>
+    <li><a href="#serotonin">07 · Serotonin Syndrome</a></li>
+    <li><a href="#ect">08 · ECT</a></li>
+    <li><a href="#postpartum">09 · Postpartum Depression</a></li>
+    <li><a href="#bipolar">10 · Bipolar &amp; Mania</a></li>
+    <li><a href="#mania-meds">11 · Mood Stabilizers &amp; Lithium</a></li>
+    <li><a href="#suicide">12 · Suicide</a></li>
+  </ul>
+</nav>
+
+<div class="legend">
+  <h3>◆ Source Key</h3>
+  <dl>
+    <dt>no mark</dt>
+    <dd>Information drawn directly from your HCC2 book notes (Giddens Concept 30: Mood &amp; Affect; Varcarolis Chs. 13, 14, 25)</dd>
+    <dt>†1, †2…</dt>
+    <dd>Supplemental material <em>not explicitly from your book notes</em> — added from standard nursing references to round out the study guide. See footnotes at the bottom of the page for source clarification.</dd>
+  </dl>
+</div>
+
+<main>
+
+<!-- ========================= DEPRESSION ========================= -->
+<section class="topic" id="depression">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2>Depression: Mood Disorder Overview</h2>
+    <span class="section-tag">Foundation</span>
+  </div>
+
+  <p style="font-size: 1.02rem; margin-bottom: 1.5rem; color: var(--soft-ink);">Depression is a widespread mood disorder that causes significant disability worldwide. It's characterized by overwhelming sadness, emptiness, and loss of functional status — sometimes to the point of incapacitation and loss of will to live.</p>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Jennifer, MDD Admission</span>
+      <span>⚡ Priority Assessment</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">You are talking with Jennifer, a patient admitted with major depression. Which statement by the patient is the most concerning and indicates a need for immediate further assessment?</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>"I have suicidal thoughts at times, but I don't have any plan and don't think I would ever actually hurt myself."</span></li>
+        <li><span class="letter">b.</span><span>"I don't have a good support system, but I am planning on joining a recovery group."</span></li>
+        <li class="correct"><span class="letter">c.</span><span>"I think things will be much better soon."</span></li>
+        <li><span class="letter">d.</span><span>"I have trouble getting out of bed most days – I'm just so tired."</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why C:</strong> A sudden shift from persistent depression to unexplained calm, peace, or optimism is a significant red flag for impending suicide. Once a person decides to end their life, they often feel a sense of relief — they've made the decision, and the internal struggle is over. This may be accompanied by gift-giving, organizing affairs, writing letters, or acts of farewell.</p>
+          <p><strong>Why not the others:</strong> Option A describes suicidal ideation <em>without</em> plan or intent (lower acuity, still requires monitoring). Option B shows engagement with recovery and forward-looking coping — a protective factor. Option D is a vegetative sign of depression (anergia) that's expected and not the <em>most</em> urgent finding.</p>
+          <p><strong>Key teaching:</strong> An individual with newly prescribed antidepressants is especially vulnerable during the first weeks as mood lifts — energy returns <em>before</em> mood fully lifts, giving them the capacity to act on suicidal thoughts.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">Who can diagnose depression? What can the nurse observe and report?</div>
+    <div class="qa-answer">
+      <p><strong>Who diagnoses:</strong> Depression is a medical/psychiatric diagnostic term. Diagnosis is <em>outside the scope of practice</em> for the generalist nurse. Only qualified advanced practice professionals can diagnose mood spectrum disorders — this includes advanced practice nurses, social workers, psychologists, physicians, and other mental health professionals with specialized training.</p>
+      <p><strong>What the nurse observes and reports:</strong></p>
+      <ul>
+        <li><span class="keyterm">Affect</span> — the objective, observable response to feelings</li>
+        <li>Mental status: appearance, motor activity, mood, speech, alertness/orientation</li>
+        <li>Signs of <span class="keyterm">affective instability</span> — crying, rage, euphoria, blunting, flatness</li>
+        <li>Functional status (ADLs, problem-solving ability)</li>
+        <li>Risk for suicide or violence</li>
+        <li>Vegetative signs (sleep, appetite, energy, sex drive)</li>
+      </ul>
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Clinical Pearl</div>
+          <strong>Mental status = the sixth vital sign.</strong> Just as a nurse monitors pulse, respirations, BP, temperature, and pain, mental status requires continuous monitoring and documentation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is affect?</div>
+    <div class="qa-answer">
+      <p><strong>Affect</strong> is the outward, <em>observable</em> representation of a person's internal emotional state. It's an objective finding that nurses assess. Mood is <em>subjective</em> (what the person feels); affect is <em>objective</em> (what the nurse sees — facial expression, voice tone, posture, eye contact).</p>
+      <p>Affect is described as either <strong>congruent</strong> with mood (sad face with depressed mood) or <strong>incongruent</strong> (smiling despite reporting depression).</p>
+      <p><strong>Types of affect commonly seen in major depressive disorder:</strong></p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Constricted</h4>
+          <ul><li>Reduction in range and intensity of normal emotional expression</li><li>Less variation than typical</li></ul>
+        </div>
+        <div class="mini-card">
+          <h4>Blunted (Shallow)</h4>
+          <ul><li>More severe than constricted</li><li>Significant decrease in emotional reactivity</li></ul>
+        </div>
+      </div>
+      <div class="mini-card" style="margin-top: 0.5rem;">
+        <h4>Flat</h4>
+        <ul><li>No or nearly no emotional expression or reactivity at all</li><li>Most severe form</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout priority">
+    <span class="icon">▲</span>
+    <div class="callout-body">
+      <div class="callout-label">Primary Concern — Depressed Client</div>
+      <strong>SAFETY — Risk for Suicide.</strong> The most dangerous aspect of major depressive disorder is preoccupation with death and suicidal ideation. Patients with major depressive disorder must <em>always</em> be evaluated for suicidal ideation. Risk is further elevated when depression is accompanied by hopelessness, substance use, recent loss or separation, a history of past suicide attempts, and acute suicidal ideation. Safety always comes first, then everything else.
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ASSESSMENT ========================= -->
+<section class="topic" id="assessment">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2>Assessment: Signs &amp; Symptoms</h2>
+    <span class="section-tag">What You'll Find</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What signs and symptoms will you likely find when interviewing a client who has depression?</div>
+    <div class="qa-answer">
+      <p>Depression affects the whole person — cognition, behavior, physiology, and emotion. Use this organized framework for assessment:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Area</th>
+              <th>What You Find</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Appearance</strong></td>
+              <td>Poor grooming and hygiene, unkempt clothing, slumped/hunched posture, head down with shoulders forward, minimal or no eye contact</td>
+            </tr>
+            <tr>
+              <td><strong>Behavior</strong></td>
+              <td><span class="keyterm">Anergia</span> (abnormal lack of energy) leading to <span class="keyterm">psychomotor retardation</span> — slowed movements, decreased facial expressions, fixed gaze, sometimes complete inactivity. Alternatively, <span class="keyterm">psychomotor agitation</span> — pacing, nail biting, finger tapping</td>
+            </tr>
+            <tr>
+              <td><strong>Mood</strong></td>
+              <td>Depressed, sad, empty, hopeless. <span class="keyterm">Anhedonia</span> — inability to feel pleasure in activities that normally bring joy. Mood can last weeks to months</td>
+            </tr>
+            <tr>
+              <td><strong>Affect</strong></td>
+              <td>Constricted, blunted, or flat. May be congruent (sad face) or incongruent (smiling while hopeless)</td>
+            </tr>
+            <tr>
+              <td><strong>Speech</strong></td>
+              <td>Slow, soft, monotone, lacking spontaneity. May require repeating questions. In severe cases — mute</td>
+            </tr>
+            <tr>
+              <td><strong>Thought Processes</strong></td>
+              <td>Slowed thinking ("poverty of thought"), delayed or absent responses, difficulty with decisions</td>
+            </tr>
+            <tr>
+              <td><strong>Thought Content</strong></td>
+              <td>Worthlessness, guilt, hopelessness, helplessness. Exaggerated perceived faults. In severe depression — delusions (mood-congruent, e.g., "I deserve to die") or hallucinations (critical voices)</td>
+            </tr>
+            <tr>
+              <td><strong>Cognition</strong></td>
+              <td>Decreased ability to think or concentrate, indecisiveness, deficits in attention, short-term and working memory, processing speed. Cognitive deficits may linger even after treatment</td>
+            </tr>
+            <tr>
+              <td><strong>Vegetative Signs</strong></td>
+              <td>Hallmark feature. <strong>Appetite:</strong> typically decreased (up to 5% weight loss in a month) or occasionally increased. <strong>Sleep:</strong> insomnia with early morning waking (3–4 AM) common; sometimes hypersomnia. <strong>Elimination:</strong> constipation common (especially with psychomotor retardation). <strong>Sex drive:</strong> decreased libido in both men and women; impotence in men</td>
+            </tr>
+            <tr>
+              <td><strong>Suicidality</strong></td>
+              <td>Passive thoughts of death → fantasies → active suicidal ideation → plan → means. Always assess directly</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">Quick Recall — SIG E CAPS<sup class="fn" title="Supplemental: mnemonic not in your book notes">†1</sup></div>
+          A classic mnemonic for DSM-5 depression criteria: <strong>S</strong>leep changes · <strong>I</strong>nterest loss (anhedonia) · <strong>G</strong>uilt/worthlessness · <strong>E</strong>nergy loss · <strong>C</strong>oncentration difficulty · <strong>A</strong>ppetite/weight change · <strong>P</strong>sychomotor changes · <strong>S</strong>uicidality. Need 5 of 9 for ≥ 2 weeks, with at least one being depressed mood or loss of interest.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How would you phrase your questions to assess for depression?</div>
+    <div class="qa-answer">
+      <p>Use open-ended questions, make observations, avoid "why" questions (they feel accusatory), and allow plenty of time for responses because slowed thinking makes processing take longer.</p>
+      <p><strong>Opening and broad assessment:</strong></p>
+      <ul>
+        <li>"Over the past 2 weeks, have you ever felt down, depressed, or hopeless?"</li>
+        <li>"Have you felt little interest or pleasure in doing things?"</li>
+        <li>"How do you feel?" (while observing facial cues, voice tone, posture)</li>
+        <li>"You said you are depressed. Tell me what that is like for you."</li>
+        <li>"When you feel depressed, what sort of thoughts do you have?"</li>
+      </ul>
+      <p><strong>Progressing to suicide assessment:</strong></p>
+      <ul>
+        <li>"Have you had thoughts about ending your life?"</li>
+        <li>"Do you have a plan?"</li>
+        <li>"Do you have the means to carry out your plan?"</li>
+        <li>"Is there anything that would prevent you from carrying out your plan?"</li>
+      </ul>
+      <div class="callout teaching">
+        <span class="icon">●</span>
+        <div class="callout-body">
+          <div class="callout-label">Common Screening Tools</div>
+          <strong>PHQ-9</strong> (Patient Health Questionnaire) — quick 9-item tool widely used in primary care · <strong>Beck Depression Inventory</strong> · <strong>Hamilton Depression Scale</strong> · <strong>Geriatric Depression Scale</strong> — 30-item, yes/no format, valid in older adults with cognitive deficits.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ADOLESCENTS ========================= -->
+<section class="topic" id="adolescents">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2>Adolescents &amp; Depression</h2>
+    <span class="section-tag">Age-Specific</span>
+  </div>
+
+  <div class="callout priority">
+    <span class="icon">▲</span>
+    <div class="callout-body">
+      <div class="callout-label">Why This Matters</div>
+      Suicide is among the <strong>top three causes of death for adolescents</strong> in the United States (CDC). In fact, suicide is the <strong>second-leading cause of death</strong> in 10–24 year olds. In 2017, approximately 13% of U.S. adolescents had at least one major depressive episode — a rate <em>higher</em> than adults, making early recognition critical.
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How might signs/symptoms of depression vary for adolescents? What should the nurse ask adolescents and their caregivers?</div>
+    <div class="qa-answer">
+      <p>The <em>core</em> symptoms — sadness and loss of pleasure — are the same across all ages. What <strong>differs is how they are displayed.</strong></p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Young Children</h4>
+          <ul>
+            <li>Crying, sadness</li>
+            <li>Sudden refusal to go to school</li>
+            <li>Somatic complaints</li>
+            <li>Behavioral regression</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>School-Age</h4>
+          <ul>
+            <li>Withdrawal from peers and activities</li>
+            <li>Decline in school performance</li>
+            <li>Irritability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mini-card" style="margin-top: 0.5rem;">
+        <h4>Adolescents — Key Red Flags</h4>
+        <ul>
+          <li><strong>Irritability</strong> rather than overt sadness (DSM-5 allows irritable mood to replace depressed mood in kids/teens)</li>
+          <li>Substance use — alcohol, drugs, vaping</li>
+          <li>Sexual promiscuity, risk-taking</li>
+          <li>Preoccupation with death, suicide, writing/drawing about death</li>
+          <li>Giving away prized possessions</li>
+          <li>Sudden withdrawal from friends, hobbies, family</li>
+          <li>Changes in sleep and appetite</li>
+          <li>Declining grades</li>
+        </ul>
+      </div>
+      <p><strong>Questions to ask adolescents (and their caregivers):</strong></p>
+      <ul>
+        <li>"Tell me about the last two weeks — how have you been feeling?"</li>
+        <li>"Have there been changes in what you enjoy doing, your sleep, your appetite?"</li>
+        <li>"Have you been feeling irritable or angry more than usual?"</li>
+        <li>"Do you ever have thoughts of hurting yourself or ending your life?"</li>
+        <li>To caregivers: "Have you noticed changes in their sleep, appetite, friends, grades, or mood?"</li>
+      </ul>
+      <p><strong>Other conditions to screen for when assessing depression in adolescents:</strong></p>
+      <ul>
+        <li><strong>Anxiety disorders</strong> — symptoms of anxiety occur in ~70% of MDD cases</li>
+        <li><strong>Substance use</strong> — frequently co-occurs and self-medicates</li>
+        <li><strong>Eating disorders</strong></li>
+        <li><strong>ADHD</strong></li>
+        <li><strong>Disruptive mood dysregulation disorder</strong> — persistent irritability and severe temper outbursts, onset before age 10</li>
+        <li><strong>Bipolar disorder</strong> — especially if manic/hypomanic symptoms emerge with antidepressant treatment</li>
+        <li><strong>Adverse childhood experiences, trauma, abuse, neglect</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= NURSING CARE ========================= -->
+<section class="topic" id="nursing-care-dep">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2>Nursing Care: Acute Depression</h2>
+    <span class="section-tag">Priority Interventions</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the nursing priorities for the acutely depressed client?</div>
+    <div class="qa-answer">
+      <ol>
+        <li><strong>Assess risk for suicide and self-harm</strong> continuously — not just once on admission. Overt hostility is highly correlated with suicide.</li>
+        <li><strong>Provide a safe environment.</strong> Remove all harmful objects: "sharps" (razors, scissors, nail files), strangulation risks (belts, cords, shoelaces), and any medications that could be used to overdose.</li>
+        <li><strong>Implement observation level as ordered</strong> — Q15-minute checks or 1:1 continuous observation for higher acuity.</li>
+        <li><strong>Help with ADLs</strong> because anergia and poor concentration make even basic self-care overwhelming. Give step-by-step reminders ("Wash the right side of your face, now the left").</li>
+        <li><strong>Address vegetative signs</strong> — frequent small high-calorie snacks, fluids, fiber to prevent constipation, support sleep hygiene.</li>
+        <li><strong>Promote therapeutic alliance</strong> — spend regularly scheduled time, even in silence.</li>
+      </ol>
+
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Direct Observation &amp; the Bathroom</div>
+          <strong>The patient on direct (1:1) observation is never left alone — including in the bathroom.</strong> The nurse/sitter must maintain visual contact at all times. This may mean keeping the bathroom door cracked or standing just inside. Preserving as much privacy and dignity as possible while maintaining line of sight is the goal. The bathroom is a common location for suicide attempts because of privacy, hanging opportunities from fixtures, and access to water — direct observation cannot be suspended even briefly.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= COMMUNICATION ========================= -->
+<section class="topic" id="communication-dep">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2>Therapeutic Communication</h2>
+    <span class="section-tag">With the Depressed Client</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What communication techniques work best with a severely withdrawn or depressed patient?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Technique</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Make observations</strong><br><em>"There are new pictures on the wall." "You are wearing your new shoes."</em></td>
+              <td>When a patient is not ready to talk, direct questions raise anxiety. Observations point to commonalities and gently draw the patient into reality</td>
+            </tr>
+            <tr>
+              <td><strong>Use simple, concrete words</strong></td>
+              <td>Slowed thinking and difficulty concentrating impair comprehension</td>
+            </tr>
+            <tr>
+              <td><strong>Allow time for the patient to respond</strong></td>
+              <td>Slowed thinking requires extra time to formulate a response</td>
+            </tr>
+            <tr>
+              <td><strong>Listen for covert messages; ask directly about suicide</strong></td>
+              <td>People often feel relief and decreased isolation when they can finally share thoughts of suicide</td>
+            </tr>
+            <tr>
+              <td><strong>Avoid platitudes</strong><br><em>Skip "Things will look up" or "Everyone gets down once in a while"</em></td>
+              <td>Platitudes minimize the patient's feelings and actually increase guilt and worthlessness because the patient feels unable to "snap out of it"</td>
+            </tr>
+            <tr>
+              <td><strong>Sit with the patient in silence</strong></td>
+              <td>Silence can be therapeutic. Your consistent presence communicates worth without requiring a response</td>
+            </tr>
+            <tr>
+              <td><strong>Accept patient negativism</strong></td>
+              <td>Acceptance (not agreement) enhances feelings of self-worth and does not reinforce distorted thinking</td>
+            </tr>
+            <tr>
+              <td><strong>Avoid "why" questions</strong></td>
+              <td>"Why" questions feel interrogative and accusatory. Prefer "What," "How," or "Tell me about..."</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= MEDICATIONS ========================= -->
+<section class="topic" id="medications-dep">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2>Antidepressant Medications</h2>
+    <span class="section-tag">Pharmacology</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the major classes of antidepressants, and how do they compare?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Examples</th>
+              <th>Key Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SSRIs</strong><br>Selective Serotonin Reuptake Inhibitors</td>
+              <td>Fluoxetine (Prozac), Sertraline (Zoloft), Paroxetine (Paxil), Citalopram (Celexa), Escitalopram (Lexapro)</td>
+              <td><span class="badge badge-green">First-line</span> Block reuptake of serotonin. Lower side-effect profile than TCAs. Risk of lethal overdose is minimized. Side effects: agitation, insomnia, headache, nausea, sexual dysfunction, hyponatremia. <strong>Discontinuation syndrome</strong> if stopped abruptly — taper slowly</td>
+            </tr>
+            <tr>
+              <td><strong>SNRIs</strong><br>Serotonin–Norepinephrine Reuptake Inhibitors</td>
+              <td>Venlafaxine (Effexor), Duloxetine (Cymbalta), Desvenlafaxine (Pristiq)</td>
+              <td>Block reuptake of both serotonin and norepinephrine. Popular next-step after SSRI trial. Duloxetine also treats neuropathic pain, fibromyalgia, GAD. May increase BP (venlafaxine, desvenlafaxine, levomilnacipran)</td>
+            </tr>
+            <tr>
+              <td><strong>TCAs</strong><br>Tricyclic Antidepressants</td>
+              <td>Amitriptyline, Nortriptyline (Pamelor), Imipramine (Tofranil), Desipramine, Doxepin</td>
+              <td><span class="badge badge-alert">Lethal in overdose</span> Second-line. Inhibit serotonin and norepinephrine reuptake. Anticholinergic side effects — dry mouth, constipation, urinary retention, blurred vision, orthostatic hypotension, cardiac toxicity, sedation. Use caution in older adults, cardiac disease, suicide risk</td>
+            </tr>
+            <tr>
+              <td><strong>MAOIs</strong><br>Monoamine Oxidase Inhibitors</td>
+              <td>Phenelzine (Nardil), Tranylcypromine (Parnate), Isocarboxazid (Marplan), Selegiline patch (Emsam)</td>
+              <td><span class="badge badge-alert">Strict diet restrictions</span> Inhibit enzyme that breaks down serotonin and norepinephrine. Avoid tyramine-rich foods (aged cheese, cured meats, fermented foods, wine, soy sauce) — tyramine + MAOI = <strong>hypertensive crisis</strong>. Give patient a wallet card. 14-day washout between SSRIs and MAOIs</td>
+            </tr>
+            <tr>
+              <td><strong>NDRI</strong><br>Norepinephrine–Dopamine Reuptake Inhibitor</td>
+              <td>Bupropion (Wellbutrin, Zyban)</td>
+              <td>Also used for smoking cessation. Lowers seizure threshold — avoid in seizure disorders, eating disorders. Does not cause sexual dysfunction (advantage over SSRIs)</td>
+            </tr>
+            <tr>
+              <td><strong>NaSSA</strong></td>
+              <td>Mirtazapine (Remeron)</td>
+              <td>Enhances norepinephrine and serotonin release. <strong>Causes sedation and weight gain</strong> — useful when patient has insomnia and poor appetite</td>
+            </tr>
+            <tr>
+              <td><strong>NMDA Antagonist</strong></td>
+              <td>Esketamine (Spravato) — nasal spray</td>
+              <td>FDA-approved for treatment-resistant depression. Used off-label for acute suicidality. Patient must be monitored 2 hours post-administration. Schedule III — risk of abuse</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">Why do clients need to be assessed for suicide after starting antidepressant medications?</div>
+    <div class="qa-answer">
+      <p>This is one of the most critical teaching points in psychiatric nursing.</p>
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">The Energy-Before-Mood Paradox</div>
+          Antidepressants take <strong>1 to 3 weeks (or longer)</strong> to produce full therapeutic effect on mood. However, <strong>energy and motivation often return first</strong>. This means a patient who previously felt too depleted to act on suicidal thoughts may now have the energy and motivation to carry out a plan — while their mood and hopelessness are still at baseline. The FDA black box warning on antidepressants in children, adolescents, and young adults reflects this increased risk of suicidal thinking and behavior in the early weeks.
+        </div>
+      </div>
+      <p><strong>Nursing implications:</strong></p>
+      <ul>
+        <li>Assess for suicidal ideation at every encounter, especially in the first weeks of treatment</li>
+        <li>Teach patient and family to watch for increased agitation, worsening mood, or new/worsening suicidal thoughts</li>
+        <li>Ensure close follow-up in the first weeks — don't send home with 90-day supply</li>
+        <li>Provide crisis resources before the patient leaves</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What should the client be taught about antidepressants?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key">Therapeutic effect may take <strong>several weeks (1–3+ weeks)</strong> — do not stop because it "isn't working" early</li>
+        <li class="key"><strong>Do not discontinue suddenly</strong> — abrupt stopping causes discontinuation syndrome (dizziness, nausea, flu-like symptoms, irritability, insomnia). Always taper</li>
+        <li class="key"><strong>Avoid alcohol</strong> while taking antidepressants — potentiates CNS depression and worsens depression</li>
+        <li class="key">Notify provider of <strong>any new or worsening suicidal thoughts</strong>, rash, rapid heartbeat, sore throat</li>
+        <li class="key">Avoid hazardous activities (driving, operating machinery) until side effects are known</li>
+        <li class="key">Take with meals if GI upset occurs</li>
+        <li class="key">Do not take OTC drugs (including St. John's wort) without checking with provider</li>
+        <li class="key">For MAOIs: strict tyramine-free diet, avoid Asian restaurants, carry emergency card, go to ED immediately for severe headache</li>
+        <li class="key">Sexual dysfunction is a common side effect — report to provider rather than stopping</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SEROTONIN SYNDROME ========================= -->
+<section class="topic" id="serotonin">
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <h2>Serotonin Syndrome</h2>
+    <span class="section-tag">Emergency</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is a potentially serious side effect of SSRIs that the nurse must recognize? What is the treatment?</div>
+    <div class="qa-answer">
+      <p><span class="keyterm">Serotonin syndrome</span> is a rare but <strong>life-threatening</strong> event caused by overactivation of central serotonin receptors. It results from too high a dose or drug interactions — most commonly when an SSRI is combined with another serotonin-enhancing agent (MAOI, triptans, St. John's wort, tramadol, linezolid).</p>
+
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--warning);">
+          <h4 style="color: var(--warning);">Signs &amp; Symptoms</h4>
+          <ul>
+            <li>Hyperactivity, restlessness, irritability</li>
+            <li>Tachycardia → cardiovascular shock</li>
+            <li>Fever → hyperpyrexia (dangerously high)</li>
+            <li>Elevated blood pressure</li>
+            <li>Altered mental state (delirium)</li>
+            <li>Mood changes, hostility, irrationality</li>
+            <li>Seizures → status epilepticus</li>
+            <li>Myoclonus (muscle spasms), incoordination, tonic rigidity</li>
+            <li>Abdominal pain, diarrhea, bloating</li>
+            <li>Sweating, tremor</li>
+            <li>Apnea → death</li>
+          </ul>
+        </div>
+        <div class="mini-card" style="border-top: 4px solid var(--sage);">
+          <h4 style="color: var(--deep-sage);">Treatment / Interventions</h4>
+          <ul>
+            <li><strong>Remove the offending agent(s) immediately</strong></li>
+            <li>Initiate symptomatic supportive treatment</li>
+            <li>Serotonin-receptor blockade — cyproheptadine, methysergide, propranolol</li>
+            <li>Cooling blankets / chlorpromazine for hyperthermia</li>
+            <li>Dantrolene or diazepam for muscle rigidity</li>
+            <li>Anticonvulsants for seizures</li>
+            <li>Artificial ventilation if respiratory compromise</li>
+            <li>Induction of paralysis in severe cases</li>
+            <li>Supportive care in ICU</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Prevention</div>
+          A patient must <strong>discontinue all SSRIs for 2 to 5 weeks</strong> before starting an MAOI (fluoxetine requires 5 weeks due to its long half-life). When switching between antidepressant classes, always check the washout period.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ECT ========================= -->
+<section class="topic" id="ect">
+  <div class="section-header">
+    <span class="section-number">08</span>
+    <h2>Electroconvulsive Therapy (ECT)</h2>
+    <span class="section-tag">Biological Treatment</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is ECT?</div>
+    <div class="qa-answer">
+      <p>ECT is a somatic (physical) treatment for psychiatric disorders in which brief seizures are deliberately induced by an electrical current. Despite its dramatic reputation from the past, modern ECT — with general anesthesia and paralytic agents — is actually a controlled, safe procedure.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Key Parameters</h4>
+          <ul>
+            <li><strong>Seizure duration:</strong> 30–60+ seconds</li>
+            <li><strong>Electrical current duration:</strong> as brief as 1 second</li>
+            <li><strong>Frequency:</strong> 2–3 times per week (often QOD — every other day<sup class="fn" title="QOD phrasing is from Jody's lecture; book notes specify 2 or 3 treatments per week">†3</sup>)</li>
+            <li><strong>Course:</strong> 6 to 12 total treatments</li>
+            <li><strong>Age approved:</strong> FDA-approved for patients 13 years and older</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Theory / Indications</h4>
+          <ul>
+            <li><strong>Theory:</strong> Increases availability of neurotransmitters</li>
+            <li><strong>Primary use:</strong> Treatment-resistant <strong>depression</strong> and <strong>mania</strong> when medications are ineffective</li>
+            <li><strong>Also used for:</strong> Acute suicidality (works faster than medications), bipolar disorder with severe depression, schizoaffective disorder, catatonia</li>
+            <li><strong>Effectiveness:</strong> ~80% of patients, particularly effective in older adults</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How do we prepare the client for the ECT procedure?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key"><strong>Obtain informed consent</strong> (patient if voluntary; next of kin or court order if involuntary)</li>
+        <li class="key">Provide <strong>patient and family teaching</strong> about what to expect — this is crucial</li>
+        <li class="key"><strong>Pre-procedure workup:</strong> chest x-ray, ECG, urinalysis, complete blood count (CBC), blood urea nitrogen (BUN), electrolyte panel</li>
+        <li class="key"><strong>NPO</strong> after midnight (general anesthesia will be given)</li>
+        <li class="key"><strong>Discontinue benzodiazepines</strong> — they interfere with the seizure process and reduce ECT efficacy</li>
+        <li class="key">Remove dentures, jewelry, hairpins; void bladder before procedure</li>
+        <li class="key">Administer <strong>general anesthetic</strong> to induce sleep and <strong>muscle-paralyzing agent</strong> to prevent muscle injury and fractures</li>
+        <li class="key">Ensure IV access, oxygen, suction, and emergency equipment available</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is monitored during the ECT procedure?</div>
+    <div class="qa-answer">
+      <ul>
+        <li><strong>EEG</strong> — monitors brain waves and seizure activity</li>
+        <li><strong>ECG</strong> — monitors cardiac response (the heart can be stressed at seizure onset and for up to 10 min after)</li>
+        <li><strong>Pulse oximetry</strong> — oxygen saturation</li>
+        <li><strong>Blood pressure</strong> monitoring</li>
+        <li><strong>Airway patency</strong> — anesthesia team manages airway during paralysis</li>
+      </ul>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Post-Procedure Care</div>
+          Patients wake <strong>about 15 minutes after the procedure</strong>. Expect <strong>confusion and disorientation</strong> for several hours. Most experience <strong>retrograde amnesia</strong> — loss of memory for events leading up to and including the treatment. Nursing care is like any postoperative patient: <em>monitor airway, monitor mental status, frequently orient the patient to person, place, time, and situation</em>. Have family available. Side effects also include headaches, nausea, muscle aches, and occasional longer-term memory loss.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= POSTPARTUM ========================= -->
+<section class="topic" id="postpartum">
+  <div class="section-header">
+    <span class="section-number">09</span>
+    <h2>Postpartum Depression</h2>
+    <span class="section-tag">Perinatal</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How do we recognize postpartum depression? What does it look like?</div>
+    <div class="qa-answer">
+      <p>Postpartum depression (PPD) is a serious mood disorder occurring after childbirth. Unlike the transient "baby blues" (which resolves within 2 weeks), PPD is persistent, significantly impairs functioning, and puts both mother and infant at risk.</p>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>What It Looks Like</h4>
+          <ul>
+            <li>Persistent sadness, tearfulness, emptiness</li>
+            <li>Severe mood swings, irritability</li>
+            <li>Loss of interest in the baby or excessive worry about the baby</li>
+            <li>Difficulty bonding with the infant</li>
+            <li>Feelings of worthlessness, shame, guilt, or inadequacy as a parent</li>
+            <li>Fatigue, insomnia, or hypersomnia</li>
+            <li>Appetite changes</li>
+            <li>Thoughts of harming self or the baby</li>
+            <li>Anxiety, panic attacks</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Risk Factors &amp; Red Flags</h4>
+          <ul>
+            <li>History of depression or anxiety</li>
+            <li>Family history of mood disorders</li>
+            <li>Hormonal changes post-delivery</li>
+            <li>Sleep deprivation</li>
+            <li>Lack of social support</li>
+            <li>Relationship stress, financial stress</li>
+            <li><strong>Severe postpartum psychosis within 2 weeks of birth</strong> — associated with 4× increased risk of developing bipolar disorder</li>
+          </ul>
+        </div>
+      </div>
+
+      <p><strong>How we screen:</strong></p>
+      <ul>
+        <li>Use the <strong>Edinburgh Postnatal Depression Scale (EPDS)<sup class="fn" title="Supplemental: EPDS not specifically mentioned in your book notes; PHQ-9 is">†2</sup></strong> or the <strong>PHQ-9</strong> at prenatal and postnatal visits</li>
+        <li>Ask simple screening questions: "Over the past 2 weeks have you felt down, depressed, or hopeless?" and "Have you had little interest or pleasure in doing things?"</li>
+        <li>Screen at the 6-week postpartum visit and at well-child visits in the first year</li>
+        <li>Assess thoughts of self-harm or harming the baby at every visit</li>
+      </ul>
+
+      <div class="callout teaching">
+        <span class="icon">●</span>
+        <div class="callout-body">
+          <div class="callout-label">Treatment Pearl — Brexanolone</div>
+          <strong>Brexanolone (Zulresso)</strong> is the <em>first and only</em> FDA-approved medication specifically for postpartum depression. It's a neuroactive steroid given as a <strong>60-hour continuous IV infusion</strong> (2.5 days). Requires continuous pulse oximetry throughout treatment due to risk of hypoxia and sudden loss of consciousness. Schedule IV controlled substance. Because of sedation risk during infusion, patients need supervision especially during interactions with their child. Interpersonal psychotherapy and SSRIs are also highly effective for PPD.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= BIPOLAR ========================= -->
+<section class="topic" id="bipolar">
+  <div class="section-header">
+    <span class="section-number">10</span>
+    <h2>Bipolar Disorder &amp; Mania</h2>
+    <span class="section-tag">Mood Elevation</span>
+  </div>
+
+  <p style="margin-bottom: 1.5rem; color: var(--soft-ink);">Bipolar disorder is characterized by extreme mood swings — both lowering and exaggerated elevation of mood. Bipolar I requires at least one manic episode; bipolar II involves hypomanic episodes + major depressive episodes. Hypomania differs from mania by being less severe and lacking psychotic features.</p>
+
+  <div class="qa">
+    <div class="qa-question">What are the most important dangers to the patient experiencing mania? What do we always need to assess for?</div>
+    <div class="qa-answer">
+      <p>Because manic patients have unlimited energy, poor judgment, and impaired insight, <strong>physical and psychological safety dominate every clinical decision.</strong></p>
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Most Dangerous Threats in Mania</div>
+          <strong>Physical exhaustion and cardiac collapse</strong> from nonstop activity · <strong>Dehydration and malnutrition</strong> (too distracted to eat/drink) · <strong>Injury</strong> from reckless behavior · <strong>Suicide</strong> (manic patients have <em>higher</em> suicide risk than depressive patients due to increased energy) · <strong>Violence</strong> to self or others · <strong>Harm from poor judgment</strong> — spending sprees, sexual indiscretions, dangerous driving, substance use
+        </div>
+      </div>
+
+      <p><strong>Always assess for:</strong></p>
+      <ul>
+        <li>Risk for injury and self-harm</li>
+        <li>Suicide risk (even in mania!)</li>
+        <li>Violence potential toward others</li>
+        <li>Vital signs — especially HR and BP (overactivity strains the heart)</li>
+        <li>Hydration status and intake/output</li>
+        <li>Nutritional intake</li>
+        <li>Sleep patterns (even one sleepless night can worsen mania)</li>
+        <li>Hygiene deficits</li>
+        <li>Medication adherence and lithium level</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What does the patient look like when they are manic?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width: 22%;">Domain</th><th>Presentation</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mood</strong></td>
+              <td>Elevated, expansive, euphoric ("on top of the world") <em>OR</em> irritable, hostile. Unstable — can shift rapidly to rage</td>
+            </tr>
+            <tr>
+              <td><strong>Behavior</strong></td>
+              <td>Constant physical activity, pacing, hyperactivity. Provocative or seductive dress. Risk-taking — unrestrained spending sprees, sexual indiscretions, foolish business investments</td>
+            </tr>
+            <tr>
+              <td><strong>Speech</strong></td>
+              <td><span class="keyterm">Pressured speech</span> — rapid, loud, difficult to interrupt. <span class="keyterm">Flight of ideas</span> — rapid shifts from one topic to another. Loose associations. Clang associations (rhyming). Puns</td>
+            </tr>
+            <tr>
+              <td><strong>Thought Content</strong></td>
+              <td><span class="keyterm">Grandiosity</span> — inflated self-esteem, may believe they have special powers, fame, wealth, connections. In severe mania: grandiose delusions, sometimes paranoia</td>
+            </tr>
+            <tr>
+              <td><strong>Cognition</strong></td>
+              <td>Racing thoughts, difficulty concentrating, highly distractible, poor judgment, impaired insight</td>
+            </tr>
+            <tr>
+              <td><strong>Sleep</strong></td>
+              <td><strong>Decreased need for sleep</strong> — may go days without sleep while feeling rested</td>
+            </tr>
+            <tr>
+              <td><strong>Appearance</strong></td>
+              <td>Flamboyant dress, excessive makeup, inappropriate attire. Poor hygiene due to distractibility</td>
+            </tr>
+            <tr>
+              <td><strong>Psychotic Features (severe mania only)</strong></td>
+              <td>Hallucinations, grandiose or paranoid delusions. Note: psychosis does NOT occur in hypomania</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are potential patient problems and their nursing solutions?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width: 30%;">Problem</th><th>Nursing Solution</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Risk for injury / self-harm</strong></td>
+              <td>Priority! Low-stimulation environment. PRN medication, seclusion, or restraint in acute mania. Remove valuables (store in hospital safe). Redirect aggression</td>
+            </tr>
+            <tr>
+              <td><strong>Imbalanced nutrition</strong></td>
+              <td>Offer frequent, high-calorie, high-protein finger foods and drinks (sandwiches, fruit, milkshakes) that can be eaten on the run. Monitor I&O. Weigh daily. Provide frequent reminders: "Tom, finish your milkshake"</td>
+            </tr>
+            <tr>
+              <td><strong>Fluid volume deficit / dehydration</strong></td>
+              <td>Frequent high-calorie fluids. Monitor intake, output, vital signs, specific gravity</td>
+            </tr>
+            <tr>
+              <td><strong>Sleep deprivation</strong></td>
+              <td>Structured quiet periods. Direct to low-stimulation areas. Avoid caffeine. Warm baths, soothing music at night. PRN sleep medication</td>
+            </tr>
+            <tr>
+              <td><strong>Self-care deficit (hygiene, dress)</strong></td>
+              <td>Step-by-step reminders ("Here is your razor. Shave the left side... now the right side"). Encourage appropriate clothing choices to preserve dignity</td>
+            </tr>
+            <tr>
+              <td><strong>Impaired verbal communication</strong></td>
+              <td>Short, concise statements. Firm, calm approach. Consistent expectations. Do not argue with delusions</td>
+            </tr>
+            <tr>
+              <td><strong>Constipation</strong></td>
+              <td>High-fiber foods, fluids, exercise. Evaluate for laxative. Dehydration and decreased peristalsis can lead to fecal impaction</td>
+            </tr>
+            <tr>
+              <td><strong>Risk for sexual indiscretion / exploitation</strong></td>
+              <td>Two-nurse approach when appropriate. Never leave a male staff member alone with a seductive female patient (and vice versa). Redirect without shaming</td>
+            </tr>
+            <tr>
+              <td><strong>Financial / legal harm from manipulation</strong></td>
+              <td>Store valuables (money, credit cards, jewelry) in hospital safe until rational judgment returns</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What therapeutic communication techniques work with the manic patient?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key"><strong>Firm, calm, neutral approach</strong> — "John, come with me. Eat this sandwich."</li>
+        <li class="key">Use <strong>short, concise explanations and statements</strong> — short attention span limits comprehension</li>
+        <li class="key">Be <strong>consistent</strong> in approach and expectations — minimizes staff manipulation</li>
+        <li class="key">Identify expectations in <strong>simple, concrete terms with consequences</strong> — "Do not yell at Peter. If you cannot control yourself, we will help you."</li>
+        <li class="key"><strong>Hear and act on legitimate complaints</strong> — reduces underlying feelings of helplessness</li>
+        <li class="key"><strong>Redirect energy</strong> into appropriate channels — distractibility is your most useful tool</li>
+        <li class="key"><strong>Avoid arguing</strong> with delusions or grandiose thinking</li>
+        <li class="key"><strong>Maintain low-stimulation environment</strong> — away from bright lights, loud noises, crowds</li>
+        <li class="key"><strong>Set limits</strong> firmly and without anger</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Priority in Mania</span>
+      <span>⚡ Priority Setting</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">The priority problem for a hyperactive manic client during the acute phase is:</p>
+      <ul class="practice-options">
+        <li class="correct"><span class="letter">a.</span><span>Risk for injury or self-harm</span></li>
+        <li><span class="letter">b.</span><span>Ineffective role performance</span></li>
+        <li><span class="letter">c.</span><span>Risk for sleep disturbance</span></li>
+        <li><span class="letter">d.</span><span>Impaired verbal communication</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why A:</strong> In acute mania, the hyperactive patient cannot meet basic physiological needs or set limits on behavior. Dehydration, exhaustion, cardiac collapse, reckless behavior, violence, and suicide all fall under "risk for injury/self-harm." <strong>Safety is always the priority.</strong></p>
+          <p>Maslow's hierarchy — physiological needs and safety come before all other psychosocial concerns. Ineffective role performance (B), sleep disturbance (C), and impaired communication (D) are real problems but are secondary to keeping the patient alive and uninjured during the acute phase. All three will also be addressed <em>through</em> the safety interventions (low-stimulation environment promotes sleep; firm limits help communication).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= MANIA MEDICATIONS ========================= -->
+<section class="topic" id="mania-meds">
+  <div class="section-header">
+    <span class="section-number">11</span>
+    <h2>Mood Stabilizers &amp; Lithium</h2>
+    <span class="section-tag">Pharmacology</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What medications are used for bipolar disorder?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Drug</th><th>Approved For</th><th>Key Nursing Points</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lithium</strong><br>(Eskalith, Lithobid)</td>
+              <td>Acute mania, bipolar maintenance</td>
+              <td>First-line mood stabilizer. Narrow therapeutic range. Requires serum-level monitoring. See box below</td>
+            </tr>
+            <tr>
+              <td><strong>Valproic acid / Divalproex</strong><br>(Depakote)</td>
+              <td>Acute mania, maintenance</td>
+              <td>Anticonvulsant mood stabilizer. <strong>Black box: hepatotoxicity, pancreatitis, teratogenicity</strong> — spina bifida, cleft palate. Monitor LFTs, platelets, coagulation. Screen for pregnancy</td>
+            </tr>
+            <tr>
+              <td><strong>Carbamazepine</strong><br>(Equetro, Tegretol)</td>
+              <td>Acute mania, mixed states</td>
+              <td>Second-line. <strong>Black box: Stevens-Johnson syndrome, toxic epidermal necrolysis</strong> — Asian ancestry has 10× greater risk; genetic test before starting. Causes leukopenia, aplastic anemia. Monitor CBC and LFTs weekly x 8 weeks</td>
+            </tr>
+            <tr>
+              <td><strong>Lamotrigine</strong><br>(Lamictal)</td>
+              <td>Bipolar maintenance</td>
+              <td><strong>Risk of Stevens-Johnson syndrome</strong> (especially with rapid titration or valproate co-administration). <em>Any rash = discontinue</em>. Titrate slowly</td>
+            </tr>
+            <tr>
+              <td><strong>Second-generation antipsychotics</strong></td>
+              <td>Varies — acute mania, maintenance, bipolar depression</td>
+              <td>Olanzapine (Zyprexa), risperidone (Risperdal), quetiapine (Seroquel), aripiprazole (Abilify), lurasidone (Latuda), cariprazine (Vraylar). Screen for <strong>metabolic syndrome</strong> — weight gain, diabetes, dyslipidemia</td>
+            </tr>
+            <tr>
+              <td><strong>Benzodiazepines</strong></td>
+              <td>Adjunct for acute agitation, sleep</td>
+              <td>Short-term only. Watch for dependence</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What teaching must the patient on lithium receive?</div>
+    <div class="qa-answer">
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Lithium Therapeutic Range — Memorize!</div>
+          <strong>Therapeutic: 0.8–1.4 mEq/L</strong> · <strong>Toxicity begins: 1.5 mEq/L</strong> and above. The narrow window means dosing adjustments are critical. Toxic range may even overlap the therapeutic range.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Early Signs of Toxicity</h4>
+          <ul>
+            <li>Diarrhea</li>
+            <li>Vomiting</li>
+            <li>Drowsiness</li>
+            <li>Muscular weakness</li>
+            <li>Lack of coordination</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Severe Toxicity</h4>
+          <ul>
+            <li>Ataxia (irregular muscle movements)</li>
+            <li>Giddiness</li>
+            <li>Tinnitus</li>
+            <li>Blurred vision</li>
+            <li>Large output of dilute urine</li>
+            <li>Seizures, coma, death</li>
+          </ul>
+        </div>
+      </div>
+
+      <p><strong>Patient Teaching Essentials (Box 13.2):</strong></p>
+      <ul class="checklist">
+        <li class="key">Lithium is a mood stabilizer, not addictive — continue even when feeling well</li>
+        <li class="key"><strong>Maintain consistent fluid intake</strong> — 1500–3000 mL/day (about six 12-oz glasses)</li>
+        <li class="key"><strong>Maintain consistent sodium intake</strong>. Low sodium → higher lithium levels → toxicity. High sodium → lower lithium levels → loss of effect</li>
+        <li class="key"><strong>Stop lithium and call provider</strong> if excessive diarrhea, vomiting, or sweating (dehydration → toxicity)</li>
+        <li class="key"><strong>Check with prescriber before any OTC medications</strong> — even NSAIDs (ibuprofen, naproxen) can raise lithium levels</li>
+        <li class="key">Take with meals to reduce GI irritation</li>
+        <li class="key">Expect ~5 lb water weight gain in the first week; discuss ongoing weight changes</li>
+        <li class="key">Periodic monitoring: <strong>thyroid function</strong> (hypo- or hyperthyroidism risk), <strong>parathyroid</strong>, <strong>renal function</strong>, <strong>lithium blood level</strong></li>
+        <li class="key">Avoid diuretics without provider knowledge — they affect lithium levels</li>
+        <li class="key"><strong>Contraindicated in pregnancy and breastfeeding</strong></li>
+        <li class="key">Tapered gradually if discontinued, to minimize relapse risk</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout clinical">
+    <span class="icon">◆</span>
+    <div class="callout-body">
+      <div class="callout-label">Physiologic Integrity in Mania — Big Three</div>
+      <strong>Dehydration · Malnutrition · Lack of sleep</strong> — these three threats drive the majority of acute mania interventions. Every action the nurse takes (offering finger foods, providing high-calorie fluids, redirecting to quiet areas, decaffeinated drinks, warm baths at bedtime) targets one of these three concerns. Nutritional deficiencies and dehydration <em>plus</em> constant physical activity can cause exhaustion and cardiac collapse.
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SUICIDE ========================= -->
+<section class="topic" id="suicide">
+  <div class="section-header">
+    <span class="section-number">12</span>
+    <h2>Suicide</h2>
+    <span class="section-tag">Safety Priority</span>
+  </div>
+
+  <p style="margin-bottom: 1.5rem; font-size: 1.02rem; color: var(--soft-ink);">Suicide is the intentional act of ending one's life. If a client has had a recent suicide attempt, the <strong>biggest threat</strong> to the client — the thing <em>most likely</em> to cause their death — is <strong>another completed suicide attempt</strong>. Past attempts are the strongest predictor of future attempts.</p>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Ava &amp; Asking About Suicide</span>
+      <span>⚡ Therapeutic Communication</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">You are working with Ava, another student nurse on the psychiatric unit. She tells you she doesn't want to ask her patient about suicidal ideation because "It might put ideas in her head about suicide." The correct response would be:</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>"You're right. She may not have thought of suicide before, and we don't want to introduce that."</span></li>
+        <li><span class="letter">b.</span><span>"You are right; however, because of professional liability, we have to ask that question."</span></li>
+        <li class="correct"><span class="letter">c.</span><span>"Actually, it's a myth that asking about suicide puts ideas into someone's head."</span></li>
+        <li><span class="letter">d.</span><span>"If I were you, I'd ask the doctor to talk to the patient about that subject."</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why C:</strong> It has been <strong>consistently demonstrated that talking about suicidal feelings does NOT increase the likelihood of acting on them</strong> at any age. In fact, most people contemplating suicide feel <em>relief</em> when someone finally asks — they feel less isolated and more able to problem-solve. Asking directly about suicide is a professional responsibility, comparable to asking about chest pain in a cardiac patient.</p>
+          <p><strong>Why not the others:</strong> Option A reinforces the myth — dangerous misinformation. Option B concedes the myth is true and frames the question only as legal CYA. Option D passes the buck and avoids education — assessment is a nursing responsibility, not just medical.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is the most important question we can ask a patient we think is suicidal?</div>
+    <div class="qa-answer">
+      <p>The single most important assessment question is a direct, unambiguous question about suicide:</p>
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">The Question</div>
+          <strong>"Are you thinking about suicide?"</strong> or <strong>"Are you thinking about ending your life?"</strong>
+          <br><br>Follow immediately with: <strong>"Do you have a plan?"</strong>
+        </div>
+      </div>
+      <p><strong>Other associated things to assess:</strong></p>
+      <ul>
+        <li>"Have you ever felt that life was not worth living?"</li>
+        <li>"Have you been thinking about death recently?"</li>
+        <li>"Have you ever attempted suicide before?" (previous attempts = highest predictor)</li>
+        <li>"Do you have a plan for ending your life?"</li>
+        <li>"If so, what is your plan?" — assess specificity</li>
+        <li>"Do you have access to [the method mentioned]?" — assess means</li>
+        <li>"Is there anything that would prevent you from carrying out your plan?" — assess protective factors</li>
+        <li>"When did these thoughts start, and how often do they occur?"</li>
+      </ul>
+      <p><strong>Other issues that often accompany suicidal ideation — assess these too:</strong></p>
+      <ul>
+        <li>Hopelessness and helplessness</li>
+        <li>Substance use (alcohol or other substances) — reduces inhibitions</li>
+        <li>Recent loss (relationship, job, health, housing, loved one, pet)</li>
+        <li>Psychiatric diagnoses — MDD, substance use disorder, psychosis, anxiety, personality disorders</li>
+        <li>Physical/chronic illness, chronic pain</li>
+        <li>Recent discharge from psychiatric care</li>
+        <li>Social isolation</li>
+        <li>Access to lethal means (firearms, medications)</li>
+        <li>History of childhood abuse/trauma (ACEs)</li>
+        <li>Family history of suicide</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">Who is at increased risk for suicide?</div>
+    <div class="qa-answer">
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Demographic &amp; Population</h4>
+          <ul>
+            <li>Men (die by suicide ~3.5× more than women, though women attempt more)</li>
+            <li>White males account for ~70% of all suicide deaths</li>
+            <li>Adults ages 45–54 (highest rate); second-highest is 85+</li>
+            <li>Men 85+ have highest rate of any age group</li>
+            <li>Veterans (1.5× higher than general population)</li>
+            <li>American Indian/Alaska Native youth (highest among 15–44 yr)</li>
+            <li>LGBTQ+ youth<sup class="fn" title="Supplemental: LGBTQ+ youth not specifically named in your book notes">†5</sup></li>
+            <li>Adolescents and young adults (2nd leading cause of death in 10–34 yr)</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Clinical Risk Factors</h4>
+          <ul>
+            <li><strong>Previous suicide attempt(s)</strong> — strongest predictor</li>
+            <li>Family history of suicide</li>
+            <li>Mental illness — MDD, bipolar, schizophrenia, anxiety, personality disorders</li>
+            <li>Substance use disorders — alcohol present in 41% of deaths</li>
+            <li>Hopelessness</li>
+            <li>Impulsive or aggressive tendencies</li>
+            <li>Adverse childhood experiences, trauma</li>
+            <li>Chronic physical illness, chronic pain, loss of mobility, disfigurement</li>
+            <li>Recent loss (relationship, job, financial, housing)</li>
+            <li>Easy access to lethal means</li>
+            <li>Social isolation</li>
+            <li>Barriers to mental health treatment</li>
+            <li>Local epidemics / cluster suicide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How do we assess for a plan and lethality?</div>
+    <div class="qa-answer">
+      <p>Evaluating the suicide plan has <strong>three main elements</strong>:</p>
+      <ol>
+        <li><strong>Is there a specific plan with details?</strong> (time, place, means) — the more specific, the higher the risk</li>
+        <li><strong>How lethal is the proposed method?</strong></li>
+        <li><strong>Is there access to the planned method?</strong></li>
+      </ol>
+      <p>People with definite plans including time, place, and means are at <strong>highest risk</strong>.</p>
+
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--warning);">
+          <h4 style="color: var(--warning);">"Hard" Methods — Higher Risk</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-ink); margin-bottom: 0.5rem;">Death is rapid; reversal difficult</p>
+          <ul>
+            <li>Firearm (most common method — over 50% of deaths)</li>
+            <li>Jumping from a high place</li>
+            <li>Hanging</li>
+            <li>Carbon monoxide poisoning</li>
+            <li>Staging a car crash</li>
+          </ul>
+        </div>
+        <div class="mini-card" style="border-top: 4px solid var(--sage);">
+          <h4 style="color: var(--deep-sage);">"Soft" Methods — Lower Lethality</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-ink); margin-bottom: 0.5rem;">Slower onset; more time for rescue</p>
+          <ul>
+            <li>Cutting wrists</li>
+            <li>Inhaling natural gas</li>
+            <li>Ingesting pills</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Psychosis = High Risk Regardless</div>
+          When a patient is experiencing a psychotic episode, they are at <strong>high risk regardless of the specificity of details</strong> because impulse control and judgment are grossly impaired. A person with psychosis is especially vulnerable when also depressed or experiencing command hallucinations.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What does a safe environment look like in the hospital? Whose responsibility is it to keep the patient safe?</div>
+    <div class="qa-answer">
+      <p><strong>Safety is everyone's responsibility</strong> — but primarily the nurse's. The entire interdisciplinary team (nurses, prescribers, mental health technicians, social workers, dietitians, family) participates, but the nurse coordinates and maintains the safety plan.</p>
+
+      <p><strong>Essential elements of suicide precautions:</strong></p>
+      <ul class="checklist">
+        <li class="key">Remove all <strong>"sharps"</strong> — razors, scissors, nail files, glass, metal utensils, tweezers, matches</li>
+        <li class="key">Remove <strong>strangulation risks</strong> — belts, shoelaces, drawstrings, cords, neckties, long jewelry</li>
+        <li class="key">Remove <strong>medications</strong> that could be used to overdose (patient's home meds go to pharmacy)</li>
+        <li class="key"><strong>Check all items brought in</strong> by visitors; no plastic bags<sup class="fn" title="Plastic bags specifically not listed in Box 25.4; however the book does state all visitor items must be searched">†4</sup></li>
+        <li class="key">Use <strong>plastic utensils</strong> and count them when meal tray is collected; ensure no glass or metal silverware</li>
+        <li class="key">Do <strong>not assign to a private room</strong>; ensure the room door remains open at all times</li>
+        <li class="key"><strong>Jump-proof and hang-proof bathrooms</strong> — breakaway shower rods, recessed shower nozzles, tamper-proof window screens</li>
+        <li class="key">Keep <strong>electrical cords</strong> to minimal length; install unbreakable glass; keep windows locked</li>
+        <li class="key">Lock all utility rooms, kitchens, stairwells, and offices</li>
+        <li class="key"><strong>Perform mouth checks</strong> — observe the patient swallow each dose of medication to prevent hoarding</li>
+        <li class="key">When patient is sleeping, <strong>hands should always remain in view</strong>, not under covers</li>
+        <li class="key">Assign <strong>observation level</strong> per provider order and acuity</li>
+        <li class="key">Document mental status and observations continuously (<strong>including affect descriptors</strong> — "hostile, fearful, calm" — not just location/activity)</li>
+      </ul>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Observation Levels &amp; Frequency</div>
+          <strong>Q15-minute checks</strong> (every 15 minutes) — for moderate risk, visually verify patient's location and status and document each check.<br>
+          <strong>1:1 / Continuous observation (direct observation)</strong> — staff member remains with the patient <strong>at all times</strong> — within arm's reach or constant line of sight, including in the bathroom. No breaks, no exceptions without relief. This is the highest level of monitoring and is used for patients at high imminent risk.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the nursing care priorities for the suicidal patient?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key"><strong>Help establish a safety plan</strong> collaboratively with the patient</li>
+        <li class="key"><strong>Promote trust and a therapeutic alliance</strong> — consistent, nonjudgmental presence</li>
+        <li class="key">Assess verbal and nonverbal clues continuously</li>
+        <li class="key">Look for <strong>warning signs</strong> — talking about death, expressing no reason to live, withdrawal, increased substance use, giving away possessions, writing/organizing affairs, sudden calm after persistent depression</li>
+        <li class="key">Provide a <strong>safe environment</strong> (see above)</li>
+        <li class="key">Implement <strong>suicide precautions</strong> per policy and order</li>
+        <li class="key">Teach <strong>coping skills</strong> — problem-solving, conflict resolution, stress management</li>
+        <li class="key">Provide <strong>support and resources</strong> — 988 Suicide &amp; Crisis Lifeline, Crisis Text Line, community support groups</li>
+        <li class="key"><strong>Always use follow-up questions</strong> — do not accept vague answers</li>
+        <li class="key"><strong>Become comfortable asking questions</strong> about suicide directly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What therapeutic communication is essential?</div>
+    <div class="qa-answer">
+      <ul>
+        <li><strong>Therapeutic milieu environment</strong> — safe, structured, predictable inpatient setting</li>
+        <li><strong>Build therapeutic alliance</strong> — essential for treatment adherence</li>
+        <li><strong>Listen for covert messages</strong> ("I won't be a problem much longer," "Things will never work out," "How can I donate my body to science?") and <em>directly address</em> what you're hearing</li>
+        <li><strong>Listen for overt statements</strong> ("I can't take it anymore," "Life isn't worth living," "I wish I were dead," "Everyone would be better off if I died")</li>
+        <li>Acknowledge the underlying feeling when the patient presents as angry, hostile, or overwhelmed</li>
+        <li>Help the patient express feelings safely</li>
+        <li>Do not make promises of confidentiality you cannot keep — the safety team must know</li>
+        <li>Involve family and support systems in safety planning when appropriate</li>
+      </ul>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">Remember the Red Flag</div>
+          Sudden shift from persistent sadness to <strong>unexplained calm, peace, or brightening of mood</strong> (especially after being newly prescribed an antidepressant) — the patient may have made the decision to end their life and now feels relief. Also watch for giving away possessions, writing letters, organizing finances, and acts of farewell.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What medications are used in the treatment of suicidal patients?</div>
+    <div class="qa-answer">
+      <p>Medications don't treat suicidality directly; they target the underlying psychiatric condition that is driving the suicidal ideation.</p>
+      <ul>
+        <li><strong>Antidepressants</strong> (SSRIs most common) — for underlying depression or anxiety. Monitor closely in first weeks because energy returns before mood lifts</li>
+        <li><strong>Benzodiazepines</strong> — short-term for severe anxiety or agitation; use cautiously (disinhibition can increase impulsivity)</li>
+        <li><strong>Mood stabilizers</strong> — lithium in particular has been shown to reduce suicide risk in bipolar disorder</li>
+        <li><strong>Antipsychotics</strong> — for psychotic features, command hallucinations, or severe agitation</li>
+        <li><strong>Esketamine (Spravato)</strong> — used off-label for acute suicidality; produces rapid antidepressant effect</li>
+        <li><strong>ECT</strong> — considered when suicidality is acute and medications are too slow; fastest effective option</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout teaching" style="margin-top: 2rem;">
+    <span class="icon">●</span>
+    <div class="callout-body">
+      <div class="callout-label">Hopeful Reminder</div>
+      From the Golden Gate Bridge study: of 515 individuals restrained from jumping between 1937 and 1978, <strong>approximately 90% did not later die by violent means</strong>. The desire to die is almost always <em>temporary</em>. Intervention works. Prevented suicide often means a long, satisfying life. Therapy, medication, family, friends, and groups <em>all</em> offer hope.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="footnotes">
+  <h3>◆ Footnotes &amp; Source Clarifications</h3>
+  <ol>
+    <li><strong>SIG E CAPS mnemonic</strong> — This classic memory aid for the nine DSM-5 criteria of major depressive disorder is widely used in nursing and medical education but is <em>not</em> included in your HCC2 book notes. The DSM-5 criteria themselves <em>are</em> in your notes (depressed mood, anhedonia, weight/appetite change, insomnia/hypersomnia, psychomotor agitation/retardation, fatigue, worthlessness/guilt, concentration difficulty, suicidal ideation) — SIG E CAPS is just a way to remember them. Safe to use; well-validated in clinical practice.</li>
+
+    <li><strong>Edinburgh Postnatal Depression Scale (EPDS)</strong> — Your book notes specifically mention the <em>PHQ-9</em> and simple 2-question screens for depression but do not specifically name the EPDS. The EPDS is, however, the most widely used and validated screening tool for perinatal depression in clinical practice (10-item self-report, score ≥ 10 suggests possible depression, score ≥ 13 suggests probable). Included because you're likely to see it in clinical rotations, but PHQ-9 is the safer answer to cite on an HCC2 exam unless Prof. Bryan specifies otherwise.</li>
+
+    <li><strong>"QOD — every other day"</strong> — The phrase "QOD three X/week" comes from <em>Jody's lecture slides</em>, not from the Varcarolis book chapter. The book text states "two or three treatments per week to a total of 6 to 12 treatments" without using the QOD abbreviation. Both are correct; they describe the same schedule.</li>
+
+    <li><strong>"No plastic bags"</strong> in suicide precautions — Box 25.4 of your book notes specifies plastic utensils, jump/hang-proof bathrooms, removing sharps and strangulation risks, and searching all items brought by visitors. Plastic bags are not named specifically, but they fall under the general principle of removing suffocation/strangulation risks. Good clinical practice even if not verbatim from your book notes.</li>
+
+    <li><strong>LGBTQ+ youth as an at-risk population</strong> — Not specifically named in your HCC2 book notes, but widely established in the broader suicide prevention literature (CDC, Trevor Project, SAMHSA). LGBTQ+ youth are 4× more likely to attempt suicide than their peers. Included because it's clinically significant and commonly tested; just flagging that it didn't come from the HCC2 chapter.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Study guide compiled from <em>HCC2 Mood &amp; Affect book notes (draft)</em> to match the structure of Prof. Bryan's lecture notes — Spring 2026.</p>
+  <p style="margin-top: 0.5rem;">Made for the cohort. Good luck, future nurses. 💜</p>
+</footer>
+
+</body>
+</html>

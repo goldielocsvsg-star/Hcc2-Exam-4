@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prof. Moody's Anxiety &amp; Psychosis Notes — Filled-In Reference | HCC2 Spring '26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-purple: #3a2673;
+    --royal-purple: #5b3fb8;
+    --lavender: #9b87d6;
+    --soft-lavender: #d8cef0;
+    --pale-lilac: #ede8f7;
+    --sky: #a8c5ea;
+    --powder-blue: #cfe0f2;
+    --mint: #b8dcc7;
+    --sage: #7fb396;
+    --deep-sage: #4f8a6a;
+    --forest: #2f5e45;
+    --cream: #fcfbf8;
+    --ink: #1d1835;
+    --soft-ink: #3b3450;
+    --warning: #b8445e;
+    --warning-bg: #f9e4ea;
+
+    --grad-hero: linear-gradient(135deg, #3a2673 0%, #5b3fb8 25%, #7a7fc9 50%, #a8c5ea 75%, #b8dcc7 100%);
+    --grad-section: linear-gradient(135deg, #ede8f7 0%, #ffffff 50%, #e4f0e9 100%);
+    --grad-card: linear-gradient(135deg, rgba(155, 135, 214, 0.08) 0%, rgba(168, 197, 234, 0.06) 50%, rgba(184, 220, 199, 0.08) 100%);
+    --grad-accent: linear-gradient(90deg, #5b3fb8 0%, #7a7fc9 50%, #7fb396 100%);
+    --grad-answer: linear-gradient(135deg, #f4f0fb 0%, #ffffff 50%, #ecf5f0 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    background: linear-gradient(180deg, #f7f4fc 0%, #ffffff 40%, #f0f7f3 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  .hero {
+    background: var(--grad-hero);
+    color: white;
+    padding: 4rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(184,220,199,0.2) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .hero h1 em {
+    font-weight: 600;
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #d8cef0 50%, #b8dcc7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: inline-flex;
+    gap: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-meta span { opacity: 0.92; }
+  .hero-meta span + span::before {
+    content: '·';
+    margin-right: 2rem;
+    margin-left: -1rem;
+    opacity: 0.5;
+  }
+
+  nav.toc {
+    max-width: 1080px;
+    margin: -2.5rem auto 3rem;
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px -20px rgba(58, 38, 115, 0.25);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(155, 135, 214, 0.15);
+  }
+  nav.toc h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    margin-bottom: 1rem;
+  }
+  nav.toc ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+  nav.toc a {
+    color: var(--soft-ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+  }
+  nav.toc a:hover {
+    background: var(--pale-lilac);
+    border-left-color: var(--royal-purple);
+    color: var(--deep-purple);
+    padding-left: 1rem;
+  }
+
+  .legend {
+    max-width: 1080px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #fffdf7 0%, #ffffff 50%, #f7fcf9 100%);
+    border: 1px dashed rgba(91, 63, 184, 0.3);
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: var(--soft-ink);
+  }
+  .legend h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    margin-bottom: 0.75rem;
+  }
+  .legend dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    align-items: start;
+  }
+  .legend dt {
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    justify-self: start;
+  }
+  .legend dd { font-size: 0.88rem; line-height: 1.5; }
+
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  section.topic {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(155, 135, 214, 0.25);
+    position: relative;
+  }
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 120px;
+    height: 2px;
+    background: var(--grad-accent);
+  }
+  .section-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--lavender);
+    font-style: italic;
+  }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--deep-purple);
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--deep-sage);
+    padding: 0.3rem 0.75rem;
+    background: rgba(184, 220, 199, 0.3);
+    border-radius: 999px;
+  }
+
+  .qa {
+    margin-bottom: 1.75rem;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px -8px rgba(58, 38, 115, 0.1);
+    border: 1px solid rgba(155, 135, 214, 0.1);
+  }
+  .qa-question {
+    background: linear-gradient(135deg, #5b3fb8 0%, #7a7fc9 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  .qa-question::before {
+    content: 'Q';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+  .qa-answer {
+    padding: 1.5rem;
+    background: var(--grad-answer);
+    border-top: 2px solid var(--mint);
+  }
+  .qa-answer p { margin-bottom: 0.8rem; }
+  .qa-answer p:last-child { margin-bottom: 0; }
+  .qa-answer strong { color: var(--deep-purple); font-weight: 600; }
+  .qa-answer ul, .qa-answer ol { margin: 0.5rem 0 0.75rem 1.25rem; }
+  .qa-answer li { margin-bottom: 0.45rem; }
+  .qa-answer li::marker { color: var(--royal-purple); }
+
+  .practice {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 2px solid var(--sage);
+    box-shadow: 0 8px 30px -10px rgba(79, 138, 106, 0.2);
+  }
+  .practice-header {
+    background: linear-gradient(135deg, #4f8a6a 0%, #7fb396 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .practice-body { padding: 1.5rem; }
+  .practice-stem {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .practice-options { list-style: none; margin-bottom: 1.25rem; }
+  .practice-options li {
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--cream);
+    border-radius: 10px;
+    border: 1px solid #eae3f3;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    display: flex;
+    gap: 0.75rem;
+    transition: all 0.2s;
+  }
+  .practice-options li:hover {
+    border-color: var(--lavender);
+    transform: translateX(2px);
+  }
+  .practice-options .letter {
+    font-weight: 700;
+    color: var(--royal-purple);
+    font-family: 'Fraunces', serif;
+    flex-shrink: 0;
+  }
+  .practice-options .correct {
+    background: linear-gradient(90deg, rgba(184,220,199,0.4) 0%, rgba(184,220,199,0.1) 100%);
+    border-color: var(--sage);
+    border-left: 4px solid var(--deep-sage);
+  }
+  .practice-options .correct .letter { color: var(--deep-sage); }
+  .practice-options .correct::after {
+    content: '✓ correct';
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep-sage);
+    align-self: center;
+  }
+  details.rationale {
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: var(--pale-lilac);
+    border: 1px solid rgba(91, 63, 184, 0.15);
+  }
+  details.rationale summary {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--royal-purple);
+    letter-spacing: 0.05em;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  details.rationale summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+  }
+  details.rationale[open] summary::before { transform: rotate(90deg); }
+  details.rationale[open] summary { border-bottom: 1px solid rgba(91, 63, 184, 0.15); }
+  details.rationale summary::-webkit-details-marker { display: none; }
+  .rationale-content { padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.6; }
+  .rationale-content p { margin-bottom: 0.7rem; }
+  .rationale-content p:last-child { margin-bottom: 0; }
+  .rationale-content strong { color: var(--deep-purple); }
+
+  .callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .callout-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .callout.priority {
+    background: linear-gradient(135deg, #f9e4ea 0%, #fcf0f3 100%);
+    border-left: 4px solid var(--warning);
+  }
+  .callout.priority .callout-label { color: var(--warning); }
+  .callout.clinical {
+    background: linear-gradient(135deg, #ede8f7 0%, #f4f0fb 100%);
+    border-left: 4px solid var(--royal-purple);
+  }
+  .callout.clinical .callout-label { color: var(--royal-purple); }
+  .callout.teaching {
+    background: linear-gradient(135deg, #e4f0e9 0%, #edf5ef 100%);
+    border-left: 4px solid var(--sage);
+  }
+  .callout.teaching .callout-label { color: var(--deep-sage); }
+  .callout.mnemonic {
+    background: linear-gradient(135deg, #e0edf8 0%, #eef4fa 100%);
+    border-left: 4px solid #5a8bbb;
+  }
+  .callout.mnemonic .callout-label { color: #3d6d9c; }
+  .icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .callout-body { flex: 1; }
+  .callout-body strong { color: inherit; font-weight: 600; }
+
+  .table-wrap {
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+    box-shadow: 0 2px 12px -4px rgba(58, 38, 115, 0.08);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: white;
+  }
+  th {
+    background: linear-gradient(135deg, #ede8f7 0%, #e4f0e9 100%);
+    color: var(--deep-purple);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(91, 63, 184, 0.15);
+  }
+  td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(155, 135, 214, 0.1);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(237, 232, 247, 0.25); }
+  td strong { color: var(--royal-purple); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+  .mini-card {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+  }
+  .mini-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--deep-purple);
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--pale-lilac);
+  }
+  .mini-card ul { margin-left: 1.1rem; font-size: 0.9rem; }
+  .mini-card li { margin-bottom: 0.35rem; }
+
+  .checklist { list-style: none; margin: 0.75rem 0; }
+  .checklist li {
+    padding: 0.55rem 0 0.55rem 2rem;
+    position: relative;
+    border-bottom: 1px dashed rgba(155, 135, 214, 0.2);
+    font-size: 0.93rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--lavender);
+    border-radius: 4px;
+    background: white;
+  }
+  .checklist li.key::before {
+    background: var(--sage);
+    border-color: var(--deep-sage);
+  }
+  .checklist li.key::after {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    top: 0.55rem;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .keyterm {
+    background: linear-gradient(180deg, transparent 60%, rgba(184, 220, 199, 0.4) 60%);
+    font-weight: 600;
+    color: var(--deep-purple);
+    padding: 0 2px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-right: 0.4rem;
+  }
+  .badge-purple { background: var(--pale-lilac); color: var(--deep-purple); }
+  .badge-green { background: rgba(184, 220, 199, 0.5); color: var(--forest); }
+  .badge-blue { background: var(--powder-blue); color: #2c5479; }
+  .badge-alert { background: var(--warning-bg); color: var(--warning); }
+
+  sup.fn {
+    font-size: 0.65em;
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    padding: 1px 5px;
+    border-radius: 6px;
+    margin-left: 3px;
+    vertical-align: super;
+    line-height: 1;
+    cursor: help;
+    letter-spacing: 0.02em;
+  }
+  .footnotes {
+    max-width: 1080px;
+    margin: 3rem auto 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(155, 135, 214, 0.2);
+  }
+  .footnotes h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--deep-purple);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--pale-lilac);
+  }
+  .footnotes ol { list-style: none; counter-reset: fn; }
+  .footnotes ol li {
+    counter-increment: fn;
+    padding: 0.7rem 0 0.7rem 2.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-bottom: 1px dashed rgba(155, 135, 214, 0.15);
+  }
+  .footnotes ol li:last-child { border-bottom: none; }
+  .footnotes ol li::before {
+    content: counter(fn);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    font-weight: 700;
+    color: var(--royal-purple);
+    background: var(--pale-lilac);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  .footnotes strong { color: var(--deep-purple); }
+
+  footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    font-size: 0.8rem;
+    color: var(--soft-ink);
+    opacity: 0.7;
+    background: linear-gradient(180deg, transparent 0%, rgba(237, 232, 247, 0.4) 100%);
+  }
+  footer em {
+    font-family: 'Fraunces', serif;
+    color: var(--royal-purple);
+  }
+
+  @media (max-width: 700px) {
+    .hero { padding: 3rem 1.25rem 4rem; }
+    main { padding: 0 1rem 3rem; }
+    nav.toc { margin: -2rem 1rem 2rem; padding: 1.25rem; }
+    .legend { margin: 0 1rem 2rem; padding: 1.25rem; }
+    .section-header { flex-wrap: wrap; gap: 0.75rem; }
+    .section-number { font-size: 2.25rem; }
+    .hero-meta { flex-direction: column; gap: 0.3rem; padding: 0.75rem 1rem; }
+    .hero-meta span + span::before { display: none; }
+    .footnotes { margin: 2rem 1rem; padding: 1.5rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .hero { background: var(--deep-purple); }
+    nav.toc { display: none; }
+    .qa, .practice, .table-wrap { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">HCC2 · Spring 2026 · Anxiety &amp; Psychosis</p>
+    <h1>Prof. Moody's Lecture Notes, <em>Filled In</em></h1>
+    <p class="hero-sub">A complete reference guide answering every question from Prof. Moody's Anxiety and Psychosis lecture with evidence from the textbook — organized for quick review, NCLEX application, and clinical reasoning.</p>
+    <div class="hero-meta">
+      <span>Anxiety &amp; Panic</span>
+      <span>PTSD</span>
+      <span>Schizophrenia</span>
+      <span>Antipsychotics · EPS</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <h3>Guide Contents</h3>
+  <ul>
+    <li><a href="#rule-out">01 · Rule Out First</a></li>
+    <li><a href="#panic">02 · Panic Attacks</a></li>
+    <li><a href="#panic-care">03 · Nursing Care: Panic</a></li>
+    <li><a href="#anxiety-meds">04 · Anxiety Medications</a></li>
+    <li><a href="#ptsd">05 · PTSD</a></li>
+    <li><a href="#defenses">06 · Defense Mechanisms</a></li>
+    <li><a href="#psychosis">07 · Schizophrenia Overview</a></li>
+    <li><a href="#hallucinations">08 · Hallucinations &amp; Safety</a></li>
+    <li><a href="#communication">09 · Therapeutic Communication</a></li>
+    <li><a href="#first-gen">10 · First-Gen Antipsychotics</a></li>
+    <li><a href="#eps">11 · EPS In Depth</a></li>
+    <li><a href="#nms">12 · NMS vs Serotonin Syndrome</a></li>
+    <li><a href="#second-gen">13 · Second/Third-Gen Antipsychotics</a></li>
+    <li><a href="#relapse">14 · Schizophrenia Relapse</a></li>
+  </ul>
+</nav>
+
+<div class="legend">
+  <h3>◆ Source Key</h3>
+  <dl>
+    <dt>no mark</dt>
+    <dd>Information drawn directly from your HCC2 book notes (Giddens Concepts 31 &amp; 33; Varcarolis Chs. 12, 15, 16)</dd>
+    <dt>†1, †2…</dt>
+    <dd>Supplemental material <em>not explicitly from your book notes</em> — added from standard nursing references to round out the guide. See footnotes at the bottom for source clarification.</dd>
+  </dl>
+</div>
+
+<main>
+
+<!-- ========================= RULE OUT ========================= -->
+<section class="topic" id="rule-out">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2>Rule Out Medical Causes First</h2>
+    <span class="section-tag">Foundation</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">Before we decide that someone in the ED or on the floor is experiencing anxiety from psychological causes, what serious conditions do we need to rule out, and what are key treatments to alleviate the associated anxiety?</div>
+    <div class="qa-answer">
+      <p>Anxiety symptoms — racing heart, shortness of breath, chest tightness, sweating, impending doom — overlap dramatically with life-threatening medical emergencies. <strong>A determination of anxiety should never be made until other high-risk medical explanations have been ruled out.</strong></p>
+
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--warning);">
+          <h4 style="color: var(--warning);">Acute Life-Threatening</h4>
+          <ul>
+            <li><strong>Myocardial infarction (MI)</strong> — chest pain, SOB, diaphoresis, impending doom</li>
+            <li><strong>Pulmonary embolism</strong> — SOB, tachycardia, chest pain</li>
+            <li><strong>Stroke</strong> — sudden neuro changes</li>
+            <li><strong>Hypoglycemia</strong> — tremor, diaphoresis, confusion, tachycardia</li>
+            <li><strong>Hypoxia</strong> — restlessness + low SpO2</li>
+            <li><strong>Drug or alcohol withdrawal</strong> — DTs can be fatal</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Chronic Medical Conditions (Box 31.1)</h4>
+          <ul>
+            <li>Cancer</li>
+            <li>Chronic obstructive pulmonary disease (COPD)</li>
+            <li>Asthma</li>
+            <li>Heart disease</li>
+            <li>Diabetes</li>
+            <li>Thyroid disease (hyper- or hypothyroidism)</li>
+            <li>Pheochromocytoma</li>
+            <li>Chronic infections</li>
+            <li>Vestibular dysfunction</li>
+            <li>Irritable bowel syndrome</li>
+          </ul>
+        </div>
+      </div>
+
+      <p><strong>Key diagnostic workup:</strong> Vital signs, auscultation of heart and lungs, palpation of thyroid, cranial nerve assessment, blood and urine studies — CBC, comprehensive metabolic panel (CMP), arterial blood gas (ABG), thyroid function tests, urinalysis. An <strong>ECG</strong> is especially important to rule out cardiac causes.</p>
+
+      <p><strong>Key treatments to alleviate associated anxiety when medical cause is identified:</strong></p>
+      <ul>
+        <li><strong>Treat the underlying medical condition</strong> — oxygen for hypoxia, glucose for hypoglycemia, beta-blockers/nitrates for cardiac ischemia, thyroid medication, etc.</li>
+        <li><strong>Short-acting benzodiazepine</strong> (lorazepam, alprazolam) for severe acute anxiety while workup proceeds</li>
+        <li><strong>Calm, reassuring presence</strong> — explain what's being done</li>
+        <li><strong>Minimize environmental stimuli</strong> — move to quieter area if possible</li>
+        <li><strong>Slow, deep breathing</strong> coached by the nurse</li>
+        <li><strong>Remain with the patient</strong> — "I'm here, you are safe"</li>
+      </ul>
+
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Clinical Rule</div>
+          <strong>Anxiety is a diagnosis of exclusion.</strong> Chest pain + SOB + diaphoresis + impending doom looks exactly like an MI <em>and</em> exactly like a panic attack. Always work up the cardiac cause first. An ECG, troponins, and a good history take minutes and save lives.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PANIC ========================= -->
+<section class="topic" id="panic">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2>Panic Attacks</h2>
+    <span class="section-tag">Acute Anxiety</span>
+  </div>
+
+  <p style="margin-bottom: 1.5rem; color: var(--soft-ink);">A panic attack is an <strong>abrupt surge of intense fear or discomfort</strong> with a sense of impending doom and rapid onset. It is the most extreme level of Peplau's anxiety continuum (mild → moderate → severe → panic).</p>
+
+  <div class="qa">
+    <div class="qa-question">What are the signs and symptoms of panic?</div>
+    <div class="qa-answer">
+      <p>Panic-level anxiety manifests as <strong>massive sympathetic nervous system activation</strong> combined with a <strong>loss of reality contact</strong>:</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Physical / Autonomic</h4>
+          <ul>
+            <li>Palpitations, pounding heart, increased HR</li>
+            <li>Sweating (diaphoresis)</li>
+            <li>Shaking, trembling, chills or overheating</li>
+            <li>Nausea, vomiting, GI distress</li>
+            <li>Sensation of choking or smothering</li>
+            <li>Shortness of breath, hyperventilation</li>
+            <li>Chest pain or tightness</li>
+            <li>Dizziness, lightheadedness</li>
+            <li>Paresthesia (numbness, tingling)</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h4>Psychological / Cognitive</h4>
+          <ul>
+            <li>Overwhelming fear</li>
+            <li>Sense of <span class="keyterm">impending doom</span></li>
+            <li><span class="keyterm">Derealization</span> — the world feels unreal</li>
+            <li><span class="keyterm">Depersonalization</span> — feeling detached from self</li>
+            <li>Fear of dying, losing control, or "going crazy"</li>
+            <li>Greatly reduced and distorted perceptual field</li>
+            <li>Unable to process what is happening</li>
+            <li>Hallucinations or delusions possible at panic level</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">Peplau's Four Levels of Anxiety</div>
+          <strong>Mild</strong> — heightened perceptual field, problem-solving enhanced, mild tension-relieving behaviors (nail biting, foot tapping). <em>Constructive.</em><br>
+          <strong>Moderate</strong> — narrowed perceptual field, selective inattention, tension, pounding heart, increased vitals. Learning still possible.<br>
+          <strong>Severe</strong> — greatly reduced perceptual field, focus on one detail or scattered, learning not possible, dazed, somatic symptoms (headache, nausea, dizziness), hyperventilation, sense of impending doom.<br>
+          <strong>Panic</strong> — unable to process environment, loss of touch with reality, dysregulated behavior (pacing, running, shouting, withdrawal), possible hallucinations, exhaustion.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Panic Priority Intervention</span>
+      <span>⚡ Priority Setting</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">For a patient experiencing panic, which nursing intervention should be implemented first?</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>Teach relaxation techniques</span></li>
+        <li><span class="letter">b.</span><span>Administer a short-acting anxiolytic medication</span></li>
+        <li><span class="letter">c.</span><span>Prepare to implement the use of restraints</span></li>
+        <li class="correct"><span class="letter">d.</span><span>Provide calm, brief, directive communication</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why D:</strong> At the panic level, the patient's perceptual field is so reduced they cannot process complex information — learning is impossible. The first intervention is <em>always</em> establishing a calm, reassuring presence with clear, simple, directive communication. A calm nurse in a low-stimulation environment directly lowers the patient's anxiety through co-regulation.</p>
+          <p><strong>Why not the others:</strong> Teaching relaxation techniques (A) is impossible when the patient cannot learn — save this for after acute anxiety reduces. Medication (B) may become necessary, but nonpharmacologic methods come first. Restraints (C) are a <em>last</em> resort after all other interventions fail and only if there's risk of harm.</p>
+          <p><strong>Nursing priority order for panic:</strong> Stay with patient → speak calmly with a low-pitched voice → minimize stimuli → use short, simple statements → coach slow breathing → if still severe, assess need for PRN medication.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= NURSING CARE PANIC ========================= -->
+<section class="topic" id="panic-care">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2>Nursing Care: Panic</h2>
+    <span class="section-tag">Acute + Long Term</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What acute and long-term nursing care does a patient with panic disorder need?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Intervention</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Maintain a calm manner</strong></td>
+              <td>Anxiety is communicated interpersonally. The nurse's quiet calm can serve to calm the patient; nurse anxiety can <em>escalate</em> patient anxiety</td>
+            </tr>
+            <tr>
+              <td><strong>Always remain with the patient</strong></td>
+              <td>A person left alone with overwhelming anxiety feels abandoned. Your caring face may be their only contact with reality when confusion becomes overwhelming</td>
+            </tr>
+            <tr>
+              <td><strong>Minimize environmental stimuli</strong></td>
+              <td>Move to a quieter setting — helps prevent further escalation</td>
+            </tr>
+            <tr>
+              <td><strong>Use clear, simple statements and repetition</strong></td>
+              <td>A person experiencing panic has difficulty concentrating and processing information</td>
+            </tr>
+            <tr>
+              <td><strong>Use a low-pitched voice; speak slowly</strong></td>
+              <td>A high-pitched voice conveys anxiety. Low pitch decreases anxiety</td>
+            </tr>
+            <tr>
+              <td><strong>Reassure safety</strong> — "You are safe. I will not leave you."</td>
+              <td>Communicates presence and commitment; reduces fear of abandonment</td>
+            </tr>
+            <tr>
+              <td><strong>Coach slow, deep breathing</strong></td>
+              <td>Activates the relaxation response — opposite of stress response. Reduces HR and muscle tension</td>
+            </tr>
+            <tr>
+              <td><strong>Reinforce reality if distortions occur</strong></td>
+              <td>Focusing on and validating what is actually in the environment can decrease anxiety</td>
+            </tr>
+            <tr>
+              <td><strong>Attend to physical needs</strong></td>
+              <td>High anxiety may obscure awareness of warmth, fluids, elimination, or pain. High-calorie fluids if the patient is pacing — prevents dehydration and exhaustion</td>
+            </tr>
+            <tr>
+              <td><strong>Set firm physical limits if needed</strong></td>
+              <td>"You may not hit anyone here. If you can't control yourself, we will help you." A person out of control is often terrorized; limits offer protection</td>
+            </tr>
+            <tr>
+              <td><strong>Offer physical outlets</strong></td>
+              <td>Walking with the nurse, punching bag, ping-pong — physical activity channels and dissipates tension</td>
+            </tr>
+            <tr>
+              <td><strong>Assess need for PRN medication</strong></td>
+              <td><em>After</em> other interventions have been tried — only when exhaustion or harm must be prevented</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Long-term nursing care:</strong></p>
+      <ul>
+        <li>Teach the patient to <strong>recognize symptoms</strong> of rising anxiety before full panic develops</li>
+        <li>Teach and practice <strong>preventive therapies</strong> — deep breathing, progressive muscle relaxation, mindfulness, imagery</li>
+        <li>Refer for <strong>cognitive-behavioral therapy (CBT)</strong> — highly effective for panic disorder</li>
+        <li>Refer for <strong>behavioral therapies</strong> — systematic desensitization (graduated exposure), modeling, thought stopping, flooding</li>
+        <li>Coordinate with psychiatric provider for <strong>maintenance medications</strong> (SSRIs as first-line)</li>
+        <li>Identify community support groups</li>
+        <li>Discuss lifestyle changes — limit caffeine, alcohol, get adequate sleep</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= MEDICATIONS ========================= -->
+<section class="topic" id="anxiety-meds">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2>Anxiety Medications</h2>
+    <span class="section-tag">Pharmacology</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What medications treat anxiety, and what are the key differences between them?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class / Use</th>
+              <th>Examples</th>
+              <th>Key Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SSRIs</strong><br><em>Long-term / Maintenance</em></td>
+              <td>Fluoxetine (Prozac), Sertraline (Zoloft), Paroxetine (Paxil), Escitalopram (Lexapro)</td>
+              <td><span class="badge badge-green">First-line</span> First line of defense for most anxiety disorders. Takes several weeks for full effect. Fluoxetine and sertraline are more activating (may worsen anxiety initially); paroxetine tends to be more calming</td>
+            </tr>
+            <tr>
+              <td><strong>SNRIs</strong><br><em>Long-term</em></td>
+              <td>Venlafaxine (Effexor), Duloxetine (Cymbalta)</td>
+              <td>Also first-line. Duloxetine is especially effective for generalized anxiety disorder and FDA-approved for children 7–17 with GAD</td>
+            </tr>
+            <tr>
+              <td><strong>Benzodiazepines</strong><br><em>Acute / Short-term</em></td>
+              <td>Alprazolam (Xanax), Lorazepam (Ativan), Diazepam (Valium), Clonazepam (Klonopin), Oxazepam (Serax), Chlordiazepoxide (Librium)</td>
+              <td><span class="badge badge-alert">Dependence risk</span> Quick onset. Used during acute panic when nonpharmacologic methods fail. <strong>Short-term only</strong> due to dependence. Monitor for sedation, ataxia, decreased cognitive function. Paradoxical reactions can occur</td>
+            </tr>
+            <tr>
+              <td><strong>Buspirone (BuSpar)</strong><br><em>Atypical anxiolytic</em></td>
+              <td>Buspirone</td>
+              <td><span class="badge badge-green">No dependence</span> Partial serotonin-1A agonist. <strong>Takes 2–4 weeks</strong> to reach full effect. Safe for long-term use. Side effects: dizziness, nausea, headache, nervousness. Avoid in hepatic/renal impairment</td>
+            </tr>
+            <tr>
+              <td><strong>Beta-blockers</strong></td>
+              <td>Propranolol (Inderal), atenolol</td>
+              <td>Block the physical effects of anxiety (racing heart, tremor, blushing). Used for social anxiety disorder and performance anxiety. Also used to treat akathisia from antipsychotics</td>
+            </tr>
+            <tr>
+              <td><strong>Antihistamines</strong></td>
+              <td>Hydroxyzine (Vistaril), diphenhydramine (Benadryl)</td>
+              <td>Safe, non-addictive. Good choice for patients with substance use history. Sedating</td>
+            </tr>
+            <tr>
+              <td><strong>Anticonvulsants</strong></td>
+              <td>Gabapentin (Neurontin), pregabalin (Lyrica)</td>
+              <td>Some benefit in GAD and social anxiety disorder</td>
+            </tr>
+            <tr>
+              <td><strong>Antipsychotics</strong></td>
+              <td>Various</td>
+              <td>Used adjunctively for severe anxiety symptoms</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are precautions with benzodiazepines?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key"><strong>Dependence risk</strong> — short-term use only (usually a few weeks max). Withdrawal can cause insomnia, irritability, nervousness, dry mouth, tremors, <strong>convulsions</strong>, and confusion</li>
+        <li class="key"><strong>Avoid in substance use disorder</strong> — high abuse potential</li>
+        <li class="key"><strong>Avoid in older adults</strong> — increased risk of delirium, falls, and fractures</li>
+        <li class="key"><strong>Pregnancy considerations</strong> — benzo use shortly before delivery can cause <em>floppy infant syndrome</em> (dystonia, muscle weakness); prenatal exposure slightly increases oral cleft lip/palate risk. FDA warns against breastfeeding</li>
+        <li class="key"><strong>Avoid alcohol</strong> — synergistic CNS depression, potentially fatal</li>
+        <li class="key"><strong>Paradoxical reactions</strong> — anxiety, agitation, talkativeness, loss of impulse control (opposite of intended effect)</li>
+        <li class="key"><strong>Monitor for sedation, ataxia, decreased cognitive function</strong></li>
+        <li class="key"><strong>Caution with driving and machinery</strong></li>
+        <li class="key"><strong>Drug interactions</strong> — antacids delay absorption; cimetidine increases sedation; CNS depressants (alcohol, barbiturates) increase sedation dangerously</li>
+        <li class="key"><strong>Taper gradually</strong> — never stop abruptly after regular use</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is the difference between "first line" and "first generation"?</div>
+    <div class="qa-answer">
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--sage);">
+          <h4 style="color: var(--deep-sage);">"First Line"</h4>
+          <p>Describes <strong>the preferred first choice</strong> for treating a condition based on evidence of safety, efficacy, tolerability, and side-effect profile. It's a <em>treatment hierarchy</em> term.</p>
+          <p style="margin-top: 0.75rem;"><strong>Example:</strong> SSRIs are <em>first-line</em> treatment for anxiety disorders and depression because they work well with fewer serious side effects than older options.</p>
+        </div>
+        <div class="mini-card" style="border-top: 4px solid var(--royal-purple);">
+          <h4 style="color: var(--royal-purple);">"First Generation"</h4>
+          <p>Refers to <strong>the order in which drug classes were developed</strong> historically. It's a <em>chronological</em> term.</p>
+          <p style="margin-top: 0.75rem;"><strong>Example:</strong> First-generation antipsychotics (Haldol, Thorazine) were developed first, in the 1950s. Second-generation (atypical) antipsychotics came later with improved side effects. Tricyclics are "first generation" antidepressants; SSRIs came later.</p>
+        </div>
+      </div>
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">The Key Insight</div>
+          These terms often <em>disagree</em>. A first-generation drug (developed earlier) is usually <em>not</em> first-line anymore because newer alternatives have better side-effect profiles. TCAs are first-generation antidepressants but are <strong>second-line</strong> because SSRIs are safer. Haldol is first-generation but no longer always first-line for schizophrenia.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — PRN for Severe Anxiety</span>
+      <span>⚡ Pharmacology Priority</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A patient experiences a sudden episode of severe anxiety. Of these medications in the patient's medical record, which is most appropriate to give as a PRN anxiolytic?</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>Buspirone</span></li>
+        <li class="correct"><span class="letter">b.</span><span>Lorazepam</span></li>
+        <li><span class="letter">c.</span><span>Amitriptyline</span></li>
+        <li><span class="letter">d.</span><span>Fluoxetine</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why B — Lorazepam (Ativan):</strong> Benzodiazepines have a <em>quick onset of action</em>, making them the appropriate PRN medication for acute, sudden, severe anxiety. Lorazepam works within minutes.</p>
+          <p><strong>Why not the others:</strong></p>
+          <ul>
+            <li><strong>A. Buspirone</strong> — takes <em>2 to 4 weeks</em> to reach full effect. Not useful acutely. It's for long-term daily use only.</li>
+            <li><strong>C. Amitriptyline</strong> — a tricyclic antidepressant. Takes weeks for antidepressant effect. Not indicated PRN for anxiety.</li>
+            <li><strong>D. Fluoxetine</strong> — SSRI. Takes weeks for effect. Actually <em>activating</em> and can <em>increase</em> anxiety initially. Never given PRN.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Lorazepam Teaching (SATA)</span>
+      <span>⚡ Patient Teaching</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A nurse plans health teaching for a patient diagnosed with panic disorder who has been given a new prescription for lorazepam (Ativan). What information should be included? <em>Select all that apply.</em></p>
+      <ul class="practice-options">
+        <li class="correct"><span class="letter">a.</span><span>Caution with driving and use of machinery</span></li>
+        <li><span class="letter">b.</span><span>Foods allowed on a tyramine free diet</span></li>
+        <li class="correct"><span class="letter">c.</span><span>The importance of caffeine restriction</span></li>
+        <li class="correct"><span class="letter">d.</span><span>Avoidance of alcoholic beverages</span></li>
+        <li><span class="letter">e.</span><span>Take the medication on an empty stomach</span></li>
+        <li><span class="letter">f.</span><span>This medication should be taken at the same time every day</span></li>
+        <li><span class="letter">g.</span><span>This medication may take one to four weeks to take effect</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Correct: A, C, D</strong></p>
+          <ul>
+            <li><strong>A. Driving/machinery caution</strong> — benzos cause sedation, ataxia, decreased cognitive function. Do not operate cars or machinery until effects are known ✓</li>
+            <li><strong>C. Caffeine restriction</strong> — caffeine counteracts the anxiolytic effect and increases anxiety symptoms ✓</li>
+            <li><strong>D. Avoid alcohol</strong> — additive CNS depression, potentially fatal. Absolutely avoid ✓</li>
+          </ul>
+          <p><strong>Incorrect:</strong></p>
+          <ul>
+            <li><strong>B. Tyramine-free diet</strong> — only applies to <em>MAOIs</em>, not benzodiazepines</li>
+            <li><strong>E. Empty stomach</strong> — wrong. Benzos should be taken <em>with or shortly after meals</em> to reduce GI discomfort</li>
+            <li><strong>F. Same time daily</strong> — incorrect. Lorazepam is PRN for acute anxiety, not a scheduled drug like buspirone or SSRIs</li>
+            <li><strong>G. 1–4 weeks to take effect</strong> — incorrect. That describes buspirone and SSRIs. Benzos work in <em>minutes</em></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PTSD ========================= -->
+<section class="topic" id="ptsd">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2>PTSD</h2>
+    <span class="section-tag">Trauma-Related</span>
+  </div>
+
+  <p style="margin-bottom: 1.5rem; color: var(--soft-ink);">PTSD develops after exposure to a traumatic event involving actual or threatened death or serious injury. It causes persistent re-experiencing, avoidance, increased arousal, and mood alterations. About 60% of men and 50% of women experience at least one trauma in their lifetime; approximately 8% of the population develops PTSD at some point.</p>
+
+  <div class="qa">
+    <div class="qa-question">What are the signs and symptoms of PTSD?</div>
+    <div class="qa-answer">
+      <p>PTSD is characterized by four major symptom clusters:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cluster</th>
+              <th>Presentation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Re-experiencing</strong></td>
+              <td><strong>Flashbacks</strong> — dissociative experiences where the event is relived with vivid sensory input. Intrusive recurrent recollections. Nightmares. Physical reactions when reminded of the event (stomach terror, heart palpitations, muscle tensing). <span class="keyterm">Illusions</span> — misperceptions of real stimuli</td>
+            </tr>
+            <tr>
+              <td><strong>Avoidance</strong></td>
+              <td>Avoiding talking about the event, avoiding activities, people, or places that arouse memories. Accompanied by feelings of detachment, emptiness, and numbing. <strong>Social withdrawal</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Increased arousal</strong></td>
+              <td>Irritability, difficulty sleeping (<strong>sleep disturbances</strong>), difficulty concentrating, hypervigilance, exaggerated startle response</td>
+            </tr>
+            <tr>
+              <td><strong>Alterations in mood</strong></td>
+              <td>Chronic depression, negative appraisals, lack of interest in previously pleasurable activities, <strong>guilt</strong> (survivor guilt, feeling responsible for the event), hating oneself for feeling "needy"</td>
+            </tr>
+            <tr>
+              <td><strong>Behavioral</strong></td>
+              <td><strong>Destructive behaviors</strong>, <strong>aggression</strong>, substance use (self-medication), <strong>suicidal thoughts</strong> or plans</td>
+            </tr>
+            <tr>
+              <td><strong>Interpersonal</strong></td>
+              <td>Trust issues, difficulty in social/occupational/romantic relationships, feeling permanently damaged</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>PTSD-inducing events include:</strong> military combat, prisoner-of-war experience, crime (assault, rape, mugging, bombing), natural disasters (floods, tornadoes, earthquakes), human-caused disasters (car, plane, train accidents), and <em>an often-overlooked cause</em> — being diagnosed with a life-threatening illness or treated in an ICU.</p>
+
+      <p><strong>Onset:</strong> Symptoms can begin within a month or be delayed months to years.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What nursing care does the PTSD patient need?</div>
+    <div class="qa-answer">
+      <p><strong>Acute phase — address all domains:</strong></p>
+      <ul>
+        <li><strong>Emotional:</strong> Provide a hopeful, accepting attitude. Build trust through consistency. Implement suicide precautions if indicated (many PTSD patients are suicidal)</li>
+        <li><strong>Psychological:</strong> Encourage sharing of feelings at the patient's pace. Validate that reactions are a <em>normal response to an abnormal event</em> — not personal weakness or failure</li>
+        <li><strong>Physiological:</strong> Address sleep disturbances (nightmares), nutrition, pain, any somatic symptoms</li>
+        <li><strong>Safety:</strong> Maintain safety from self-harm; monitor substance use</li>
+      </ul>
+
+      <p><strong>Long-term:</strong></p>
+      <ul>
+        <li>Help establish <strong>meaningful goals</strong> and develop a narrative of the event</li>
+        <li>Refer for <strong>cognitive-behavioral therapy (CBT)</strong> — first-line psychological treatment</li>
+        <li>Refer for <strong>EMDR (Eye Movement Desensitization and Reprocessing)</strong> — evidence-based, helps process traumatic memories</li>
+        <li>Refer for <strong>prolonged exposure therapy (PE)</strong> and <strong>cognitive processing therapy (CPT)</strong></li>
+        <li>Collaborate with psychiatric providers</li>
+        <li>Connect with support groups (especially veteran groups)</li>
+        <li>Teach relaxation: slow deep breathing, imagery, mindfulness</li>
+        <li>Improve socialization — reduces isolation</li>
+      </ul>
+
+      <p><strong>Therapeutic communication:</strong></p>
+      <ul>
+        <li>Encourage the client to share feelings at their own pace</li>
+        <li><strong>Validate feelings</strong> — reassure that their reactions are normal responses to abnormal events</li>
+        <li>Help the patient <strong>focus on the present</strong> during flashbacks or dissociative episodes — grounding techniques</li>
+        <li><strong>Reassure safety</strong> — "You are safe now. This is [date]. You are in [place]"</li>
+        <li>Listen without pushing for details before the patient is ready</li>
+      </ul>
+
+      <p><strong>Medications for PTSD:</strong></p>
+      <ul>
+        <li><strong>SSRIs</strong> — FDA-approved: sertraline (Zoloft) and paroxetine (Paxil). First-line</li>
+        <li><strong>Other antidepressants off-label</strong> — fluoxetine, venlafaxine (SNRI)</li>
+        <li><strong>Prazosin</strong><sup class="fn" title="Supplemental: prazosin commonly used off-label for PTSD nightmares; not specifically named in your Ch. 16 book notes">†1</sup> — often used for nightmares</li>
+        <li><strong>Second-line:</strong> nefazodone, imipramine, phenelzine</li>
+        <li><strong>Not recommended:</strong> atypical antipsychotics, citalopram, amitriptyline, topiramate, lamotrigine</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= DEFENSE MECHANISMS ========================= -->
+<section class="topic" id="defenses">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2>Defense Mechanisms</h2>
+    <span class="section-tag">Ego Protection</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">Clients with anxiety disorders often use "defense mechanisms" — why are they used, and what are some common ones?</div>
+    <div class="qa-answer">
+      <p><strong>Why defense mechanisms are used:</strong> Defense mechanisms are <strong>automatic coping styles that protect people from anxiety</strong> and enable them to maintain their self-image by blocking feelings, conflicts, and memories that are too painful to handle consciously. They operate unconsciously and are <em>not always apparent</em> to the person using them.</p>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Adaptive vs Maladaptive</div>
+          Most defense mechanisms can be used in both healthy and unhealthy ways. Whether the use is <strong>adaptive</strong> (helps lower anxiety and achieve goals in acceptable ways) or <strong>maladaptive</strong> (used to excess, interferes with function) depends on their <em>frequency, intensity, and duration of use</em>. Sublimation is always constructive; conversion and splitting are almost always pathological.
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 18%;">Mechanism</th>
+              <th>Definition</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Altruism</strong></td>
+              <td>Unconscious motivation to feel caring and concern for others</td>
+              <td><em>Adaptive:</em> Anonymous donation to a colleague's fundraiser · <em>Maladaptive:</em> Compulsively rescuing cats to the point of hoarding</td>
+            </tr>
+            <tr>
+              <td><strong>Compensation</strong></td>
+              <td>Counterbalancing perceived deficiencies by emphasizing strengths</td>
+              <td><em>Adaptive:</em> Short man excels in business through assertiveness · <em>Maladaptive:</em> Drinking when self-esteem is low</td>
+            </tr>
+            <tr>
+              <td><strong>Conversion</strong></td>
+              <td>Unconscious transformation of anxiety into a physical symptom with no organic cause</td>
+              <td>Almost always pathological. Example: going blind after seeing a spouse enter a hotel with another person</td>
+            </tr>
+            <tr>
+              <td><strong>Denial</strong></td>
+              <td>Escaping unpleasant thoughts, feelings, or needs by ignoring their existence</td>
+              <td><em>Adaptive:</em> Initial reaction "No, I don't believe you" to news of a death · <em>Maladaptive:</em> Keeping a deceased spouse's clothes and speaking of them in present tense years later</td>
+            </tr>
+            <tr>
+              <td><strong>Displacement</strong></td>
+              <td>Transferring emotions from one person/object/situation to a nonthreatening one</td>
+              <td><em>Adaptive:</em> Child yells at teddy bear after being bullied · <em>Maladaptive:</em> Being unable to acknowledge fear of father, child becomes fearful of animals</td>
+            </tr>
+            <tr>
+              <td><strong>Dissociation</strong></td>
+              <td>Disruption in consciousness, memory, identity, or perception — compartmentalizing uncomfortable aspects of self</td>
+              <td><em>Adaptive:</em> Art student tunes out noise to focus on work · <em>Maladaptive:</em> Abuse survivor perpetually disconnected from reality</td>
+            </tr>
+            <tr>
+              <td><strong>Identification</strong></td>
+              <td>Attributing to oneself the characteristics of another person or group</td>
+              <td><em>Adaptive:</em> Child pretends to be her teacher · <em>Maladaptive:</em> Boy dresses like a neighborhood drug dealer</td>
+            </tr>
+            <tr>
+              <td><strong>Intellectualization</strong></td>
+              <td>Analyzing events based on cold facts without feeling or emotion</td>
+              <td><em>Adaptive:</em> After losing farm to tornado, analyzes options and leads child to safety · <em>Maladaptive:</em> Focuses on day-care logistics instead of grieving spouse's death with children</td>
+            </tr>
+            <tr>
+              <td><strong>Projection</strong></td>
+              <td>Unconsciously rejecting unacceptable features and attributing them to others</td>
+              <td>Always an immature/pathological defense. Example: A person who has repressed same-sex attraction refuses to socialize, fearing others will come on to her</td>
+            </tr>
+            <tr>
+              <td><strong>Rationalization</strong></td>
+              <td>Justifying illogical ideas or actions with acceptable explanations</td>
+              <td><em>Adaptive:</em> "I didn't get the raise because the boss doesn't like me" · <em>Maladaptive:</em> Father justifies harsh treatment of a child by saying "He is lazy and doesn't listen"</td>
+            </tr>
+            <tr>
+              <td><strong>Reaction formation</strong></td>
+              <td>Unacceptable feelings kept out of awareness by expressing the opposite</td>
+              <td><em>Adaptive:</em> Recovering alcoholic constantly speaks of the evils of drinking · <em>Maladaptive:</em> Mother with unconscious hostility toward daughter becomes overprotective/hovering</td>
+            </tr>
+            <tr>
+              <td><strong>Regression</strong></td>
+              <td>Reverting to an earlier, more primitive pattern of behavior</td>
+              <td><em>Adaptive:</em> 4-year-old with new baby brother temporarily thumb-sucks · <em>Maladaptive:</em> Man loses promotion, starts complaining, missing appointments, late to meetings</td>
+            </tr>
+            <tr>
+              <td><strong>Repression</strong></td>
+              <td>Unconscious exclusion of unpleasant experiences from awareness</td>
+              <td><em>Adaptive:</em> Man forgets spouse's birthday after a fight · <em>Maladaptive:</em> Woman unable to enjoy sex due to repressed childhood trauma</td>
+            </tr>
+            <tr>
+              <td><strong>Splitting</strong></td>
+              <td>Inability to integrate positive and negative qualities of self or others into a cohesive image</td>
+              <td>Almost always pathological. Example: Person initially idealizes acquaintances but becomes disillusioned when they have flaws ("all good" → "all bad")</td>
+            </tr>
+            <tr>
+              <td><strong>Sublimation</strong></td>
+              <td>Unconscious transformation of negative impulses into productive ones</td>
+              <td>Always constructive. Example: Woman angry at boss channels feelings into deep-cleaning her house</td>
+            </tr>
+            <tr>
+              <td><strong>Suppression</strong></td>
+              <td><em>Conscious</em> decision to delay addressing a disturbing situation</td>
+              <td>Businessman told by wife she wants a divorce the morning of an important speech; he sets it aside until after the speech when he can give it full attention</td>
+            </tr>
+            <tr>
+              <td><strong>Undoing</strong></td>
+              <td>Making up for a regrettable act or communication</td>
+              <td><em>Adaptive:</em> After flirting with a coworker, a wife brings her husband concert tickets · <em>Maladaptive:</em> Man with rigid morals compulsively washes his hands around attractive women</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">Suppression vs Repression — Commonly Confused</div>
+          <strong>Suppression</strong> is <em>conscious</em> — "I will deal with this later." <strong>Repression</strong> is <em>unconscious</em> — the mind blocks it entirely without awareness. Classic NCLEX distinction.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PSYCHOSIS ========================= -->
+<section class="topic" id="psychosis">
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <h2>Schizophrenia &amp; Psychosis</h2>
+    <span class="section-tag">Brain Disorder</span>
+  </div>
+
+  <p style="margin-bottom: 1.5rem; color: var(--soft-ink);">Schizophrenia is a <strong>brain disorder</strong> with psychotic thinking and an inability to distinguish what is real from what is not. It affects roughly 1% of the population. The core symptom clusters are positive, negative, and cognitive.</p>
+
+  <div class="qa">
+    <div class="qa-question">What are the biggest concerns for the client's health and safety?</div>
+    <div class="qa-answer">
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--warning);">
+          <h4 style="color: var(--warning);">Safety Concerns</h4>
+          <ul>
+            <li><strong>Suicide</strong> — approximately 10% die by suicide at 10 years after diagnosis, 15% by 30 years. #1 cause of early death in this population</li>
+            <li><strong>Violence toward others</strong> — especially with paranoid delusions or command hallucinations</li>
+            <li><strong>Command hallucinations</strong> directing self-harm or harm to others</li>
+            <li><strong>Impaired judgment</strong> from psychosis — poor decisions about safety, finances, relationships</li>
+            <li><strong>Substance use disorders</strong> — common comorbidity; complicates picture</li>
+            <li><strong>Homelessness, incarceration, victimization</strong></li>
+          </ul>
+        </div>
+        <div class="mini-card" style="border-top: 4px solid var(--royal-purple);">
+          <h4 style="color: var(--royal-purple);">Health Concerns</h4>
+          <ul>
+            <li><strong>Medication side effects</strong> — EPS, tardive dyskinesia, metabolic syndrome, agranulocytosis</li>
+            <li><strong>Metabolic syndrome</strong> — weight gain, diabetes, dyslipidemia, hypertension</li>
+            <li><strong>Cardiovascular disease</strong> and premature death</li>
+            <li><strong>Reduced ability to recognize or respond to signs of illness</strong> — delayed medical care</li>
+            <li><strong>Anosognosia</strong> — lack of insight into their own illness; interferes with treatment adherence</li>
+            <li><strong>Poor self-care</strong> — hygiene, nutrition, sleep</li>
+            <li><strong>Smoking</strong> — 70% of patients with schizophrenia smoke (vs. 22% general population), dramatically increasing cancer/CV risk</li>
+            <li><strong>Impaired swallowing</strong> from antipsychotics → drooling and choking risk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the positive, negative, and cognitive symptoms of schizophrenia?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Category</th>
+              <th>Findings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Positive Symptoms</strong><br><em>"Added" manifestations — things that shouldn't be there</em></td>
+              <td>
+                <strong>Hallucinations</strong> — sensory experiences with no external stimulus (auditory most common; also visual, olfactory, gustatory, tactile)<br>
+                <strong>Delusions</strong> — fixed false beliefs not changed by evidence (paranoid, grandiose, somatic, referential, thought insertion/withdrawal/deletion)<br>
+                <strong>Bizarre behavior</strong> — disorganized or abnormal motor behavior<br>
+                <strong>Alteration in speech</strong> — derailment, loose associations, tangentiality, word salad, neologisms, echolalia<br>
+                <strong>Paranoia, magical thinking</strong>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Negative Symptoms</strong><br><em>Absence of things that should be there</em></td>
+              <td>
+                <strong>Affect</strong> — flat or blunted<br>
+                <strong>Alogia</strong> — poverty of speech; minimal verbal output<br>
+                <strong>Anergia</strong> — lack of energy<br>
+                <strong>Anhedonia</strong> — inability to experience pleasure<br>
+                <strong>Avolition</strong> — lack of motivation, inability to initiate or sustain goal-directed activity<br>
+                <strong>Asociality</strong> — social withdrawal
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Cognitive Symptoms</strong></td>
+              <td>
+                <strong>Disordered thinking</strong><br>
+                <strong>Inability to make decisions</strong><br>
+                Impaired memory, concentration, attention<br>
+                Executive dysfunction<br>
+                Respond <em>less well</em> to antipsychotics than positive symptoms do — and can be more debilitating long-term
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">The Five A's of Negative Symptoms</div>
+          <strong>A</strong>ffect (flat) · <strong>A</strong>logia · <strong>A</strong>nergia · <strong>A</strong>nhedonia · <strong>A</strong>volition (plus <strong>A</strong>sociality as a sixth)<sup class="fn" title="Supplemental: 'Five A's' mnemonic not explicitly in your book notes; commonly taught in nursing schools">†2</sup>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= HALLUCINATIONS ========================= -->
+<section class="topic" id="hallucinations">
+  <div class="section-header">
+    <span class="section-number">08</span>
+    <h2>Hallucinations &amp; Command Safety</h2>
+    <span class="section-tag">Priority Safety</span>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Hallucination Danger</span>
+      <span>⚡ Safety Priority</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">Which hallucination necessitates the nurse to implement safety measures to protect others? The patient says:</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>"I hear angels playing harps."</span></li>
+        <li class="correct"><span class="letter">b.</span><span>"The voices say everyone is trying to kill me."</span></li>
+        <li><span class="letter">c.</span><span>"My dead father tells me I am a bad person."</span></li>
+        <li><span class="letter">d.</span><span>"The voices talk only at night when I'm trying to sleep."</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why B:</strong> This statement indicates <strong>paranoia</strong> — the belief that others intend to kill the patient. Paranoia often leads to fearfulness, and the patient may attempt to harm others <em>to protect themselves</em>. From the textbook: "Paranoia: An irrational fear, ranging from mild to profound. Fear may result in dangerous defensive actions, such as harming another person before that person can harm the patient."</p>
+          <p><strong>Why not the others:</strong> The other statements involve hallucinations but do not indicate a specific risk of harm to others. They may still require assessment and intervention for the patient's wellbeing (especially C — auditory hallucination critical of self could increase self-harm risk), but they don't specifically require protecting others.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Command Hallucination Priority</span>
+      <span>⚡ Assessment Priority</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A patient diagnosed with schizophrenia and auditory hallucinations anxiously tells the nurse, "The voice is telling me to do things." Select the nurse's priority assessment question.</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>"How long has the voice been telling you to do things?"</span></li>
+        <li><span class="letter">b.</span><span>"Are you afraid of the voice?"</span></li>
+        <li><span class="letter">c.</span><span>"Do you recognize the voice speaking to you?"</span></li>
+        <li class="correct"><span class="letter">d.</span><span>"What is the voice telling you to do?"</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why D:</strong> Learning <em>what</em> a command hallucination is telling the patient to do is the priority because <strong>commands often place the patient or others at risk for harm</strong>. Command hallucinations are a <em>psychiatric emergency</em> when they direct violence. The content of the command drives every subsequent intervention — safety precautions, medication, staffing.</p>
+          <p><strong>Why not the others:</strong> Duration (A), fear (B), and recognition of voice (C) are useful assessments but of lesser importance than identifying the command itself.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What do we need to know and do if the client is having command hallucinations?</div>
+    <div class="qa-answer">
+      <p><strong>Command hallucinations are hallucinations that direct the patient to take an action.</strong> They may be dangerous and must be evaluated carefully. They are often frightening and may signal a <em>psychiatric emergency</em>.</p>
+
+      <p><strong>Key assessments — what we need to know:</strong></p>
+      <ul>
+        <li><strong>What is the voice telling you to do?</strong> — this is the priority question</li>
+        <li>Are the commands directed at <strong>harming self</strong> or <strong>harming others</strong>?</li>
+        <li>Does the patient <strong>recognize the hallucination as "not real"</strong>?</li>
+        <li>Can the patient <strong>resist the commands</strong>?</li>
+        <li>Has the patient ever <strong>acted on commands</strong> before?</li>
+        <li>How is the patient responding right now?</li>
+        <li>What does the patient do to cope when the commands come?</li>
+      </ul>
+
+      <p><strong>Interventions — what we need to do:</strong></p>
+      <ul class="checklist">
+        <li class="key"><strong>Explore the content</strong> of hallucinations — identify command hallucinations directly</li>
+        <li class="key"><strong>Implement safety precautions</strong> — suicide and/or violence precautions as indicated by the content</li>
+        <li class="key"><strong>Help the patient realize that commands can safely be ignored</strong> — teach that they are a symptom of the illness, not real instructions</li>
+        <li class="key">Give the patient <strong>options for coping</strong> — distraction techniques, telling the voice "no," notifying staff when commands occur</li>
+        <li class="key"><strong>Administer antipsychotic medications</strong> as ordered — reduce positive symptoms including hallucinations</li>
+        <li class="key"><strong>Monitor closely</strong> — increase observation level (Q15-minute or 1:1)</li>
+        <li class="key"><strong>Do not argue</strong> with the reality of the hallucination — but do not validate it either</li>
+        <li class="key"><strong>Acknowledge the patient's experience</strong> — "I understand you're hearing voices. I don't hear them, but I believe you hear them and that they are frightening"</li>
+        <li class="key"><strong>Document thoroughly</strong> — content, patient response, interventions</li>
+        <li class="key">Communicate with the <strong>treatment team</strong> immediately if commands are violent</li>
+      </ul>
+
+      <div class="callout priority">
+        <span class="icon">▲</span>
+        <div class="callout-body">
+          <div class="callout-label">Command Hallucination Red Flag</div>
+          A command hallucination telling the patient to harm self or others is a <strong>psychiatric emergency</strong>. Treat it with the same urgency as a patient reporting a suicide plan. Increase observation to 1:1, notify the provider, implement safety precautions immediately.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= COMMUNICATION ========================= -->
+<section class="topic" id="communication">
+  <div class="section-header">
+    <span class="section-number">09</span>
+    <h2>Therapeutic Communication with Psychosis</h2>
+    <span class="section-tag">Delusions &amp; Paranoia</span>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Responding to Delusions</span>
+      <span>⚡ Therapeutic Communication</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A person has had difficulty benefiting from treatment because of arguing with medical staff and accusing them of conspiracy. Today the person shouts, "They're all plotting to destroy me. Isn't that true?" Select the nurse's most therapeutic response.</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>"Everyone here is trying to help you. No one wants to harm you."</span></li>
+        <li class="correct"><span class="letter">b.</span><span>"Feeling that people want to destroy you must be very frightening."</span></li>
+        <li><span class="letter">c.</span><span>"That is not true. People here are trying to help you if you will let them."</span></li>
+        <li><span class="letter">d.</span><span>"Staff members are health care professionals who are qualified to help you."</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why B:</strong> This response <strong>focuses on the feelings</strong> the patient is expressing rather than the delusional content. This strategy <em>prevents arguing about the reality of delusional beliefs</em>. Arguments <strong>increase patient anxiety and the tenacity with which the patient holds to the delusion</strong>.</p>
+          <p><strong>Why not the others:</strong> Options A, C, and D all engage with the irrational thought content and invite argument. Telling a patient experiencing delusional paranoia "that's not true" or "everyone is trying to help you" fundamentally misses that the patient's reality, at this moment, <em>is</em> that people are plotting against them. You cannot reason someone out of a delusion — you can only address the emotion behind it.</p>
+          <p><strong>Golden rule for delusions:</strong> Acknowledge the feeling, not the content.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Paranoid Delusion Response</span>
+      <span>⚡ Therapeutic Communication</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A client says, "Facebook has a new tracking capacity. If I use the Internet, Homeland Security will detain me as a terrorist." Select the nurse's appropriate initial action:</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>Reassure the client, "Facebook is not a dangerous website, and Homeland Security is not after you."</span></li>
+        <li class="correct"><span class="letter">b.</span><span>Tell the client, "You are in a safe place where you will be helped."</span></li>
+        <li><span class="letter">c.</span><span>Administer an as needed dose of an antipsychotic medication.</span></li>
+        <li><span class="letter">d.</span><span>Gently say, "You don't need to worry about any of that."</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why B:</strong> The client is experiencing paranoia and delusional thinking, which leads to fear. <strong>Explaining that the client is in a safe place helps relieve the fear</strong>. It focuses on what's real and addresses the underlying emotion (fear) without arguing about the delusion.</p>
+          <p><strong>Why not the others:</strong></p>
+          <ul>
+            <li><strong>A</strong> — disagreeing with the delusion will only strengthen it and create mistrust</li>
+            <li><strong>C</strong> — medication won't relieve the <em>immediate</em> concern. Therapeutic communication comes first; PRN medication is not the <em>initial</em> action</li>
+            <li><strong>D</strong> — dismissive, minimizing; gives advice rather than addresses feelings</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the guiding principles of therapeutic communication with psychosis?</div>
+    <div class="qa-answer">
+      <ul class="checklist">
+        <li class="key"><strong>Address feelings, not content</strong> — "That must be frightening" rather than arguing with the delusion</li>
+        <li class="key"><strong>Do not argue with delusions or hallucinations</strong> — it reinforces them and damages trust</li>
+        <li class="key"><strong>Do not agree with or validate delusions</strong> either — don't play along</li>
+        <li class="key"><strong>Use simple, concrete language</strong> — avoid abstract terms, idioms, or complex sentences</li>
+        <li class="key"><strong>Reassure safety</strong> — "You are in a safe place. We are here to help you"</li>
+        <li class="key"><strong>Provide a calm, predictable milieu</strong> — low stimulation, consistent routines</li>
+        <li class="key"><strong>Be honest and consistent</strong> — builds trust, especially with paranoid patients</li>
+        <li class="key"><strong>Reality orient gently</strong> — "I don't see anyone in the room, but I know you do"</li>
+        <li class="key"><strong>Avoid whispering or laughing</strong> within the patient's sight — paranoid patients may interpret as plotting</li>
+        <li class="key"><strong>Use patient-friendly language</strong> when asking about symptoms — instead of "Are you hallucinating?" ask "Do you ever see or hear things that other people can't?"</li>
+        <li class="key"><strong>Maintain appropriate personal space</strong> — paranoid patients may feel threatened by closeness</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FIRST GEN ========================= -->
+<section class="topic" id="first-gen">
+  <div class="section-header">
+    <span class="section-number">10</span>
+    <h2>First-Generation Antipsychotics</h2>
+    <span class="section-tag">Typical / Neuroleptics</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are first-generation antipsychotics and what are their risks?</div>
+    <div class="qa-answer">
+      <p>First-generation antipsychotics (also called <strong>typical antipsychotics</strong> or <strong>neuroleptics</strong>) are <strong>dopamine (D2) receptor antagonists</strong>. They were the first class developed (1950s) and work primarily by reducing <strong>positive symptoms</strong> (hallucinations, delusions) but have little effect on negative symptoms.</p>
+
+      <p><strong>Common examples:</strong> <strong>Haloperidol (Haldol)</strong>, <strong>Chlorpromazine (Thorazine)</strong>, Fluphenazine, Thioridazine (Mellaril), Perphenazine, Loxapine.</p>
+
+      <p><strong>Major side-effect categories:</strong></p>
+      <ul>
+        <li><strong>Extrapyramidal side effects (EPS)</strong> — from D2 blockade in motor areas (see next section)</li>
+        <li><strong>Anticholinergic effects</strong> — dry mouth, constipation, urinary retention, blurred vision, tachycardia</li>
+        <li><strong>Sedation</strong> — especially with low-potency agents</li>
+        <li><strong>Orthostatic hypotension</strong></li>
+        <li><strong>Lowered seizure threshold</strong></li>
+        <li><strong>Hyperprolactinemia</strong> → sexual dysfunction, galactorrhea, amenorrhea, gynecomastia</li>
+        <li><strong>Weight gain</strong></li>
+        <li><strong>Photosensitivity, cataracts</strong> (especially chlorpromazine, thioridazine)</li>
+        <li><strong>Prolonged QT interval</strong> → risk of fatal arrhythmias</li>
+        <li><strong>Neuroleptic malignant syndrome (NMS)</strong> — rare but life-threatening</li>
+      </ul>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">Timing Note</div>
+          Antipsychotic drugs take <strong>2 to 6 weeks</strong> to become fully effective. Patient-specific dose adjustment is required to balance effectiveness and side effects.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EPS ========================= -->
+<section class="topic" id="eps">
+  <div class="section-header">
+    <span class="section-number">11</span>
+    <h2>Extrapyramidal Side Effects (EPS)</h2>
+    <span class="section-tag">Movement Disorders</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the four types of EPS and how are they treated?</div>
+    <div class="qa-answer">
+      <p>EPS results from <strong>D2 receptor blockade in motor areas</strong> (nigrostriatal pathway). First-generation antipsychotics have much higher EPS risk than second-generation. The four categories below follow the <em>typical timeline of onset</em>.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 18%;">EPS Type</th>
+              <th style="width: 18%;">Onset Timeline</th>
+              <th>Presentation &amp; Treatment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Acute Dystonia</strong></td>
+              <td><span class="badge badge-alert">Hours to days</span> Acute</td>
+              <td>
+                <strong>What it looks like:</strong> Sudden, sustained muscle contractions usually of head and neck. Painful and frightening.<br>
+                • <strong>Torticollis</strong> — twisted neck, head pulled to one side<sup class="fn" title="Torticollis definition added for clarity; book mentions the term in passing">†3</sup><br>
+                • <strong>Oculogyric crisis</strong> — eyes roll back<br>
+                • <strong>Retrocollis</strong> — backward arching of head/neck/spine<br>
+                • <strong>Laryngeal dystonia</strong> — can threaten airway (rare but emergent)<br>
+                <strong>Treatment:</strong> <strong>Benztropine (Cogentin)</strong> or <strong>diphenhydramine (Benadryl) 25–50 mg IM/IV</strong>. Relief usually in 5–15 min. Monitor airway. Stay with patient. Consider oral prophylaxis afterward.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Akathisia</strong></td>
+              <td>Days to weeks<sup class="fn" title="Precise timeline ranges added; book confirms akathisia is not the first to appear and can persist">†4</sup></td>
+              <td>
+                <strong>What it looks like:</strong> <em>Motor restlessness</em> — pacing, inability to stand still, rocking while seated, shifting from foot to foot. <strong>Not anxiety</strong> — it's a physical drive to move. Patient often describes it as unbearable; can contribute to suicidality in severe cases.<br>
+                <strong>Treatment:</strong> <strong>Benztropine</strong>, or <strong>propranolol (Inderal)</strong>, lorazepam (Ativan), or diazepam (Valium). Consult provider about dose reduction or medication change. Takes care to distinguish from anxiety.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Pseudoparkinsonism</strong></td>
+              <td>Weeks to months Chronic onset</td>
+              <td>
+                <strong>What it is:</strong> A drug-induced, <em>temporary</em> group of symptoms that mimic Parkinson disease. <strong>Acute onset relative to true Parkinson's</strong> but develops over weeks. Resolves when drug is stopped or reduced.<br>
+                <strong>Symptoms:</strong> Tremor, reduced accessory movements (arm swing), gait impairment (shuffling), <strong>mask facies</strong>, bradykinesia, drooling, pill-rolling finger movements, dysphagia.<br>
+                <strong>Treatment:</strong> Antiparkinsonian agents — <strong>benztropine (Cogentin)</strong> or <strong>trihexyphenidyl (Artane)</strong>. Consult about dose reduction. Wipe excess saliva. Teach fall prevention.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Tardive Dyskinesia (TD)</strong></td>
+              <td><span class="badge badge-alert">Months to years</span> Chronic — usually <em>persistent even after medication is stopped</em></td>
+              <td>
+                <strong>What it is:</strong> <em>Persistent</em> involuntary rhythmic movements. Develops in ~20–25% of patients on antipsychotics (especially first-generation). More common in women. <strong>Often permanent.</strong><br>
+                <strong>Symptoms:</strong><br>
+                • <strong>Face:</strong> protruding/writhing tongue, lip smacking, blowing, facial distortion<br>
+                • <strong>Limbs:</strong> chorea (rapid, irregular), athetoid (slow, serpentine)<br>
+                • <strong>Trunk:</strong> neck/shoulder movements, hip jerks, twisting pelvic thrusts<br>
+                <strong>Screening:</strong> <strong>AIMS (Abnormal Involuntary Movement Scale)</strong> every 3 months is a key nursing role<br>
+                <strong>Treatment:</strong> <strong>Valbenazine (Ingrezza)</strong> or <strong>deutetrabenazine (Austedo)</strong>. Switching to a second-generation antipsychotic. Discontinuing the drug rarely relieves symptoms.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">How Benztropine and Diphenhydramine Work</div>
+          Neuroleptics block dopamine receptors, creating an <strong>imbalance between dopamine and acetylcholine</strong> in the basal ganglia (where they must be balanced for normal movement). <strong>Benztropine and diphenhydramine are anticholinergics</strong> — they block acetylcholine, which restores the dopamine/ACh balance. Benztropine is more commonly used because diphenhydramine causes more sedation.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= NMS ========================= -->
+<section class="topic" id="nms">
+  <div class="section-header">
+    <span class="section-number">12</span>
+    <h2>NMS vs Serotonin Syndrome</h2>
+    <span class="section-tag">Life-Threatening</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is neuroleptic malignant syndrome (NMS)?</div>
+    <div class="qa-answer">
+      <p><strong>NMS is a life-threatening medical emergency caused by excessive dopamine receptor blockade</strong> from antipsychotic medications. Fatal in about 6% of cases. Usually occurs <em>early</em> in therapy but can occur years into treatment.</p>
+
+      <div class="grid-2">
+        <div class="mini-card" style="border-top: 4px solid var(--warning);">
+          <h4 style="color: var(--warning);">NMS Signs &amp; Symptoms</h4>
+          <ul>
+            <li><strong>Severe muscle rigidity</strong> ("lead pipe")</li>
+            <li><strong>Hyperthermia</strong> — very high fever (often &gt; 103°F)</li>
+            <li><strong>Autonomic dysfunction</strong> — labile BP (hypertension), tachycardia, tachypnea, diaphoresis, incontinence</li>
+            <li><strong>Altered mental status</strong> — decreased LOC, delirium, stupor, coma</li>
+            <li>Elevated creatine kinase (CK)</li>
+            <li>Leukocytosis</li>
+          </ul>
+        </div>
+        <div class="mini-card" style="border-top: 4px solid var(--sage);">
+          <h4 style="color: var(--deep-sage);">NMS Treatment</h4>
+          <ul>
+            <li><strong>Stop the antipsychotic immediately</strong></li>
+            <li>Contact prescriber stat; transfer to <strong>ICU</strong></li>
+            <li>Frequent vital signs</li>
+            <li><strong>Cooling measures</strong> — cooling blankets, ice packs, cool water baths</li>
+            <li><strong>IV fluids</strong> for hydration and electrolyte correction</li>
+            <li><strong>Dantrolene (Dantrium)</strong> — decreases muscle rigidity and reduces fever from muscle contractions</li>
+            <li><strong>Bromocriptine (Parlodel)</strong> — dopamine agonist; relieves rigidity</li>
+            <li>Treat dysrhythmias</li>
+            <li>Small heparin doses to reduce PE risk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How do you tell the difference between neuroleptic malignant syndrome and serotonin syndrome?</div>
+    <div class="qa-answer">
+      <p>These two syndromes share fever, altered mental status, and autonomic instability — but the <strong>cause, timeline, and motor findings differ</strong>. The distinction is clinically critical because the offending drug is different.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 20%;">Feature</th>
+              <th>Neuroleptic Malignant Syndrome</th>
+              <th>Serotonin Syndrome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cause</strong></td>
+              <td>Dopamine blockade from <strong>antipsychotics</strong> (Haldol, risperidone, olanzapine, etc.)</td>
+              <td>Excess serotonin from <strong>SSRIs, SNRIs, MAOIs</strong>, triptans, tramadol, St. John's wort — especially in combination</td>
+            </tr>
+            <tr>
+              <td><strong>Onset</strong></td>
+              <td><em>Slow</em> — over days to weeks (though can occur years into therapy)</td>
+              <td><em>Rapid</em> — within hours of starting or increasing the drug</td>
+            </tr>
+            <tr>
+              <td><strong>Muscle tone</strong></td>
+              <td><strong>"Lead-pipe" rigidity</strong> — severe, diffuse, constant</td>
+              <td><strong>Myoclonus (muscle jerks), hyperreflexia, tremor</strong>, clonus — especially in lower extremities</td>
+            </tr>
+            <tr>
+              <td><strong>Reflexes</strong></td>
+              <td>Normal or decreased (bradyreflexia)</td>
+              <td><strong>Hyperreflexia and clonus</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Pupils</strong></td>
+              <td>Normal</td>
+              <td><strong>Dilated (mydriasis)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Bowel sounds</strong></td>
+              <td>Normal or decreased</td>
+              <td><strong>Hyperactive</strong> — diarrhea often present</td>
+            </tr>
+            <tr>
+              <td><strong>Fever</strong></td>
+              <td>Very high, prolonged</td>
+              <td>May be high but often less extreme</td>
+            </tr>
+            <tr>
+              <td><strong>Resolution</strong></td>
+              <td>Days to weeks after stopping drug</td>
+              <td>Usually resolves within 24 hours of stopping drug</td>
+            </tr>
+            <tr>
+              <td><strong>Treatment</strong></td>
+              <td>Stop antipsychotic · Dantrolene · Bromocriptine · Cooling · ICU</td>
+              <td>Stop serotonergic agent · Cyproheptadine (serotonin antagonist) · Benzodiazepines for agitation · Cooling · Supportive care</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="icon">✦</span>
+        <div class="callout-body">
+          <div class="callout-label">Quick Distinguishing Feature</div>
+          <strong>NMS = rigid and slow</strong> (lead-pipe rigidity, days to develop, dopamine-blocker cause).<br>
+          <strong>Serotonin Syndrome = jerky and fast</strong> (myoclonus/clonus/hyperreflexia, hours to develop, serotonergic cause, dilated pupils, GI hyperactivity).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">How do you differentiate between acute dystonia and NMS?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">Feature</th>
+              <th>Acute Dystonia</th>
+              <th>NMS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Muscle involvement</strong></td>
+              <td><strong>Localized</strong> — head, neck, tongue, eyes (torticollis, oculogyric crisis). One muscle group or a few</td>
+              <td><strong>Generalized</strong> — diffuse "lead-pipe" rigidity of the whole body</td>
+            </tr>
+            <tr>
+              <td><strong>Fever</strong></td>
+              <td>None</td>
+              <td><strong>Very high fever</strong> (often &gt; 103°F)</td>
+            </tr>
+            <tr>
+              <td><strong>Mental status</strong></td>
+              <td>Alert, oriented, frightened but cognitively intact</td>
+              <td><strong>Altered LOC</strong> — confusion, delirium, stupor</td>
+            </tr>
+            <tr>
+              <td><strong>Vital signs</strong></td>
+              <td>Usually stable (maybe mildly elevated from anxiety)</td>
+              <td><strong>Autonomic instability</strong> — labile BP, tachycardia, tachypnea, diaphoresis</td>
+            </tr>
+            <tr>
+              <td><strong>Severity</strong></td>
+              <td>Frightening and uncomfortable but <strong>not life-threatening</strong> (unless laryngeal involvement)</td>
+              <td><strong>Medical emergency</strong> — 6% mortality</td>
+            </tr>
+            <tr>
+              <td><strong>How the patient feels</strong></td>
+              <td>Anxious, scared, painful muscle spasms in specific areas. Aware of what's happening</td>
+              <td>Confused, delirious, rigid all over. May not be able to communicate</td>
+            </tr>
+            <tr>
+              <td><strong>Treatment</strong></td>
+              <td>Benztropine or diphenhydramine IM/IV — relief in 5–15 min</td>
+              <td>Stop antipsychotic, ICU, dantrolene, bromocriptine, cooling, IVF</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Medications used to treat acute dystonia:</strong></p>
+      <ul>
+        <li><strong>Benztropine (Cogentin)</strong> — anticholinergic, restores dopamine/acetylcholine balance</li>
+        <li><strong>Diphenhydramine (Benadryl)</strong> 25–50 mg IM/IV — also anticholinergic, can be given IM for faster response</li>
+        <li><strong>Trihexyphenidyl (Artane)</strong> — another antiparkinsonian agent</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SECOND GEN ========================= -->
+<section class="topic" id="second-gen">
+  <div class="section-header">
+    <span class="section-number">13</span>
+    <h2>Second &amp; Third-Generation Antipsychotics</h2>
+    <span class="section-tag">Atypical</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are second-generation antipsychotics and how do they differ from first-generation?</div>
+    <div class="qa-answer">
+      <p>Second-generation (<strong>atypical</strong>) antipsychotics are <strong>both serotonin (5-HT2A) and dopamine (D2) antagonists</strong>. They're often chosen as <em>first-line</em> because they're equally effective for positive symptoms <strong>and</strong> may help negative symptoms. They have a <strong>markedly lower risk of EPS</strong> than first-generation.</p>
+
+      <p><strong>Common examples:</strong> <strong>Clozapine (Clozaril)</strong>, <strong>Risperidone (Risperdal)</strong>, <strong>Olanzapine (Zyprexa)</strong>, <strong>Quetiapine (Seroquel)</strong>, <strong>Ziprasidone (Geodon)</strong>, Aripiprazole (Abilify), Lurasidone (Latuda), Paliperidone (Invega).</p>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">The Tradeoff</div>
+          Second-generation antipsychotics have <strong>much lower EPS risk</strong> BUT <strong>much higher metabolic risk</strong>. First-generation = movement problems. Second-generation = metabolic problems. Pick your poison.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What are the major side effects of second-generation antipsychotics and how do we teach patients about them?</div>
+    <div class="qa-answer">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Side Effect</th>
+              <th>What It Is</th>
+              <th>Patient Teaching</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anticholinergic effects</strong></td>
+              <td><em>"Can't see, can't pee, can't spit, can't poop"</em> — blurred vision, dry mouth, urinary retention, constipation, tachycardia, dry eyes, cognitive impairment</td>
+              <td>Drink fluids and chew sugar-free gum for dry mouth · Use stool softeners and fiber for constipation · Report urinary retention · Use artificial tears for dry eyes · Rise slowly · Watch for toxicity — hot dry skin, hyperthermia, delirium, agitation = emergency</td>
+            </tr>
+            <tr>
+              <td><strong>Orthostatic hypotension</strong></td>
+              <td>Drop in BP upon standing up — systolic pressure drops, diastolic drops, pulse rises. Leads to dizziness, falls, syncope. Usually subsides in 1–2 weeks</td>
+              <td><strong>Change positions slowly</strong> — move from lying to sitting, pause, then stand · Hold onto railings/furniture while arising · If dizzy, sit back down · Ensure adequate hydration · Avoid hot showers and alcohol (vasodilation worsens it) · Hold dose and call provider if systolic BP &lt; 80 standing</td>
+            </tr>
+            <tr>
+              <td><strong>Metabolic syndrome</strong></td>
+              <td>Cluster: weight gain + dyslipidemia + insulin resistance + hypertension. Increases risk of cardiovascular disease, diabetes, early mortality. Especially high with olanzapine, clozapine, quetiapine</td>
+              <td>Monitor <strong>weight, BP, fasting glucose, A1C, lipid panel</strong> at baseline and regularly · Healthy eating — low-calorie snacks, portion control · Regular <strong>physical activity</strong> — walking, cycling · Avoid sugary drinks · Report new thirst, frequent urination, vision changes (diabetes signs) · Metformin may be prescribed off-label to reduce diabetes risk</td>
+            </tr>
+            <tr>
+              <td><strong>Agranulocytosis / Severe Neutropenia</strong></td>
+              <td><strong>Dangerously low white blood cell count</strong> — specifically absolute neutrophil count (ANC) &lt; 500/μL. Risk of life-threatening infection (septicemia). <strong>Most common with clozapine</strong> but possible with others</td>
+              <td><strong>Clozapine REMS program</strong> — mandatory ANC monitoring: weekly × 6 months, then every 2 weeks × 6 months, then monthly · <strong>Report immediately:</strong> fever, chills, sore throat, flu-like symptoms, any signs of infection · Don't share bathrooms if possible, avoid crowds and sick people during first months · Good hand hygiene</td>
+            </tr>
+            <tr>
+              <td><strong>Tardive dyskinesia (lower risk but still possible)</strong></td>
+              <td>Involuntary movements — mainly face, tongue, limbs. Lower risk than with first-generation but still possible, especially with long-term use</td>
+              <td>Report any new involuntary movements · AIMS screening every 3 months</td>
+            </tr>
+            <tr>
+              <td><strong>Sedation</strong></td>
+              <td>Common, especially early in treatment. More with clozapine, olanzapine, quetiapine</td>
+              <td>Take at bedtime if possible · No driving until effects known · Alcohol and CNS depressants worsen this</td>
+            </tr>
+            <tr>
+              <td><strong>QT prolongation</strong></td>
+              <td>Delay in ventricular repolarization → fatal arrhythmia risk. Especially with quetiapine, risperidone, ziprasidone</td>
+              <td><strong>ECG at baseline</strong> and during treatment · Report palpitations, fainting, dizziness</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-header">
+      <span>Practice Question — Risperidone Teaching Priority</span>
+      <span>⚡ Teaching Priority</span>
+    </div>
+    <div class="practice-body">
+      <p class="practice-stem">A patient diagnosed with schizophrenia begins a new prescription for risperidone. The patient is 5'6" and currently weighs 204 lbs. Which topic is most important for the nurse to include in the teaching plan related to this medication?</p>
+      <ul class="practice-options">
+        <li><span class="letter">a.</span><span>How to recognize tardive dyskinesia</span></li>
+        <li class="correct"><span class="letter">b.</span><span>Weight management strategies</span></li>
+        <li><span class="letter">c.</span><span>Ways to manage constipation</span></li>
+        <li><span class="letter">d.</span><span>Sleep hygiene measures</span></li>
+      </ul>
+      <details class="rationale">
+        <summary>Show rationale</summary>
+        <div class="rationale-content">
+          <p><strong>Why B:</strong> Risperidone is a <strong>second-generation antipsychotic</strong>. The most common AND most serious potential side effect in this class is <strong>metabolic syndrome</strong> — weight gain leading to diabetes, dyslipidemia, hypertension, and cardiovascular disease. This patient's BMI is already ~33 (obese) at 5'6" and 204 lbs, so she's starting from a high-risk baseline. Weight management becomes <strong>the most important teaching priority</strong> because it directly addresses the most dangerous side effect of her medication combined with her existing risk factors.</p>
+          <p><strong>Why not the others:</strong></p>
+          <ul>
+            <li><strong>A — Tardive dyskinesia</strong>: TD risk is <em>much lower</em> with second-generation antipsychotics than first-generation. Still screen with AIMS, but not the priority teaching here.</li>
+            <li><strong>C — Constipation</strong>: A real anticholinergic side effect, but far less dangerous than metabolic syndrome.</li>
+            <li><strong>D — Sleep hygiene</strong>: Not the most important given this patient's cardiovascular risk profile.</li>
+          </ul>
+          <p><strong>Prof. Moody's study tip:</strong> To answer this you need to know (1) risperidone is second-generation, (2) the most common problems with this class are metabolic syndrome / weight gain / diabetes / dyslipidemia, and (3) how to prioritize the most serious potential side effect given the patient's current risk factors.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= RELAPSE ========================= -->
+<section class="topic" id="relapse">
+  <div class="section-header">
+    <span class="section-number">14</span>
+    <h2>Schizophrenia Relapse</h2>
+    <span class="section-tag">Prevention</span>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What do you know about schizophrenia and relapse? What are some causes?</div>
+    <div class="qa-answer">
+      <p>Schizophrenia follows a <strong>pattern of recurrent exacerbations (relapses)</strong> separated by periods of reduced or dormant symptoms. <strong>Each relapse may increase residual dysfunction and disability</strong> — prevention is essential.</p>
+
+      <p><strong>Common causes of relapse:</strong></p>
+      <ul class="checklist">
+        <li class="key"><strong>Medication nonadherence</strong> — the leading cause. May be due to side effects, anosognosia (no insight into illness), cost, complexity, stigma, or the belief they're "cured"</li>
+        <li class="key"><strong>Substance use</strong> — alcohol, cannabis, stimulants can trigger or worsen psychosis</li>
+        <li class="key"><strong>Stress</strong> — major life events, relationship conflict, loss, trauma</li>
+        <li class="key"><strong>Sleep disturbance</strong> — especially insomnia</li>
+        <li class="key"><strong>Social withdrawal / isolation</strong></li>
+        <li class="key"><strong>Comorbid depression</strong> — a warning sign</li>
+        <li class="key"><strong>High expressed emotion</strong> in the family environment — criticism, overinvolvement</li>
+        <li class="key"><strong>Poor engagement</strong> with outpatient services</li>
+        <li class="key"><strong>Medication changes</strong> — new drug, dose reduction, switching</li>
+      </ul>
+
+      <p><strong>Warning signs of impending relapse (family should know these):</strong></p>
+      <ul>
+        <li><strong>Reduced sleep</strong> or changes in sleep pattern</li>
+        <li><strong>Social withdrawal</strong> — skipping therapy, avoiding friends/family</li>
+        <li><strong>Worsening concentration</strong></li>
+        <li>Return of <strong>positive symptoms</strong> — suspiciousness, hearing voices, unusual beliefs</li>
+        <li><strong>Increased anxiety or depression</strong></li>
+        <li><strong>Poor hygiene, self-care decline</strong></li>
+        <li><strong>Missed medication doses</strong></li>
+        <li><strong>Increased substance use</strong></li>
+        <li>Resumption of odd behaviors or speech patterns</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-question">What is relevant client and family education for schizophrenia?</div>
+    <div class="qa-answer">
+      <p><strong>Core teaching for patient and family:</strong></p>
+      <ul class="checklist">
+        <li class="key"><strong>Schizophrenia is a chronic brain disorder</strong> — not a character flaw, laziness, or bad parenting</li>
+        <li class="key"><strong>Medication adherence is essential</strong> — stopping meds is the leading cause of relapse. Consider long-acting injectable (LAI) formulations given every 2–4 weeks or even 12 weeks</li>
+        <li class="key"><strong>Medications take 2–6 weeks to work fully</strong> — don't stop early</li>
+        <li class="key"><strong>Recognize warning signs of relapse</strong> — sleep changes, withdrawal, return of suspiciousness, missed doses</li>
+        <li class="key"><strong>What to do if relapse suspected</strong> — contact the treatment team immediately, do not wait. Call the provider, outpatient clinic, or crisis line. If safety is at risk, go to ED</li>
+        <li class="key"><strong>Avoid alcohol and illicit substances</strong> — can trigger psychosis and interact with meds</li>
+        <li class="key"><strong>Regular sleep schedule</strong> — sleep disruption precedes relapse</li>
+        <li class="key"><strong>Manage stress</strong> — ongoing therapy, coping skills, relaxation</li>
+        <li class="key"><strong>Negative symptoms may look like laziness or stubbornness</strong> but are part of the illness — apathy and poor hygiene are symptoms, not attitude</li>
+        <li class="key"><strong>Recognize and respond to side effects</strong> — don't just stop meds, call the provider to switch</li>
+        <li class="key"><strong>Stay engaged with outpatient care</strong> — case management, CBT, family therapy</li>
+        <li class="key"><strong>Join support groups</strong> — NAMI (National Alliance on Mental Illness) offers Family-to-Family program</li>
+        <li class="key"><strong>Metabolic monitoring</strong> — regular weight, BP, glucose, lipids</li>
+        <li class="key"><strong>Smoking cessation</strong> — affects drug levels and overall health</li>
+        <li class="key"><strong>Hope and recovery are real</strong> — with treatment, many live meaningful lives</li>
+      </ul>
+
+      <div class="callout teaching">
+        <span class="icon">●</span>
+        <div class="callout-body">
+          <div class="callout-label">Resources for Families</div>
+          <strong>NAMI (National Alliance on Mental Illness — nami.org)</strong> is the largest consumer and family organization for those living with mental illness. Their <em>Family-to-Family</em> program is specifically designed to educate family members about schizophrenia and how to support their loved one while caring for themselves. Social isolation and stigma hurt families too — connection helps.
+        </div>
+      </div>
+
+      <div class="callout clinical">
+        <span class="icon">◆</span>
+        <div class="callout-body">
+          <div class="callout-label">A Family Member's Realization (from textbook)</div>
+          "I used to think my daughter was just being lazy… I didn't know it was her illness. I thought she could make the symptoms stop if she tried hard enough." Teaching families that <em>negative symptoms are part of the disease</em> — not a behavior choice — transforms how they support their loved one.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="footnotes">
+  <h3>◆ Footnotes &amp; Source Clarifications</h3>
+  <ol>
+    <li><strong>Prazosin for PTSD nightmares</strong> — Commonly used off-label in clinical practice for PTSD-related nightmares and sleep disturbances (especially in veterans), but not specifically named in your HCC2 Chapter 16 book notes. Your notes specifically mention SSRIs (sertraline, paroxetine) as first-line, with other antidepressants as alternatives. Included because you're very likely to see prazosin ordered in clinical rotations; just flagging that it came from standard nursing pharmacology rather than your specific book chapter.</li>
+
+    <li><strong>"Five A's" of negative symptoms mnemonic</strong> — This memory aid (Affect flattening, Alogia, Anergia, Anhedonia, Avolition) is widely taught in nursing education but is not explicitly laid out as a mnemonic in your book notes. Your book does list these as the negative symptoms — the mnemonic just groups them memorably.</li>
+
+    <li><strong>Torticollis definition</strong> — Your book mentions torticollis in describing dystonic reactions but doesn't pause to define it. "Twisted neck, head pulled to one side" is the standard anatomical definition added for clarity.</li>
+
+    <li><strong>Exact EPS onset timelines</strong> — The general sequence (acute dystonia first, then akathisia, then pseudoparkinsonism, then TD) is well-established in nursing pharmacology. Specific day/week/month ranges come from standard pharmacology references rather than verbatim from your book notes. Your book does confirm: acute dystonias are acute-onset, akathisia can appear and persist, pseudoparkinsonism develops over time, and TD develops after ~2+ years of treatment in ~25% of patients.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Study guide compiled from <em>HCC2 Anxiety &amp; Psychosis book notes</em> to match the structure of Prof. Moody's lecture notes — Spring 2026 Exam 4 prep.</p>
+  <p style="margin-top: 0.5rem;">Made for the cohort. You've got this. 💜</p>
+</footer>
+
+</body>
+</html>

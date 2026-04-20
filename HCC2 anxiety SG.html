@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCC2 — Anxiety Disorders: Panic Disorder & PTSD | Comprehensive Study Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #6d28d9;
+  --primary-light: #ede9fe;
+  --primary-mid: #8b5cf6;
+  --secondary: #db2777;
+  --secondary-light: #fce7f3;
+  --teal: #0d9488;
+  --teal-light: #ccfbf1;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --green: #047857;
+  --green-light: #d1fae5;
+  --slate: #334155;
+  --slate-light: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(109,40,217,0.12), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 40%, #db2777 100%);
+  padding: 36px 48px 30px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 4px 24px rgba(109,40,217,0.3);
+}
+.header-inner { max-width: 1100px; margin: 0 auto; }
+.header-badge {
+  display: inline-block; background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9); font-size: 0.7rem;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 12px; border-radius: 20px; margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem; color: white;
+  line-height: 1.2; margin-bottom: 6px;
+}
+.site-header p { color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+
+/* ── NAVIGATION ── */
+.nav-wrap {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 190;
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 2px;
+  padding: 10px 16px;
+}
+.nav-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-muted);
+  background: none; border: none;
+  padding: 7px 14px; border-radius: 8px;
+  cursor: pointer; transition: all 0.18s;
+  letter-spacing: 0.2px;
+}
+.nav-btn:hover { background: var(--primary-light); color: var(--primary); }
+.nav-btn.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── LAYOUT ── */
+.page-wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 36px 20px 60px;
+}
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── CARDS ── */
+.card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 30px 34px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; color: var(--primary);
+  margin-bottom: 4px;
+}
+.card-subtitle {
+  font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── SECTION HEADINGS ── */
+.sh {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--text-muted); margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border);
+}
+.sh:first-child { margin-top: 4px; }
+
+/* ── BODY TEXT ── */
+p.body { font-size: 0.95rem; line-height: 1.75; margin-bottom: 12px; }
+strong { color: var(--slate); font-weight: 700; }
+
+/* ── LISTS ── */
+ul.content-list { list-style: none; padding: 0; margin: 0; }
+ul.content-list li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+ul.content-list li::before {
+  content: '›';
+  position: absolute; left: 4px;
+  color: var(--primary-mid);
+  font-weight: 700; font-size: 1rem;
+  top: 4px;
+}
+ul.content-list li + li { border-top: 1px solid #f8f8fb; }
+
+/* ── CALL-OUT BOXES ── */
+.callout {
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 18px 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.callout-label {
+  font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  display: block; margin-bottom: 8px;
+}
+.callout.priority {
+  background: var(--red-light);
+  border-left: 4px solid var(--red);
+}
+.callout.priority .callout-label { color: var(--red); }
+
+.callout.book {
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+}
+.callout.book .callout-label { color: var(--green); }
+
+.callout.exam {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+}
+.callout.exam .callout-label { color: var(--teal); }
+
+.callout.prof {
+  background: var(--amber-light);
+  border-left: 4px solid var(--amber);
+}
+.callout.prof .callout-label { color: var(--amber); }
+
+.callout.info {
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+}
+.callout.info .callout-label { color: var(--primary); }
+
+/* ── TOGGLE Q&A ── */
+.qa-block { margin: 16px 0; }
+.qa-question {
+  background: var(--amber-light);
+  border: 1.5px solid #fcd34d;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #78350f;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px;
+  user-select: none;
+  transition: background 0.15s;
+}
+.qa-question:hover { background: #fde68a; }
+.qa-question .qa-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 2px; color: var(--amber); }
+.qa-answer {
+  display: none;
+  background: white;
+  border: 1.5px solid #fcd34d;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 16px 20px;
+  font-size: 0.91rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.qa-answer.open { display: block; }
+.qa-answer ul { list-style: none; padding: 0; }
+.qa-answer ul li { padding: 3px 0 3px 18px; position: relative; }
+.qa-answer ul li::before { content: '•'; position: absolute; left: 4px; color: var(--amber); font-weight: 700; }
+.qa-answer .answer-tag {
+  display: inline-block; background: #059669; color: white;
+  font-size: 0.65rem; font-weight: 700; padding: 2px 8px;
+  border-radius: 8px; margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.qa-answer .wrong-tag {
+  display: inline-block; background: var(--red); color: white;
+  font-size: 0.65rem; font-weight: 700; padding: 2px 8px;
+  border-radius: 8px; margin-right: 4px;
+}
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  margin: 16px 0; font-size: 0.88rem;
+  border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden;
+}
+.data-table th {
+  background: linear-gradient(135deg, var(--primary), var(--primary-mid));
+  color: white; padding: 11px 16px;
+  text-align: left; font-weight: 600; font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+.data-table th:first-child { border-radius: 10px 0 0 0; }
+.data-table th:last-child { border-radius: 0 10px 0 0; }
+.data-table td { padding: 10px 16px; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+.data-table tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+.data-table tr:nth-child(even) td { background: #fafafa; }
+.data-table tr:hover td { background: var(--primary-light); }
+
+/* ── GRID ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+@media(max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+.mini-panel {
+  background: var(--slate-light);
+  border-radius: 10px; padding: 16px 18px;
+  border-top: 3px solid var(--primary);
+}
+.mini-panel.green { border-top-color: var(--green); }
+.mini-panel.teal { border-top-color: var(--teal); }
+.mini-panel.red { border-top-color: var(--red); }
+.mini-panel.amber { border-top-color: var(--amber); }
+.mini-panel.secondary { border-top-color: var(--secondary); }
+.mini-panel h4 {
+  font-size: 0.83rem; font-weight: 700; color: var(--slate);
+  margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.4px;
+}
+.mini-panel ul { list-style: none; padding: 0; }
+.mini-panel ul li { font-size: 0.88rem; padding: 3px 0 3px 14px; position: relative; }
+.mini-panel ul li::before { content: '·'; position: absolute; left: 2px; color: var(--primary); font-weight: 900; font-size: 1.1rem; line-height: 1.3; }
+
+/* ── PILL TAGS ── */
+.pill {
+  display: inline-block; font-size: 0.67rem; font-weight: 700;
+  padding: 2px 9px; border-radius: 20px; margin: 0 3px 3px 0;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.pill.purple { background: var(--primary); color: white; }
+.pill.pink { background: var(--secondary); color: white; }
+.pill.teal { background: var(--teal); color: white; }
+.pill.green { background: var(--green); color: white; }
+.pill.red { background: var(--red); color: white; }
+.pill.amber { background: #d97706; color: white; }
+.pill.gray { background: #64748b; color: white; }
+
+/* ── DRUG HIGHLIGHT ── */
+.drug { font-weight: 700; color: var(--teal); }
+.drug-box {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-weight: 700; font-size: 0.85rem;
+  padding: 1px 8px; border-radius: 6px;
+  margin: 0 2px;
+}
+
+/* ── BACK TO TOP ── */
+.btt {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--primary); color: white;
+  border: none; border-radius: 50%;
+  width: 42px; height: 42px; font-size: 1.1rem;
+  cursor: pointer; box-shadow: var(--shadow-lg);
+  transition: transform 0.2s, background 0.2s;
+  z-index: 100;
+}
+.btt:hover { transform: translateY(-3px); background: var(--primary-mid); }
+
+footer {
+  text-align: center; padding: 32px 20px;
+  color: var(--text-muted); font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* ── DIVIDER ── */
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+
+/* ── IMPORTANT NOTE ── */
+.note-inline {
+  font-size: 0.82rem; color: var(--text-muted);
+  font-style: italic; margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">HCC2 — Spring 2026 | Prof. Bryan</div>
+    <h1>Anxiety Disorders: Panic Disorder & PTSD</h1>
+    <p>Comprehensive Study Guide — Slides, Lecture Notes &amp; Textbook Integrated</p>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="show('s1',this)">Definition &amp; Scope</button>
+    <button class="nav-btn" onclick="show('s2',this)">Assessment</button>
+    <button class="nav-btn" onclick="show('s3',this)">Panic Disorder</button>
+    <button class="nav-btn" onclick="show('s4',this)">PTSD</button>
+    <button class="nav-btn" onclick="show('s5',this)">Nursing Interventions</button>
+    <button class="nav-btn" onclick="show('s6',this)">Pharmacology</button>
+    <button class="nav-btn" onclick="show('s7',this)">Crisis Intervention</button>
+    <button class="nav-btn" onclick="show('s8',this)">Exam Priority Review</button>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- ═══════════ SECTION 1: DEFINITION & SCOPE ═══════════ -->
+<div id="s1" class="section active">
+
+  <div class="card">
+    <p class="card-subtitle">Slides 1–2 + Giddens Textbook Chapter 31</p>
+    <h2 class="card-title">Concept Definition & Scope of Anxiety</h2>
+
+    <p class="body">Anxiety is defined in Giddens as <strong>"a subjectively distressful experience activated by the perception of threat, which has both a potential psychological and physiological etiology and expression."</strong> This is the exact definition used in your course.</p>
+
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook Elaboration — Why the Definition Matters</span>
+      <p>The definition acknowledges two critical dimensions: <strong>psychological</strong> (thoughts, perceptions, emotional responses) and <strong>physiological</strong> (autonomic nervous system activation, biochemical changes). This is why anxiety manifests with both mental symptoms (worry, dread, fear) and physical symptoms (tachycardia, diaphoresis, tremors). Both must be assessed.</p>
+    </div>
+
+    <div class="sh">Peplau's Four Levels of Anxiety — You Must Know All Four</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Level</th><th>Perceptual Field</th><th>Cognitive Function</th><th>Key Features</th><th>Nursing Focus</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mild</strong></td>
+          <td>Sharp, wide, alert</td>
+          <td>Optimal — enhanced learning, motivation, awareness</td>
+          <td>Beneficial; promotes growth; normal daily anxiety</td>
+          <td>Normal — no intervention needed</td>
+        </tr>
+        <tr>
+          <td><strong>Moderate</strong></td>
+          <td>Narrowed — less alert</td>
+          <td>Decreased concentration and problem-solving; muscular tension; restlessness</td>
+          <td>Still functional but noticeable impairment beginning</td>
+          <td>Guide focus; calm environment; open-ended communication</td>
+        </tr>
+        <tr>
+          <td><strong>Severe</strong></td>
+          <td>Significantly narrowed</td>
+          <td>Severe impairment of attention; marked functional impairment; physical and emotional symptoms present</td>
+          <td>Tendency to misperceive environment; marked change in baseline behavior</td>
+          <td>Simple directions; remain calm; one instruction at a time</td>
+        </tr>
+        <tr>
+          <td><strong>Panic</strong></td>
+          <td>Complete loss of focus</td>
+          <td>Behavioral/emotional dysregulation; complete inability to process information</td>
+          <td>Patient <strong>cannot learn new information</strong>; misperceives environment; terror</td>
+          <td>Stay with patient; minimize stimuli; breathing techniques; safety</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout exam">
+      <span class="callout-label">⭐ High-Yield: Why Anxiety Disorders Are Different from Normal Anxiety</span>
+      <ul class="content-list">
+        <li>Anxiety disorders are <strong>distinct from normal anxiety</strong> — they <strong>interfere with the ability to function in daily life</strong></li>
+        <li>Normal anxiety (mild-moderate) is actually <strong>beneficial</strong> — enhances learning, motivation, and performance</li>
+        <li>Prof's focus for this module: <strong>Panic Disorder and PTSD</strong> as the two exemplar disorders</li>
+        <li><strong>Medical causes must always be ruled out first</strong> — heart disease, hyperthyroidism, pheochromocytoma, substance withdrawal, tumors producing catecholamines all produce anxiety symptoms</li>
+      </ul>
+    </div>
+
+    <div class="sh">Physiologic Underpinning — The Fight-or-Flight Response</div>
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook: Cannon's Fight-or-Flight + General Adaptation Syndrome (Selye)</span>
+      <p>When the sympathetic nervous system is activated in response to a perceived threat, it interacts with the adrenal cortex to release epinephrine. The resulting cascade includes: heart rate increase, pulmonary dilation (↑O₂ capacity), hepatic glucose release, pupil dilation, and GI peristalsis inhibition. Observable signs include tachycardia, tremors, diaphoresis, and xerostomia.</p>
+      <p style="margin-top:10px"><strong>Selye's General Adaptation Syndrome (3 Stages):</strong></p>
+      <ul class="content-list">
+        <li><strong>Stage 1 — Alarm:</strong> Stressor perceived → SNS activates → mobilizes body resources</li>
+        <li><strong>Stage 2 — Resistance:</strong> PNS attenuates reaction → returns many functions toward homeostasis → body remains alert and vigilant</li>
+        <li><strong>Stage 3 — Exhaustion:</strong> If stressor is sufficiently intense or prolonged → exceeds compensatory capacity → susceptibility to disease and death</li>
+      </ul>
+    </div>
+
+    <div class="sh">Neurotransmitters Involved in Anxiety</div>
+    <div class="grid-2">
+      <div class="mini-panel">
+        <h4>Key Neurotransmitters</h4>
+        <ul>
+          <li>Serotonin</li>
+          <li>Norepinephrine</li>
+          <li>GABA (γ-amino butyric acid)</li>
+          <li>Dopamine</li>
+          <li>Glutamate</li>
+          <li>Corticotropin-releasing factors</li>
+          <li>Thyroid hormone</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Key Brain Structures</h4>
+        <ul>
+          <li><strong>Amygdala</strong> — central to fear (panic, phobia)</li>
+          <li>Thalamus, hypothalamus</li>
+          <li>Cingulate gyrus</li>
+          <li>Hippocampus</li>
+          <li>Basal ganglia</li>
+          <li>Orbitofrontal cortex</li>
+          <li>Anterior cingulate cortex</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note-inline">The amygdala-centered neural circuit is directly linked to fear symptoms (panic, phobia). The cortico-striatal-thalamo-cortical circuit is linked to worry symptoms (GAD). This explains why different drugs target different aspects of anxiety.</p>
+  </div>
+
+</div>
+
+<!-- ═══════════ SECTION 2: ASSESSMENT ═══════════ -->
+<div id="s2" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slide 3 + Textbook Box 31.2 — Nursing Assessment of Anxiety</p>
+    <h2 class="card-title">Assessment of the Anxious Patient</h2>
+
+    <p class="body">Your professor emphasizes a structured assessment approach. The textbook (Box 31.2) identifies three core components: <strong>history, physical examination, and mental status examination (MSE)</strong>. Assessment requires establishing therapeutic rapport <em>before</em> asking sensitive questions — rote questioning without rapport is described as "ill-advised and at worst unprofessional."</p>
+
+    <div class="sh">Slide 3: What to Include in Assessment of Panic History</div>
+    <ul class="content-list">
+      <li><strong>Event or situation causing stress or crisis</strong> — identify the precipitating trigger</li>
+      <li><strong>Subjective experience</strong> — ask open-ended: "What does this loss mean to you?" Avoid clinical jargon; book advises asking "Do you find yourself worrying a lot and feel unable to control it?" instead of "Do you experience anxiety?"</li>
+      <li><strong>Level of anxiety</strong> — identify which of Peplau's four levels the patient is currently experiencing; use scaled questions (1–10)</li>
+      <li><strong>Suicidal ideation — is it present?</strong> — bolded by Prof as the PRIORITY item</li>
+      <li><strong>Coping style and strengths</strong> — is the patient using adaptive or maladaptive coping mechanisms?</li>
+      <li><strong>Support systems available</strong></li>
+    </ul>
+
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Priority — Prof Emphasizes This Repeatedly</span>
+      <p><strong>Suicidal ideation is the PRIORITY assessment item.</strong> Patients with anxiety disorders, especially PTSD, are at elevated risk. The textbook case study (Nicole) illustrates a patient who developed a plan to kill herself — her disclosure to the department counselor is what led to intervention. <strong>Always assess directly</strong> — asking about suicide does not increase risk, it opens the door to intervention.</p>
+    </div>
+
+    <div class="sh">Textbook: Full Nursing Assessment Framework (Box 31.2)</div>
+    <div class="grid-3">
+      <div class="mini-panel">
+        <h4>Medical History</h4>
+        <ul>
+          <li>Risk factor identification</li>
+          <li>Mental health history</li>
+          <li>Substance use history</li>
+          <li>Current medical problems</li>
+          <li>Familial medical history</li>
+          <li>Trauma exposure</li>
+        </ul>
+      </div>
+      <div class="mini-panel secondary">
+        <h4>Physical Examination</h4>
+        <ul>
+          <li>Vital signs</li>
+          <li>Auscultation of heart and lungs</li>
+          <li>Palpation of thyroid</li>
+          <li>Cranial nerve assessment</li>
+          <li>Blood and urine studies</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Mental Status Exam (MSE)</h4>
+        <ul>
+          <li>Appearance, attitude, behavior</li>
+          <li>Mood and affect</li>
+          <li>Speech, thought process</li>
+          <li>Thought content, perceptions</li>
+          <li>Cognition, insight, judgment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout book">
+      <span class="callout-label">📖 Textbook — Critical Point: Rule Out Medical Causes First</span>
+      <p>Autonomic activation in anxiety can manifest as hypertension, tachycardia, tachypnea, diaphoresis, ataxia, tremulousness, GI distress, and muscular tension. These symptoms are <strong>not specific to anxiety</strong>. The textbook states: "Making a determination of anxiety should never be done until other high-risk medical explanations (e.g., myocardial infarction, embolism, and stroke) have been ruled out."</p>
+    </div>
+
+    <div class="sh">Slide 4 — Therapeutic Communication with Anxious/Distressed Clients</div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "What is the nurse's best response when clients are crying, stressed, visibly upset? What responses are therapeutic when clients are in crisis or experiencing anxiety?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Correct Approach</span>
+        <p><strong>Focus on feelings, not content.</strong> The therapeutic response acknowledges the patient's emotional experience and communicates presence and safety. Examples:</p>
+        <ul>
+          <li>"It seems like you're feeling really overwhelmed right now. I'm here with you."</li>
+          <li>"You are safe. I will not leave you."</li>
+          <li>Use a <strong>low-pitched voice</strong>, <strong>speak slowly and calmly</strong> — this activates the parasympathetic nervous system and models calm regulation</li>
+          <li>Maintain a <strong>calm, non-threatening presence</strong> — your demeanor directly influences the patient's nervous system response</li>
+        </ul>
+        <p style="margin-top:12px"><strong>What NOT to do (common distractors on exams):</strong></p>
+        <ul>
+          <li><span class="wrong-tag">✗</span> "Don't worry, everything will be fine" — false reassurance; dismisses the patient's experience</li>
+          <li><span class="wrong-tag">✗</span> Redirecting immediately to education or discharge information</li>
+          <li><span class="wrong-tag">✗</span> Asking multiple assessment questions at once (overwhelming at panic level)</li>
+          <li><span class="wrong-tag">✗</span> Leaving the patient alone to "give them space" — staying is therapeutic</li>
+        </ul>
+        <p style="margin-top:12px"><em>Lecture note key: Prof highlights that the nurse's calm presence is a direct intervention. Mindfulness, relaxation, and breathing techniques <strong>activate the parasympathetic nervous system</strong>, counteracting the SNS fight-or-flight cascade.</em></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 3: PANIC DISORDER ═══════════ -->
+<div id="s3" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slides 6–10 + Textbook Chapter 31: Panic Disorder</p>
+    <h2 class="card-title">Panic Disorder</h2>
+
+    <p class="body">A panic disorder occurs when recurrent, unexpected panic attacks cause persistent concern about future attacks or significant behavioral changes. The textbook notes it affects approximately <strong>6 million Americans</strong>, occurs <strong>twice as often in females</strong>, and most often develops in adolescents or adults.</p>
+
+    <div class="sh">Characteristics of Panic Disorder</div>
+    <ul class="content-list">
+      <li><strong>Episodes of intense anxiety</strong> — characterized as intense terror, apprehension, and fear</li>
+      <li><strong>Characterized by recurrent panic attacks</strong></li>
+      <li><strong>Abrupt onset with symptoms peaking within 10 minutes</strong> — this is a key diagnostic feature</li>
+      <li><strong>Why do patients visit the ED?</strong> Because symptoms mimic acute cardiac events — palpitations, chest pain, SOB, diaphoresis → patient believes they are having a heart attack. <strong>Cardiac causes must be ruled out before diagnosing panic disorder.</strong></li>
+    </ul>
+
+    <div class="sh">Diagnostic Criteria: 4 or More Symptoms = Panic Attack</div>
+    <div class="callout exam">
+      <span class="callout-label">⭐ Know All of These — May Be Tested as SATA</span>
+      <div class="grid-2" style="margin:10px 0 0 0;">
+        <ul class="content-list">
+          <li>Palpitations, pounding heart, or accelerated heart rate</li>
+          <li>Sweating (diaphoresis)</li>
+          <li>Trembling or shaking</li>
+          <li>Sensation of shortness of breath or smothering</li>
+          <li>Feelings of choking</li>
+          <li>Chest pain or discomfort</li>
+          <li>Nausea or abdominal distress</li>
+        </ul>
+        <ul class="content-list">
+          <li>Dizziness, unsteadiness, lightheadedness, or faintness</li>
+          <li>Chills or hot flushes</li>
+          <li>Paresthesias (numbness or tingling sensations)</li>
+          <li><strong>Derealization</strong> — feelings that the world is unreal</li>
+          <li><strong>Depersonalization</strong> — feeling detached from oneself</li>
+          <li>Fear of losing control or "going crazy"</li>
+          <li><strong>Fear of dying</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Acute Nursing Care During an Active Panic Attack</div>
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Acute Care Priority Actions — Slide 9</span>
+      <ul class="content-list">
+        <li><strong>Stay with the client</strong> — reassure them that you will not leave; abandonment increases terror</li>
+        <li><strong>Minimize stimuli</strong> — move to a quiet private room; reduce lighting; ask unnecessary staff/visitors to leave; lower noise levels</li>
+        <li><strong>Remain calm and quiet</strong> — your regulated nervous system helps regulate theirs (co-regulation)</li>
+        <li><strong>Instruct slow, deep breathing</strong> — activates parasympathetic nervous system; counters SNS hyperactivation</li>
+        <li><strong>Client is unable to concentrate on learning new information during a panic attack</strong> — do NOT attempt health teaching during active panic</li>
+        <li>Use low-pitched, slow voice: "You are safe. I am right here with you. This feeling will pass."</li>
+      </ul>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "How do we minimize stimuli?" and "What effect do mindfulness/relaxation/breathing techniques have on the nervous system?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Full Answer</span>
+        <p><strong>Minimizing stimuli:</strong></p>
+        <ul>
+          <li>Move patient to a private, quiet room</li>
+          <li>Dim or reduce lighting</li>
+          <li>Ask non-essential staff, visitors, other patients to leave the space</li>
+          <li>Speak in a low, calm, slow voice — avoid loud or abrupt sounds</li>
+          <li>Reduce environmental triggers (television, phone alerts, overhead paging if possible)</li>
+          <li>Limit physical contact to what is necessary and always announce touch first</li>
+        </ul>
+        <p style="margin-top:12px"><strong>Effect of relaxation/breathing on the nervous system:</strong></p>
+        <p>These techniques <strong>activate the parasympathetic nervous system (PNS)</strong> — the "rest and digest" branch. Slow diaphragmatic breathing stimulates the vagus nerve, which signals the heart to slow down, reduces cortisol release, and gradually downregulates the amygdala's fear response. This physiologically counteracts the SNS-driven fight-or-flight cascade that produces all panic symptoms.</p>
+      </div>
+    </div>
+
+    <div class="sh">Long-Term Nursing Care Goals — Panic Disorder (Slide 10)</div>
+    <ul class="content-list">
+      <li>Help client <strong>recognize early symptoms of onset of anxiety</strong> and intervene before reaching the panic stage — this is about building self-awareness</li>
+      <li>Teach client adaptive coping skills (breathing techniques, progressive muscle relaxation, grounding exercises)</li>
+      <li>Develop a balanced life and nourish the spirit — holistic approach to wellness</li>
+      <li>Promote adherence to long-term pharmacologic and psychotherapeutic treatment plans</li>
+      <li>Teach client to identify and avoid or manage triggers</li>
+      <li>Refer for cognitive-behavioral therapy (CBT) — largest evidence base for anxiety disorders</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ═══════════ SECTION 4: PTSD ═══════════ -->
+<div id="s4" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slides 11–17 + Textbook Chapter 31 (PTSD) + Lecture Notes</p>
+    <h2 class="card-title">Post-Traumatic Stress Disorder (PTSD)</h2>
+
+    <p class="body">PTSD follows exposure to an extreme traumatic stressor — either a direct personal physical threat or trauma, or witnessing such an event in another person. The textbook case of Nicole (police officer) illustrates classic PTSD: traumatic occupational exposures leading to intrusive memories, sleep disturbances, substance use for coping, social withdrawal, and ultimately suicidal ideation with a specific plan.</p>
+
+    <ul class="content-list">
+      <li>Follows exposure to <strong>extreme traumatic stressor</strong> — personal physical threat/trauma OR witnessing trauma in another</li>
+      <li>Characterized by <strong>re-experiencing</strong> significant, life-threatening events</li>
+      <li><strong>Increased incidence with previous history of abuse or trauma</strong> — prior trauma is a major risk factor; heritability estimated at 30–50% (shared with panic disorder, phobias, OCD)</li>
+      <li>Highly comorbid with <strong>substance use disorders</strong> — substances used to self-medicate intrusive symptoms</li>
+    </ul>
+
+    <div class="sh">Symptom Clusters of PTSD</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Cluster</th><th>Symptoms</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Re-experiencing</strong></td>
+          <td>Hallucinations, flashbacks, illusions; recurrent intrusive recollections of the event; recurring nightmares associated with the traumatic event</td>
+        </tr>
+        <tr>
+          <td><strong>Avoidance</strong></td>
+          <td>Avoidance of stimuli associated with the trauma — avoiding people, places, or conversations; inability to show feelings; not wanting to talk about the event(s)</td>
+        </tr>
+        <tr>
+          <td><strong>Hyperarousal / Increased Arousal</strong></td>
+          <td>Sleep disturbances (insomnia); irritability and anger; trouble concentrating; exaggerated startle response; hypervigilance</td>
+        </tr>
+        <tr>
+          <td><strong>Negative Cognition / Mood</strong></td>
+          <td>Detachment from relationships; interpersonal problems; guilt (Nicole: "I killed them, didn't I?"); hopelessness; shame; emotional numbness</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Acute Nursing Care — PTSD (Slide 13)</div>
+    <div class="callout priority">
+      <span class="callout-label">⚠️ Acute Phase Priorities</span>
+      <ul class="content-list">
+        <li><strong>Help client focus on the present</strong> — use a structured interview; grounding techniques (5-4-3-2-1 sensory, deep breathing, physical anchoring)</li>
+        <li><strong>Provide safety and comfort during the crisis period</strong> — quietly remain with the client; provide safety for other clients and staff as well</li>
+        <li><strong>Assess for suicide risk</strong> — a client may not always say "I'm feeling like killing myself." Listen for indirect expressions</li>
+        <li><strong>Assess for comorbid substance abuse</strong> — trauma and substance use are highly comorbid; substance intoxication or withdrawal may be occurring simultaneously</li>
+      </ul>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "What might a client say that indicates suicidal ideation — without directly stating 'I'm feeling like killing myself'? What might they say?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Textbook + Clinical Answer</span>
+        <p>Clients at risk for suicide often communicate intent indirectly. Statements that require immediate safety assessment include:</p>
+        <ul>
+          <li>"I just want to go to sleep and not wake up."</li>
+          <li>"Everyone would be better off without me."</li>
+          <li>"There's no point in going on anymore."</li>
+          <li>"I've given away most of my things recently." (behavioral cue)</li>
+          <li>"I just want the pain to stop."</li>
+          <li>"I don't care what happens to me."</li>
+          <li>"I won't be a problem for much longer."</li>
+          <li>"I killed them, didn't I?" (as in the Nicole textbook case — guilt-driven suicidality)</li>
+        </ul>
+        <p style="margin-top:10px"><strong>The nurse must:</strong></p>
+        <ul>
+          <li>Ask directly: "Are you thinking about hurting yourself or ending your life?" — research confirms this does NOT increase risk</li>
+          <li>Assess for a <strong>specific plan, method, and timeline</strong> — specificity increases imminent risk</li>
+          <li>Assess access to means (Nicole had a firearm at home — this is a critical risk factor)</li>
+          <li>Assess presence of protective factors (children, religious beliefs, strong support system)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Long-Term Goals — PTSD (Slides 13–16)</div>
+    <ul class="content-list">
+      <li>Use <strong>therapeutic communication</strong> to help the patient express feelings of anxiety — validate and acknowledge feelings without judgment</li>
+      <li>Promote <strong>client participation in decision-making</strong> related to care — restores sense of control lost during trauma</li>
+      <li>Help client identify <strong>relaxation techniques</strong> to manage pain, anxiety, and tension</li>
+      <li><strong>Instill hope for the future</strong> — but do NOT give false reassurance ("Everything will be fine" is non-therapeutic)</li>
+      <li>Assist client in <strong>identifying maladaptive defense mechanisms</strong> that interfere with recovery (denial, avoidance, substance use)</li>
+      <li><strong>Postpone health teaching until acute anxiety subsides</strong> — patient cannot learn during panic-level anxiety</li>
+      <li>Integration of the trauma into the patient's persona — acknowledging and processing rather than avoiding</li>
+      <li>Renewing significant relationships and social connections</li>
+      <li>Establishing meaningful goals for the future</li>
+      <li>Progressing through the <strong>grief process</strong></li>
+      <li>Developing a sense of optimism and hope for the future</li>
+    </ul>
+
+    <div class="sh">Evidence-Based Treatments for PTSD (Slide 18)</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Treatment</th><th>Description</th><th>Mechanism/Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Prolonged Exposure (PE)</strong></td>
+          <td>Systematic exposure to trauma-related stimuli in a structured, safe environment</td>
+          <td>Used especially with phobias; combines education, breathing retraining, and imaginal + in-vivo exposure; changes the conditioned fear response to sensory triggers</td>
+        </tr>
+        <tr>
+          <td><strong>EMDR</strong></td>
+          <td>Eye Movement Desensitization and Reprocessing — processes traumatic memories while focusing on simultaneous bilateral sensory stimuli (eye movements, sounds, taps)</td>
+          <td>Textbook: reduces anxiety symptoms by 70%; effective for PTSD, anxiety, panic disorder, and phobia; FDA-recognized treatment for PTSD</td>
+        </tr>
+        <tr>
+          <td><strong>CBT / CPT</strong></td>
+          <td>Cognitive Behavioral Therapy / Cognitive Processing Therapy — three components: (1) psychoeducation, (2) heightened awareness of thoughts/feelings about trauma, (3) skills for managing distressing thoughts</td>
+          <td>Largest evidence base of all psychotherapies for anxiety; targets cognitive distortions; helps patient understand changed beliefs about safety, trust, control, and self-esteem</td>
+        </tr>
+        <tr>
+          <td><strong>SSRIs</strong></td>
+          <td>Selective serotonin reuptake inhibitors — pharmacologic treatment</td>
+          <td>First-line pharmacotherapy for PTSD; see Pharmacology section for full details</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Important Considerations — PTSD (Slide 17)</div>
+    <div class="grid-2">
+      <div class="mini-panel red">
+        <h4>Patient Safety</h4>
+        <ul>
+          <li>Is patient depressed or suicidal?</li>
+          <li>Is there a distinct plan? Method? Timeline?</li>
+          <li>Access to lethal means (weapons, medications)?</li>
+        </ul>
+      </div>
+      <div class="mini-panel amber">
+        <h4>Physiological Integrity</h4>
+        <ul>
+          <li>Is condition causing neglect of physical health?</li>
+          <li>Adequate nutrition? Hydration?</li>
+          <li>Sleep quality and quantity?</li>
+        </ul>
+      </div>
+      <div class="mini-panel teal">
+        <h4>Functional Ability</h4>
+        <ul>
+          <li>Can patient perform job duties safely?</li>
+          <li>Parenting responsibilities intact?</li>
+          <li>Ability to maintain relationships?</li>
+        </ul>
+      </div>
+      <div class="mini-panel secondary">
+        <h4>Further Screenings</h4>
+        <ul>
+          <li>Substance use disorder screening</li>
+          <li>Domestic violence screening</li>
+          <li>Additional trauma history</li>
+          <li>PCL-5 (PTSD Checklist) — validated tool</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 5: INTERVENTIONS ═══════════ -->
+<div id="s5" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slide 5 + Textbook Clinical Management + Lecture Notes</p>
+    <h2 class="card-title">Non-Pharmacological Interventions for Anxiety</h2>
+
+    <div class="sh">Behavioral Therapies and Counseling (Slide 5)</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Intervention</th><th>Description</th><th>Evidence/Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cognitive-Behavioral Therapy (CBT)</strong></td>
+          <td>Identifies and challenges cognitive distortions; Socratic questioning to expose core beliefs; modifies dysfunctional thoughts and behaviors</td>
+          <td><strong>Largest evidence base</strong> for anxiety treatment; also effective for PTSD (as CPT)</td>
+        </tr>
+        <tr>
+          <td><strong>Mindfulness-Based CBT (MBCT)</strong></td>
+          <td>Teaches nonjudgmental awareness of thoughts as transient experiences rather than facts; does not challenge but reconceptualizes cognitive distortions</td>
+          <td>Established efficacy for GAD; teaches the skill of nonjudgmental observation — limits the anxiety that commonly follows cognitive distortions</td>
+        </tr>
+        <tr>
+          <td><strong>Prolonged Exposure Therapy</strong></td>
+          <td>Systematic, structured exposure to trauma triggers (imaginal and in-vivo); includes education, breathing retraining</td>
+          <td>Used especially with phobias and PTSD</td>
+        </tr>
+        <tr>
+          <td><strong>Family Therapy / Group Therapy</strong></td>
+          <td>Addresses family dynamics; psychoeducation; peer support</td>
+          <td>Important for relapse prevention and social reintegration</td>
+        </tr>
+        <tr>
+          <td><strong>Mindfulness/Relaxation/Breathing Techniques</strong></td>
+          <td>Diaphragmatic breathing, progressive muscle relaxation, guided imagery, meditation</td>
+          <td><strong>Activate the parasympathetic nervous system</strong>; counteract SNS fight-or-flight; evidence for both anxiety and PTSD</td>
+        </tr>
+        <tr>
+          <td><strong>Peer Support</strong></td>
+          <td>Connection with others who have similar lived experiences</td>
+          <td>Reduces shame and isolation; especially valuable for PTSD (veterans' peer programs)</td>
+        </tr>
+        <tr>
+          <td><strong>Psychoeducation</strong></td>
+          <td>Education about diagnosis, treatment, risk management, illness prevention</td>
+          <td>Textbook calls it a "foundational resource vital to all treatment" — not flashy but essential</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Nutrition and Lifestyle (Slide 5)</div>
+    <ul class="content-list">
+      <li><strong>No caffeine</strong> — stimulant; increases heart rate, nervousness, and can precipitate panic attacks</li>
+      <li><strong>No food coloring</strong> — associated with behavioral reactivity in some individuals</li>
+      <li><strong>No monosodium glutamate (MSG)</strong> — excitatory neurotransmitter precursor; may exacerbate anxiety symptoms</li>
+      <li><strong>Exercise</strong> — releases endorphins; reduces cortisol and adrenaline; improves mood, sleep, and resilience; evidence-based for anxiety reduction</li>
+      <li>Alcohol and substance avoidance — alcohol is a CNS depressant but causes rebound anxiety; substance use maintains and worsens anxiety disorders long-term</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 6: PHARMACOLOGY ═══════════ -->
+<div id="s6" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slide 19 + Textbook Chapter 31 Pharmacotherapy + Lecture Notes</p>
+    <h2 class="card-title">Pharmacology — Anxiety &amp; PTSD</h2>
+
+    <div class="callout info">
+      <span class="callout-label">🎓 Prof's Framework for Pharmacology</span>
+      <p>Prof distinguishes between <strong>acute/crisis management</strong> and <strong>long-term/maintenance treatment</strong>. Benzodiazepines are quick-acting but for short-term (crisis) use only; long-term use leads to dependence. SSRIs are considered first-line for long-term treatment of both anxiety disorders and PTSD. Buspirone is safe for long-term use with no dependence potential.</p>
+    </div>
+
+    <div class="sh">Complete Pharmacology Table</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Class</th><th>Examples</th><th>Mechanism</th><th>Clinical Use</th><th>Key Teaching / Side Effects</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill purple">SSRIs</span> <span class="pill green">First-Line Long-Term</span></td>
+          <td><span class="drug-box">Paroxetine (Paxil)</span><br><span class="drug-box">Fluoxetine</span><br><span class="drug-box">Sertraline</span><br><span class="drug-box">Escitalopram</span></td>
+          <td>Inhibit presynaptic reuptake of serotonin → ↑serotonin availability postsynaptically</td>
+          <td>First-line long-term for panic disorder, PTSD, GAD, social anxiety. Paroxetine specifically indicated for panic disorder.</td>
+          <td><strong>Takes 4–6 weeks for full effect</strong>. Do NOT stop abruptly (discontinuation syndrome). Risk of <strong>serotonin syndrome</strong> when combined with other serotonergic agents. NCLEX: do NOT confuse onset with benzos.</td>
+        </tr>
+        <tr>
+          <td><span class="pill pink">Benzodiazepines</span> <span class="pill red">Short-Term Only</span></td>
+          <td><span class="drug-box">Lorazepam (Ativan)</span><br><span class="drug-box">Alprazolam (Xanax)</span><br><span class="drug-box">Diazepam (Valium)</span><br><span class="drug-box">Clonazepam</span></td>
+          <td>Enhance effect of GABA (inhibitory neurotransmitter) → calm nerve activity</td>
+          <td>Acute/crisis anxiolytic. Fast-acting, PRN use for panic attacks. Prof: "quick acting, short term (crisis) use — long term use may lead to dependence."</td>
+          <td><strong>Risk of dependence and tolerance</strong>. CNS depression. Caution with driving/machinery. Avoid alcohol (additive CNS depression). Do NOT stop abruptly (risk of life-threatening withdrawal — seizures). Textbook: increases dementia risk by 16% with long-term use.</td>
+        </tr>
+        <tr>
+          <td><span class="pill teal">Buspirone</span> <span class="pill green">Long-Term Safe</span></td>
+          <td><span class="drug-box">Buspirone (BuSpar)</span></td>
+          <td>Serotonin 1A partial agonist → diminishes serotonin activity postsynaptically → anxiolytic with less CNS sedation than benzos</td>
+          <td>Long-term anxiolytic maintenance. Does NOT cause dependence. Does NOT cause CNS sedation. Suitable for GAD long-term management.</td>
+          <td><strong>Takes 1–4 weeks for effect</strong> — NOT for acute PRN use. No abuse potential. Teach patient not to expect immediate relief. Can be taken long-term safely. No interaction with alcohol (unlike benzos).</td>
+        </tr>
+        <tr>
+          <td><span class="pill purple">SNRIs</span></td>
+          <td><span class="drug-box">Venlafaxine</span><br><span class="drug-box">Duloxetine</span></td>
+          <td>Block presynaptic reuptake of both serotonin AND norepinephrine → ↑availability of both</td>
+          <td>Venlafaxine: FDA-indicated for panic disorder, social anxiety, GAD. Duloxetine: FDA-indicated for GAD.</td>
+          <td>Similar to SSRIs. <strong>Discontinuation syndrome if stopped abruptly</strong>. May elevate blood pressure with venlafaxine at high doses.</td>
+        </tr>
+        <tr>
+          <td><span class="pill gray">Beta-Blockers</span></td>
+          <td><span class="drug-box">Propranolol</span></td>
+          <td>Bind β-adrenergic receptors → block effects of epinephrine/norepinephrine → block physiologic manifestations of anxiety</td>
+          <td>Performance anxiety, phobias, panic disorder (physical symptom management). Also used for akathisia (EPS from antipsychotics).</td>
+          <td>Not first-line. Contraindicated in asthma, persistent hypotension, CHF. Side effects: bradycardia, hypotension, dizziness, fatigue.</td>
+        </tr>
+        <tr>
+          <td><span class="pill gray">Atypical / Antihistamine</span></td>
+          <td><span class="drug-box">Hydroxyzine</span></td>
+          <td>Blocks histamine-1 receptors → sedation</td>
+          <td>Short-term anxiety relief; alternative when benzos contraindicated; less addictive than benzos</td>
+          <td>Sedating — caution with driving. Non-habit forming. Also used for pruritus.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sh">Prof's NCLEX-Style Questions on Pharmacology</div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>NCLEX Q: "A patient in acute anxiety needs a PRN anxiolytic. Options: Buspirone, Lorazepam, Amitriptyline, Fluoxetine. Which is most appropriate?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Answer: Lorazepam (Ativan)</span>
+        <p>Reasoning:</p>
+        <ul>
+          <li><strong>Lorazepam (Ativan)</strong> = benzodiazepine = <strong>fast-acting anxiolytic = appropriate for acute/PRN use</strong></li>
+          <li>Buspirone — takes 1–4 weeks to work; NOT for acute or PRN use</li>
+          <li>Amitriptyline — tricyclic antidepressant (TCA); no PRN anxiolytic indication; not used for panic disorder first-line</li>
+          <li>Fluoxetine — SSRI; takes 4–6 weeks; NOT for PRN or acute use</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Key principle:</strong> Benzos = fast/acute/crisis. SSRIs and Buspirone = slow/maintenance/long-term.</p>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>NCLEX Q (SATA): "Teaching a patient newly prescribed Lorazepam (Ativan) for panic disorder — which information should the nurse include?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Select All That Apply — Correct Answers</span>
+        <ul>
+          <li>✅ <strong>Caution with driving and use of machinery</strong> — CNS depression impairs coordination and reaction time</li>
+          <li>✅ <strong>Avoid alcoholic beverages</strong> — both cause CNS depression; combination is dangerous (additive effect)</li>
+          <li>✅ <strong>Restrict caffeine intake</strong> — caffeine is a stimulant that can precipitate or worsen panic attacks</li>
+          <li>✅ <strong>For short-term use only</strong> — long-term use leads to physical dependence and withdrawal risk</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Incorrect options (common distractors):</strong></p>
+        <ul>
+          <li>❌ "Foods allowed on a tyramine-free diet" — tyramine-free diet is for MAOIs, NOT benzos</li>
+          <li>❌ "Take on an empty stomach" — not a benzo-specific requirement; food does not significantly affect benzo absorption</li>
+          <li>❌ "Takes 1–4 weeks to take effect" — that is Buspirone; benzos work within 30–60 minutes</li>
+          <li>❌ "Take at the same time every day" — benzos are often PRN, not scheduled</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span>Prof asks: "What is the difference between 'first-line' and 'first-generation' medications?"</span>
+        <span class="qa-icon">▼</span>
+      </div>
+      <div class="qa-answer">
+        <span class="answer-tag">✓ Important Distinction</span>
+        <ul>
+          <li><strong>First-line</strong> = the treatment that should be tried FIRST based on evidence — best efficacy, best safety profile, most supported by research. Example: SSRIs are <em>first-line</em> for anxiety disorders.</li>
+          <li><strong>First-generation</strong> = the earliest developed medications in a class, which may have MORE side effects than newer versions. Example: Typical antipsychotics (haloperidol, chlorpromazine) are <em>first-generation</em> antipsychotics — but they are NOT first-line anymore due to EPS risks.</li>
+          <li>These terms can point in opposite directions — something can be first-generation but NOT first-line (e.g., TCAs for anxiety).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 7: CRISIS INTERVENTION ═══════════ -->
+<div id="s7" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Slide 15 + Therapeutic Communication</p>
+    <h2 class="card-title">Crisis Intervention &amp; Therapeutic Communication</h2>
+
+    <div class="sh">Goals of Crisis Intervention (Slide 15)</div>
+    <ul class="content-list">
+      <li><strong>Psychological resolution of the immediate crisis</strong> — deal with the "here and now"; do not attempt to process the entire trauma history in crisis</li>
+      <li><strong>Restoration to the level of functioning before the crisis period</strong> — stabilize and return to baseline</li>
+      <li><strong>Once past the crisis — improvement in functioning above the pre-crisis level</strong> — growth and resilience-building following recovery</li>
+    </ul>
+
+    <div class="callout info">
+      <span class="callout-label">📘 Concept — Therapeutic Communication with Anxious Patients</span>
+      <p>Therapeutic communication for anxiety is fundamentally about <strong>acknowledging the person's felt experience</strong>, not correcting or educating them. The nurse's goal during a crisis is to create safety, not to problem-solve or teach. All psychoeducation and behavioral intervention is reserved for <em>after</em> the crisis has resolved.</p>
+    </div>
+
+    <div class="sh">Therapeutic Communication Principles for Anxiety/PTSD</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Principle</th><th>Correct Approach</th><th>What to Avoid</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>During Active Panic</strong></td>
+          <td>Stay present; calm voice; "You are safe, I will not leave you"; slow breathing instruction; minimize stimuli</td>
+          <td>Abandonment; health teaching; overloading with information; dismissing symptoms</td>
+        </tr>
+        <tr>
+          <td><strong>Validating Anxiety</strong></td>
+          <td>"It seems like you're feeling really overwhelmed right now" — reflects their experience back to them without judgment</td>
+          <td>"You're going to be fine" (false reassurance); "Just calm down" (dismissive)</td>
+        </tr>
+        <tr>
+          <td><strong>PTSD / Trauma Focus</strong></td>
+          <td>Encourage expression of feelings at the patient's pace; validate that their reaction is normal; focus on the present moment</td>
+          <td>Forcing patient to recount trauma in crisis; probing for details before patient is ready; minimizing the traumatic event</td>
+        </tr>
+        <tr>
+          <td><strong>Suicide Screening</strong></td>
+          <td>Ask directly and calmly: "Are you thinking about harming or ending your life?" Assess plan, method, intent, timeline, access to means</td>
+          <td>Avoiding the question out of fear of "planting the idea" — research disproves this concern</td>
+        </tr>
+        <tr>
+          <td><strong>Hope Without False Promises</strong></td>
+          <td>Acknowledge current pain while pointing toward treatment and recovery: "I know this is incredibly difficult. There are treatments that help many people."</td>
+          <td>"Everything will work out fine" — cannot be guaranteed; destroys therapeutic trust if untrue</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 8: EXAM REVIEW ═══════════ -->
+<div id="s8" class="section">
+
+  <div class="card">
+    <p class="card-subtitle">Comprehensive Priority Review for Exam</p>
+    <h2 class="card-title">Exam Priority Review — Anxiety Disorders</h2>
+
+    <div class="callout exam">
+      <span class="callout-label">⭐ What Prof Tests (Based on Slide Emphasis + Lecture Notes)</span>
+      <ul class="content-list">
+        <li>Priority nursing action during acute panic attack: <strong>STAY with the patient, minimize stimuli</strong></li>
+        <li>Why postpone teaching during panic? Client <strong>cannot learn new information</strong> at panic anxiety level</li>
+        <li>Why does deep breathing help panic? Activates the <strong>parasympathetic nervous system</strong></li>
+        <li>First action in assessment: <strong>assess for suicidal ideation</strong> (bolded on slide as priority)</li>
+        <li>What do indirect suicidal statements sound like — multiple examples</li>
+        <li>Therapeutic communication examples for anxious/PTSD patients — feelings-focused, not content-focused</li>
+        <li>Difference between <strong>Benzodiazepines</strong> (fast, short-term, dependence risk) vs. <strong>SSRIs</strong> (slow, long-term, first-line) vs. <strong>Buspirone</strong> (slow, long-term, no dependence)</li>
+        <li>PTSD evidence-based treatments: EMDR, CBT/CPT, prolonged exposure</li>
+        <li>Rule out medical causes before assuming psychiatric: cardiac, thyroid, pheochromocytoma</li>
+        <li>Crisis intervention goals: here-and-now, restore pre-crisis function, improve above pre-crisis</li>
+      </ul>
+    </div>
+
+    <div class="sh">Quick-Reference Pharmacology Summary</div>
+    <div class="grid-3">
+      <div class="mini-panel red">
+        <h4>Benzodiazepines — ACUTE</h4>
+        <ul>
+          <li>Fast: 30–60 min onset</li>
+          <li>Short-term/crisis use only</li>
+          <li>Lorazepam = PRN anxiolytic</li>
+          <li>Risk: dependence, withdrawal</li>
+          <li>Avoid alcohol</li>
+          <li>Caution: driving/machinery</li>
+          <li>NOT: tyramine diet, "takes weeks"</li>
+        </ul>
+      </div>
+      <div class="mini-panel">
+        <h4>SSRIs — LONG-TERM</h4>
+        <ul>
+          <li>First-line long-term</li>
+          <li>Takes 4–6 weeks</li>
+          <li>Paroxetine, fluoxetine, sertraline</li>
+          <li>Risk: serotonin syndrome (combos)</li>
+          <li>Do not stop abruptly</li>
+          <li>NOT for PRN/acute use</li>
+        </ul>
+      </div>
+      <div class="mini-panel green">
+        <h4>Buspirone — LONG-TERM SAFE</h4>
+        <ul>
+          <li>Takes 1–4 weeks</li>
+          <li>NO dependence/abuse potential</li>
+          <li>NOT for acute/PRN use</li>
+          <li>Can be used long-term safely</li>
+          <li>Serotonin 1A partial agonist</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sh">Prof's Recurring Teaching Themes</div>
+    <div class="callout priority">
+      <span class="callout-label">🎓 These Show Up Repeatedly — Know These Cold</span>
+      <ul class="content-list">
+        <li><strong>Safety first:</strong> suicidal ideation assessment is always the top priority with mental health patients</li>
+        <li><strong>Therapeutic communication:</strong> focus on feelings, not content; stay present; validate</li>
+        <li><strong>Timing of education:</strong> never teach during acute panic — postpone until anxiety subsides</li>
+        <li><strong>PNS activation:</strong> breathing/relaxation → parasympathetic → counteracts fight-or-flight</li>
+        <li><strong>Rule out medical first:</strong> tachycardia, chest pain, SOB → confirm not MI/PE before diagnosing panic</li>
+        <li><strong>Dependence vs. efficacy:</strong> benzos work fast but cause dependence; SSRIs are safer long-term but require patience</li>
+        <li><strong>False reassurance vs. therapeutic hope:</strong> "it will be fine" ≠ "treatments exist that help many people"</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end page-wrap -->
+
+<footer>
+  <p>HCC2 — Anxiety Disorders: Panic Disorder &amp; PTSD | Comprehensive Study Guide | Spring 2026</p>
+</footer>
+
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function toggleQA(el) {
+  const ans = el.nextElementSibling;
+  const icon = el.querySelector('.qa-icon');
+  ans.classList.toggle('open');
+  icon.textContent = ans.classList.contains('open') ? '▲' : '▼';
+}
+</script>
+</body>
+</html>

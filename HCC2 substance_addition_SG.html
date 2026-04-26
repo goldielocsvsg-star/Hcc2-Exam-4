@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HCC2 Substance Misuse & Addiction | Interactive Study Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  --blue:#1d4ed8;--blue2:#2563eb;--blueLight:#dbeafe;--navy:#172554;
+  --red:#b91c1c;--redDark:#7f1d1d;--redLight:#fee2e2;
+  --white:#ffffff;--bg:#f8fafc;--card:#ffffff;--border:#cbd5e1;
+  --text:#0f172a;--muted:#475569;--green:#065f46;--greenLight:#d1fae5;
+  --amber:#92400e;--amberLight:#fef3c7;--slate:#334155;--slateLight:#f1f5f9;
+  --heading:#0f172a;--subheading:#1e3a8a;--panelHead:#1e3a8a;
+  --navText:#334155;--progressColor:#1d4ed8;
+  --shadow:0 4px 12px rgba(15,23,42,.08);--shadowLg:0 16px 32px rgba(29,78,216,.18);
+}
+body.dark{
+  --blue:#93c5fd;--blue2:#60a5fa;--blueLight:#1e3a6e;--navy:#dbeafe;
+  --red:#fca5a5;--redDark:#fecaca;--redLight:#3b1515;
+  --white:#111827;--bg:#0b1120;--card:#131f35;--border:#2d3f5e;
+  --text:#dde8f8;--muted:#94a3b8;--green:#6ee7b7;--greenLight:#0d2e20;
+  --amber:#fcd34d;--amberLight:#2e2010;--slate:#c7d4e8;--slateLight:#182035;
+  --heading:#e2ecff;--subheading:#93c5fd;--panelHead:#93c5fd;
+  --navText:#c7d4e8;--progressColor:#60a5fa;
+  --shadow:0 6px 16px rgba(0,0,0,.4);--shadowLg:0 16px 32px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15.5px;transition:background .25s,color .25s}
+
+/* ── HEADER ── */
+.header{background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 28%,#1e3a8a 28%,#172554 100%);padding:36px 22px;box-shadow:var(--shadowLg);position:relative;overflow:hidden}
+.header:before{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:999px;border:28px solid rgba(255,255,255,.12)}
+.header-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:18px;align-items:flex-start;position:relative;z-index:2}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;padding:4px 12px;border-radius:999px;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;margin-bottom:10px}
+.header h1{font-family:'Playfair Display',serif;color:#ffffff;font-size:2.2rem;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.header p{color:rgba(255,255,255,.9);max-width:760px;font-size:.93rem}
+
+/* ── CONTROLS / BUTTONS ── */
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}
+.btn{border:2px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(255,255,255,.15);color:#fff;padding:9px 16px;font-weight:700;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .18s,border-color .18s;white-space:nowrap}
+.btn:hover{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.7)}
+
+/* Dark toggle pill */
+.dark-toggle{position:relative;display:flex;align-items:center;gap:8px;padding:8px 14px}
+.toggle-track{width:38px;height:20px;border-radius:999px;background:rgba(255,255,255,.3);position:relative;transition:background .25s;flex-shrink:0}
+.toggle-thumb{width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+body.dark .toggle-thumb{transform:translateX(18px);background:#93c5fd}
+body.dark .toggle-track{background:rgba(147,197,253,.45)}
+.toggle-label{font-size:.82rem;font-weight:700;min-width:62px}
+
+/* ── TOOLBAR ── */
+.toolbar{background:var(--card);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:50;box-shadow:var(--shadow)}
+.toolbar-inner{max-width:1180px;margin:auto;padding:10px 16px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.search{width:100%;border:1.5px solid var(--border);background:var(--bg);color:var(--text);border-radius:999px;padding:10px 18px;font-weight:600;font-size:.9rem;outline:none;transition:border-color .18s}
+.search:focus{border-color:var(--blue)}
+.progressText{font-size:.82rem;color:var(--progressColor);font-weight:800;white-space:nowrap}
+
+/* ── NAV ── */
+.nav{background:var(--card);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1180px;margin:auto;padding:8px 14px;display:flex;gap:5px;overflow-x:auto;scrollbar-width:thin}
+.nav-btn{white-space:nowrap;border:none;background:transparent;color:var(--navText);padding:8px 13px;border-radius:10px;font-weight:700;font-size:.78rem;cursor:pointer;transition:background .18s,color .18s}
+.nav-btn:hover{background:var(--blueLight);color:var(--blue)}
+.nav-btn.active{background:var(--blueLight);color:var(--blue);font-weight:800}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1180px;margin:auto;padding:32px 18px 80px}
+.section{display:none}.section.active{display:block}
+
+/* ── CARD ── */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:30px 34px;margin-bottom:24px;box-shadow:var(--shadow)}
+.card-title{font-family:'Playfair Display',serif;color:var(--heading);font-size:1.55rem;line-height:1.18;margin-bottom:5px}
+.subtitle{font-size:.75rem;font-weight:800;color:var(--subheading);text-transform:uppercase;letter-spacing:1.3px;border-bottom:2px solid var(--border);padding-bottom:12px;margin-bottom:18px}
+.sh{font-size:.73rem;letter-spacing:1.3px;text-transform:uppercase;color:var(--subheading);font-weight:900;margin:24px 0 11px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+
+/* ── PROSE ── */
+p{margin-bottom:10px;color:var(--text)}
+strong{color:var(--heading);font-weight:700}
+.content-list{list-style:none}
+.content-list li{position:relative;padding:6px 0 6px 22px;border-top:1px solid rgba(148,163,184,.15);color:var(--text)}
+.content-list li:first-child{border-top:none}
+.content-list li:before{content:"›";position:absolute;left:5px;top:4px;color:var(--blue2);font-weight:900;font-size:1.1rem}
+
+/* ── GRID ── */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* ── CALLOUTS ── */
+.callout{border-radius:13px;padding:16px 18px;margin:16px 0;border-left:5px solid var(--blue);background:var(--blueLight)}
+.callout-label{display:block;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px}
+.callout p{color:var(--text)}
+.callout.info{background:var(--blueLight);border-left-color:var(--blue)}
+.callout.info .callout-label{color:var(--blue)}
+.callout.danger{background:var(--redLight);border-left-color:var(--red)}
+.callout.danger .callout-label{color:var(--red)}
+.callout.priority{background:var(--redLight);border:2px solid var(--red)}
+.callout.priority .callout-label{color:var(--red)}
+.callout.green{background:var(--greenLight);border-left-color:var(--green)}
+.callout.green .callout-label{color:var(--green)}
+.callout.amber{background:var(--amberLight);border-left-color:var(--amber)}
+.callout.amber .callout-label{color:var(--amber)}
+
+/* ── PANELS ── */
+.panel{background:var(--slateLight);border-radius:14px;padding:18px;border-top:4px solid var(--blue);margin:12px 0}
+.panel.red{border-top-color:var(--red)}
+.panel.green{border-top-color:var(--green)}
+.panel.amber{border-top-color:var(--amber)}
+.panel h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;color:var(--panelHead);font-weight:800}
+.panel ul{list-style:none}
+.panel li{padding:5px 0 5px 18px;position:relative;color:var(--text)}
+.panel li:before{content:"•";position:absolute;left:3px;color:var(--blue);font-weight:900}
+.panel.red li:before{color:var(--red)}
+.panel.green li:before{color:var(--green)}
+
+/* ── TABLES ── */
+.table{width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid var(--border);border-radius:13px;overflow:hidden;margin:18px 0;font-size:.88rem}
+.table th{background:linear-gradient(135deg,var(--red),var(--blue));color:#fff;padding:12px 14px;text-align:left;font-size:.78rem;letter-spacing:.3px;font-weight:700}
+.table td{padding:12px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text)}
+.table tr:nth-child(even) td{background:rgba(148,163,184,.06)}
+
+/* ── PILLS & DRUGS ── */
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;margin:2px;font-size:.67rem;font-weight:900;text-transform:uppercase;color:#fff}
+.pill.red{background:#b91c1c}
+.pill.blue{background:#1d4ed8}
+.pill.green{background:#065f46}
+.pill.amber{background:#b45309}
+.drug{display:inline-block;background:var(--blueLight);color:var(--blue);border:1.5px solid rgba(37,99,235,.22);padding:3px 9px;border-radius:8px;font-weight:800;margin:2px;font-size:.82rem}
+
+/* ── ACCORDION ── */
+.accordion{margin:14px 0;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card)}
+.acc-head{width:100%;border:0;background:var(--slateLight);color:var(--heading);padding:14px 18px;text-align:left;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.acc-head:hover{background:var(--blueLight);color:var(--blue)}
+.acc-body{display:none;padding:20px}
+.acc-body.open{display:block}
+
+/* ── CHECKLIST ── */
+.checkline{display:flex;gap:10px;align-items:flex-start;margin:9px 0;color:var(--text)}
+.checkline input{margin-top:4px;transform:scale(1.15);accent-color:var(--blue)}
+
+/* ── FLASHCARDS ── */
+.flashcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.flash{background:var(--slateLight);border:1.5px solid var(--border);border-radius:15px;padding:18px;box-shadow:var(--shadow)}
+.flash b{color:var(--subheading);display:block;margin-bottom:6px;font-size:.9rem}
+.flash p{color:var(--text);font-size:.88rem;margin:0}
+
+/* ── MISC ── */
+.hiddenSearch{display:none!important}
+.printOnly{display:none}
+.btt{position:fixed;right:22px;bottom:22px;border:none;width:46px;height:46px;border-radius:999px;background:linear-gradient(135deg,var(--red),var(--blue));color:#fff;font-weight:900;font-size:1.1rem;box-shadow:var(--shadowLg);cursor:pointer;transition:transform .15s}
+.btt:hover{transform:scale(1.1)}
+footer{max-width:1180px;margin:auto;padding:28px 18px;color:var(--muted);text-align:center;border-top:1px solid var(--border);font-size:.85rem}
+
+/* ── PRINT OVERLAY ── */
+#printOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center}
+#printOverlay.show{display:flex}
+.print-modal{background:var(--card);border-radius:18px;padding:36px;max-width:440px;width:90%;text-align:center;box-shadow:var(--shadowLg)}
+.print-modal h3{font-family:'Playfair Display',serif;color:var(--heading);font-size:1.35rem;margin-bottom:10px}
+.print-modal p{color:var(--muted);margin-bottom:22px;font-size:.9rem}
+.print-modal-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pm-btn{border:none;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer;font-size:.9rem}
+.pm-btn.primary{background:linear-gradient(135deg,var(--red),var(--blue));color:#fff}
+.pm-btn.secondary{background:var(--slateLight);color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:850px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .header-inner{flex-direction:column}
+  .card{padding:22px 18px}
+  .header h1{font-size:1.65rem}
+  .toolbar-inner{grid-template-columns:1fr}
+  .progressText{text-align:center}
+}
+
+/* ── PRINT ── */
+@media print{
+  .header,.toolbar,.nav,.btt,.controls,#printOverlay{display:none!important}
+  .section{display:block!important}
+  .card{box-shadow:none;break-inside:avoid;border:1px solid #ccc}
+  body{color:#000!important;background:#fff!important}
+  .printOnly{display:block}
+  .table th{background:#1d4ed8!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <span class="badge">HCC2 • Substance Misuse & Addiction</span>
+      <h1>Substance Use / Substance Abuse Disorder Deep-Dive Study Guide</h1>
+      <p>Objective-driven, clinical judgment focused interactive guide built from HCC2 addiction slides, module objectives, book notes, and class study notes.</p>
+    </div>
+    <div class="controls">
+      <!-- Dark Mode Toggle -->
+      <button class="btn dark-toggle" onclick="toggleDark()" id="darkBtn" aria-label="Toggle dark mode">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-label" id="darkLabel">Light Mode</span>
+      </button>
+      <!-- Print/PDF -->
+      <button class="btn" onclick="openPrint()">📄 Save PDF</button>
+      <!-- Expand All -->
+      <button class="btn" onclick="expandAll()">Expand All</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ TOOLBAR ═══ -->
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <input id="searchInput" class="search" placeholder="Search: alcohol withdrawal, Narcan, CAGE, CIWA, trauma, relapse..." oninput="searchGuide()" />
+    <span class="progressText" id="progressText">0% checked</span>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav"><div class="nav-inner">
+  <button class="nav-btn active" onclick="showSection('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showSection('risk',this)">Risk + Trauma</button>
+  <button class="nav-btn" onclick="showSection('assessment',this)">Assessment</button>
+  <button class="nav-btn" onclick="showSection('alcohol',this)">Alcohol</button>
+  <button class="nav-btn" onclick="showSection('opioids',this)">Opioids</button>
+  <button class="nav-btn" onclick="showSection('stimulants',this)">Stimulants</button>
+  <button class="nav-btn" onclick="showSection('depressants',this)">Sedatives/CNS Depressants</button>
+  <button class="nav-btn" onclick="showSection('other',this)">Cannabis/Hallucinogens/Inhalants</button>
+  <button class="nav-btn" onclick="showSection('meds',this)">Medication Review</button>
+  <button class="nav-btn" onclick="showSection('recovery',this)">Recovery + Relapse</button>
+  <button class="nav-btn" onclick="showSection('master',this)">Final Master Review</button>
+</div></nav>
+
+<!-- ═══ PRINT MODAL ═══ -->
+<div id="printOverlay">
+  <div class="print-modal">
+    <h3>📄 Save as PDF</h3>
+    <p>All sections will print together. In the print dialog, choose <strong>"Save as PDF"</strong> as the destination to download a PDF copy.</p>
+    <div class="print-modal-btns">
+      <button class="pm-btn primary" onclick="doPrint()">Open Print Dialog</button>
+      <button class="pm-btn secondary" onclick="closePrint()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main class="wrap" id="guideRoot">
+
+<!-- OVERVIEW -->
+<section id="overview" class="section active searchable">
+  <div class="card">
+    <p class="subtitle">Module Goal + Concept Foundation</p>
+    <h2 class="card-title">Big Picture: What Addiction Means in HCC2</h2>
+    <div class="callout info"><span class="callout-label">Core Concept</span>
+      <p><strong>Substance misuse and addiction</strong> is not just "using drugs." In your notes, addiction is framed as a compulsive dependence on a substance or behavior that creates psychological, physical, economic, social, or legal consequences. The HCC2 priority is not moral judgment. The priority is <strong>recognition, assessment, emergency safety, motivation toward recovery, and continuity of care</strong>.</p>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><h4>What addiction includes</h4><ul><li>Inability to abstain.</li><li>Craving or strong desire to use.</li><li>Intoxication effects while the substance is active.</li><li>Tolerance requiring more substance for the same effect.</li><li>Withdrawal when the substance is reduced or stopped.</li><li>Relapse risk even after periods of sobriety.</li></ul></div>
+      <div class="panel red"><h4>What makes this an exam safety topic</h4><ul><li>Alcohol withdrawal can progress to seizures and death.</li><li>Benzodiazepine withdrawal can cause seizures.</li><li>Opioid overdose can cause respiratory arrest.</li><li>Stimulant intoxication can cause dysrhythmias, seizures, coma, or suicidal crash.</li><li>Patients may deny or underreport use, so the nurse must assess patterns.</li></ul></div>
+    </div>
+    <div class="sh">Key Terms and Definitions</div>
+    <table class="table"><thead><tr><th>Term</th><th>Meaning in nursing/exam language</th><th>Why it matters</th></tr></thead><tbody>
+      <tr><td><strong>Abstinence</strong></td><td>Not using the substance.</td><td>Often the recovery goal for many substances in the notes.</td></tr>
+      <tr><td><strong>Craving</strong></td><td>Strong desire to use.</td><td>Craving is part of relapse risk and needs a planned coping response.</td></tr>
+      <tr><td><strong>Intoxication</strong></td><td>Behavioral/physical symptoms from active substance use.</td><td>May require overdose assessment, respiratory support, safety precautions, or toxicology workup.</td></tr>
+      <tr><td><strong>Tolerance</strong></td><td>Need for more substance to get the same reward/effect.</td><td>Suggests adaptation of the brain and increases overdose risk.</td></tr>
+      <tr><td><strong>Withdrawal</strong></td><td>Symptoms after stopping or reducing use.</td><td>Can be uncomfortable or life-threatening depending on substance.</td></tr>
+      <tr><td><strong>Denial</strong></td><td>Deception of self/others or minimization of substance use.</td><td>Requires therapeutic, nonjudgmental assessment instead of confrontation.</td></tr>
+      <tr><td><strong>Relapse</strong></td><td>Return toward use or craving after recovery efforts.</td><td>Common and should be planned for, not treated as moral failure.</td></tr>
+    </tbody></table>
+    <div class="callout priority"><span class="callout-label">Priority Nursing Lens</span><p>When the patient is chemically impaired, first ask: <strong>Is this withdrawal? Is this overdose? Is airway/breathing/circulation threatened? Is the patient suicidal or self-destructive? Are there physical complications?</strong> That thinking pattern matches your course objectives and your slides.</p></div>
+  </div>
+</section>
+
+<!-- RISK + TRAUMA -->
+<section id="risk" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Risk Factors + Trauma Connection</p>
+    <h2 class="card-title">Why Substance Use Disorder Develops: Risk, Coping, Trauma, and Brain Reward</h2>
+    <div class="callout info"><span class="callout-label">Big Picture</span><p>Your professor notes repeatedly connect substance use with <strong>trauma, mental illness, maladaptive coping, poverty, poor support, and family/genetic risk</strong>. The nursing trap is assuming the substance is the whole problem. In this module, addiction is often a coping strategy that became dangerous, compulsive, and physiologically reinforced.</p></div>
+    <div class="grid-3">
+      <div class="panel"><h4>Genetic</h4><ul><li>Slides note that about 40–60% of alcoholism risk comes from inheritance.</li><li>Family history increases vulnerability but does not remove responsibility for recovery.</li></ul></div>
+      <div class="panel"><h4>Environmental</h4><ul><li>Poverty, poor educational resources, poor parental supervision, impaired support systems.</li><li>Stress and anxiety can increase, while positive social ties decrease.</li><li>Maladaptive coping may become alcohol/drug use.</li></ul></div>
+      <div class="panel"><h4>Sociocultural</h4><ul><li>Some cultures normalize alcohol as everyday life.</li><li>Other cultures strictly forbid substance use.</li><li>The nurse assesses without assuming values or shaming.</li></ul></div>
+    </div>
+    <div class="callout amber"><span class="callout-label">Trauma Connection</span><p>Your slides describe trauma as a "bruising" of the central nervous system that can alter neurotransmitter production and neural pathways. The important nursing translation: many clients are not simply "choosing drugs"; they may be attempting to medicate traumatic activation, hyperarousal, anxiety, pain, or emotional distress.</p></div>
+    <table class="table"><thead><tr><th>Trauma/SUD Link</th><th>Nursing Meaning</th><th>Exam Trap</th></tr></thead><tbody>
+      <tr><td>Trauma and addictive behavior are connected.</td><td>Assessment must include trauma history, coping, mental illness, and safety.</td><td>Do not isolate substance use from mental health.</td></tr>
+      <tr><td>Addictive behavior may medicate traumatic activation.</td><td>The substance may temporarily reduce distress, fear, anxiety, or hypervigilance.</td><td>Do not lecture first; explore function of use.</td></tr>
+      <tr><td>Recovery from either requires recovering from both.</td><td>Long-term plan must address both trauma and substance use patterns.</td><td>Detox alone is not the whole recovery plan.</td></tr>
+    </tbody></table>
+    <div class="callout green"><span class="callout-label">Clinical Judgment Note</span><p>Therapeutic care means being <strong>nonjudgmental but firm</strong>. The nurse can hold boundaries, protect safety, and still communicate dignity. Shame increases hiding; trust improves disclosure.</p></div>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Screening, History, Safety Assessment</p>
+    <h2 class="card-title">Assessment of the Chemically Impaired Patient</h2>
+    <div class="callout priority"><span class="callout-label">Do This First</span><p>For a chemically impaired patient, the first priority is determining whether the patient is experiencing <strong>life-threatening withdrawal, overdose, suicidal/self-destructive behavior, or physical complications</strong>. Long-term teaching comes after immediate stabilization.</p></div>
+    <div class="sh">History Clues That Suggest Substance Use Disorder</div>
+    <ul class="content-list">
+      <li>Problems in legal, financial, social, marital, or occupational functioning.</li>
+      <li>Leisure activities frequently involve alcohol or other drugs.</li>
+      <li>Frequent references to alcohol/drugs suggest preoccupation.</li>
+      <li>Driving while intoxicated.</li>
+      <li>Injuries from falls, fights, automobile crashes, burns, or other trauma.</li>
+      <li>Hesitation to disclose substance use because of fear, shame, stigma, or consequences.</li>
+      <li>Use of prescription meds, OTC meds, herbal/homeopathic products, caffeine, tobacco, alcohol, and recreational substances should be explored.</li>
+    </ul>
+    <div class="grid-2">
+      <div class="panel"><h4>CAGE-AID</h4><ul><li><strong>C</strong>ut down: felt need to reduce use?</li><li><strong>A</strong>nnoyed: criticized by others?</li><li><strong>G</strong>uilty: felt bad/guilty?</li><li><strong>E</strong>ye-opener: drink/use first thing to steady nerves or relieve symptoms?</li></ul></div>
+      <div class="panel red"><h4>Major Assessment Priorities</h4><ul><li>Assess severe withdrawal first.</li><li>Assess overdose needing immediate attention.</li><li>Assess suicidal thoughts/self-destructive behavior.</li><li>Evaluate complications from drug use.</li><li>Explore interest in doing something about the problem.</li><li>Assess patient/family knowledge of treatment resources.</li></ul></div>
+    </div>
+    <table class="table"><thead><tr><th>Assessment Finding</th><th>Why It Matters</th><th>Nursing Response</th></tr></thead><tbody>
+      <tr><td>Respirations below 10/min, hypoxia, difficult to arouse</td><td>Possible opioid or sedative overdose with impaired ventilation.</td><td>Airway/oxygen support, naloxone if opioid suspected/orders/protocol, monitor LOC/VS.</td></tr>
+      <tr><td>Tremors, diaphoresis, elevated HR/BP/temp after alcohol cessation</td><td>Alcohol withdrawal may progress to seizures/DTs.</td><td>CIWA-Ar if used, benzodiazepine per protocol, frequent VS trends, seizure precautions.</td></tr>
+      <tr><td>Depressed mood, suicidal thoughts during stimulant withdrawal</td><td>Stimulant crash can create serious self-harm risk.</td><td>Suicide assessment, safety precautions, notify provider as needed.</td></tr>
+      <tr><td>Confusion, delirium, paranoia after sedative withdrawal</td><td>Withdrawal can be dangerous and seizure-related.</td><td>Close monitoring, gradual taper if ordered, safety and seizure precautions.</td></tr>
+    </tbody></table>
+    <div class="callout amber"><span class="callout-label">Therapeutic Communication</span><p>Use confidentiality, rapport, active listening, affirmation, and motivational interviewing style. Avoid arguing. Avoid "You need to stop now" as the first move. Better nursing thinking: <strong>What does this substance do for the patient? What are they afraid will happen without it? What goal matters enough to them to consider change?</strong></p></div>
+  </div>
+</section>
+
+<!-- ALCOHOL -->
+<section id="alcohol" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Alcohol / Ethanol • CNS Depressant • Highest Withdrawal Danger</p>
+    <h2 class="card-title">Alcohol: Intoxication, Withdrawal, DTs, CIWA, and Nursing Priorities</h2>
+    <div class="callout danger"><span class="callout-label">High-Yield Alert</span><p><strong>Alcohol is identified in the slides as the most dangerous withdrawal substance.</strong> A patient with heavy daily alcohol use should not quit "cold turkey." Alcohol withdrawal can progress to tonic-clonic seizures, delirium tremens, dysrhythmias, and death.</p></div>
+    <div class="grid-2">
+      <div class="panel"><h4>Alcohol Intoxication</h4><ul><li>CNS depressant effects.</li><li>Lower intake: euphoria, reduced social inhibition, flushed skin.</li><li>Higher intake: drowsiness, impaired balance/coordination/judgment.</li><li>May show erratic or violent behavior.</li><li>High levels can cause nausea, vomiting, and potentially lethal CNS depression.</li></ul></div>
+      <div class="panel red"><h4>Alcohol Withdrawal</h4><ul><li>Usually starts 4–12 hours after last intake in slides; book notes describe 6–9 hours as possible.</li><li>Peaks around 24–48 hours.</li><li>Abdominal cramping, vomiting, tremors.</li><li>Increased HR, BP, RR, temperature.</li><li>Transient hallucinations or illusions.</li><li>Tonic-clonic seizures.</li></ul></div>
+    </div>
+    <div class="accordion"><button class="acc-head" onclick="toggleAcc(this)">Alcohol Withdrawal Delirium / DTs <span>▼</span></button><div class="acc-body"><p><strong>Alcohol withdrawal delirium</strong> may occur 2–3 days after cessation and may last 2–3 days. It is a <strong>medical emergency</strong>. Symptoms from the slides include hallucinations, tachypnea, tremors, insomnia, severe hypertension, severe disorientation, cardiac dysrhythmias, and delirium. Symptoms may progress to death.</p><div class="callout priority"><span class="callout-label">Most Concerning Cues</span><p>Severe disorientation + autonomic instability + hallucinations + dysrhythmias = unstable patient. Do not treat this as "just anxiety."</p></div></div></div>
+    <div class="sh">Alcohol Withdrawal Nursing Care</div>
+    <table class="table"><thead><tr><th>Need</th><th>Intervention</th><th>Why</th></tr></thead><tbody>
+      <tr><td>Withdrawal severity</td><td>Use CIWA-Ar if agency uses it.</td><td>Guides severity scoring and medication dosing according to policy.</td></tr>
+      <tr><td>Seizure risk</td><td>Seizure precautions; benzodiazepines per pathway.</td><td>Alcohol withdrawal can progress to tonic-clonic seizures.</td></tr>
+      <tr><td>Autonomic instability</td><td>Frequent VS and trend monitoring.</td><td>Rising HR/BP/temp can indicate worsening withdrawal.</td></tr>
+      <tr><td>Nutrition/thiamine</td><td>Fluids containing thiamine/B vitamins; correct deficiencies; I&amp;O.</td><td>Heavy alcohol use can impair nutrition and thiamine status; notes emphasize IV thiamine for Wernicke-Korsakoff treatment.</td></tr>
+      <tr><td>Environment</td><td>Quiet environment, decreased stimulation.</td><td>Reduces agitation and supports safety.</td></tr>
+    </tbody></table>
+    <div class="sh">Alcohol Medications From Notes</div>
+    <table class="table"><thead><tr><th>Medication</th><th>Purpose</th><th>Nursing Concerns / Teaching</th></tr></thead><tbody>
+      <tr><td><span class="drug">diazepam</span><span class="drug">lorazepam</span><span class="drug">chlordiazepoxide / Librium</span></td><td>First-line alcohol withdrawal support; helps withdrawal and may prevent DTs if given early.</td><td>Assess baseline VS before administration. Monitor sedation and frequent VS trends.</td></tr>
+      <tr><td><span class="drug">phenobarbital</span></td><td>Barbiturate that produces sedation.</td><td>Check VS frequently; monitor respiratory/CNS depression.</td></tr>
+      <tr><td><span class="drug">carbamazepine</span></td><td>Antiseizure medication used in detox context.</td><td>May cause dizziness/drowsiness; needs tapering to prevent seizures during detox per slides.</td></tr>
+      <tr><td><span class="drug">clonidine</span></td><td>Centrally acting alpha-2 agonist.</td><td>Monitor BP/HR and response.</td></tr>
+      <tr><td><span class="drug">disulfiram / Antabuse</span></td><td>Aversion therapy / relapse prevention.</td><td>Avoid all alcohol including mouthwash and alcohol-containing meds. Alcohol can cause severe unpleasant reaction.</td></tr>
+      <tr><td><span class="drug">naltrexone / Vivitrol / ReVia</span></td><td>Opiate antagonist used for alcohol and opiate-related recovery; reduces cravings and helps maintain abstinence.</td><td>Important when comorbid addiction exists. Monitor side effects and adherence.</td></tr>
+      <tr><td><span class="drug">acamprosate / Campral</span></td><td>Relapse prevention for alcohol use disorder.</td><td>Book notes: begins around fifth day of abstinence; taken three times daily; contraindicated in renal impairment.</td></tr>
+    </tbody></table>
+    <div class="callout amber"><span class="callout-label">Exam Trap</span><p>If a hospitalized patient with alcoholism had the last drink two days ago and now has tremors, diaphoresis, and elevated HR, the action is not "just watch hourly" or give opioid pain meds. The notes point toward <strong>benzodiazepine treatment per alcohol withdrawal policy</strong>.</p></div>
+  </div>
+</section>
+
+<!-- OPIOIDS -->
+<section id="opioids" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Opioids • Respiratory Depression • Naloxone</p>
+    <h2 class="card-title">Opioids: Intoxication, Withdrawal, Overdose, and Emergency Care</h2>
+    <div class="callout priority"><span class="callout-label">Priority Nursing Action</span><p>Opioid overdose is an oxygenation/ventilation emergency. The immediate threat is <strong>respiratory depression or arrest</strong>, not the patient's long-term addiction plan.</p></div>
+    <div class="grid-2">
+      <div class="panel red"><h4>Opioid Intoxication / Overdose</h4><ul><li>Psychomotor/CNS depression.</li><li>Decreased respiratory rate.</li><li>Constricted pupils.</li><li>Drowsiness or sedation; may be difficult to arouse.</li><li>Slurred speech, euphoria, decreased LOC.</li><li>Bradycardia, hypotension, flushed/warm skin.</li><li>Impaired judgment, coma, death.</li></ul></div>
+      <div class="panel"><h4>Opioid Withdrawal</h4><ul><li>Nausea/vomiting.</li><li>Fever, chills, sweating.</li><li>Irritability or panic.</li><li>Piloerection / goose flesh.</li><li>Runny nose, watery eyes, yawning.</li><li>Bone pain, muscle aches.</li><li>Strong drug craving.</li><li>Slides: uncomfortable, rarely fatal.</li></ul></div>
+    </div>
+    <div class="accordion"><button class="acc-head" onclick="toggleAcc(this)">Emergency Care for Opioid Overdose <span>▼</span></button><div class="acc-body"><ul class="content-list"><li>Administer naloxone.</li><li>Give oxygen if hypoxic or respirations are below 10/minute.</li><li>Have suction equipment available because vomiting/aspiration risk can occur as consciousness returns.</li><li>Continuously monitor vital signs and level of consciousness for reversal of overdose.</li><li>Do not leave the patient until fully responsive.</li><li>Support airway, ventilation, and cardiovascular function.</li></ul></div></div>
+    <table class="table"><thead><tr><th>Medication</th><th>Role</th><th>Nursing Notes</th></tr></thead><tbody>
+      <tr><td><span class="drug">naloxone / Narcan</span></td><td>Rapid opioid reversal during overdose.</td><td>Restores respiratory function by blocking opioid receptors. Reversal can cause fear, panic, and discomfort; monitor for safety and recurrent sedation.</td></tr>
+      <tr><td><span class="drug">methadone</span></td><td>Long-acting opioid substitution for opioid withdrawal/recovery.</td><td>Used as replacement and tapered once withdrawal stabilized; does not cause same "high" per slides.</td></tr>
+      <tr><td><span class="drug">buprenorphine / Subutex</span></td><td>Partial agonist / agonist-antagonist for opioid treatment.</td><td>Alternative to methadone; higher doses may be used with fewer side effects per book table.</td></tr>
+      <tr><td><span class="drug">buprenorphine + naloxone / Suboxone</span></td><td>Reduces buprenorphine misuse/euphoria.</td><td>Combination preparation used in opioid recovery management.</td></tr>
+      <tr><td><span class="drug">naltrexone / ReVia</span></td><td>Opiate antagonist; decreases craving.</td><td>Also appears in alcohol treatment notes; monitor adherence and opioid-free requirements when applicable.</td></tr>
+      <tr><td><span class="drug">clonidine / Catapres</span></td><td>Symptomatic relief of opioid withdrawal.</td><td>Monitor BP/HR and response.</td></tr>
+    </tbody></table>
+    <div class="callout danger"><span class="callout-label">Safety Risk</span><p>After naloxone, the patient may wake abruptly, frightened, or panicked. Do not walk away because the patient can become unsafe, vomit, aspirate, or become sedated again depending on the opioid involved.</p></div>
+  </div>
+</section>
+
+<!-- STIMULANTS -->
+<section id="stimulants" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Amphetamines • Cocaine • Methamphetamine • Crack • Bath Salts</p>
+    <h2 class="card-title">Stimulants: Overactivation, Cardiovascular Risk, Crash, and Suicide Safety</h2>
+    <div class="grid-2">
+      <div class="panel red"><h4>Intoxication</h4><ul><li>Rush of euphoria/pleasure.</li><li>Increased mental alertness.</li><li>Aggressiveness, hypervigilance, sensitivity.</li><li>Anxious, tense, angry, sociable or "superhuman."</li><li>Chest pain, dysrhythmias.</li><li>High or low BP, tachycardia or bradycardia.</li><li>Dilated pupils, perspiration, chills, nausea/vomiting, weight loss.</li><li>Confusion, seizures, coma.</li></ul></div>
+      <div class="panel"><h4>Withdrawal / Crash</h4><ul><li>CNS depression ranging from lethargy to coma.</li><li>Hallucinations.</li><li>Aches.</li><li>Depression.</li><li>Suicidal thoughts.</li><li>This is opposite-effect rebound: stopping a stimulating drug can produce sedating crash symptoms.</li></ul></div>
+    </div>
+    <div class="callout priority"><span class="callout-label">Priority Nursing Action</span><p>During stimulant intoxication, think <strong>cardiac + neuro safety</strong>: chest pain, dysrhythmias, BP instability, seizures, severe agitation, confusion, or coma are unstable cues. During withdrawal, think <strong>suicide risk</strong> because depression and suicidal thoughts are specifically listed in your notes.</p></div>
+    <table class="table"><thead><tr><th>Situation</th><th>Most Concerning Finding</th><th>Nursing Focus</th></tr></thead><tbody>
+      <tr><td>Acute intoxication</td><td>Chest pain, dysrhythmia, severe BP change, seizure, confusion/coma.</td><td>Safety, VS, cardiac/neuro monitoring, provider notification, medication per orders.</td></tr>
+      <tr><td>Withdrawal/crash</td><td>Depression or suicidal thoughts.</td><td>Suicide assessment, safe environment, supportive care, provider notification.</td></tr>
+      <tr><td>Severe agitation/psychosis</td><td>Hallucinations, aggression, unsafe behavior.</td><td>Low stimulation, therapeutic communication, antipsychotic meds if ordered, safety.</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- DEPRESSANTS -->
+<section id="depressants" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Benzodiazepines • Barbiturates • Sleep Meds • Antianxiety Meds</p>
+    <h2 class="card-title">Sedative, Hypnotic, and Antianxiety Medications</h2>
+    <div class="callout danger"><span class="callout-label">High-Yield Alert</span><p>Alcohol and benzodiazepines are the dangerous withdrawal categories emphasized in the slides. Benzodiazepine withdrawal after extended high-dose use can cause seizures, so gradual reduction matters.</p></div>
+    <div class="grid-2">
+      <div class="panel"><h4>Intoxication</h4><ul><li>CNS depressant effects.</li><li>Slurred speech.</li><li>Incoordination, unsteady gait, nystagmus.</li><li>Impaired thinking and judgment.</li><li>Inappropriate aggression or sexual behavior.</li><li>Mood fluctuation.</li><li>Respiratory depression can require ventilation support.</li></ul></div>
+      <div class="panel red"><h4>Withdrawal</h4><ul><li>May begin 3–4 days after last dose in your notes.</li><li>Headache and sweating.</li><li>Confusion and anxiety.</li><li>Delirium, paranoia.</li><li>Seizure risk with benzodiazepine withdrawal.</li></ul></div>
+    </div>
+    <table class="table"><thead><tr><th>Care Need</th><th>Nursing Action</th><th>Why</th></tr></thead><tbody>
+      <tr><td>Respiratory depression</td><td>Monitor respiratory rate, depth, pulse oximetry; prepare ventilation support if needed.</td><td>CNS depressants decrease respiratory drive.</td></tr>
+      <tr><td>Withdrawal prevention</td><td>Gradual taper/reduction as ordered.</td><td>Prevents severe withdrawal and seizures.</td></tr>
+      <tr><td>Safety</td><td>Fall precautions, low stimulation, monitor LOC.</td><td>Ataxia, impaired judgment, sedation, confusion increase harm risk.</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- OTHER -->
+<section id="other" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Cannabis • Hallucinogens • Inhalants</p>
+    <h2 class="card-title">Other Substances: Recognition and Safety</h2>
+    <table class="table"><thead><tr><th>Substance</th><th>Intoxication</th><th>Withdrawal / Ongoing Issues</th><th>Priority Nursing Care</th></tr></thead><tbody>
+      <tr><td><strong>Cannabis</strong><br><span class="pill blue">THC</span><span class="pill blue">synthetic cannabinoids</span></td><td>Heightened sensations, slowed motor skills, red eyes, increased appetite, dry mouth, increased HR.</td><td>Less severe: restlessness, irritability, appetite loss, sleep difficulty.</td><td>Quiet room/minimal stimulation, manage symptoms, lifestyle change, family support, psychiatric evaluation if indicated.</td></tr>
+      <tr><td><strong>Hallucinogens</strong><br><span class="pill amber">LSD</span><span class="pill amber">PCP</span><span class="pill amber">MDMA</span><span class="pill amber">peyote</span></td><td>Paranoia, impaired judgment, intensified perceptions, dilated pupils, increased HR, sweating, tremors.</td><td>No official withdrawal pattern in notes; possible prolonged hallucinogen/persisting perception disorder.</td><td>Safety, therapeutic communication, antipsychotic such as Haldol or benzodiazepine such as diazepam if ordered. PCP ingestion may not be talked down and may require restraints.</td></tr>
+      <tr><td><strong>Inhalants</strong><br><span class="pill red">toxic gas</span><span class="pill red">paint thinner</span><span class="pill red">aerosols</span><span class="pill red">glue</span></td><td>Euphoria, hallucinations, impaired judgment, delirium.</td><td>Less physically dangerous than alcohol/benzos withdrawal but may have neurologic/psychiatric effects, headache, nausea/vomiting, sweating, anxiety, depression.</td><td>Supportive care, manage immediate symptoms, psychiatric evaluation and monitoring.</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- MEDS -->
+<section id="meds" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Medication Safety Table</p>
+    <h2 class="card-title">Medication Review: What to Know, Hold, Teach, and Monitor</h2>
+    <table class="table"><thead><tr><th>Medication</th><th>Used For</th><th>Action in Simple Nursing Terms</th><th>Side Effects / Warnings From Notes</th><th>Teaching / Monitor</th></tr></thead><tbody>
+      <tr><td><span class="drug">Diazepam</span><span class="drug">Lorazepam</span><span class="drug">Librium</span></td><td>Alcohol withdrawal</td><td>Calms CNS overactivation and helps prevent withdrawal progression/DTs.</td><td>Sedation; monitor VS closely.</td><td>Assess baseline VS; use CIWA-Ar per agency; trend HR/BP/temp/tremors.</td></tr>
+      <tr><td><span class="drug">Phenobarbital</span></td><td>Alcohol withdrawal</td><td>Produces sedation.</td><td>Sedation and respiratory/CNS depression risk.</td><td>Frequent vital signs.</td></tr>
+      <tr><td><span class="drug">Carbamazepine</span></td><td>Detox/seizure support</td><td>Antiseizure support.</td><td>Dizziness, drowsiness.</td><td>Taper to prevent seizures during detox per notes.</td></tr>
+      <tr><td><span class="drug">Disulfiram</span></td><td>Alcohol relapse prevention / aversion</td><td>Makes alcohol use physically unpleasant.</td><td>Alcohol reaction can include intense nausea/vomiting, headache, diaphoresis, flushing, dyspnea, confusion, tachycardia, chest pain, dizziness.</td><td>Avoid alcohol in drinks, mouthwash, cough syrup, meds.</td></tr>
+      <tr><td><span class="drug">Naltrexone</span></td><td>Alcohol/opioid craving reduction</td><td>Opiate antagonist; decreases pleasurable effects/cravings.</td><td>Nausea, headache, sedation; injection site pain for long-acting form.</td><td>For injectable form, book notes indicate patient needs to be opioid-free before initiation.</td></tr>
+      <tr><td><span class="drug">Acamprosate</span></td><td>Alcohol relapse prevention</td><td>Supports abstinence/relapse prevention.</td><td>Diarrhea, GI upset, appetite loss, dizziness, anxiety, sleep difficulty.</td><td>Begin around fifth day of abstinence; taken three times daily; contraindicated in renal impairment.</td></tr>
+      <tr><td><span class="drug">Naloxone</span></td><td>Opioid overdose</td><td>Rapidly blocks opioid receptors to restore breathing.</td><td>Can trigger abrupt discomfort, fear, panic, vomiting risk.</td><td>Airway/oxygen/ventilation first; monitor until fully responsive.</td></tr>
+      <tr><td><span class="drug">Methadone</span></td><td>Opioid withdrawal/recovery</td><td>Long-acting opioid substitute, tapered once stable.</td><td>Monitor sedation/respiratory status per opioid safety thinking.</td><td>Supports withdrawal stabilization without same "high" per slides.</td></tr>
+      <tr><td><span class="drug">Buprenorphine</span><span class="drug">Suboxone</span></td><td>Opioid use disorder</td><td>Partial agonist; Suboxone includes naloxone to reduce misuse/euphoria.</td><td>Monitor response and misuse risk.</td><td>Adherence and recovery support.</td></tr>
+      <tr><td><span class="drug">Clonidine</span></td><td>Alcohol/opioid withdrawal symptoms</td><td>Reduces sympathetic symptoms.</td><td>BP/HR effects.</td><td>Monitor BP and HR.</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- RECOVERY -->
+<section id="recovery" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Recovery • Relapse • Families • Nurses with SUD</p>
+    <h2 class="card-title">Recovery, Relapse Prevention, Motivation, and Continuity of Care</h2>
+    <div class="callout info"><span class="callout-label">Big Picture</span><p>Recovery is not just absence of use. The notes describe recovery as an ongoing process where the patient gets help needed to maintain sobriety. Relapse is common and should be anticipated through coping plans, support systems, and treatment continuity.</p></div>
+    <div class="grid-2">
+      <div class="panel"><h4>Treatment Continuum</h4><ul><li>Detoxification.</li><li>Rehabilitation.</li><li>Halfway house.</li><li>Partial hospitalization.</li><li>Intensive outpatient programs.</li><li>Outpatient follow-up.</li><li>Mutual support groups such as AA or NA.</li></ul></div>
+      <div class="panel green"><h4>Recovery Teaching</h4><ul><li>Goal is self-responsibility.</li><li>Patient is not responsible for having the disease but is responsible for recovery work.</li><li>Others cannot be blamed indefinitely; patient must acknowledge own feelings/problems.</li><li>Nonreligious programs exist if higher-power language is a barrier.</li></ul></div>
+    </div>
+    <div class="accordion"><button class="acc-head" onclick="toggleAcc(this)">Motivational Interviewing in Nursing Terms <span>▼</span></button><div class="acc-body"><ul class="content-list"><li>Build relationship and trust.</li><li>Listen more than talk.</li><li>Do not argue or persuade aggressively because this increases resistance.</li><li>Explore ambivalence: what does the substance do for them, and what does it cost them?</li><li>Develop discrepancy between current use and the patient's goals.</li><li>Use concrete change talk if patient has co-occurring psychosis/confusion.</li><li>If too psychotic or dangerous, stabilize psychosis/safety first.</li></ul></div></div>
+    <div class="callout amber"><span class="callout-label">Families and Codependence</span><p>Addiction affects the family system. Notes identify codependence as enabling the addiction, lying to keep secrets, or becoming overly responsible for the addicted person. Families may benefit from support such as Al-Anon or Adult Children of Alcoholics.</p></div>
+    <div class="callout priority"><span class="callout-label">Nurses with SUD</span><p>Substance use disorder among nurses is a professional safety issue. Watch for fatigue, mood swings, lateness, medication discrepancies, volunteering to administer controlled substances, and defensiveness. The immediate action is to report concerns to management, followed by objective evaluation/drug screening and support through peer assistance or alternative-to-discipline programs when appropriate.</p></div>
+  </div>
+</section>
+
+<!-- MASTER REVIEW -->
+<section id="master" class="section searchable">
+  <div class="card">
+    <p class="subtitle">Final High-Yield Summary</p>
+    <h2 class="card-title">What I Must Know Before the Exam</h2>
+    <div class="flashcards">
+      <div class="flash"><b>Most dangerous withdrawal:</b><p>Alcohol. Benzodiazepines are also dangerous because of seizure risk.</p></div>
+      <div class="flash"><b>Opioid overdose cue:</b><p>Respiratory depression + constricted pupils + decreased LOC. Give oxygen/support airway and naloxone per protocol.</p></div>
+      <div class="flash"><b>Alcohol withdrawal cue:</b><p>Tremors, diaphoresis, increased HR/BP/temp, hallucinations, seizures. CIWA-Ar may guide benzodiazepine dosing.</p></div>
+      <div class="flash"><b>DTs:</b><p>2–3 days after cessation, severe disorientation, hallucinations, tremors, severe HTN, dysrhythmias, delirium. Emergency.</p></div>
+      <div class="flash"><b>Stimulant crash:</b><p>CNS depression, depression, suicidal thoughts. Assess self-harm risk.</p></div>
+      <div class="flash"><b>Therapeutic communication:</b><p>Nonjudgmental, kind firmness, motivational interviewing, listen more than lecture.</p></div>
+    </div>
+    <div class="sh">Master Intoxication vs Withdrawal Chart</div>
+    <table class="table"><thead><tr><th>Substance</th><th>Intoxication</th><th>Withdrawal</th><th>What Kills First / Most Urgent</th></tr></thead><tbody>
+      <tr><td>Alcohol</td><td>CNS depression, impaired coordination/judgment, possible violence, vomiting, lethal CNS depression at high levels.</td><td>Autonomic hyperactivity, tremors, vomiting, hallucinations, seizures, DTs.</td><td>Seizures, DTs, dysrhythmias, death.</td></tr>
+      <tr><td>Opioids</td><td>Respiratory depression, constricted pupils, sedation, bradycardia/hypotension, coma.</td><td>Flu-like/GI/autonomic discomfort, piloerection, yawning, aches, craving.</td><td>Respiratory arrest during overdose.</td></tr>
+      <tr><td>Stimulants</td><td>Euphoria, hypervigilance, aggression, chest pain, dysrhythmias, BP changes, seizures, coma.</td><td>Crash: lethargy/coma, depression, suicidal thoughts, aches, hallucinations.</td><td>Cardiac/neuro instability during intoxication; suicide risk during crash.</td></tr>
+      <tr><td>Sedatives/benzos</td><td>Slurred speech, unsteady gait, impaired thinking, respiratory depression.</td><td>Headache, sweating, anxiety, confusion, delirium, paranoia, seizures.</td><td>Respiratory depression in intoxication; seizures in withdrawal.</td></tr>
+      <tr><td>Cannabis</td><td>Red eyes, slowed motor skills, increased appetite, dry mouth, high HR, heightened sensations.</td><td>Restlessness, irritability, appetite loss, sleep issues.</td><td>Safety/judgment impairment, psychiatric concerns.</td></tr>
+      <tr><td>Hallucinogens</td><td>Paranoia, impaired judgment, sensory distortion, dilated pupils, sweating, tremors.</td><td>No official withdrawal pattern in notes; possible persistent perception symptoms.</td><td>Unsafe behavior/psychosis; PCP may require restraints.</td></tr>
+      <tr><td>Inhalants</td><td>Euphoria, hallucinations, impaired judgment, delirium.</td><td>Headache, N/V, sweating, anxiety, depression, neuro/psychiatric effects.</td><td>Acute toxicity and safety/neurologic effects.</td></tr>
+    </tbody></table>
+    <div class="sh">Checklist</div>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I can identify alcohol withdrawal and DT emergency cues.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I know opioid overdose care: airway, oxygen, naloxone, suction, monitoring.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I can separate intoxication from withdrawal for alcohol, opioids, stimulants, sedatives, cannabis, hallucinogens, and inhalants.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I understand why trauma and mental illness cannot be separated from SUD care.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I know CAGE-AID and key history clues.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I can explain motivational interviewing without lecturing or arguing.</label>
+    <label class="checkline"><input type="checkbox" onchange="updateProgress()"> I know medication teaching for disulfiram, naltrexone, acamprosate, benzodiazepines, naloxone, methadone, buprenorphine/Suboxone, and clonidine.</label>
+  </div>
+</section>
+
+</main>
+
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer>HCC2 Substance Misuse &amp; Addiction Study Guide</footer>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function toggleDark() {
+  const isDark = document.body.classList.toggle('dark');
+  document.getElementById('darkLabel').textContent = isDark ? 'Dark Mode' : 'Light Mode';
+}
+
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+  btn.querySelector('span').textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function expandAll() {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.acc-head span').forEach(s => s.textContent = '▲');
+}
+
+function updateProgress() {
+  const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+  const checked = boxes.filter(b => b.checked).length;
+  document.getElementById('progressText').textContent = boxes.length
+    ? Math.round(checked / boxes.length * 100) + '% checked'
+    : '0% checked';
+}
+
+function searchGuide() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  document.querySelectorAll('.searchable').forEach(sec => {
+    if (!q) { sec.classList.remove('hiddenSearch'); return; }
+    sec.classList.toggle('hiddenSearch', !sec.innerText.toLowerCase().includes(q));
+  });
+}
+
+function openPrint() {
+  document.getElementById('printOverlay').classList.add('show');
+}
+
+function closePrint() {
+  document.getElementById('printOverlay').classList.remove('show');
+}
+
+function doPrint() {
+  closePrint();
+  // Small delay so modal closes before print dialog opens
+  setTimeout(() => window.print(), 120);
+}
+
+updateProgress();
+</script>
+</body>
+</html>

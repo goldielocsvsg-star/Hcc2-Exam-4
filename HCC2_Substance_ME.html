@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HCC2 Substance Use & Eating Disorders — Critical Application Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1f3d;
+  --navy-2:#142b52;
+  --navy-3:#1e3a6e;
+  --teal:#0d9488;
+  --teal-2:#14b8a6;
+  --teal-soft:#ccfbf1;
+  --gold:#b08d57;
+  --ivory:#faf7f2;
+  --cream:#f5f0e6;
+  --paper:#fdfbf7;
+  --line:#d8d2c4;
+  --line-2:#e8e3d6;
+  --ink:#0a1f3d;
+  --muted:#5b6680;
+  --good:#0f766e;
+  --good-bg:#ecfdf5;
+  --bad:#991b1b;
+  --bad-bg:#fef2f2;
+  --warn:#9a3412;
+  --warn-bg:#fff7ed;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--ivory);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(13,148,136,.04) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(10,31,61,.04) 0, transparent 50%);
+  min-height:100vh;
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px;margin:0 auto;padding:32px 22px 80px}
+
+/* HERO */
+.hero{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:48px 44px 40px;
+  position:relative;
+  box-shadow:0 1px 0 rgba(10,31,61,.04), 0 12px 40px -12px rgba(10,31,61,.12);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 50%,var(--gold) 100%);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  top:48px;right:44px;bottom:48px;
+  width:1px;
+  background:var(--line);
+  display:none;
+}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--teal);
+  font-weight:700;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--teal)}
+h1.title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(36px,5vw,58px);
+  line-height:1.05;
+  margin:0 0 18px;
+  letter-spacing:-.01em;
+}
+h1.title em{font-style:italic;color:var(--teal);font-weight:500}
+.lede{
+  font-size:17px;
+  line-height:1.65;
+  color:#3a4660;
+  max-width:680px;
+  margin:0 0 28px;
+}
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:32px 0;
+  position:relative;
+}
+.divider::after{
+  content:"§";
+  position:absolute;
+  top:-13px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--paper);
+  padding:0 14px;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+}
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  margin:28px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.stat{
+  padding:18px 16px;
+  border-right:1px solid var(--line);
+  text-align:left;
+}
+.stat:last-child{border-right:0}
+.stat .num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1;
+  display:block;
+}
+.stat .lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:6px;
+  display:block;
+}
+
+.rules{
+  background:var(--cream);
+  border-left:3px solid var(--teal);
+  padding:18px 22px;
+  margin:24px 0 30px;
+  font-size:14.5px;
+  line-height:1.65;
+}
+.rules b{color:var(--navy);font-weight:700}
+.rules ul{margin:8px 0 0;padding-left:20px}
+.rules li{margin:4px 0}
+
+.topic-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin:24px 0 30px;
+}
+.topic{
+  border:1px solid var(--line);
+  background:var(--paper);
+  padding:14px 18px;
+  border-radius:2px;
+}
+.topic .num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.15em;
+  color:var(--teal);
+  font-weight:700;
+  margin-bottom:4px;
+}
+.topic .nm{font-weight:600;color:var(--navy);font-size:14px}
+
+/* BUTTONS */
+.btn{
+  border:0;
+  font-family:'DM Sans',sans-serif;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.02em;
+  padding:14px 26px;
+  cursor:pointer;
+  border-radius:2px;
+  transition:all .18s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.btn.primary{
+  background:var(--navy);
+  color:var(--ivory);
+  box-shadow:0 1px 0 rgba(10,31,61,.2), 0 4px 16px -4px rgba(10,31,61,.4);
+}
+.btn.primary:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:0 1px 0 rgba(10,31,61,.2), 0 8px 22px -4px rgba(10,31,61,.5)}
+.btn.secondary{
+  background:transparent;
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+.btn.secondary:hover{background:var(--navy);color:var(--ivory)}
+.btn.teal{background:var(--teal);color:#fff;box-shadow:0 4px 16px -4px rgba(13,148,136,.4)}
+.btn.teal:hover{background:#0f766e}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:block}
+
+/* EXAM PANEL */
+.exam-panel{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:38px 42px 40px;
+  box-shadow:0 1px 0 rgba(10,31,61,.04), 0 12px 40px -12px rgba(10,31,61,.12);
+  position:relative;
+}
+.exam-panel::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);
+}
+.exam-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:24px;
+}
+.exam-header .left{display:flex;flex-direction:column;gap:6px}
+.qcounter{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.qcounter .now{color:var(--navy);font-weight:700}
+.qtype-pill{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:5px 11px;
+  border-radius:2px;
+  margin-top:2px;
+  width:fit-content;
+}
+.qtype-pill.mc{background:var(--navy);color:#fff}
+.qtype-pill.sata{background:var(--teal);color:#fff}
+.qtype-pill.matrix{background:var(--gold);color:#fff}
+.topic-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.15em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.progress-bar{
+  height:3px;
+  background:var(--line-2);
+  border-radius:2px;
+  overflow:hidden;
+  margin:0 0 28px;
+}
+.progress-bar .fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--navy),var(--teal));
+  width:0%;
+  transition:width .4s ease;
+}
+
+/* CASE/STEM */
+.case-block{
+  background:linear-gradient(180deg,var(--cream),#f9f3e6);
+  border-left:4px solid var(--navy);
+  padding:18px 22px;
+  margin:0 0 22px;
+  font-size:15px;
+  line-height:1.65;
+  color:#2a3650;
+}
+.case-block .case-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:6px;
+  display:block;
+}
+
+.question{
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  font-weight:700;
+  line-height:1.35;
+  color:var(--navy);
+  margin:0 0 20px;
+  letter-spacing:-.005em;
+}
+.sata-instruction{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--teal);
+  font-weight:700;
+  margin:0 0 14px;
+  padding:8px 12px;
+  background:var(--teal-soft);
+  border-radius:2px;
+  display:inline-block;
+}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:10px}
+.option{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px 18px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:2px;
+  cursor:pointer;
+  transition:all .15s ease;
+  font-size:15px;
+  line-height:1.55;
+  position:relative;
+}
+.option:hover{border-color:var(--teal);background:#fcfbf6;transform:translateX(2px)}
+.option.selected{
+  border-color:var(--teal);
+  background:var(--teal-soft);
+  box-shadow:inset 3px 0 0 var(--teal);
+}
+.option .opt-letter{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  flex-shrink:0;
+  margin-top:2px;
+  letter-spacing:.05em;
+}
+.option.selected .opt-letter{color:var(--teal)}
+.option input{
+  margin:0;
+  flex-shrink:0;
+  margin-top:4px;
+  accent-color:var(--teal);
+  width:16px;
+  height:16px;
+}
+.option .opt-text{flex:1}
+.option.locked{cursor:default}
+.option.correct-after{
+  border-color:var(--good);
+  background:var(--good-bg);
+  box-shadow:inset 3px 0 0 var(--good);
+}
+.option.wrong-after{
+  border-color:var(--bad);
+  background:var(--bad-bg);
+  box-shadow:inset 3px 0 0 var(--bad);
+}
+.option .marker{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.option.correct-after .marker{color:var(--good)}
+.option.wrong-after .marker{color:var(--bad)}
+
+/* MATRIX */
+.matrix-wrap{
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  background:var(--paper);
+}
+.matrix-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14.5px;
+}
+.matrix-table thead th{
+  background:var(--navy);
+  color:var(--ivory);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  font-weight:700;
+  padding:14px 12px;
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.matrix-table thead th:first-child{text-align:left;padding-left:18px}
+.matrix-table thead th:last-child{border-right:0}
+.matrix-table tbody td{
+  padding:14px 12px;
+  border-bottom:1px solid var(--line-2);
+  border-right:1px solid var(--line-2);
+  text-align:center;
+  vertical-align:middle;
+}
+.matrix-table tbody td:first-child{
+  text-align:left;
+  padding-left:18px;
+  font-size:14.5px;
+  line-height:1.5;
+  width:48%;
+}
+.matrix-table tbody td:last-child{border-right:0}
+.matrix-table tbody tr:last-child td{border-bottom:0}
+.matrix-table tbody tr:nth-child(even) td{background:#fdfbf6}
+.matrix-table input[type="radio"]{
+  width:18px;
+  height:18px;
+  accent-color:var(--teal);
+  cursor:pointer;
+}
+.matrix-table tbody tr.row-correct td:first-child{color:var(--good);font-weight:600}
+.matrix-table tbody tr.row-wrong td:first-child{color:var(--bad);font-weight:600}
+.matrix-table tbody td.cell-chosen-correct{background:var(--good-bg)!important;font-weight:700;color:var(--good)}
+.matrix-table tbody td.cell-chosen-wrong{background:var(--bad-bg)!important;font-weight:700;color:var(--bad)}
+.matrix-table tbody td.cell-actual{background:var(--teal-soft)!important;font-weight:700;color:var(--teal);position:relative}
+.matrix-table tbody td.cell-actual::after{content:"✓";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--teal);font-size:18px;font-weight:700}
+.matrix-table tbody td.cell-actual input{display:none}
+
+/* FEEDBACK */
+.feedback{
+  display:none;
+  margin-top:24px;
+  padding:20px 22px;
+  border-left:4px solid var(--teal);
+  background:var(--cream);
+  border-radius:2px;
+  line-height:1.65;
+  font-size:14.5px;
+}
+.feedback.show{display:block}
+.feedback.good{border-left-color:var(--good);background:var(--good-bg)}
+.feedback.bad{border-left-color:var(--bad);background:var(--bad-bg)}
+.feedback.partial{border-left-color:var(--warn);background:var(--warn-bg)}
+.feedback .verdict{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:8px;
+  display:block;
+}
+.feedback.good .verdict{color:var(--good)}
+.feedback.bad .verdict{color:var(--bad)}
+.feedback.partial .verdict{color:var(--warn)}
+.feedback h4{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  margin:0 0 10px;
+  color:var(--navy);
+  font-weight:700;
+}
+.feedback .source{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px dashed var(--line);
+}
+.feedback .source b{color:var(--gold);font-weight:700}
+
+.btn-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.btn-row .ldlbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* RESULTS */
+.results-panel{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:42px 44px;
+  box-shadow:0 1px 0 rgba(10,31,61,.04), 0 12px 40px -12px rgba(10,31,61,.12);
+  position:relative;
+}
+.results-panel::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 50%,var(--gold) 100%);
+}
+.score-display{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:32px;
+  margin:28px 0;
+  align-items:start;
+}
+.score-big{
+  text-align:center;
+  padding:24px;
+  background:var(--cream);
+  border:1px solid var(--line);
+}
+.score-big .pct{
+  font-family:'Playfair Display',serif;
+  font-size:72px;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.score-big .frac{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:8px;
+  letter-spacing:.1em;
+}
+.score-big .grade{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  color:var(--teal);
+  font-style:italic;
+  margin-top:6px;
+}
+.breakdown table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+.breakdown td{
+  padding:10px 6px;
+  border-bottom:1px solid var(--line-2);
+}
+.breakdown td:first-child{
+  font-weight:600;
+  color:var(--navy);
+}
+.breakdown td:last-child{
+  text-align:right;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+}
+
+/* REVIEW */
+.review-section{margin-top:36px}
+.review-section h2{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:700;
+  margin:0 0 18px;
+  color:var(--navy);
+}
+.review-card{
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:20px 24px;
+  margin-bottom:16px;
+  background:var(--paper);
+  position:relative;
+}
+.review-card.correct{border-left:4px solid var(--good)}
+.review-card.wrong{border-left:4px solid var(--bad)}
+.review-card.partial{border-left:4px solid var(--warn)}
+.review-card .rmeta{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.review-card .verdict-tag{
+  padding:3px 9px;
+  border-radius:2px;
+  font-weight:700;
+}
+.verdict-tag.good{background:var(--good-bg);color:var(--good)}
+.verdict-tag.bad{background:var(--bad-bg);color:var(--bad)}
+.verdict-tag.warn{background:var(--warn-bg);color:var(--warn)}
+.review-card .qtxt{
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  font-weight:600;
+  color:var(--navy);
+  margin:6px 0 10px;
+  line-height:1.4;
+}
+.review-card .qstem{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:10px;
+  font-style:italic;
+}
+.review-card .yours,.review-card .ans{
+  font-size:14px;
+  margin:6px 0;
+  padding:8px 12px;
+  background:var(--cream);
+  border-radius:2px;
+}
+.review-card .yours b,.review-card .ans b{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.review-card .rationale{
+  font-size:14px;
+  line-height:1.6;
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+.review-card .src{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-top:8px;
+}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  .wrap{padding:18px 14px 60px}
+  .hero,.exam-panel,.results-panel{padding:28px 22px}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .topic-grid{grid-template-columns:1fr}
+  .question{font-size:19px}
+  .matrix-table{font-size:13px}
+  .matrix-table tbody td:first-child{width:42%;padding-left:12px;font-size:13px}
+  .score-display{grid-template-columns:1fr}
+  .exam-header{flex-direction:column;gap:8px}
+  .btn-row{flex-direction:column-reverse;align-items:stretch}
+  .btn-row .btn{justify-content:center}
+}
+
+/* PRINT */
+@media print{
+  body{background:#fff}
+  .btn,.btn-row,.exam-header{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============= START / HERO ============= -->
+<section id="start" class="panel active">
+  <div class="hero">
+    <div class="eyebrow">HCC2 · Mental Health · Concept-Based Application</div>
+    <h1 class="title">Substance Use &amp; <em>Eating Disorders</em><br/>Critical Application Exam</h1>
+    <p class="lede">A 70-question deep-application exam built strictly from your Prof. Bryan study guide on Addiction &amp; Feeding Disorders, Lehne / Varcarolis chapter notes, and HCC2 question-stem patterns. Every question is keyed to source material, every distractor is engineered to look right at first glance, and answer choices randomize every time you open the file.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><span class="num">30</span><span class="lbl">Multiple Choice</span></div>
+      <div class="stat"><span class="num">30</span><span class="lbl">Select All</span></div>
+      <div class="stat"><span class="num">10</span><span class="lbl">Matrix / BowTie</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">Source-Linked</span></div>
+    </div>
+
+    <div class="rules">
+      <b>How this exam works.</b>
+      <ul>
+        <li>Forward-only mode — once you answer, you move forward (no peeking back at prior items).</li>
+        <li>Answer-choice order randomizes on every reload, so you cannot memorize position.</li>
+        <li>SATA items reveal full credit only when the entire correct set is selected — partial-credit feedback is given.</li>
+        <li>Every rationale is tagged to its source: <i>Bryan Study Guide</i>, <i>Varcarolis/Lehne Notes</i>, or <i>Concept 34 / Ch. 18 / Ch. 22</i>.</li>
+        <li>Stems mirror HCC2 NCLEX patterns: <b>priority</b>, <b>first action</b>, <b>follow-up</b>, <b>therapeutic communication</b>, <b>teaching evaluation</b>, <b>indicated/contraindicated</b>, <b>expected/unexpected</b>.</li>
+      </ul>
+    </div>
+
+    <div class="topic-grid">
+      <div class="topic"><div class="num">UNIT 01</div><div class="nm">Foundations of Addiction · DSM-5 · Reward Pathways</div></div>
+      <div class="topic"><div class="num">UNIT 02</div><div class="nm">Screening · CAGE/AUDIT · Motivational Interviewing</div></div>
+      <div class="topic"><div class="num">UNIT 03</div><div class="nm">Alcohol Withdrawal · CIWA-Ar · DTs · Wernicke-Korsakoff</div></div>
+      <div class="topic"><div class="num">UNIT 04</div><div class="nm">Opioid Crisis · Naloxone · MAT (Methadone, Buprenorphine, Naltrexone)</div></div>
+      <div class="topic"><div class="num">UNIT 05</div><div class="nm">Stimulants · Hallucinogens · Inhalants · Cannabis · Sedatives</div></div>
+      <div class="topic"><div class="num">UNIT 06</div><div class="nm">Anorexia Nervosa · Refeeding Syndrome · Hospitalization Criteria</div></div>
+      <div class="topic"><div class="num">UNIT 07</div><div class="nm">Bulimia &amp; Binge-Eating · Russell Sign · Pharmacotherapy</div></div>
+      <div class="topic"><div class="num">UNIT 08</div><div class="nm">Pica · Rumination · ARFID · Refeeding</div></div>
+      <div class="topic"><div class="num">UNIT 09</div><div class="nm">Nurses with SUD · Peer Assistance · Reporting Pathways</div></div>
+      <div class="topic"><div class="num">UNIT 10</div><div class="nm">Recovery · Codependence · Relapse Prevention · Continuum of Care</div></div>
+    </div>
+
+    <button class="btn primary" onclick="startExam()">Begin Examination →</button>
+  </div>
+</section>
+
+<!-- ============= EXAM PANEL ============= -->
+<section id="exam" class="panel">
+  <div class="exam-panel">
+    <div class="exam-header">
+      <div class="left">
+        <span class="qcounter">Question <span class="now" id="qnum">1</span> of <span id="qtotal">70</span></span>
+        <span class="qtype-pill" id="qtype">Multiple Choice</span>
+      </div>
+      <div class="topic-tag" id="qtopic">Topic</div>
+    </div>
+    <div class="progress-bar"><div class="fill" id="bar"></div></div>
+
+    <div id="caseBlock" class="case-block">
+      <span class="case-label">Clinical Scenario</span>
+      <div id="caseText"></div>
+    </div>
+
+    <h2 class="question" id="qstem">Question stem here</h2>
+    <div id="sataLabel" class="sata-instruction" style="display:none">Select all that apply</div>
+
+    <div id="optionsArea"></div>
+    <div id="feedback" class="feedback"></div>
+
+    <div class="btn-row">
+      <span class="ldlbl">Forward-only · No backtracking</span>
+      <div style="display:flex;gap:10px">
+        <button id="submitBtn" class="btn secondary" onclick="submitAnswer()">Submit Answer</button>
+        <button id="nextBtn" class="btn primary" onclick="nextQuestion()" disabled>Next Question →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= RESULTS PANEL ============= -->
+<section id="results" class="panel">
+  <div class="results-panel">
+    <div class="eyebrow">Examination Complete</div>
+    <h1 class="title" style="font-size:42px">Your <em>Performance</em> Report</h1>
+    <p class="lede" id="scoreSummary">Loading…</p>
+
+    <div class="score-display">
+      <div class="score-big">
+        <div class="pct" id="scorePct">—</div>
+        <div class="frac" id="scoreFrac">— of —</div>
+        <div class="grade" id="scoreGrade">—</div>
+      </div>
+      <div class="breakdown">
+        <h3 style="font-family:'Playfair Display',serif;margin:0 0 12px;color:var(--navy)">Breakdown by Question Type</h3>
+        <table id="breakdownTable"></table>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <span class="ldlbl">Reload to randomize answer order</span>
+      <button class="btn primary" onclick="location.reload()">Restart Exam ↻</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="review-section">
+      <h2>Full Item Review &amp; Rationales</h2>
+      <p style="color:var(--muted);font-size:14px;margin:0 0 20px">Every item below is keyed to your study guide and book notes. Use this section as your post-exam study sheet.</p>
+      <div id="reviewList"></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ============= QUESTION BANK =============
+   Each question has:
+     id, type ('MC'|'SATA'|'MATRIX'), topic, case, stem,
+     options (for MC/SATA): array of [text, isCorrect(1|0)]
+     For MATRIX: categories (cols), rows (each {text, correct: colIndex})
+     rationale, source
+============================================= */
+const QUESTIONS_BANK = [];
+
+/* ===== MULTIPLE CHOICE: 30 ITEMS ===== */
+QUESTIONS_BANK.push(
+  {id:'MC01', type:'MC', topic:'Priority · Alcohol Withdrawal',
+    case:'A 52-year-old client is admitted to the medical unit for community-acquired pneumonia. The partner mentions in passing, "He drinks a six-pack and a few shots most nights, but he won\'t say so." Eight hours after admission the client becomes tremulous, diaphoretic, anxious, and asks the nurse, "Why are the curtains crawling?"',
+    stem:'Which action does the nurse take first?',
+    options:[
+      ['Initiate the facility alcohol-withdrawal protocol with CIWA-Ar scoring and seizure precautions',1],
+      ['Confront the client about minimizing alcohol use so honest disclosure can occur',0],
+      ['Reorient the client and dim the lights, then continue with routine pneumonia care',0],
+      ['Notify pastoral care because the visual experience may be a spiritual crisis',0]
+    ],
+    rationale:'Acute alcohol withdrawal syndrome can begin within 6–9 hours of the last drink and can progress to seizures, delirium tremens, and cardiovascular collapse — DTs carry up to 20% mortality if untreated. The visual hallucination at hour 8, combined with autonomic hyperactivity, is an early warning sign. Initiating the protocol with CIWA-Ar scoring guides symptom-triggered benzodiazepine dosing. Confrontation, reassurance, or non-clinical referrals do not address the imminent medical risk.',
+    source:'Lehne/Varcarolis Ch. 22 — AWS onset 6–8 hr; Bryan Study Guide Table 1 — Alcohol withdrawal'},
+
+  {id:'MC02', type:'MC', topic:'Priority · ED Triage',
+    case:'A nurse in the emergency department is assigned four clients arriving at the same time.',
+    stem:'Which client should the nurse assess first?',
+    options:[
+      ['A 24-year-old found unresponsive with respiratory rate 6/min, cyanotic lips, and pinpoint pupils',1],
+      ['A 38-year-old in alcohol-use-disorder recovery requesting a list of community AA meetings',0],
+      ['A 19-year-old reporting cannabis-cessation insomnia and irritability for the past 3 days',0],
+      ['A 45-year-old with bulimia nervosa requesting information about outpatient counseling',0]
+    ],
+    rationale:'The triad of respiratory depression, cyanosis, and miosis is classic opioid overdose — an airway/breathing emergency requiring immediate naloxone and ventilatory support. ABCs supersede recovery teaching, cannabis-withdrawal symptoms (which are uncomfortable but not life-threatening), and routine outpatient referrals.',
+    source:'Concept 34 — Opioid overdose; Box 22.1 — Opioid intoxication signs'},
+
+  {id:'MC03', type:'Therapeutic Communication',
+    type:'MC', topic:'Therapeutic Communication',
+    case:'A client with opioid use disorder tells the nurse, "Everyone keeps saying I just need willpower. They don\'t get it — using is the only thing that quiets the noise after what happened to me overseas."',
+    stem:'Which response best demonstrates motivational interviewing?',
+    options:[
+      ['"It sounds like the drug has been doing a job for you. Can we look at what triggers the noise and what else might help quiet it?"',1],
+      ['"You are right that willpower alone won\'t fix this — that\'s why you need to commit to inpatient rehab today."',0],
+      ['"Many veterans struggle with this. Have you considered that your service might be the real problem?"',0],
+      ['"I understand, but recovery is going to require you to stop making excuses."',0]
+    ],
+    rationale:'Motivational interviewing explores the function the substance is serving (reflective listening + open exploration of triggers) without arguing, advising, or shaming. Telling the client to "commit to rehab today," labeling their service as "the problem," or framing trauma as an "excuse" all increase resistance and rupture rapport — the very pitfalls the Concept 34 text warns against.',
+    source:'Concept 34 — Motivational interviewing; Bryan Study Guide — Therapeutic communication'},
+
+  {id:'MC04', type:'MC', topic:'CIWA-Ar Application',
+    case:'A 49-year-old man with daily heavy alcohol use is admitted 18 hours after his last drink. He has tremors, diaphoresis, anxiety, mild auditory disturbance, and his current CIWA-Ar score is 18. The provider has prescribed lorazepam per symptom-triggered protocol.',
+    stem:'When the nursing student asks the primary purpose of the CIWA-Ar tool, which response by the nurse is most accurate?',
+    options:[
+      ['"It quantifies withdrawal severity and guides whether — and how much — benzodiazepine to give."',1],
+      ['"It diagnoses alcohol use disorder so we can document the medical condition."',0],
+      ['"It predicts the likelihood of relapse after discharge."',0],
+      ['"It assesses liver function and detects early cirrhosis."',0]
+    ],
+    rationale:'The CIWA-Ar (Clinical Institute Withdrawal Assessment for Alcohol, Revised) is a 10-item severity scale that drives symptom-triggered benzodiazepine dosing — it is not a diagnostic tool, a relapse predictor, or a liver-function test. The Bryan study guide explicitly lists it under acute treatment for AWS.',
+    source:'Bryan Study Guide Case Study 1; Lehne/Varcarolis Ch. 22 Table 22.6'},
+
+  {id:'MC05', type:'MC', topic:'Pharmacology · Disulfiram Teaching',
+    case:'A 41-year-old client is being discharged on disulfiram (Antabuse) for alcohol-use-disorder maintenance. The client tells the nurse, "I\'ll just keep using my regular alcohol-based mouthwash because I\'m not actually swallowing it."',
+    stem:'How should the nurse interpret this statement?',
+    options:[
+      ['It indicates the need for further teaching, because mucosal absorption of alcohol can still trigger a disulfiram reaction',1],
+      ['It indicates correct understanding because only ingested alcohol triggers the reaction',0],
+      ['It is unrelated to disulfiram safety and requires no further teaching',0],
+      ['It is an expected therapeutic response and a good sign of compliance',0]
+    ],
+    rationale:'Even small amounts of alcohol absorbed through oral mucosa (mouthwash, cough syrup, hand sanitizer, certain food extracts, OTC liquid medications) can precipitate the disulfiram-ethanol reaction: intense flushing, throbbing headache, nausea/vomiting, diaphoresis, dyspnea, tachycardia, chest pain, and confusion. Strict avoidance of all alcohol-containing products is required. The client\'s statement reveals a dangerous misunderstanding.',
+    source:'Lehne/Varcarolis Ch. 22 Table 22.6; Bryan Study Guide — Long-term ETOH treatment'},
+
+  {id:'MC06', type:'MC', topic:'Pharmacology · Naltrexone Initiation',
+    case:'A nurse is preparing to administer the first dose of long-acting injectable naltrexone (Vivitrol) to a client with opioid use disorder transitioning out of detox.',
+    stem:'Which assessment finding requires the nurse to hold the medication and notify the provider?',
+    options:[
+      ['The client took a hydrocodone tablet 3 days ago for dental pain',1],
+      ['The client reports mild irritability and difficulty sleeping for two nights',0],
+      ['The client\'s blood pressure is 118/74 and heart rate 78',0],
+      ['The client expresses anxiety about the upcoming injection',0]
+    ],
+    rationale:'Naltrexone is a pure opioid antagonist. If administered to a client with any opioid still in their system, it precipitates immediate, severe, and dangerous opioid withdrawal. The Lehne text specifies the client must be opioid-free for 7–10 days before initiation. Mild irritability/insomnia, normal vital signs, and procedural anxiety are not contraindications — recent opioid use absolutely is.',
+    source:'Lehne/Varcarolis Ch. 22 — Naltrexone (Vivitrol/ReVia/Depade) opioid-free 10 days'},
+
+  {id:'MC07', type:'MC', topic:'Therapeutic Communication · Recovery',
+    case:'A client states, "I tried AA, but all that talk about a higher power feels fake to me. I think recovery is impossible for someone like me."',
+    stem:'Which is the nurse\'s best response?',
+    options:[
+      ['"There are non-religious recovery options like SMART Recovery and secular peer-support groups; let\'s explore what fits your values."',1],
+      ['"AA works for everyone if you give it real time. Try going to 90 meetings in 90 days and then decide."',0],
+      ['"You\'re right — without a higher power most people don\'t make it. Maybe you can pretend until it feels real."',0],
+      ['"Support groups aren\'t actually that important for recovery; they\'re optional."',0]
+    ],
+    rationale:'AA/12-step is well established but not the only path. The nurse acknowledges the client\'s value system, preserves autonomy, and offers alternatives. Pressuring "90 in 90," validating hopelessness, or dismissing peer support all undermine engagement — and the second and third options give frankly inaccurate information.',
+    source:'Lehne/Varcarolis Ch. 22 — Continuum of care; AA history & alternatives'},
+
+  {id:'MC08', type:'MC', topic:'Priority · Stimulant Withdrawal',
+    case:'A 27-year-old client who used cocaine continuously over a 4-day binge is now 12 hours into withdrawal. He is fatigued, withdrawn, and tearfully says, "I just want all of this to be over. I don\'t want to wake up tomorrow."',
+    stem:'What is the nurse\'s priority action?',
+    options:[
+      ['Place the client on suicide precautions and complete a structured suicide-risk assessment',1],
+      ['Encourage the client to sleep undisturbed because exhaustion is the priority concern',0],
+      ['Reassure the client that stimulant withdrawal has no medical risks and will resolve',0],
+      ['Offer caffeine to counteract the central-nervous-system depression of withdrawal',0]
+    ],
+    rationale:'Stimulant withdrawal ("the crash") is characterized by profound depression, hypersomnia, fatigue, vivid nightmares, and, critically, suicidal ideation and intent. The Lehne text identifies depression and suicidal thoughts as the most serious complications of stimulant withdrawal. The client\'s statement is a passive suicidal ideation that demands structured risk assessment and safety precautions before any other concern.',
+    source:'Lehne/Varcarolis Ch. 22 — Stimulant withdrawal; Bryan Study Guide Table 1'},
+
+  {id:'MC09', type:'MC', topic:'Pharmacology · Bulimia',
+    case:'A 23-year-old woman with newly diagnosed bulimia nervosa and a history of one childhood febrile seizure is reviewing her new prescriptions with the nurse.',
+    stem:'Which prescribed medication should the nurse question with the provider?',
+    options:[
+      ['Bupropion (Wellbutrin) for comorbid depression',1],
+      ['Fluoxetine (Prozac) at a higher-than-usual dose',0],
+      ['A multivitamin with thiamine and folate',0],
+      ['Potassium chloride supplementation',0]
+    ],
+    rationale:'Bupropion is contraindicated in bulimia nervosa because it lowers the seizure threshold, and patients with bulimia already have heightened seizure risk from electrolyte disturbances (especially hypokalemia from purging). Fluoxetine is the ONLY FDA-approved medication for bulimia and is intentionally dosed higher than for major depression. The vitamin and electrolyte replacements are appropriate supportive care.',
+    source:'Lehne/Varcarolis Ch. 18 — Bulimia pharmacotherapy; Bryan Study Guide Table 3'},
+
+  {id:'MC10', type:'MC', topic:'Anorexia · Hospitalization Criteria',
+    case:'The nurse is reviewing four adolescent clients with anorexia nervosa to determine who meets criteria for inpatient medical stabilization.',
+    stem:'Which finding most clearly meets the criteria for inpatient hospitalization?',
+    options:[
+      ['Daytime resting heart rate of 42 beats per minute',1],
+      ['BMI of 17.2 with weight loss of 4 pounds over 3 months',0],
+      ['Reports of fatigue and feeling cold most days',0],
+      ['Concern from parents about restrictive eating patterns',0]
+    ],
+    rationale:'The Lehne/Varcarolis hospitalization criteria for eating disorders include: <10% body fat, daytime HR <50 bpm, systolic BP <90, temperature <96°F, arrhythmias, severe electrolyte imbalance, OR weight <75% of ideal body weight. A heart rate of 42 bpm is well below the 50 bpm threshold — a clear physiologic indicator of severe malnutrition and cardiac compromise. A BMI of 17.2 is "mild," fatigue/cold sensitivity are concerning but non-specific, and parental concern alone does not mandate hospitalization.',
+    source:'Lehne/Varcarolis Ch. 18 — Hospitalization criteria; Bryan Study Guide Table 2'},
+
+  {id:'MC11', type:'MC', topic:'Refeeding Syndrome',
+    case:'A severely malnourished client with anorexia nervosa (BMI 13.2) is admitted to the eating disorders unit. The dietitian initiates a slow caloric advancement plan.',
+    stem:'Which laboratory abnormality is most associated with refeeding syndrome and would be the nurse\'s greatest concern?',
+    options:[
+      ['Hypophosphatemia',1],
+      ['Hypernatremia',0],
+      ['Hypercalcemia',0],
+      ['Hyperglycemia without electrolyte changes',0]
+    ],
+    rationale:'In prolonged starvation, the body shifts to fat- and protein-based metabolism. When carbohydrates are reintroduced, insulin surges and drives phosphate, magnesium, and potassium intracellularly. The hallmark electrolyte abnormality is HYPOphosphatemia, which can cause cardiac arrhythmias, respiratory failure, seizures, and death. Hypomagnesemia and hypokalemia also occur. Thiamine deficiency may unmask Wernicke-like syndromes. Refeeding therefore requires SLOW caloric advancement and aggressive electrolyte monitoring/replacement.',
+    source:'Lehne/Varcarolis Ch. 18 — Refeeding syndrome; Bryan Study Guide Table 2'},
+
+  {id:'MC12', type:'MC', topic:'Bulimia · Physical Assessment',
+    case:'During admission of a 26-year-old client with suspected bulimia nervosa, the nurse documents physical findings.',
+    stem:'Which finding most strongly supports a diagnosis of bulimia nervosa with self-induced vomiting?',
+    options:[
+      ['Calluses or scarring on the dorsal surface of the dominant hand',1],
+      ['Lanugo hair growth on the face and back',0],
+      ['BMI of 17 with cold mottled extremities',0],
+      ['Visible nasal septum perforation',0]
+    ],
+    rationale:'Russell\'s sign — calluses, scarring, or skin breakdown on the back of the dominant hand — results from repeated friction against the upper teeth during self-induced vomiting and is highly specific for bulimia. Lanugo and cold mottled extremities point to anorexia (starvation). Nasal septum perforation suggests intranasal cocaine use, not bulimia.',
+    source:'Lehne/Varcarolis Ch. 18 — Russell sign; Bryan Study Guide Table 3'},
+
+  {id:'MC13', type:'MC', topic:'Pharmacology · BED',
+    case:'A 38-year-old client with binge-eating disorder is being started on a new medication. The provider explains it is FDA-approved specifically for moderate-to-severe BED.',
+    stem:'Which medication is the client most likely starting?',
+    options:[
+      ['Lisdexamfetamine (Vyvanse)',1],
+      ['Lithium carbonate',0],
+      ['Haloperidol (Haldol)',0],
+      ['Disulfiram (Antabuse)',0]
+    ],
+    rationale:'Lisdexamfetamine is the only FDA-approved pharmacologic treatment specifically for moderate-to-severe binge-eating disorder in adults. It carries a black-box warning for abuse and dependence. SSRIs (high-dose) and SNRIs (duloxetine, venlafaxine) are also used off-label. Lithium is for bipolar disorder, haloperidol for psychosis, and disulfiram is for alcohol-use disorder.',
+    source:'Lehne/Varcarolis Ch. 18 — BED pharmacotherapy; Bryan Study Guide Table 4 + Case 5'},
+
+  {id:'MC14', type:'MC', topic:'Nurses with SUD · Reporting',
+    case:'A charge nurse notices a unit colleague has chronic medication-count discrepancies for opioids, frequently volunteers to administer pain medications, and has become defensive and irritable when questioned. The colleague has a known history of chronic back pain.',
+    stem:'What is the most appropriate first action?',
+    options:[
+      ['Report the objective concerns to nursing management or the unit director per agency policy',1],
+      ['Confront the colleague privately and ask if she is diverting medications',0],
+      ['Notify law enforcement and the State Board of Nursing immediately',0],
+      ['Advise the colleague to resign quietly to avoid disciplinary action',0]
+    ],
+    rationale:'Per the Bryan study guide Case Study 2 and Lehne text: when a nurse suspects substance use disorder in a colleague, the first action is to report objective concerns to management. Management then conducts a formal evaluation and drug screening. Confrontation, premature law-enforcement notification, or coaching the colleague to resign are inappropriate; many states have peer-assistance / alternative-to-discipline programs that allow safe return to practice when the nurse is identified through proper channels.',
+    source:'Bryan Study Guide Case Study 2; Lehne/Varcarolis Ch. 22 — Nurses with SUD'},
+
+  {id:'MC15', type:'MC', topic:'Naloxone · Re-Sedation',
+    case:'A 22-year-old who overdosed on heroin received intranasal naloxone in the emergency department. After 5 minutes the client became responsive, alert, and oriented. Twenty minutes later, the nurse reassesses and finds the client is increasingly difficult to arouse with respirations 8/min.',
+    stem:'Which action does the nurse take?',
+    options:[
+      ['Continue ventilatory support and prepare for repeat naloxone administration per protocol',1],
+      ['Document the deterioration as expected behavior and continue monitoring without intervention',0],
+      ['Begin discharge teaching about avoiding opioids in the future',0],
+      ['Conclude that the original naloxone dose was a placebo because the effect did not last',0]
+    ],
+    rationale:'Naloxone has a much shorter half-life than most opioids (especially fentanyl, methadone, or sustained-release products). Re-sedation and recurrent respiratory depression are common and expected — repeat doses every 2–3 minutes per protocol may be required, sometimes a continuous infusion. The nurse must not assume one dose is sufficient; close monitoring continues until the opioid is fully cleared.',
+    source:'Bryan Study Guide Table 1 — Naloxone Q2-3min; Lehne/Varcarolis Ch. 22'},
+
+  {id:'MC16', type:'MC', topic:'PCP Intoxication',
+    case:'A 19-year-old client is brought to the emergency department by police after using PCP. The client is belligerent, hyperthermic (102.4°F), tachycardic, hypertensive, rigid, and appears insensitive to pain. The nurse is preparing the room.',
+    stem:'Which intervention is most appropriate?',
+    options:[
+      ['Reduce environmental stimulation, ensure staff/patient safety, and prepare ordered benzodiazepines',1],
+      ['Engage the client in prolonged verbal "talk-down" therapy until calm',0],
+      ['Place the client in a brightly lit room with a television to provide distraction',0],
+      ['Administer naloxone as the first-line reversal agent for PCP',0]
+    ],
+    rationale:'Per the Bryan study guide: ingested PCP cannot be talked down and may require restraints. Care priorities are safety, low-stimulation environment, monitoring for hyperthermia and seizure, and benzodiazepines (such as diazepam) for agitation; haloperidol may also be used. Talk-down therapy is contraindicated for PCP — it is appropriate for some hallucinogen intoxications but not PCP. Bright lights/TV INCREASES stimulation. Naloxone reverses opioids, not PCP.',
+    source:'Bryan Study Guide Table 1 — Hallucinogen / PCP'},
+
+  {id:'MC17', type:'MC', topic:'Wernicke-Korsakoff',
+    case:'A 58-year-old man with a 30-year history of heavy alcohol use is admitted with confusion, ataxic gait, and horizontal nystagmus. The nurse anticipates orders.',
+    stem:'Which intervention is the priority?',
+    options:[
+      ['Administer IV thiamine before any glucose-containing fluids',1],
+      ['Administer IV dextrose 50% to raise blood glucose first',0],
+      ['Begin oral disulfiram to prevent further alcohol use',0],
+      ['Administer naloxone to reverse the encephalopathy',0]
+    ],
+    rationale:'Wernicke encephalopathy (confusion + ataxia + ocular abnormalities) is caused by thiamine (B1) deficiency. Giving glucose BEFORE thiamine in a thiamine-deficient brain can precipitate or worsen Wernicke-Korsakoff syndrome by depleting the last remaining thiamine stores in glucose metabolism. The rule is "thiamine first, glucose second." Disulfiram is for relapse prevention (not acute encephalopathy), and naloxone is irrelevant.',
+    source:'Lehne/Varcarolis Ch. 22 — Wernicke-Korsakoff; Bryan Study Guide Table 1'},
+
+  {id:'MC18', type:'MC', topic:'Therapeutic Communication · Eating Disorder',
+    case:'A 17-year-old admitted for severe anorexia nervosa (BMI 14.1) refuses breakfast on day two. She tells the nurse, "If I eat that, I won\'t be able to live with myself today."',
+    stem:'Which response is most therapeutic?',
+    options:[
+      ['"I hear how hard this is. The plan tells us when, what, and how much you eat — that part is not your decision today, but I\'ll sit with you while you eat."',1],
+      ['"You\'re being ridiculous; eating one meal will not make you fat."',0],
+      ['"If you don\'t eat, we\'ll have no choice but to put a feeding tube down."',0],
+      ['"That\'s fine, you can skip this meal and try again at lunch."',0]
+    ],
+    rationale:'In acute anorexia care, external structure is therapeutic — the meal plan is non-negotiable while medical risk is high (Lehne Ch. 18). The nurse acknowledges the client\'s distress, conveys empathy, and stays present, while NOT engaging in negotiation about the meal itself. Ridiculing minimizes anxiety, threatening with tubes is coercive, and skipping meals reinforces the eating disorder.',
+    source:'Lehne/Varcarolis Ch. 18 — Implementation; Bryan Study Guide Table 2'},
+
+  {id:'MC19', type:'MC', topic:'Sedative Withdrawal',
+    case:'A 56-year-old woman who has taken alprazolam (Xanax) 2 mg three times daily for the past 6 years stopped abruptly 4 days ago when she ran out. She is now in the ED with anxiety, tremor, diaphoresis, paranoid thinking, and just had a witnessed brief generalized seizure.',
+    stem:'Which interpretation is most accurate?',
+    options:[
+      ['Benzodiazepine withdrawal can be life-threatening and requires gradual taper or substitution to prevent seizures',1],
+      ['Benzodiazepine withdrawal is uncomfortable but never associated with seizures',0],
+      ['These findings indicate benzodiazepine intoxication, not withdrawal',0],
+      ['Cold-turkey cessation is the safest approach for any benzodiazepine',0]
+    ],
+    rationale:'Like alcohol withdrawal, benzodiazepine withdrawal is a CNS-rebound syndrome that can produce seizures, delirium, and autonomic instability. Treatment is gradual reduction or substitution with a long-acting agent (diazepam, phenobarbital). Intoxication, by contrast, presents as slurred speech, ataxia, nystagmus, and impaired thinking — opposite of the rebound hyperactivity seen here.',
+    source:'Lehne/Varcarolis Ch. 22 — Sedative/hypnotic withdrawal; Bryan Study Guide Table 1'},
+
+  {id:'MC20', type:'MC', topic:'Trauma-Informed Application',
+    case:'A 31-year-old client with stimulant use disorder discloses to the nurse, "I started using meth in college because staying awake felt safer after I was assaulted at a party."',
+    stem:'Which interpretation best guides the nurse\'s plan of care?',
+    options:[
+      ['Substance use is functioning as maladaptive self-medication for trauma; care must address both addiction and trauma simultaneously',1],
+      ['Trauma should be ignored until the client achieves at least 5 years of sobriety',0],
+      ['The trauma history is irrelevant because stimulants are used purely for euphoria',0],
+      ['Recovery is unlikely because trauma-related substance use rarely responds to treatment',0]
+    ],
+    rationale:'Trauma is a major risk factor and maintaining factor for SUD (Lehne Ch. 22). Treating addiction without addressing the underlying trauma frequently leads to relapse. Best practice is integrated, trauma-informed care that addresses both diagnoses concurrently. Delaying trauma work, denying its relevance, or framing trauma-linked SUD as untreatable are all clinically and ethically wrong.',
+    source:'Lehne/Varcarolis Ch. 22 — Risk factors, trauma; Concept 34'},
+
+  {id:'MC21', type:'MC', topic:'Codependence · Family Dynamics',
+    case:'The wife of a client with severe alcohol use disorder confides to the nurse, "I call out sick for him, write the excuses, hide his phone from his boss, and pour out his bottles when he\'s asleep. If I didn\'t, his whole life would fall apart."',
+    stem:'Which interpretation is most accurate?',
+    options:[
+      ['These behaviors describe codependence and enabling, which can be addressed with family-focused resources like Al-Anon',1],
+      ['These behaviors are an effective primary intervention for alcohol use disorder',0],
+      ['The nurse should praise the wife for protecting her husband from natural consequences',0],
+      ['Family involvement is unrelated to the client\'s substance use disorder',0]
+    ],
+    rationale:'Codependence — defined originally in research with families of alcoholics — involves overly responsible behavior, defining self-worth through caretaking, and shielding the addicted person from consequences. While well-intentioned, it perpetuates the addiction cycle. Al-Anon and Alateen are dedicated 12-step support resources for family members. Praising enabling behavior or denying family involvement misses a major leverage point in recovery.',
+    source:'Lehne/Varcarolis Ch. 22 — Family Assessment, Codependence'},
+
+  {id:'MC22', type:'MC', topic:'CAGE-AID Application',
+    case:'During screening, a client says, "I take a Vicodin first thing every morning because otherwise my hands shake and I can\'t function at work."',
+    stem:'Which CAGE-AID element does this statement most directly reflect?',
+    options:[
+      ['Eye-opener',1],
+      ['Annoyed',0],
+      ['Cut-down',0],
+      ['Guilty',0]
+    ],
+    rationale:'The CAGE-AID mnemonic: Cut-down (felt you should reduce use), Annoyed (by others\' criticism), Guilty (about your use), Eye-opener (used first thing in the morning to steady nerves or rid a hangover/withdrawal). Using a substance immediately on waking to prevent withdrawal symptoms is the textbook "Eye-opener."',
+    source:'Lehne/Varcarolis Ch. 22 — CAGE/CAGE-AID; Bryan Study Guide'},
+
+  {id:'MC23', type:'MC', topic:'Pain Management · SUD',
+    case:'A 44-year-old man with a documented opioid use disorder is admitted post-operatively after an emergency appendectomy. He reports 8/10 pain. A nursing colleague says, "Don\'t give him opioids — he\'s an addict, it will just feed his addiction."',
+    stem:'What is the nurse\'s best response and clinical action?',
+    options:[
+      ['"Clients with opioid use disorder still have legitimate post-op pain. We\'ll assess and provide multimodal analgesia, including opioids if appropriate, with close respiratory monitoring."',1],
+      ['"You\'re right, we should withhold all opioids and use only acetaminophen, regardless of pain level."',0],
+      ['"Because he has tolerance, we don\'t need to monitor him at all when we give opioids."',0],
+      ['"His pain reports should be assumed to be drug-seeking and ignored."',0]
+    ],
+    rationale:'Clients with SUD have the same right to safe, effective pain management as any other client. They typically have higher tolerance and may need higher doses, with multimodal approaches (NSAIDs, acetaminophen, regional, opioid-sparing) and CLOSE monitoring for respiratory depression. Withholding pain control is unethical; ignoring tolerance/respiratory risk is unsafe; assuming drug-seeking is bias-driven and a barrier to care.',
+    source:'Concept 34 — Co-occurring SUD and pain; Lehne/Varcarolis Ch. 22'},
+
+  {id:'MC24', type:'MC', topic:'Hallucinogen Withdrawal',
+    case:'A 20-year-old client asks the nurse what to expect after stopping LSD use, which she has been using recreationally for 8 months.',
+    stem:'Which response by the nurse is most accurate?',
+    options:[
+      ['"There is no formal withdrawal syndrome from LSD, but flashbacks and persisting perception disorder can occur during sobriety."',1],
+      ['"You will need a benzodiazepine taper to prevent seizures during withdrawal."',0],
+      ['"You should expect severe pinpoint pupils, runny nose, and bone pain in the first 48 hours."',0],
+      ['"LSD withdrawal causes the most fatal type of withdrawal of any substance."',0]
+    ],
+    rationale:'Per the Bryan study guide and Lehne text: hallucinogens (LSD, mushrooms, mescaline) have NO official withdrawal syndrome. However, hallucinogen-persisting perception disorder (HPPD) — recurrent flashbacks of visual disturbances — can occur during sobriety. Benzodiazepine taper is for sedative-hypnotic/alcohol withdrawal; pinpoint pupils + bone pain describe opioid withdrawal.',
+    source:'Bryan Study Guide Table 1 — Hallucinogen withdrawal'},
+
+  {id:'MC25', type:'MC', topic:'Substance Identification',
+    case:'A 28-year-old is brought to the ED with euphoria, hypervigilance, dilated pupils, chest pain, blood pressure 188/104, heart rate 146, diaphoresis, and reports recent weight loss.',
+    stem:'Which substance category is most consistent with these findings?',
+    options:[
+      ['Stimulant intoxication (cocaine, methamphetamine, amphetamine)',1],
+      ['Opioid intoxication',0],
+      ['Sedative-hypnotic intoxication',0],
+      ['Cannabis intoxication',0]
+    ],
+    rationale:'Stimulant intoxication: euphoria, hypervigilance, dilated pupils, hypertension, tachycardia, dysrhythmias, chest pain, diaphoresis, hyperthermia, weight loss, anxiety, paranoia, seizures, possible psychosis. Opioid intoxication is the OPPOSITE: drowsiness, miosis, bradycardia, hypotension, hypothermia, respiratory depression. Sedative intoxication mimics alcohol intoxication. Cannabis causes red eyes, dry mouth, slowed motor skills, and increased appetite.',
+    source:'Lehne/Varcarolis Ch. 22 — Stimulant intoxication; Bryan Study Guide Table 1'},
+
+  {id:'MC26', type:'MC', topic:'BED Differential',
+    case:'A 42-year-old man, BMI 34, reports recurrent episodes of eating large quantities of food rapidly even when not hungry. He eats alone because of embarrassment, feels disgusted afterward, and denies any vomiting, laxative use, or excessive exercise.',
+    stem:'Which is the most likely diagnosis?',
+    options:[
+      ['Binge-eating disorder',1],
+      ['Bulimia nervosa',0],
+      ['Anorexia nervosa, binge-purge subtype',0],
+      ['Avoidant/restrictive food intake disorder (ARFID)',0]
+    ],
+    rationale:'BED diagnostic criteria: recurrent binge episodes (≥1/week × 3 months) WITHOUT compensatory behaviors. Distinguishing features per DSM-5: eating rapidly, eating until uncomfortably full, eating when not hungry, eating alone due to embarrassment, feeling disgusted/depressed afterward. Bulimia REQUIRES compensatory behaviors. Anorexia requires significantly low BMI. ARFID is restrictive eating without body-image distortion.',
+    source:'Lehne/Varcarolis Ch. 18 — BED DSM-5 criteria; Bryan Study Guide Case 5'},
+
+  {id:'MC27', type:'MC', topic:'Buprenorphine Therapeutic Effect',
+    case:'A client started buprenorphine/naloxone (Suboxone) maintenance therapy 4 weeks ago for opioid use disorder.',
+    stem:'Which finding best indicates the medication is supporting the recovery plan?',
+    options:[
+      ['Reduced cravings and withdrawal symptoms with engagement in counseling',1],
+      ['Mild euphoria after each scheduled dose',0],
+      ['Discontinuation of all follow-up appointments',0],
+      ['Profound sedation and respiratory rate of 9/min',0]
+    ],
+    rationale:'Buprenorphine is a partial opioid agonist; the goal of MAT (medication-assisted treatment) is to suppress cravings/withdrawal so the client can engage in psychosocial recovery work — counseling, support groups, life-skills rebuilding. Euphoria suggests misuse or dose problem; stopping follow-up undermines treatment; severe sedation/RR 9 indicates overdose or interaction (often with benzodiazepines/alcohol).',
+    source:'Lehne/Varcarolis Ch. 22 — Buprenorphine and MAT'},
+
+  {id:'MC28', type:'MC', topic:'Pica Identification',
+    case:'A 7-year-old child is brought to the clinic. The mother reports the child has been chewing and swallowing dirt, paint chips, and small pieces of paper for the past 4 months.',
+    stem:'Which response is most accurate?',
+    options:[
+      ['"This describes pica. We should screen for lead exposure, iron-deficiency anemia, and intestinal complications."',1],
+      ['"This describes rumination disorder, which usually resolves spontaneously."',0],
+      ['"This is normal exploratory behavior at this age and requires no follow-up."',0],
+      ['"This describes ARFID and requires nutritional supplementation only."',0]
+    ],
+    rationale:'Pica = ingestion of non-nutritive substances past age 2. Common dangers: lead toxicity (paint), intestinal blockage (stones, hardware), laceration (sharp objects), bacterial infection (dirt), dental erosion. Rumination = regurgitating, rechewing, reswallowing food. ARFID = avoidance/restriction without body-image distortion. Pica past toddlerhood always warrants medical and behavioral evaluation.',
+    source:'Lehne/Varcarolis Ch. 18 — Pica; Box 18.5'},
+
+  {id:'MC29', type:'MC', topic:'Inhalant Emergency',
+    case:'A 14-year-old is brought to the ED after being found behind the school inhaling computer-cleaner spray ("huffing"). He is euphoric, hallucinating, has slurred speech, and a new irregular cardiac rhythm appears on the monitor.',
+    stem:'Which is the nurse\'s priority concern?',
+    options:[
+      ['Inhalants can cause "sudden sniffing death" from cardiac arrhythmia and require immediate cardiac monitoring',1],
+      ['Inhalant withdrawal is harmless and the client requires no further evaluation',0],
+      ['Naloxone is the priority antidote for inhalant overdose',0],
+      ['Encourage hyperventilation to clear the chemical from the lungs',0]
+    ],
+    rationale:'Inhalants (toxic gases, paint thinners, aerosol propellants, glue) can cause sudden cardiac arrhythmia and death — the so-called "sudden sniffing death syndrome." Care is supportive: cardiac/neurologic monitoring, O2, IV access, treat arrhythmias. Naloxone is for opioids. Hyperventilation is not a recognized treatment. The Bryan study guide lists supportive care and managing immediate symptoms as the acute treatment.',
+    source:'Bryan Study Guide Table 1 — Inhalants; Lehne/Varcarolis Ch. 22'},
+
+  {id:'MC30', type:'MC', topic:'Acamprosate Teaching',
+    case:'A client is prescribed acamprosate (Campral) for alcohol-use-disorder relapse prevention. The nurse is reviewing teaching.',
+    stem:'Which client statement requires further teaching?',
+    options:[
+      ['"I will take this medication starting tomorrow even though I had a drink last night."',1],
+      ['"I will report any persistent diarrhea or appetite changes to my provider."',0],
+      ['"My provider should review my kidney function before I start this medication."',0],
+      ['"I will continue taking this even after I feel I no longer need it, until told otherwise."',0]
+    ],
+    rationale:'Acamprosate should be initiated on or after the FIFTH day of abstinence — not while the client is still drinking. Renal impairment is a contraindication (drug is renally cleared). Common side effects include diarrhea, GI upset, appetite loss, dizziness, anxiety, and difficulty sleeping. Continued adherence is required for sustained relapse prevention.',
+    source:'Lehne/Varcarolis Ch. 22 Table 22.6 — Acamprosate'}
+);
+
+
+/* ===== SELECT-ALL-THAT-APPLY: 30 ITEMS ===== */
+QUESTIONS_BANK.push(
+  {id:'SA01', type:'SATA', topic:'Polysubstance Overdose · Findings Requiring Follow-Up',
+    case:'A 31-year-old client is brought to the emergency department by paramedics with suspected polysubstance overdose. Initial assessment is in progress.',
+    stem:'Which findings require IMMEDIATE follow-up by the nurse?',
+    options:[
+      ['Respiratory rate 7/min with oxygen saturation 84% on room air',1],
+      ['Difficult to arouse with pupils 1 mm bilaterally',1],
+      ['Blood pressure 78/44 with weak peripheral pulses',1],
+      ['Snoring respirations and tongue posterior in pharynx',1],
+      ['Empty pill bottles for oxycodone and alprazolam in client\'s belongings',1],
+      ['Family reports the client missed the last 3 weeks of work',0],
+      ['Client states a history of starting use after a workplace injury',0],
+      ['Client reports having attended a support group meeting last month',0]
+    ],
+    rationale:'Airway, breathing, circulation, level of consciousness, and pupil findings consistent with opioid overdose are the immediate priorities. Empty pill bottles for both an opioid AND a benzodiazepine warn of potentiated CNS depression that may require both naloxone and prolonged ventilatory support. Work history, etiology of use, and prior treatment are important — but only AFTER stabilization.',
+    source:'Concept 34 Emergency Management; Box 22.1 — Opioid intoxication signs'},
+
+  {id:'SA02', type:'SATA', topic:'Worsening Alcohol Withdrawal',
+    case:'A 56-year-old man with daily heavy alcohol use is now 36 hours from his last drink. The nurse is reassessing for signs of progression.',
+    stem:'Which findings indicate the alcohol withdrawal is WORSENING?',
+    options:[
+      ['New tonic-clonic seizure activity',1],
+      ['Visual hallucinations of insects on the walls',1],
+      ['Disorientation to place and time',1],
+      ['Temperature of 102.6°F with diaphoresis',1],
+      ['Tachycardia 134 with rising blood pressure 188/104',1],
+      ['Late onset of bradycardia 48 and hypotension 82/52',1],
+      ['CIWA-Ar score declining from 22 to 11 after lorazepam',0],
+      ['Client able to engage in conversation about discharge planning',0]
+    ],
+    rationale:'Worsening AWS includes seizures (12–24 hr), hallucinations, delirium tremens (anytime in 72 hr), fever, and autonomic hyperactivity. Late bradycardia/hypotension after a period of hyperactivity signals cardiovascular collapse and impending decompensation — a critical late finding. A declining CIWA score and meaningful conversation indicate response to therapy, not deterioration.',
+    source:'Lehne/Varcarolis Ch. 22 — AWS progression; Concept 34 — Emergency management'},
+
+  {id:'SA03', type:'SATA', topic:'Concerning History · SUD Screening',
+    case:'During admission of a client following a motor vehicle crash, the nurse takes a substance history. The client smells of alcohol and says, "It\'s really not a problem."',
+    stem:'Which findings increase concern for substance use disorder?',
+    options:[
+      ['History of two prior DUI citations',1],
+      ['Most leisure activities involve alcohol or drugs',1],
+      ['Repeated unexplained injuries from falls and altercations',1],
+      ['Marital separation and recent job loss attributed by family to drinking',1],
+      ['Frequent reference to alcohol or drug use in conversation',1],
+      ['Client hesitant to disclose use because of legal worry',1],
+      ['Client reports one glass of wine at a holiday dinner with no impairment',0],
+      ['Client asks the nurse to clarify confidentiality of disclosed information',0]
+    ],
+    rationale:'Box 34.1 lists the high-yield clues: recurrent driving offenses, leisure built around use, repeated trauma, occupational/marital/financial fallout, preoccupation with the substance, and disclosure hesitation due to shame or consequences. A single non-impairing exposure and a clarification about confidentiality are clinically appropriate, not concerning.',
+    source:'Concept 34 Box 34.1 — Symptoms and behaviors of addiction'},
+
+  {id:'SA04', type:'SATA', topic:'Sedative-Hypnotic Withdrawal',
+    case:'A 60-year-old woman who has taken alprazolam daily for 8 years was admitted yesterday after running out 5 days ago. The nurse is monitoring closely.',
+    stem:'Which findings are concerning for sedative-hypnotic withdrawal?',
+    options:[
+      ['Anxiety with diaphoresis and tachycardia',1],
+      ['Confusion and paranoia',1],
+      ['Tremor and psychomotor agitation',1],
+      ['New seizure activity',1],
+      ['Rebound autonomic hyperactivity',1],
+      ['Insomnia for the third consecutive night',1],
+      ['Stable vital signs and quiet sleep',0],
+      ['Slurred speech and unsteady gait immediately after the last dose',0]
+    ],
+    rationale:'Sedative-hypnotic withdrawal mirrors alcohol withdrawal — rebound CNS hyperactivity from removal of GABA-ergic depressant. Slurred speech + ataxia immediately after a dose is INTOXICATION, not withdrawal. The treatment strategy is gradual taper or substitution with phenobarbital (long-acting barbiturate) for severe cases.',
+    source:'Lehne/Varcarolis Ch. 22 — Sedative withdrawal'},
+
+  {id:'SA05', type:'SATA', topic:'Long-Term Alcohol Complications',
+    case:'A 62-year-old man with a 35-year history of heavy alcohol use is admitted for evaluation. The nurse anticipates complications.',
+    stem:'Which conditions are associated with long-term heavy alcohol use?',
+    options:[
+      ['Cirrhosis with ascites and esophageal varices',1],
+      ['Wernicke encephalopathy and Korsakoff syndrome from thiamine deficiency',1],
+      ['Pancreatitis with associated diabetes',1],
+      ['Alcoholic cardiomyopathy and heart failure',1],
+      ['Increased risk of head, neck, esophageal, breast, and colorectal cancers',1],
+      ['Peripheral neuropathy and alcoholic myopathy',1],
+      ['Pinpoint pupils requiring chronic naloxone therapy',0],
+      ['Guaranteed absence of withdrawal if use is denied',0]
+    ],
+    rationale:'Heavy chronic alcohol use damages multiple systems: liver (hepatitis → cirrhosis → varices/ascites), CNS (Wernicke-Korsakoff), pancreas, heart, vasculature, peripheral nerves, muscles, and increases multiple cancer risks. Pinpoint pupils are an opioid finding. Denial does not eliminate physiologic withdrawal risk.',
+    source:'Lehne/Varcarolis Ch. 22 — Systemic effects of alcohol'},
+
+  {id:'SA06', type:'SATA', topic:'Stimulant Intoxication Findings',
+    case:'A client is brought to the ED after using methamphetamine.',
+    stem:'Which findings does the nurse expect to see with stimulant intoxication?',
+    options:[
+      ['Hypertension and tachycardia',1],
+      ['Dilated pupils',1],
+      ['Hypervigilance and anxiety',1],
+      ['Chest pain and possible dysrhythmia',1],
+      ['Diaphoresis and hyperthermia',1],
+      ['Decreased appetite with weight loss',1],
+      ['Bradycardia and pinpoint pupils',0],
+      ['Profound respiratory depression',0]
+    ],
+    rationale:'Stimulants produce sympathetic surge: HTN, tachycardia, mydriasis, diaphoresis, hyperthermia, hypervigilance, anxiety, anorexia, weight loss, chest pain, dysrhythmia, possible seizure or psychosis. Bradycardia, miosis, and respiratory depression are OPIOID findings.',
+    source:'Lehne/Varcarolis Ch. 22; Bryan Study Guide Table 1 — Stimulants'},
+
+  {id:'SA07', type:'SATA', topic:'Opioid Withdrawal Findings',
+    case:'A client with opioid use disorder is 24 hours from her last heroin use.',
+    stem:'Which findings are consistent with opioid withdrawal?',
+    options:[
+      ['Lacrimation and rhinorrhea',1],
+      ['Piloerection ("gooseflesh") and yawning',1],
+      ['Mydriasis (dilated pupils)',1],
+      ['Bone and muscle pain with abdominal cramping',1],
+      ['Nausea, vomiting, and diarrhea',1],
+      ['Intense drug craving and anxiety',1],
+      ['Pinpoint pupils with respiratory rate 8/min',0],
+      ['Sedation, slurred speech, and analgesia',0]
+    ],
+    rationale:'Opioid WITHDRAWAL is a sympathetic-rebound, GI-active syndrome — uncomfortable but rarely fatal in healthy adults. The opposites (miosis, hypoventilation, sedation, analgesia) describe opioid INTOXICATION/overdose.',
+    source:'Box 22.1 — Opioid withdrawal; Bryan Study Guide Table 1'},
+
+  {id:'SA08', type:'SATA', topic:'Cannabis Withdrawal',
+    case:'A 24-year-old reports stopping daily cannabis use 5 days ago after 4 years of regular use.',
+    stem:'Which findings are consistent with cannabis withdrawal?',
+    options:[
+      ['Irritability and anger',1],
+      ['Anxiety and restlessness',1],
+      ['Insomnia and disturbing dreams',1],
+      ['Decreased appetite and weight loss',1],
+      ['Headache, sweating, chills, or abdominal pain',1],
+      ['Tonic-clonic seizures as the hallmark finding',0],
+      ['Pinpoint pupils requiring naloxone',0],
+      ['Auditory hallucinations and delirium tremens',0]
+    ],
+    rationale:'Cannabis withdrawal is real but generally mild — mood/sleep/appetite changes plus mild somatic symptoms. Seizures, pinpoint pupils, and DTs belong to alcohol/sedative or opioid syndromes, NOT cannabis.',
+    source:'Bryan Study Guide Table 1 — Cannabis'},
+
+  {id:'SA09', type:'SATA', topic:'Anorexia Nervosa Findings',
+    case:'A 16-year-old with anorexia nervosa (BMI 14) is admitted for medical stabilization.',
+    stem:'Which findings does the nurse anticipate on assessment?',
+    options:[
+      ['Lanugo hair on the face and back',1],
+      ['Cold mottled extremities',1],
+      ['Heart rate 44 with hypotension',1],
+      ['Hypokalemia and other electrolyte derangements',1],
+      ['Amenorrhea and decreased bone density',1],
+      ['Yellow skin (hypercarotenemia) and dry skin',1],
+      ['Russell sign on the dorsal hand',0],
+      ['BMI 26 with normal vital signs',0]
+    ],
+    rationale:'Anorexia: starvation findings — lanugo, cold/mottled skin, bradycardia, hypotension, electrolyte issues (esp. hypokalemia), amenorrhea, low bone density, hypercarotenemia, dry skin. Russell sign is a BULIMIA finding (vomiting calluses). Normal BMI with normal vitals would be inconsistent with the diagnosis.',
+    source:'Lehne/Varcarolis Ch. 18 Table 18.1; Bryan Study Guide Table 2'},
+
+  {id:'SA10', type:'SATA', topic:'Bulimia Nervosa Findings',
+    case:'A 25-year-old college student presents with concerns of fatigue and dental sensitivity. Bulimia is suspected.',
+    stem:'Which physical findings are consistent with bulimia nervosa?',
+    options:[
+      ['Dental enamel erosion and increased caries',1],
+      ['Enlarged parotid glands',1],
+      ['Russell sign on the dorsum of the dominant hand',1],
+      ['Hypokalemia from purging',1],
+      ['Esophagitis or history of esophageal tears',1],
+      ['Orthostatic vital signs from dehydration',1],
+      ['BMI of 13 with severe lanugo',0],
+      ['Bradycardia 38 and temperature 95.2°F',0]
+    ],
+    rationale:'Bulimia clients often appear at or near ideal body weight. Findings reflect chronic vomiting/purging: dental erosion, parotid hypertrophy, Russell sign, esophagitis, hypokalemia, orthostatic changes. Severe bradycardia, hypothermia, low BMI, and lanugo are anorexia findings.',
+    source:'Lehne/Varcarolis Ch. 18 — Bulimia assessment; Bryan Study Guide Table 3'},
+
+  {id:'SA11', type:'SATA', topic:'Opioid Overdose · Interventions',
+    case:'A client is found unresponsive in the bathroom with a syringe nearby. Respiratory rate 5/min, pinpoint pupils, cyanosis.',
+    stem:'Which actions are appropriate at this time?',
+    options:[
+      ['Open the airway and provide bag-valve-mask ventilation',1],
+      ['Administer high-flow oxygen',1],
+      ['Prepare and administer naloxone per protocol, repeating every 2–3 min as needed',1],
+      ['Have suction equipment ready because vomiting is common with reversal',1],
+      ['Maintain continuous cardiac and respiratory monitoring after reversal',1],
+      ['Anticipate possible re-sedation as naloxone half-life is shorter than most opioids',1],
+      ['Delay all interventions until toxicology results are confirmed',0],
+      ['Begin discharge teaching about relapse prevention before respirations stabilize',0]
+    ],
+    rationale:'Opioid overdose management = ABCs + naloxone + continued monitoring. Naloxone\'s short half-life relative to most opioids (especially fentanyl, sustained-release products, methadone) means re-sedation is expected. Suction is essential because emergence vomiting is common. Toxicology and teaching come AFTER stabilization.',
+    source:'Concept 34 — Emergency management; Bryan Study Guide Table 1 — Opioid'},
+
+  {id:'SA12', type:'SATA', topic:'Alcohol Withdrawal · Interventions',
+    case:'A client in moderate alcohol withdrawal has tremors, agitation, nausea, hypertension 168/98, tachycardia 122, and brief tactile hallucinations. CIWA-Ar score is 19.',
+    stem:'Which interventions are appropriate?',
+    options:[
+      ['Maintain a quiet, low-stimulation environment',1],
+      ['Implement seizure precautions',1],
+      ['Administer the prescribed benzodiazepine per CIWA-Ar protocol',1],
+      ['Administer thiamine and B-complex vitamins as ordered',1],
+      ['Monitor intake/output and provide IV fluids as ordered',1],
+      ['Reassess vital signs and CIWA-Ar score frequently',1],
+      ['Encourage abrupt unsupervised cessation in future episodes',0],
+      ['Substitute hydromorphone for benzodiazepines as standard treatment',0]
+    ],
+    rationale:'AWS care: low stimulation, seizure precautions, symptom-triggered benzodiazepines (chlordiazepoxide, lorazepam, diazepam), thiamine BEFORE glucose to prevent Wernicke, hydration, frequent reassessment. Cold-turkey self-detox is dangerous; opioids are not the standard agent for AWS.',
+    source:'Lehne/Varcarolis Ch. 22; Bryan Study Guide Table 1 — Alcohol acute treatment'},
+
+  {id:'SA13', type:'SATA', topic:'PCP Intoxication · Interventions',
+    case:'A client arrived in the ED after PCP use. He is belligerent, hyperthermic 101.8°F, and rigid. Initial verbal de-escalation has been ineffective and he is escalating.',
+    stem:'Which nursing actions are appropriate?',
+    options:[
+      ['Prioritize staff and patient safety with adequate personnel present',1],
+      ['Reduce environmental stimulation (dim lights, low noise)',1],
+      ['Prepare ordered benzodiazepine such as diazepam for agitation',1],
+      ['Monitor for hyperthermia, rhabdomyolysis, and seizure activity',1],
+      ['Anticipate that physical restraints may be needed if less restrictive measures fail and policy allows',1],
+      ['Continue verbal "talk-down" as the only intervention despite escalation',0],
+      ['Permit ambulation to "burn off" the drug',0],
+      ['Ignore vital signs because hallucinations are the only concern',0]
+    ],
+    rationale:'PCP intoxication is a medical emergency: violence, hyperthermia, rhabdomyolysis, seizures. The Bryan study guide explicitly notes ingested PCP CANNOT be talked down and may require restraints. Care: safety, low stimulation, benzodiazepines/Haldol, monitoring.',
+    source:'Bryan Study Guide Table 1 — Hallucinogen / PCP'},
+
+  {id:'SA14', type:'SATA', topic:'Neonatal Abstinence Syndrome',
+    case:'The nurse is caring for a newborn with neonatal abstinence syndrome (NAS) following maternal opioid use during pregnancy. The mother appears tearful and ashamed.',
+    stem:'Which interventions are appropriate?',
+    options:[
+      ['Use a nonjudgmental approach with the mother–infant dyad',1],
+      ['Swaddle the infant snugly and use containment',1],
+      ['Decrease environmental stimulation (dim lights, reduced noise, minimal handling)',1],
+      ['Protect the infant\'s skin from abrasions caused by tremors',1],
+      ['Encourage breastfeeding only if clinically cleared based on maternal substance/medication regimen',1],
+      ['Cluster care to provide periods of uninterrupted rest',1],
+      ['Separate the infant from the mother because shame indicates poor parenting',0],
+      ['Increase stimulation frequently so the infant tires faster',0]
+    ],
+    rationale:'NAS care principles: minimize stimulation, swaddle/contain, protect skin, support feeding decisions individually with provider clearance, and use a nonjudgmental approach to support the maternal-infant relationship. Shaming/separating undermines bonding and recovery; increased stimulation worsens irritability.',
+    source:'Concept 34 — Family/community-centered care'},
+
+  {id:'SA15', type:'SATA', topic:'Anorexia · Inpatient Monitoring',
+    case:'A 19-year-old client with anorexia nervosa (BMI 14.5) has been admitted to the eating disorders unit.',
+    stem:'Which interventions support safe inpatient monitoring?',
+    options:[
+      ['Provide scheduled, portion-controlled meals at consistent times',1],
+      ['Observe the client during meals and for at least 1 hour after to prevent purging or food disposal',1],
+      ['Limit time in the bathroom outside of supervised periods',1],
+      ['Weigh the client at the same time, in similar clothing, after voiding, two to three times per week',1],
+      ['Have the client step on the scale backward to reduce anxiety about the number',1],
+      ['Monitor vital signs, including orthostatic measures, regularly',1],
+      ['Promote unrestricted exercise as a way to increase appetite',0],
+      ['Reward weight gain with extravagant praise about appearance to boost self-esteem',0]
+    ],
+    rationale:'Inpatient anorexia care = structure, observation, controlled weighing, vitals, monitoring of bathroom/exercise. Unrestricted exercise sabotages weight restoration; appearance-based praise reinforces body-image distortion (acknowledge the EFFORT of eating, not the body change).',
+    source:'Lehne/Varcarolis Ch. 18 — Anorexia milieu and Box 18.4'},
+
+  {id:'SA16', type:'SATA', topic:'Bulimia · Nursing Interventions',
+    case:'The nurse is planning care for a client newly admitted with bulimia nervosa.',
+    stem:'Which interventions are appropriate?',
+    options:[
+      ['Observe the client for at least 1 hour after meals to prevent purging',1],
+      ['Monitor electrolytes — particularly potassium — closely',1],
+      ['Provide a structured eating schedule to interrupt the binge-purge cycle',1],
+      ['Teach the client about the self-perpetuating nature of fasting → bingeing → purging',1],
+      ['Use cognitive-behavioral techniques to challenge irrational beliefs about food',1],
+      ['Encourage food journaling to identify binge triggers',1],
+      ['Allow unsupervised bathroom access immediately after meals to respect autonomy',0],
+      ['Tell the client purging is a personal choice that requires no clinical concern',0]
+    ],
+    rationale:'Bulimia inpatient care = post-meal observation, structured meals, electrolyte monitoring (K+!), CBT, journaling, education about the binge-purge cycle. Unsupervised post-meal bathroom access defeats the entire structure; framing purging as benign minimizes a life-threatening behavior.',
+    source:'Lehne/Varcarolis Ch. 18 — Bulimia care plan; Box 18.4'},
+
+  {id:'SA17', type:'SATA', topic:'Eating Disorder Mealtime Interventions',
+    case:'The nurse is structuring mealtimes on the eating disorders unit.',
+    stem:'Which approaches align with evidence-based practice?',
+    options:[
+      ['Set precise meal times and inform clients of the duration of each meal',1],
+      ['Encourage social conversation during meals — but NOT about food, weight, or exercise',1],
+      ['Observe clients during and immediately after meals',1],
+      ['Be empathetic about the patient\'s struggle while not negotiating the meal plan',1],
+      ['Allow patients to assume more meal-planning responsibility as they near target weight',1],
+      ['Permit clients to skip meals when anxiety is high',0],
+      ['Center mealtime conversation on calorie content and weight',0],
+      ['Reward weight gain by allowing unrestricted exercise immediately',0]
+    ],
+    rationale:'Mealtime interventions: external structure, supervision, empathy without negotiation, neutral conversation, gradual return of autonomy as weight normalizes. Skipping reinforces avoidance; calorie talk reinforces eating-disorder cognitions; unrestricted exercise can derail recovery.',
+    source:'Lehne/Varcarolis Ch. 18 — Care plan steps 1e–1p'},
+
+  {id:'SA18', type:'SATA', topic:'Disulfiram Teaching',
+    case:'A client is being discharged with a prescription for disulfiram (Antabuse). The nurse provides teaching.',
+    stem:'Which teaching points should the nurse include?',
+    options:[
+      ['Avoid all alcohol-containing beverages',1],
+      ['Read labels of mouthwashes, cough syrups, OTC liquid medications, and even some food extracts for alcohol content',1],
+      ['Be aware that alcohol exposure can cause severe nausea, vomiting, flushing, throbbing headache, tachycardia, and chest pain',1],
+      ['Best results occur when paired with counseling and recovery support',1],
+      ['Report any severe reaction after accidental alcohol exposure',1],
+      ['Carry medical identification noting disulfiram use in case of emergency',1],
+      ['It is safe to drink small amounts of alcohol if you skip the dose that day',0],
+      ['This medication reverses opioid overdose within minutes',0]
+    ],
+    rationale:'Disulfiram blocks aldehyde dehydrogenase, causing acetaldehyde buildup if alcohol is ingested → intensely unpleasant aversion reaction. Strict alcohol avoidance is required, including hidden sources. It is NOT for opioid overdose (that is naloxone). Skipping doses to drink is dangerous and undermines therapy.',
+    source:'Lehne/Varcarolis Ch. 22 Table 22.6; Bryan Study Guide — Long-term ETOH'},
+
+  {id:'SA19', type:'SATA', topic:'Recovery & Relapse Prevention Teaching',
+    case:'A client is preparing for discharge after detoxification from alcohol.',
+    stem:'Which teaching points support relapse prevention?',
+    options:[
+      ['Anticipate cravings and have a planned coping response before discharge',1],
+      ['Recovery is an ongoing process, not simply the absence of substance use',1],
+      ['Identify high-risk situations and develop avoidance/coping strategies for each',1],
+      ['Engage with peer support (AA, NA, SMART Recovery, or similar)',1],
+      ['Recognize that lapse or relapse does not mean treatment has failed permanently',1],
+      ['Address co-occurring trauma, mood, and anxiety conditions concurrently',1],
+      ['Detox alone is sufficient; further treatment is unnecessary',0],
+      ['Hide use from family and providers to avoid embarrassment',0]
+    ],
+    rationale:'Effective relapse prevention combines anticipation, coping skills, support, integrated mental-health treatment, and a nonjudgmental view of relapse as a possible part of recovery requiring re-engagement (not abandonment) of treatment.',
+    source:'Concept 34 — Relapse Prevention; Lehne/Varcarolis Ch. 22'},
+
+  {id:'SA20', type:'SATA', topic:'Family Education',
+    case:'The nurse is providing education to the family of a client with substance use disorder.',
+    stem:'Which information should be included?',
+    options:[
+      ['SUD includes intoxication, tolerance, withdrawal, craving, and inability to abstain',1],
+      ['Patients may underreport because of shame, fear, stigma, or legal consequences',1],
+      ['Family support groups (Al-Anon, Alateen, Nar-Anon) can be helpful',1],
+      ['Codependent / enabling behaviors can perpetuate the addiction cycle',1],
+      ['Trauma and co-occurring mental illness frequently underlie SUD',1],
+      ['Recovery often requires multiple attempts; relapse does not equal failure',1],
+      ['The nurse\'s role is to shame the client into abstinence',0],
+      ['The family should hide the problem to avoid embarrassment',0]
+    ],
+    rationale:'Family education emphasizes a recovery-oriented, nonjudgmental, trauma-informed view; recognition of underreporting; resources for the family\'s own care; and realistic expectations about relapse.',
+    source:'Concept 34 — Family-centered care; Lehne/Varcarolis Ch. 22'},
+
+  {id:'SA21', type:'SATA', topic:'Opioid Overdose Prevention Teaching',
+    case:'The nurse is teaching a client and family about opioid overdose prevention and response after the client\'s recent OD.',
+    stem:'Which client/family statements indicate correct understanding?',
+    options:[
+      ['"Slow or absent breathing is an emergency — call 911 immediately."',1],
+      ['"Naloxone can reverse the overdose, but emergency monitoring is still required afterward."',1],
+      ['"Rescue breathing may be needed while waiting for naloxone to take effect."',1],
+      ['"Vomiting can occur when naloxone works, so I should keep the airway clear."',1],
+      ['"Mixing opioids with alcohol or benzodiazepines greatly increases overdose risk."',1],
+      ['"More doses of naloxone may be needed because its effect can wear off before the opioid does."',1],
+      ['"If naloxone wakes the person up once, I can leave them alone."',0],
+      ['"I should wait for lab confirmation before calling for help."',0]
+    ],
+    rationale:'Take-home naloxone education emphasizes 911 first, ventilatory support, vomiting/airway management, polysubstance risk, and the critical principle that re-sedation is common — leaving the person alone after a single response is dangerous. Lab confirmation is irrelevant in a witnessed OD.',
+    source:'Concept 34 — Opioid overdose; Lehne/Varcarolis Ch. 22'},
+
+  {id:'SA22', type:'SATA', topic:'Nicotine Cessation Pharmacotherapy',
+    case:'A client asks the nurse about pharmacologic supports for tobacco cessation.',
+    stem:'Which statements/options are accurate?',
+    options:[
+      ['Nicotine replacement therapy (gum, patch, lozenge, inhaler, nasal spray) can taper nicotine exposure',1],
+      ['Bupropion (Zyban) can reduce nicotine cravings as a non-nicotine option',1],
+      ['Varenicline (Chantix) is a partial nicotinic-receptor agonist used for cessation',1],
+      ['Pharmacotherapy works best alongside behavioral support and follow-up',1],
+      ['Side effects of NRT and oral cessation medications should be monitored',1],
+      ['Methadone is the first-line agent for nicotine cessation',0],
+      ['Naloxone patches are used to prevent nicotine withdrawal',0],
+      ['Disulfiram is used so that smoking causes vomiting',0]
+    ],
+    rationale:'Nicotine cessation tools = NRT in multiple forms, bupropion, varenicline, plus behavioral support. Methadone (opioid agonist), naloxone (opioid antagonist), and disulfiram (alcohol aversion) target completely different addictions.',
+    source:'Lehne/Varcarolis Ch. 22 — Tobacco use disorder'},
+
+  {id:'SA23', type:'SATA', topic:'Naltrexone & Acamprosate Teaching',
+    case:'The nurse is teaching a client about relapse-prevention medications for alcohol use disorder.',
+    stem:'Which statements are accurate?',
+    options:[
+      ['Naltrexone can decrease cravings by blocking opioid-receptor-mediated reward',1],
+      ['Long-acting injectable naltrexone (Vivitrol) requires the client to be opioid-free for 7–10 days before initiation',1],
+      ['Acamprosate (Campral) supports abstinence and is started on the 5th day of sobriety',1],
+      ['Acamprosate side effects include diarrhea, GI upset, anxiety, and sleep difficulty',1],
+      ['Acamprosate is contraindicated in renal impairment',1],
+      ['Naloxone (Narcan) is taken daily to prevent alcohol withdrawal seizures',0],
+      ['Disulfiram allows safe controlled drinking if doses are spaced out',0],
+      ['Bupropion is the emergency reversal agent for opioid overdose',0]
+    ],
+    rationale:'Naltrexone (oral or monthly IM) and acamprosate (3×/day oral) are mainstays of AUD relapse prevention with key precautions (opioid-free start for naltrexone; renal contraindication for acamprosate). Naloxone reverses opioid overdose; disulfiram is aversion therapy and never permits controlled drinking; bupropion is for depression / nicotine cessation, not opioid reversal.',
+    source:'Lehne/Varcarolis Ch. 22 Table 22.6 — AUD medications'},
+
+  {id:'SA24', type:'SATA', topic:'Refeeding Syndrome Risks',
+    case:'A severely malnourished client with anorexia nervosa is starting refeeding.',
+    stem:'Which abnormalities are associated with refeeding syndrome?',
+    options:[
+      ['Hypophosphatemia',1],
+      ['Hypomagnesemia',1],
+      ['Hypokalemia',1],
+      ['Thiamine deficiency that can mimic Wernicke encephalopathy',1],
+      ['Fluid imbalance and pulmonary edema with rapid weight gain',1],
+      ['Cardiac arrhythmia and respiratory failure if electrolytes are not corrected',1],
+      ['Hypernatremia as the hallmark electrolyte abnormality',0],
+      ['No electrolyte risk because the client is being fed slowly',0]
+    ],
+    rationale:'Refeeding shifts metabolism back to glucose-based energy → insulin surge drives phosphate, magnesium, and potassium intracellularly → arrhythmias, respiratory failure, seizures, death. Slow advancement reduces but does not eliminate risk; close electrolyte/cardiac monitoring is essential.',
+    source:'Lehne/Varcarolis Ch. 18 — Refeeding syndrome'},
+
+  {id:'SA25', type:'SATA', topic:'Effective AWS Management',
+    case:'The nurse evaluates the response to alcohol-withdrawal interventions implemented over the past 12 hours.',
+    stem:'Which findings indicate the interventions are effective?',
+    options:[
+      ['Decreased tremors and diaphoresis',1],
+      ['CIWA-Ar score declining from 22 to 9',1],
+      ['Improving orientation and decreased agitation',1],
+      ['Heart rate and blood pressure trending toward baseline',1],
+      ['No new seizure activity',1],
+      ['Client able to rest in a low-stimulation environment',1],
+      ['New auditory hallucinations and rising temperature',0],
+      ['Sudden bradycardia and hypotension after a period of hyperactivity',0]
+    ],
+    rationale:'Effective AWS management = autonomic stabilization, declining CIWA score, mental status improvement, no seizures. New hallucinations + fever suggest progression to DTs; late bradycardia/hypotension after autonomic surge suggest cardiovascular collapse and demand escalation.',
+    source:'Lehne/Varcarolis Ch. 22 — AWS treatment evaluation'},
+
+  {id:'SA26', type:'SATA', topic:'Anorexia Recovery Indicators',
+    case:'A client with anorexia nervosa is in week 12 of inpatient treatment. The nurse evaluates progress.',
+    stem:'Which findings indicate the client is improving?',
+    options:[
+      ['Steady weight gain of 2–3 pounds per week',1],
+      ['Vital signs and electrolytes within normal range',1],
+      ['Increased participation in individual and group therapy',1],
+      ['Selecting and consuming a wider variety of solid foods',1],
+      ['Engaging in social conversation during mealtimes',1],
+      ['Verbalizing greater satisfaction with body appearance',1],
+      ['Continued use of fasting before weighings',0],
+      ['Daytime heart rate of 38 bpm with hypotension',0]
+    ],
+    rationale:'Recovery indicators are physiologic stabilization, behavioral normalization, social re-engagement, and movement toward a healthier body image. Persistent fasting behaviors and bradycardia/hypotension are markers of ongoing illness.',
+    source:'Lehne/Varcarolis Ch. 18 Brad case study weeks 8–16'},
+
+  {id:'SA27', type:'SATA', topic:'Bulimia Recovery · Effective Learning',
+    case:'After education about bulimia recovery, the nurse evaluates the client\'s statements.',
+    stem:'Which statements indicate effective learning?',
+    options:[
+      ['"I will plan three balanced meals plus snacks instead of fasting between binges."',1],
+      ['"Hypokalemia from purging can cause dangerous heart rhythms."',1],
+      ['"I will keep a food and feelings journal to identify binge triggers."',1],
+      ['"Fluoxetine for my bulimia is dosed higher than typical depression doses."',1],
+      ['"Cognitive-behavioral therapy is a first-line treatment for bulimia."',1],
+      ['"My value is not determined by the number on the scale."',1],
+      ['"Skipping meals will help me lose weight in a healthy way."',0],
+      ['"It is safe to use over-the-counter laxatives daily as long as my potassium is normal."',0]
+    ],
+    rationale:'Effective bulimia learning = scheduled balanced meals (NOT fasting), recognition of K+ risk, journaling for trigger identification, knowledge of high-dose fluoxetine and CBT, and cognitive shift away from weight-based self-worth. Fasting and ongoing laxative use are eating-disorder behaviors.',
+    source:'Lehne/Varcarolis Ch. 18 — Bulimia case study, Kaitlyn'},
+
+  {id:'SA28', type:'SATA', topic:'Addiction Risk Factors · Community Education',
+    case:'The nurse is presenting to a community group on addiction prevention.',
+    stem:'Which risk factors should be included?',
+    options:[
+      ['Genetic / family history of substance use disorder',1],
+      ['Adverse childhood experiences and trauma',1],
+      ['Co-occurring mental health conditions (depression, anxiety, PTSD)',1],
+      ['Socioeconomic stressors and lack of community resources',1],
+      ['Cultural environments where substance use is normalized',1],
+      ['Easy access to substances (e.g., healthcare workers and controlled medications)',1],
+      ['Strong social support always causes addiction',0],
+      ['Addiction occurs only because the individual lacks moral character',0]
+    ],
+    rationale:'The risk-factor framework is biopsychosocial: genetics, trauma, comorbid mental health, environment, culture, access. Addiction is NOT a moral failing, and strong support is protective, not causal.',
+    source:'Concept 34 — Risk factors; Lehne/Varcarolis Ch. 22'},
+
+  {id:'SA29', type:'SATA', topic:'Nurse Self-Care · SUD Prevention',
+    case:'A nursing student asks how nurses can reduce their own risk for substance misuse and burnout-related maladaptive coping.',
+    stem:'Which strategies align with the Concept 34 prevention guidance?',
+    options:[
+      ['Develop a personal self-care philosophy',1],
+      ['Set workplace limits and decline unreasonable expectations',1],
+      ['Debrief stress through supportive professional relationships',1],
+      ['Develop rituals for coping with loss, grief, and patient death',1],
+      ['Maintain nutrition, exercise, sleep, and personal relationships',1],
+      ['Recognize that access to controlled medications is a profession-specific risk factor',1],
+      ['Use controlled medications from work to manage personal stress',0],
+      ['Avoid acknowledging burnout because strong nurses handle it alone',0]
+    ],
+    rationale:'Concept 34 explicitly outlines self-care, boundaries, debriefing, ritualizing grief, and healthy lifestyle as prevention. Diversion is illegal and reportable; suppressing burnout increases — not decreases — addiction risk.',
+    source:'Concept 34 — Individual Positive Coping Strategies; Substance Misuse Among Nurses'},
+
+  {id:'SA30', type:'SATA', topic:'Highest Priority Clients · Triage',
+    case:'A nurse in the ED is reviewing four clients with substance-related concerns.',
+    stem:'Which clients are HIGHEST priority for immediate nurse assessment?',
+    options:[
+      ['A 24-year-old with suspected opioid overdose, RR 6, cyanosis, decreased LOC',1],
+      ['A 56-year-old in alcohol withdrawal with new tonic-clonic seizure activity',1],
+      ['A 32-year-old after cocaine use with crushing chest pain and irregular cardiac rhythm',1],
+      ['A 19-year-old with PCP intoxication who is violent, hyperthermic, and rigid',1],
+      ['A 42-year-old taking disulfiram with chest pain and vomiting after using mouthwash',1],
+      ['A 50-year-old in cocaine withdrawal expressing passive suicidal ideation',1],
+      ['A 28-year-old requesting a list of outpatient AA meetings before discharge',0],
+      ['A 35-year-old with cannabis withdrawal complaining of insomnia for 2 nights',0]
+    ],
+    rationale:'ABC compromise (opioid OD), seizures (AWS), cardiac instability (cocaine), violent/hyperthermic intoxication (PCP), serious medication reaction (disulfiram), and active suicidal ideation all outrank stable education needs and uncomplicated cannabis withdrawal.',
+    source:'Concept 34 — Emergency management priorities'}
+);
+
+/* ===== MATRIX QUESTIONS: 10 ITEMS ===== */
+QUESTIONS_BANK.push(
+  {id:'MX01', type:'MATRIX', topic:'Anorexia Nervosa · Indicated / Contraindicated / Nonessential',
+    case:'A 14-year-old, BMI 13.5, is admitted to the eating disorders unit after losing consciousness following a 2-day fast. Vital signs: BP 88/48, HR 38, K+ 3.0, BMI 13.5. The provider has assigned a diagnosis of severe anorexia nervosa.',
+    stem:'For each nursing action, identify whether it is INDICATED, CONTRAINDICATED, or NONESSENTIAL at this time.',
+    categories:['Indicated','Contraindicated','Nonessential'],
+    rows:[
+      {text:'Establish a therapeutic, nonjudgmental relationship that respects personal boundaries', correct:0},
+      {text:'Begin slow, structured refeeding with precise meal times and durations', correct:0},
+      {text:'Administer thiamine and electrolyte replacement before advancing calories', correct:0},
+      {text:'Set a goal of 5-pound weight gain in the first week', correct:1},
+      {text:'Weigh the client three times daily, in underwear only, after each meal', correct:1},
+      {text:'Encourage the client to prepare a large meal for a loved one in week 1', correct:1},
+      {text:'Allow unrestricted bathroom access for at least 2 hours after meals', correct:1},
+      {text:'Document orthostatic vital signs and continuous cardiac monitoring', correct:0},
+      {text:'Frame ongoing recovery as a process rather than a fixed event', correct:0},
+      {text:'Have the client attend a hairstyling consultation during week 1', correct:2}
+    ],
+    rationale:'Indicated for severe anorexia: therapeutic relationship, slow structured refeeding (to prevent refeeding syndrome), electrolyte/thiamine correction, cardiac/vital monitoring, and viewing recovery as a process. CONTRAINDICATED: rapid weight-gain goals (>5 lb/wk risks pulmonary edema and refeeding); excessive weighing reinforces disordered cognition; preparing food for others before stabilization is a known trigger; unsupervised bathroom access enables purging. NONESSENTIAL: cosmetic/grooming activities are not harmful but are not part of acute medical stabilization.',
+    source:'Lehne/Varcarolis Ch. 18 NGN Case Study (Sophia, age 13); Care Plan Brad weeks 1–16'},
+
+  {id:'MX02', type:'MATRIX', topic:'Alcohol Withdrawal · Expected / Unexpected',
+    case:'A 54-year-old man with daily heavy alcohol use was admitted 24 hours ago. He is now 30 hours from his last drink and is being managed on the AWS protocol with scheduled lorazepam.',
+    stem:'For each finding, identify whether it is EXPECTED or UNEXPECTED for this client at this time.',
+    categories:['Expected','Unexpected'],
+    rows:[
+      {text:'Mild tremors in the hands', correct:0},
+      {text:'Diaphoresis and anxiety with HR 108', correct:0},
+      {text:'Brief auditory or tactile hallucinations', correct:0},
+      {text:'Tonic-clonic seizure within the first 24–48 hours after the last drink', correct:0},
+      {text:'CIWA-Ar score declining after benzodiazepine administration', correct:0},
+      {text:'Pinpoint pupils with respiratory rate of 6/min', correct:1},
+      {text:'New flaccid bradycardia 36 with hypotension 70/40 after a period of agitation', correct:1},
+      {text:'Persistent body temperature of 95.4°F with no other symptoms', correct:1},
+      {text:'Resolution of tremor and orientation returning to baseline by hour 72', correct:0},
+      {text:'Rhinorrhea, lacrimation, yawning, and goosebumps', correct:1}
+    ],
+    rationale:'EXPECTED in AWS: tremor, autonomic hyperactivity, hallucinations (tactile/auditory/visual), seizure within 12–48 hours, and gradual improvement with benzodiazepine therapy. UNEXPECTED and require investigation: pinpoint pupils + bradypnea (suggest opioid co-ingestion); late bradycardia/hypotension after sympathetic surge (cardiovascular collapse); hypothermia (out of pattern); rhinorrhea/lacrimation/yawning/piloerection (these are OPIOID withdrawal findings).',
+    source:'Lehne/Varcarolis Ch. 22 — AWS course; Box 22.1 — Opioid withdrawal contrast'},
+
+  {id:'MX03', type:'MATRIX', topic:'Opioid Withdrawal · Expected / Unexpected',
+    case:'A 28-year-old woman with opioid use disorder is 18 hours from her last heroin use. She is on a comfort protocol with clonidine and supportive care.',
+    stem:'For each finding, identify whether it is EXPECTED or UNEXPECTED.',
+    categories:['Expected','Unexpected'],
+    rows:[
+      {text:'Lacrimation, rhinorrhea, and yawning', correct:0},
+      {text:'Piloerection ("gooseflesh")', correct:0},
+      {text:'Mydriasis (dilated pupils)', correct:0},
+      {text:'Bone and muscle pain with abdominal cramping', correct:0},
+      {text:'Nausea, vomiting, and diarrhea', correct:0},
+      {text:'Intense drug craving and anxiety', correct:0},
+      {text:'Pinpoint pupils with respiratory rate 6/min', correct:1},
+      {text:'New tonic-clonic seizure activity', correct:1},
+      {text:'Profound sedation requiring sternal rub to arouse', correct:1},
+      {text:'Lethal cardiovascular collapse from withdrawal alone', correct:1}
+    ],
+    rationale:'Opioid WITHDRAWAL is a sympathetic-rebound, GI-active syndrome — uncomfortable but rarely life-threatening in healthy adults. Pinpoint pupils + respiratory depression + sedation are signs of opioid INTOXICATION (the OPPOSITE) and would suggest re-use or accidental dosing. Seizures and lethal collapse are NOT typical opioid-withdrawal features (unlike alcohol/benzodiazepine withdrawal); their presence demands re-evaluation.',
+    source:'Box 22.1 — Opioid intoxication vs withdrawal; Bryan Study Guide Table 1'},
+
+  {id:'MX04', type:'MATRIX', topic:'Bulimia Nervosa · Indicated / Contraindicated / Nonessential',
+    case:'A 22-year-old with bulimia nervosa is admitted to a partial hospitalization program. K+ 2.7, BP 90/60 standing, weight 95% of ideal body weight, parotid enlargement, dental erosion, and Russell sign noted.',
+    stem:'For each nursing action, identify whether it is INDICATED, CONTRAINDICATED, or NONESSENTIAL at this time.',
+    categories:['Indicated','Contraindicated','Nonessential'],
+    rows:[
+      {text:'Monitor potassium level closely and replace as ordered', correct:0},
+      {text:'Observe the client for at least 1 hour after each meal', correct:0},
+      {text:'Initiate fluoxetine at higher-than-typical depression dose', correct:0},
+      {text:'Initiate bupropion (Wellbutrin) for comorbid depression', correct:1},
+      {text:'Allow unrestricted bathroom access immediately after meals', correct:1},
+      {text:'Provide cognitive-behavioral therapy as first-line psychotherapy', correct:0},
+      {text:'Encourage food and feelings journaling', correct:0},
+      {text:'Recommend long-term laxative use to manage constipation', correct:1},
+      {text:'Schedule a sunset photography activity in the evening', correct:2},
+      {text:'Educate about the binge-purge cycle and self-perpetuation', correct:0}
+    ],
+    rationale:'INDICATED: K+ monitoring/replacement (life-threatening hypokalemia), post-meal observation, high-dose fluoxetine (only FDA-approved drug for bulimia), CBT (first-line therapy), journaling, and education. CONTRAINDICATED: bupropion lowers seizure threshold and is specifically contraindicated in bulimia; unsupervised post-meal bathroom access enables purging; long-term laxative use perpetuates the disorder and worsens electrolyte instability. NONESSENTIAL: recreational evening activities are pleasant but not central to acute care.',
+    source:'Lehne/Varcarolis Ch. 18 — Bulimia pharmacotherapy; Bryan Study Guide Table 3'},
+
+  {id:'MX05', type:'MATRIX', topic:'Acute Alcohol Withdrawal · Indicated / Contraindicated / Nonessential',
+    case:'A 60-year-old man with daily heavy alcohol use is now in moderate AWS, CIWA-Ar 18, BP 168/96, HR 124, mild tremor and tactile hallucinations.',
+    stem:'For each prescribed or considered intervention, identify whether it is INDICATED, CONTRAINDICATED, or NONESSENTIAL at this time.',
+    categories:['Indicated','Contraindicated','Nonessential'],
+    rows:[
+      {text:'Lorazepam per CIWA-triggered protocol', correct:0},
+      {text:'IV thiamine before any glucose-containing fluids', correct:0},
+      {text:'Seizure precautions and quiet, low-stimulation environment', correct:0},
+      {text:'Frequent CIWA-Ar reassessment', correct:0},
+      {text:'Disulfiram during active withdrawal', correct:1},
+      {text:'IV dextrose 50% before thiamine in confused, malnourished client', correct:1},
+      {text:'Naltrexone IM injection during active hallucinosis', correct:1},
+      {text:'Encouraging family to bring an alcoholic beverage "to ease the symptoms"', correct:1},
+      {text:'Consult social work for outpatient counseling referral', correct:2},
+      {text:'Educate about Antabuse and AA before stabilization is achieved', correct:2}
+    ],
+    rationale:'INDICATED: benzodiazepines, thiamine BEFORE glucose, seizure precautions, low stimulation, frequent reassessment. CONTRAINDICATED: disulfiram (used for relapse prevention AFTER withdrawal — giving during withdrawal is dangerous and useless); glucose before thiamine (precipitates Wernicke); naltrexone during acute withdrawal (initiated in stable abstinence); reintroducing alcohol is unsafe and not standard care. NONESSENTIAL during acute withdrawal: outpatient referrals and relapse-prevention teaching are appropriate AFTER acute stabilization, not during.',
+    source:'Lehne/Varcarolis Ch. 22 Table 22.6; Concept 34 — Wernicke prevention'},
+
+  {id:'MX06', type:'MATRIX', topic:'Suspected Nurse Diversion · Essential / Nonessential / Contraindicated',
+    case:'A staff nurse has noticed a colleague with chronic medication-count discrepancies for opioids, frequently volunteers to administer pain medications, has unexplained absences, and has become defensive when questioned.',
+    stem:'For each potential action, identify whether it is ESSENTIAL, NONESSENTIAL, or CONTRAINDICATED.',
+    categories:['Essential','Nonessential','Contraindicated'],
+    rows:[
+      {text:'Document objective observations factually and confidentially', correct:0},
+      {text:'Report concerns to nursing management or unit director per agency policy', correct:0},
+      {text:'Maintain patient safety as the primary priority', correct:0},
+      {text:'Confront the colleague publicly in front of unit staff', correct:2},
+      {text:'Coach the colleague to resign quietly to avoid disciplinary action', correct:2},
+      {text:'Tip off the colleague before management investigates so she can correct the chart', correct:2},
+      {text:'Ignore the pattern unless a patient is visibly harmed', correct:2},
+      {text:'Familiarize yourself with the state\'s peer-assistance program', correct:0},
+      {text:'Suggest the colleague try a new lipstick color for a fresh look', correct:1},
+      {text:'Recognize that the colleague may benefit from an alternative-to-discipline program', correct:0}
+    ],
+    rationale:'ESSENTIAL: objective documentation, reporting through proper channels, patient safety, awareness of peer-assistance / alternative-to-discipline programs. CONTRAINDICATED: public confrontation, encouraging silent resignation, tipping off the colleague, ignoring the pattern — all of these protect neither the colleague (who needs intervention) nor patients (who are at risk). NONESSENTIAL: superficial advice unrelated to the clinical issue.',
+    source:'Bryan Study Guide Case Study 2; Lehne/Varcarolis Ch. 22 — Nurses with SUD'},
+
+  {id:'MX07', type:'MATRIX', topic:'Opioid Overdose Care · Indicated / Contraindicated',
+    case:'A 23-year-old is found unresponsive with RR 4/min, pinpoint pupils, and cyanotic lips. Opioid overdose is suspected. The nurse is leading initial care.',
+    stem:'For each action, identify whether it is INDICATED or CONTRAINDICATED in this emergency.',
+    categories:['Indicated','Contraindicated'],
+    rows:[
+      {text:'Open the airway and provide bag-valve-mask ventilation', correct:0},
+      {text:'Administer high-flow oxygen', correct:0},
+      {text:'Administer naloxone per protocol, repeat every 2–3 min as needed', correct:0},
+      {text:'Have suction equipment ready in case of emesis on emergence', correct:0},
+      {text:'Maintain continuous cardiac and respiratory monitoring after reversal', correct:0},
+      {text:'Plan for possible repeat naloxone or continuous infusion if re-sedation occurs', correct:0},
+      {text:'Defer all interventions until urine toxicology results return', correct:1},
+      {text:'Discharge the client immediately after first naloxone response', correct:1},
+      {text:'Begin recovery teaching about AA before respirations are stable', correct:1},
+      {text:'Ignore the airway because the pupils will reverse with naloxone alone', correct:1}
+    ],
+    rationale:'In opioid overdose, the priorities are airway/ventilation, oxygen, naloxone, and ongoing monitoring for re-sedation (because naloxone\'s half-life is shorter than most opioids). Deferring care for labs is unsafe; early discharge after first naloxone response is dangerous due to re-sedation; teaching belongs after stabilization; airway management cannot be skipped — naloxone can take minutes to work and the client is hypoxic now.',
+    source:'Concept 34 — Emergency management; Bryan Study Guide Table 1'},
+
+  {id:'MX08', type:'MATRIX', topic:'Stages of Change · Identification',
+    case:'The nurse is using motivational interviewing with several clients in different stages of change.',
+    stem:'For each client statement, identify the stage of change: PRECONTEMPLATION, CONTEMPLATION, PREPARATION/ACTION, or MAINTENANCE.',
+    categories:['Precontemplation','Contemplation','Preparation/Action','Maintenance'],
+    rows:[
+      {text:'"I do not have a problem. My wife is the one with the issue, not me."', correct:0},
+      {text:'"I keep telling people I drink too much, but you don\'t actually understand my life."', correct:0},
+      {text:'"Sometimes I wonder if drinking is hurting my health, but I\'m not sure I want to stop."', correct:1},
+      {text:'"I\'ve been thinking about cutting back, but I\'m not ready to commit to anything."', correct:1},
+      {text:'"I went to my first AA meeting yesterday and I poured out the bottles in my house."', correct:2},
+      {text:'"I started naltrexone last week and have an appointment with a counselor on Monday."', correct:2},
+      {text:'"I\'ve been sober for 3 years now. I still go to meetings and watch for relapse triggers."', correct:3},
+      {text:'"It\'s been 18 months. I have a sponsor I call when cravings come up."', correct:3}
+    ],
+    rationale:'Stages of Change (Prochaska/DiClemente): Precontemplation (no problem awareness, externalized blame); Contemplation (ambivalence, considering); Preparation/Action (concrete steps, treatment engagement, behavior change); Maintenance (sustained change with active relapse-prevention work). Recognizing stage guides motivational interviewing technique — you do NOT push someone in precontemplation toward action.',
+    source:'Lehne/Varcarolis Ch. 22 — Motivational Interviewing & Stages of Change'},
+
+  {id:'MX09', type:'MATRIX', topic:'Eating Disorders · Differentiation by Findings',
+    case:'The nurse is differentiating among eating and feeding disorders based on assessment findings.',
+    stem:'For each finding, identify the disorder it most strongly suggests: ANOREXIA NERVOSA, BULIMIA NERVOSA, or BINGE-EATING DISORDER.',
+    categories:['Anorexia Nervosa','Bulimia Nervosa','Binge-Eating Disorder'],
+    rows:[
+      {text:'BMI 13.2, lanugo, bradycardia, amenorrhea', correct:0},
+      {text:'Russell sign on the dorsum of the hand', correct:1},
+      {text:'BMI 34, recurrent episodes of eating beyond satiety, eats alone due to embarrassment, NO compensatory behaviors', correct:2},
+      {text:'BMI 23, dental enamel erosion, parotid enlargement, hypokalemia from purging', correct:1},
+      {text:'Cold mottled extremities, daytime HR 38, dehydration, hypotension', correct:0},
+      {text:'Treated with high-dose fluoxetine; bupropion is contraindicated due to seizure risk', correct:1},
+      {text:'Treated with FDA-approved lisdexamfetamine (Vyvanse) for moderate-severe disease', correct:2},
+      {text:'Hospitalization criteria include weight <75% IBW and severe electrolyte imbalance', correct:0},
+      {text:'Eating in a discrete period, sense of lack of control, but no purging or excessive exercise', correct:2},
+      {text:'Self-induced vomiting, diuretics, laxatives, fasting, OR excessive exercise as compensation', correct:1}
+    ],
+    rationale:'Anorexia: starvation findings (low BMI, bradycardia, lanugo, amenorrhea, hypothermia). Bulimia: typically near-normal BMI with vomiting/purging signatures (Russell sign, dental erosion, parotid enlargement, hypokalemia); fluoxetine FDA-approved, bupropion contraindicated. BED: binge episodes WITHOUT compensatory behaviors; lisdexamfetamine (Vyvanse) FDA-approved.',
+    source:'Lehne/Varcarolis Ch. 18; Bryan Study Guide Tables 2–4'},
+
+  {id:'MX10', type:'MATRIX', topic:'Substance-Specific Withdrawal · Severity',
+    case:'The nurse is teaching about the severity of withdrawal across different substance classes.',
+    stem:'For each substance, identify whether unsupervised abrupt cessation is POTENTIALLY LIFE-THREATENING, GENERALLY UNCOMFORTABLE BUT NOT FATAL, or NO OFFICIAL WITHDRAWAL SYNDROME.',
+    categories:['Potentially Life-Threatening','Uncomfortable but Not Fatal','No Official Withdrawal Syndrome'],
+    rows:[
+      {text:'Alcohol (ethanol)', correct:0},
+      {text:'Benzodiazepines (alprazolam, lorazepam, diazepam)', correct:0},
+      {text:'Barbiturates (phenobarbital, secobarbital)', correct:0},
+      {text:'Opioids (heroin, oxycodone, fentanyl)', correct:1},
+      {text:'Cannabis (marijuana, THC)', correct:1},
+      {text:'Stimulants (cocaine, methamphetamine)', correct:1},
+      {text:'Nicotine / tobacco', correct:1},
+      {text:'LSD (lysergic acid diethylamide)', correct:2},
+      {text:'PCP (phencyclidine)', correct:2},
+      {text:'Psilocybin / mescaline / mushrooms', correct:2}
+    ],
+    rationale:'LIFE-THREATENING withdrawal: alcohol, benzodiazepines, barbiturates — all CNS depressants where rebound CNS hyperactivity can cause seizures, DTs, and cardiovascular collapse. UNCOMFORTABLE but generally not fatal in healthy adults: opioids (GI/autonomic), cannabis (mild), stimulants (depression with suicidal ideation as the main risk), nicotine. NO OFFICIAL withdrawal syndrome: hallucinogens (LSD, PCP, mushrooms) — though hallucinogen-persisting perception disorder (flashbacks) may occur during sobriety. NOTE: stimulant withdrawal\'s suicidal ideation can absolutely be life-threatening to the individual through self-harm even though the physiologic withdrawal itself is not.',
+    source:'Lehne/Varcarolis Ch. 22; Bryan Study Guide Table 1'}
+);
+
+/* ============= ENGINE ============= */
+let currentIndex = 0;
+let sessionData = []; // {q, shuffledOptions, userPick, scored, verdict}
+
+/* Fisher-Yates shuffle (returns new array) */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+/* Build session: shuffle the option ORDER for each question, but preserve the question order */
+function buildSession(){
+  sessionData = QUESTIONS_BANK.map(q => {
+    let shuffled = null;
+    if(q.type === 'MC' || q.type === 'SATA'){
+      // options are [text, isCorrect] tuples — shuffle their order
+      shuffled = shuffle(q.options).map(([text,correct],i) => ({
+        text, correct: !!correct, origIdx: i
+      }));
+    } else if(q.type === 'MATRIX'){
+      // We don't shuffle row order — student needs to read each clinical finding.
+      // We DO shuffle the column order so position-based memorization fails.
+      const colIndices = shuffle(q.categories.map((_,i) => i));
+      const shuffledCats = colIndices.map(i => q.categories[i]);
+      // Build a map from original col index -> new col index
+      const colMap = {};
+      colIndices.forEach((origCol, newCol) => { colMap[origCol] = newCol; });
+      const shuffledRows = q.rows.map(r => ({
+        text: r.text,
+        correctNew: colMap[r.correct],
+        correctOrig: r.correct
+      }));
+      shuffled = { categories: shuffledCats, rows: shuffledRows };
+    }
+    return {
+      q, shuffled,
+      userPick: null,
+      scored: false,
+      verdict: null,  // 'correct' | 'wrong' | 'partial'
+      partialDetail: null
+    };
+  });
+}
+
+/* Start the exam */
+function startExam(){
+  buildSession();
+  document.getElementById('start').classList.remove('active');
+  document.getElementById('exam').classList.add('active');
+  document.getElementById('qtotal').textContent = sessionData.length;
+  currentIndex = 0;
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* Render the current question */
+function renderQuestion(){
+  const item = sessionData[currentIndex];
+  const q = item.q;
+
+  // header
+  document.getElementById('qnum').textContent = currentIndex+1;
+  const pill = document.getElementById('qtype');
+  pill.classList.remove('mc','sata','matrix');
+  if(q.type === 'MC'){
+    pill.classList.add('mc');
+    pill.textContent = 'Multiple Choice';
+  } else if(q.type === 'SATA'){
+    pill.classList.add('sata');
+    pill.textContent = 'Select All That Apply';
+  } else {
+    pill.classList.add('matrix');
+    pill.textContent = 'Matrix';
+  }
+  document.getElementById('qtopic').textContent = q.topic;
+
+  // progress bar
+  const pct = ((currentIndex)/sessionData.length)*100;
+  document.getElementById('bar').style.width = pct + '%';
+
+  // case + stem
+  if(q.case){
+    document.getElementById('caseBlock').style.display = '';
+    document.getElementById('caseText').textContent = q.case;
+  } else {
+    document.getElementById('caseBlock').style.display = 'none';
+  }
+  document.getElementById('qstem').textContent = q.stem;
+
+  // SATA banner
+  document.getElementById('sataLabel').style.display =
+    (q.type === 'SATA') ? '' : 'none';
+
+  // options
+  const area = document.getElementById('optionsArea');
+  area.innerHTML = '';
+  area.className = 'options';
+
+  if(q.type === 'MC'){
+    item.shuffled.forEach((opt, idx) => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      div.dataset.idx = idx;
+      div.innerHTML = `
+        <span class="opt-letter">${String.fromCharCode(65+idx)}</span>
+        <span class="opt-text">${opt.text}</span>
+        <span class="marker"></span>
+      `;
+      div.addEventListener('click', () => {
+        if(item.scored) return;
+        // single-select
+        Array.from(area.children).forEach(c => c.classList.remove('selected'));
+        div.classList.add('selected');
+      });
+      area.appendChild(div);
+    });
+  } else if(q.type === 'SATA'){
+    item.shuffled.forEach((opt, idx) => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      div.dataset.idx = idx;
+      div.innerHTML = `
+        <span class="opt-letter">${String.fromCharCode(65+idx)}</span>
+        <span class="opt-text">${opt.text}</span>
+        <span class="marker"></span>
+      `;
+      div.addEventListener('click', () => {
+        if(item.scored) return;
+        // multi-select toggle
+        div.classList.toggle('selected');
+      });
+      area.appendChild(div);
+    });
+  } else if(q.type === 'MATRIX'){
+    // build a real <table>
+    const wrap = document.createElement('div');
+    wrap.style.overflowX = 'auto';
+    const t = document.createElement('table');
+    t.className = 'matrix-table';
+    // header
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+    const blank = document.createElement('th'); blank.textContent = 'Finding / Item';
+    hr.appendChild(blank);
+    item.shuffled.categories.forEach(c => {
+      const th = document.createElement('th');
+      th.textContent = c;
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    t.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    item.shuffled.rows.forEach((row, rIdx) => {
+      const tr = document.createElement('tr');
+      tr.dataset.row = rIdx;
+      const td0 = document.createElement('td');
+      td0.textContent = row.text;
+      tr.appendChild(td0);
+      item.shuffled.categories.forEach((cat, cIdx) => {
+        const td = document.createElement('td');
+        td.dataset.row = rIdx;
+        td.dataset.col = cIdx;
+        const radioName = `mx_${currentIndex}_r${rIdx}`;
+        td.innerHTML = `<input type="radio" name="${radioName}" value="${cIdx}">`;
+        td.addEventListener('click', (e) => {
+          if(item.scored) return;
+          // clear other cells in this row
+          tbody.querySelectorAll(`td[data-row="${rIdx}"] input`).forEach(inp => inp.checked = false);
+          const inp = td.querySelector('input');
+          inp.checked = true;
+        });
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    t.appendChild(tbody);
+    wrap.appendChild(t);
+    area.appendChild(wrap);
+    area.className = '';
+  }
+
+  // reset feedback + buttons
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.innerHTML = '';
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').style.display = '';
+  document.getElementById('nextBtn').disabled = true;
+}
+
+/* Submit and score */
+function submitAnswer(){
+  const item = sessionData[currentIndex];
+  const q = item.q;
+  const area = document.getElementById('optionsArea');
+  const fb = document.getElementById('feedback');
+
+  let verdict = 'correct'; // 'correct' | 'wrong' | 'partial'
+  let detail = '';
+
+  if(q.type === 'MC'){
+    const sel = area.querySelector('.option.selected');
+    if(!sel){
+      fb.className = 'feedback show bad';
+      fb.innerHTML = '<div class="verdict">▲ No answer selected</div>Please select one option before submitting.';
+      return;
+    }
+    const pickIdx = parseInt(sel.dataset.idx,10);
+    item.userPick = pickIdx;
+    // lock + reveal
+    Array.from(area.children).forEach((c,i) => {
+      c.classList.add('locked');
+      const isCorrect = item.shuffled[i].correct;
+      const marker = c.querySelector('.marker');
+      if(isCorrect){
+        c.classList.add('correct-after');
+        marker.textContent = '✓ Correct';
+      } else if(i === pickIdx){
+        c.classList.add('wrong-after');
+        marker.textContent = '✗ Your pick';
+      }
+    });
+    if(item.shuffled[pickIdx].correct){
+      verdict = 'correct';
+      detail = 'Correct.';
+    } else {
+      verdict = 'wrong';
+      detail = 'Incorrect.';
+    }
+  }
+  else if(q.type === 'SATA'){
+    const selected = Array.from(area.querySelectorAll('.option.selected'));
+    if(selected.length === 0){
+      fb.className = 'feedback show bad';
+      fb.innerHTML = '<div class="verdict">▲ No options selected</div>SATA items require at least one selection.';
+      return;
+    }
+    const selectedIdx = selected.map(s => parseInt(s.dataset.idx,10));
+    item.userPick = selectedIdx;
+    const correctIdx = item.shuffled.map((o,i) => o.correct ? i : -1).filter(i => i>=0);
+    // lock + mark
+    Array.from(area.children).forEach((c,i) => {
+      c.classList.add('locked');
+      const isCorrect = item.shuffled[i].correct;
+      const isPicked = selectedIdx.includes(i);
+      const marker = c.querySelector('.marker');
+      if(isCorrect && isPicked){
+        c.classList.add('correct-after');
+        marker.textContent = '✓ Correct selection';
+      } else if(isCorrect && !isPicked){
+        c.classList.add('correct-after');
+        c.style.opacity = '0.7';
+        marker.textContent = '✓ Should have selected';
+      } else if(!isCorrect && isPicked){
+        c.classList.add('wrong-after');
+        marker.textContent = '✗ Wrong selection';
+      }
+    });
+    // scoring: full credit only if exact match
+    const pickedSet = new Set(selectedIdx);
+    const correctSet = new Set(correctIdx);
+    const allCorrectPicked = correctIdx.every(i => pickedSet.has(i));
+    const noWrongPicked = selectedIdx.every(i => correctSet.has(i));
+    if(allCorrectPicked && noWrongPicked){
+      verdict = 'correct';
+      detail = `Full credit. You selected all ${correctIdx.length} correct option${correctIdx.length>1?'s':''}.`;
+    } else if(noWrongPicked && selectedIdx.length > 0){
+      verdict = 'partial';
+      const missed = correctIdx.length - selectedIdx.length;
+      detail = `Partial credit. All your selections were correct, but you missed ${missed} correct option${missed>1?'s':''}.`;
+    } else if(allCorrectPicked && !noWrongPicked){
+      verdict = 'partial';
+      const wrongCount = selectedIdx.filter(i => !correctSet.has(i)).length;
+      detail = `Partial credit. You found all correct options but also picked ${wrongCount} incorrect option${wrongCount>1?'s':''}.`;
+    } else {
+      verdict = 'wrong';
+      detail = 'Incorrect — your selection includes wrong options and is missing correct ones.';
+    }
+    item.partialDetail = detail;
+  }
+  else if(q.type === 'MATRIX'){
+    const tbody = area.querySelector('tbody');
+    const rows = tbody.querySelectorAll('tr');
+    const picks = [];
+    let unanswered = false;
+    rows.forEach(tr => {
+      const checked = tr.querySelector('input[type="radio"]:checked');
+      if(!checked){ unanswered = true; picks.push(null); }
+      else picks.push(parseInt(checked.value,10));
+    });
+    if(unanswered){
+      fb.className = 'feedback show bad';
+      fb.innerHTML = '<div class="verdict">▲ Incomplete</div>Each row requires a selection before submitting.';
+      return;
+    }
+    item.userPick = picks;
+    // score row by row, mark cells
+    let rowsCorrect = 0;
+    rows.forEach((tr, rIdx) => {
+      const userPick = picks[rIdx];
+      const correct = item.shuffled.rows[rIdx].correctNew;
+      const cells = tr.querySelectorAll('td');
+      // disable all radios in this row
+      tr.querySelectorAll('input[type="radio"]').forEach(inp => inp.disabled = true);
+      if(userPick === correct){
+        rowsCorrect++;
+        tr.classList.add('row-correct');
+        // mark the chosen-correct cell (col index +1 because td[0] is finding text)
+        const cell = cells[userPick+1];
+        cell.classList.add('cell-chosen-correct');
+      } else {
+        tr.classList.add('row-wrong');
+        // mark user's wrong pick
+        const wrongCell = cells[userPick+1];
+        wrongCell.classList.add('cell-chosen-wrong');
+        // mark the correct answer
+        const correctCell = cells[correct+1];
+        correctCell.classList.add('cell-actual');
+      }
+    });
+    const total = rows.length;
+    if(rowsCorrect === total){
+      verdict = 'correct';
+      detail = `Full credit. ${rowsCorrect} of ${total} rows correct.`;
+    } else if(rowsCorrect === 0){
+      verdict = 'wrong';
+      detail = `Incorrect. ${rowsCorrect} of ${total} rows correct.`;
+    } else {
+      verdict = 'partial';
+      detail = `Partial credit. ${rowsCorrect} of ${total} rows correct.`;
+    }
+    item.partialDetail = detail;
+    item.matrixRowsCorrect = rowsCorrect;
+    item.matrixRowsTotal = total;
+  }
+
+  item.scored = true;
+  item.verdict = verdict;
+
+  // show feedback panel with rationale
+  const verdictLabel = verdict === 'correct' ? '✓ Correct'
+                      : verdict === 'partial' ? '◐ Partial Credit'
+                      : '✗ Incorrect';
+  const cls = verdict === 'correct' ? 'good'
+            : verdict === 'partial' ? 'partial'
+            : 'bad';
+  fb.className = `feedback show ${cls}`;
+  fb.innerHTML = `
+    <div class="verdict">${verdictLabel}</div>
+    <div style="margin-bottom:8px"><b>${detail}</b></div>
+    <div style="margin-top:10px;line-height:1.65">${q.rationale}</div>
+    <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)">📚 Source: ${q.source}</div>
+  `;
+
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').style.display = 'none';
+  document.getElementById('nextBtn').disabled = false;
+  if(currentIndex === sessionData.length-1){
+    document.getElementById('nextBtn').textContent = 'Show Results →';
+  }
+
+  // auto-scroll to feedback
+  setTimeout(() => fb.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+}
+
+/* Move to next question */
+function nextQuestion(){
+  if(currentIndex < sessionData.length - 1){
+    currentIndex++;
+    renderQuestion();
+    window.scrollTo({top: document.getElementById('exam').offsetTop - 20, behavior:'smooth'});
+  } else {
+    // show results
+    showResults();
+  }
+}
+
+/* Compute final score and render results panel */
+function showResults(){
+  document.getElementById('exam').classList.remove('active');
+  document.getElementById('results').classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  // weight: each question = 1 point, partial credit gets 0.5
+  let earned = 0, total = 0;
+  const buckets = {
+    MC: {earned:0, total:0, correct:0, partial:0, wrong:0},
+    SATA: {earned:0, total:0, correct:0, partial:0, wrong:0},
+    MATRIX: {earned:0, total:0, correct:0, partial:0, wrong:0}
+  };
+
+  sessionData.forEach(item => {
+    const t = item.q.type;
+    buckets[t].total += 1;
+    total += 1;
+    if(item.verdict === 'correct'){
+      buckets[t].earned += 1;
+      buckets[t].correct += 1;
+      earned += 1;
+    } else if(item.verdict === 'partial'){
+      // for matrix, use actual row ratio; for SATA, give 0.5
+      if(t === 'MATRIX'){
+        const ratio = item.matrixRowsCorrect / item.matrixRowsTotal;
+        buckets[t].earned += ratio;
+        earned += ratio;
+      } else {
+        buckets[t].earned += 0.5;
+        earned += 0.5;
+      }
+      buckets[t].partial += 1;
+    } else {
+      buckets[t].wrong += 1;
+    }
+  });
+
+  const pct = (earned/total)*100;
+  document.getElementById('scorePct').textContent = pct.toFixed(1) + '%';
+  document.getElementById('scoreFrac').textContent = `${earned.toFixed(1)} of ${total} points`;
+  let grade, gradeColor;
+  if(pct >= 90){ grade='Mastery'; gradeColor='var(--good)'; }
+  else if(pct >= 80){ grade='Proficient'; gradeColor='var(--teal)'; }
+  else if(pct >= 70){ grade='Developing'; gradeColor='var(--gold)'; }
+  else if(pct >= 60){ grade='Below Standard'; gradeColor='var(--warn)'; }
+  else { grade='Needs Remediation'; gradeColor='var(--bad)'; }
+  const gradeEl = document.getElementById('scoreGrade');
+  gradeEl.textContent = grade;
+  gradeEl.style.color = gradeColor;
+
+  // summary text
+  const corrCt = sessionData.filter(i => i.verdict==='correct').length;
+  const partCt = sessionData.filter(i => i.verdict==='partial').length;
+  const wrongCt = sessionData.filter(i => i.verdict==='wrong').length;
+  document.getElementById('scoreSummary').innerHTML =
+    `You answered <b>${corrCt}</b> question${corrCt!==1?'s':''} fully correct, <b>${partCt}</b> with partial credit, and <b>${wrongCt}</b> incorrect across ${total} items. Below is your full rationale-keyed item review — use it as your post-exam study sheet.`;
+
+  // breakdown table
+  const tbl = document.getElementById('breakdownTable');
+  tbl.innerHTML = `
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)">Question Type</th>
+        <th style="text-align:right;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)">Full</th>
+        <th style="text-align:right;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)">Partial</th>
+        <th style="text-align:right;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)">Wrong</th>
+        <th style="text-align:right;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${['MC','SATA','MATRIX'].map(k => {
+        const b = buckets[k];
+        const label = k==='MC'?'Multiple Choice':k==='SATA'?'Select All That Apply':'Matrix';
+        const bpct = b.total ? (b.earned/b.total*100).toFixed(0) : '0';
+        return `<tr>
+          <td style="padding:12px;font-family:'Playfair Display',serif;font-weight:600;color:var(--navy);border-bottom:1px solid var(--line-2)">${label}</td>
+          <td style="padding:12px;text-align:right;color:var(--good);font-weight:700;border-bottom:1px solid var(--line-2)">${b.correct}</td>
+          <td style="padding:12px;text-align:right;color:var(--warn);font-weight:700;border-bottom:1px solid var(--line-2)">${b.partial}</td>
+          <td style="padding:12px;text-align:right;color:var(--bad);font-weight:700;border-bottom:1px solid var(--line-2)">${b.wrong}</td>
+          <td style="padding:12px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--navy);border-bottom:1px solid var(--line-2)">${b.earned.toFixed(1)}/${b.total} · ${bpct}%</td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  `;
+
+  // review list
+  const rev = document.getElementById('reviewList');
+  rev.innerHTML = sessionData.map((item, idx) => {
+    const q = item.q;
+    const verdict = item.verdict;
+    const cls = verdict==='correct'?'correct':verdict==='partial'?'partial':'wrong';
+    const tagCls = verdict==='correct'?'good':verdict==='partial'?'warn':'bad';
+    const tagTxt = verdict==='correct'?'✓ Correct':verdict==='partial'?'◐ Partial':'✗ Wrong';
+
+    let yoursHtml = '';
+    let ansHtml = '';
+
+    if(q.type === 'MC'){
+      const yours = item.userPick != null ? item.shuffled[item.userPick].text : '<i>no answer</i>';
+      const correctOpt = item.shuffled.find(o => o.correct);
+      yoursHtml = `<div class="yours"><b>Your pick</b><br>${yours}</div>`;
+      ansHtml = `<div class="ans"><b>Correct answer</b><br>${correctOpt.text}</div>`;
+    } else if(q.type === 'SATA'){
+      const yoursList = (item.userPick||[]).map(i => '• ' + item.shuffled[i].text).join('<br>') || '<i>no answer</i>';
+      const correctList = item.shuffled.filter(o => o.correct).map(o => '• ' + o.text).join('<br>');
+      yoursHtml = `<div class="yours"><b>Your selections</b><br>${yoursList}</div>`;
+      ansHtml = `<div class="ans"><b>All correct selections</b><br>${correctList}</div>`;
+    } else if(q.type === 'MATRIX'){
+      const cats = item.shuffled.categories;
+      const rowsHtml = item.shuffled.rows.map((row, rIdx) => {
+        const userCol = item.userPick ? item.userPick[rIdx] : null;
+        const correctCol = row.correctNew;
+        const userTxt = userCol != null ? cats[userCol] : '<i>—</i>';
+        const correctTxt = cats[correctCol];
+        const ok = userCol === correctCol;
+        return `<div style="font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line-2)">
+          <div style="font-weight:600;color:var(--navy)">${row.text}</div>
+          <div style="color:${ok?'var(--good)':'var(--bad)'};font-size:12px;margin-top:2px">
+            Your pick: <b>${userTxt}</b>${!ok?` &nbsp;·&nbsp; Correct: <b style="color:var(--good)">${correctTxt}</b>`:''}
+          </div>
+        </div>`;
+      }).join('');
+      yoursHtml = `<div class="yours" style="background:var(--cream)"><b>Row-by-row breakdown (${item.matrixRowsCorrect||0}/${item.matrixRowsTotal||item.shuffled.rows.length} correct)</b><div style="margin-top:8px">${rowsHtml}</div></div>`;
+      ansHtml = '';
+    }
+
+    const partialNote = item.partialDetail ? `<div style="font-size:13px;color:var(--warn);margin:6px 0;font-style:italic">${item.partialDetail}</div>` : '';
+
+    return `
+      <div class="review-card ${cls}">
+        <div class="rmeta">
+          <span style="color:var(--gold);font-weight:700">Q${idx+1} · ${q.id}</span>
+          <span style="color:var(--muted)">${q.type}</span>
+          <span class="verdict-tag ${tagCls}">${tagTxt}</span>
+          <span style="color:var(--muted);font-style:italic;text-transform:none;letter-spacing:.04em">${q.topic}</span>
+        </div>
+        ${q.case ? `<div class="qstem">${q.case}</div>` : ''}
+        <div class="qtxt">${q.stem}</div>
+        ${partialNote}
+        ${yoursHtml}
+        ${ansHtml}
+        <div class="rationale">${q.rationale}</div>
+        <div class="src">📚 ${q.source}</div>
+      </div>
+    `;
+  }).join('');
+}
+</script>
+</body>
+</html>

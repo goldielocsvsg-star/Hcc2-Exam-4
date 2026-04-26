@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HCC II Exam 4 · Anxiety · Addiction · Mood · Psychosis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d1117; --surface:#161b27; --surface2:#1c2236; --surface3:#212842;
+  --border:#2a3350; --border2:#3a4568;
+  --text:#e8edf8; --soft:#9dacc8; --faint:#5a6a8a;
+  --a1:#7c9cf8; --a2:#f06d84; --a3:#5ed6a8; --a4:#f5c46a; --a5:#c47ef5; --a6:#f09a6a;
+  --a1s:rgba(124,156,248,.12); --a2s:rgba(240,109,132,.12); --a3s:rgba(94,214,168,.12);
+  --a4s:rgba(245,196,106,.12); --a5s:rgba(196,126,245,.12); --a6s:rgba(240,154,106,.12);
+  --good:#5ed3a0; --goodbg:rgba(94,211,160,.12);
+  --bad:#f07a7a; --badbg:rgba(240,122,122,.12);
+  --warn:#f5c46a; --warnbg:rgba(245,196,106,.12);
+  --r:14px; --r2:20px; --r3:28px;
+  --shadow:0 4px 24px rgba(0,0,0,.4);
+  --font-d:'Fraunces',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-b);background:var(--bg);color:var(--text);min-height:100vh;display:flex;font-size:16px;-webkit-font-smoothing:antialiased;}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:264px;min-height:100vh;background:var(--surface);
+  border-right:1px solid var(--border);position:fixed;top:0;left:0;
+  overflow-y:auto;z-index:100;display:flex;flex-direction:column;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+.sb-head{padding:22px 18px 16px;border-bottom:1px solid var(--border);}
+.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.sb-badge{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--a1),var(--a5));
+  display:grid;place-items:center;font-weight:900;font-size:.85rem;
+  font-family:var(--font-d);color:#fff;
+}
+.sb-title{font-family:var(--font-d);font-weight:700;font-size:.95rem;line-height:1.25;color:var(--text);}
+.sb-sub{font-size:.7rem;color:var(--soft);margin-top:2px;}
+.xp-wrap{padding:12px 18px;border-bottom:1px solid var(--border);}
+.xp-row{display:flex;justify-content:space-between;font-size:.7rem;color:var(--soft);margin-bottom:5px;}
+.xp-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden;}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a3));width:0%;transition:width .5s ease;border-radius:99px;}
+.xp-stars{font-size:.8rem;color:var(--a4);letter-spacing:1px;}
+nav{padding:10px 10px 16px;flex:1;}
+.nav-sec{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);padding:12px 8px 4px;}
+.nav-btn{
+  display:flex;align-items:center;gap:9px;width:100%;background:none;
+  border:none;color:var(--soft);font-family:var(--font-b);font-size:.82rem;
+  font-weight:400;padding:7px 8px;border-radius:9px;cursor:pointer;
+  text-align:left;transition:all .15s;
+}
+.nav-btn:hover{background:var(--surface2);color:var(--text);}
+.nav-btn.active{background:var(--surface2);color:var(--text);font-weight:600;}
+.nav-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.nav-count{margin-left:auto;font-size:.65rem;background:var(--surface3);color:var(--soft);padding:2px 6px;border-radius:99px;}
+
+/* ── MAIN ── */
+#main{margin-left:264px;flex:1;padding:32px 36px 80px;max-width:calc(100% - 264px);}
+.page{display:none;animation:fadeIn .25s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── PAGE HEADERS ── */
+.page-hero{margin-bottom:32px;}
+.page-tag{font-family:var(--font-m);font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--a1);margin-bottom:8px;}
+.page-title{font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:1.1;color:var(--text);margin-bottom:8px;}
+.page-desc{font-size:.95rem;color:var(--soft);line-height:1.6;max-width:60ch;}
+.exam-weight{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--a1s);border:1px solid rgba(124,156,248,.25);border-radius:99px;font-size:.75rem;color:var(--a1);font-weight:600;margin-top:10px;}
+
+/* ── SECTION CARDS ── */
+.section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-bottom:28px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:22px;transition:border-color .15s,transform .15s;}
+.card:hover{border-color:var(--border2);transform:translateY(-1px);}
+.card-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.card-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0;}
+.card-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:3px;}
+.card-title{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--text);}
+.card p{font-size:.87rem;color:var(--soft);line-height:1.55;}
+
+/* ── MNEMONIC BOXES ── */
+.mnemonic{
+  background:linear-gradient(135deg,var(--a4s),rgba(245,196,106,.06));
+  border:1px solid rgba(245,196,106,.3);border-radius:var(--r2);
+  padding:20px 22px;margin:18px 0;
+}
+.mnemonic-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--a4);font-weight:700;margin-bottom:10px;}
+.mnemonic-title{font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:var(--a4);margin-bottom:10px;}
+.mnemonic-grid{display:grid;gap:6px;}
+.mn-row{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:baseline;}
+.mn-letter{font-family:var(--font-d);font-weight:900;font-size:1.1rem;color:var(--a4);}
+.mn-word{font-size:.9rem;color:var(--text);line-height:1.4;}
+.mn-word em{color:var(--soft);font-style:normal;}
+
+/* ── STORY ANCHORS ── */
+.story-box{
+  background:var(--surface2);border:1px solid var(--border);
+  border-left:3px solid var(--a5);border-radius:var(--r2);
+  padding:18px 20px;margin:18px 0;
+}
+.story-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--a5);font-weight:700;margin-bottom:8px;}
+.story-box p{font-size:.88rem;color:var(--soft);line-height:1.6;}
+.story-box p strong{color:var(--text);}
+
+/* ── DANGER / WARNING BOXES ── */
+.danger-box{
+  background:var(--badbg);border:1px solid rgba(240,122,122,.3);
+  border-left:3px solid var(--bad);border-radius:var(--r2);
+  padding:16px 20px;margin:12px 0;
+}
+.danger-box .dl{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--bad);font-weight:700;margin-bottom:6px;}
+.danger-box p,.danger-box li{font-size:.88rem;color:var(--text);line-height:1.5;}
+.warn-box{
+  background:var(--warnbg);border:1px solid rgba(245,196,106,.3);
+  border-left:3px solid var(--warn);border-radius:var(--r2);
+  padding:16px 20px;margin:12px 0;
+}
+.warn-box .wl{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--warn);font-weight:700;margin-bottom:6px;}
+.warn-box p,.warn-box li{font-size:.88rem;color:var(--text);line-height:1.5;}
+.good-box{
+  background:var(--goodbg);border:1px solid rgba(94,211,160,.3);
+  border-left:3px solid var(--good);border-radius:var(--r2);
+  padding:16px 20px;margin:12px 0;
+}
+.good-box .gl{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--good);font-weight:700;margin-bottom:6px;}
+.good-box p,.good-box li{font-size:.88rem;color:var(--text);line-height:1.5;}
+
+/* ── DRUG CARDS ── */
+.drug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:16px 0;}
+.drug-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px;transition:border-color .15s;}
+.drug-card:hover{border-color:var(--border2);}
+.drug-name{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.drug-generic{font-size:.75rem;color:var(--soft);font-style:italic;margin-bottom:10px;}
+.drug-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.dtag{font-size:.65rem;padding:3px 8px;border-radius:99px;font-weight:600;}
+.dtag.class{background:var(--a1s);color:var(--a1);border:1px solid rgba(124,156,248,.2);}
+.dtag.use{background:var(--a3s);color:var(--a3);border:1px solid rgba(94,214,168,.2);}
+.dtag.danger{background:var(--badbg);color:var(--bad);border:1px solid rgba(240,122,122,.2);}
+.dtag.nclex{background:var(--a4s);color:var(--a4);border:1px solid rgba(245,196,106,.2);}
+.drug-rows{display:grid;gap:5px;}
+.drug-row{display:flex;gap:8px;font-size:.82rem;line-height:1.4;}
+.drug-row-label{color:var(--faint);min-width:72px;flex-shrink:0;font-weight:500;}
+.drug-row-val{color:var(--soft);}
+.drug-row-val strong{color:var(--text);}
+
+/* ── TABLES ── */
+.nice-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.83rem;}
+.nice-table th{background:var(--surface2);color:var(--soft);font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);}
+.nice-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--soft);vertical-align:top;line-height:1.45;}
+.nice-table td strong{color:var(--text);}
+.nice-table tr:hover td{background:var(--surface2);}
+.nice-table tr:last-child td{border-bottom:none;}
+
+/* ── FLIP CARDS ── */
+.flip-section{margin:24px 0;}
+.flip-section-title{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.flip-card{height:130px;perspective:800px;cursor:pointer;}
+.flip-inner{
+  width:100%;height:100%;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  transform-style:preserve-3d;position:relative;
+}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{
+  position:absolute;inset:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:var(--r);display:flex;flex-direction:column;
+  justify-content:center;align-items:center;padding:14px;
+  text-align:center;border:1px solid var(--border);
+}
+.flip-front{background:var(--surface2);}
+.flip-back{transform:rotateY(180deg);background:var(--surface3);}
+.flip-q{font-size:.82rem;color:var(--text);font-weight:600;line-height:1.4;}
+.flip-a{font-size:.8rem;color:var(--soft);line-height:1.4;}
+.flip-a strong{color:var(--a3);}
+.flip-hint{font-size:.62rem;color:var(--faint);margin-top:6px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:14px 0;}
+.acc-btn{
+  width:100%;background:var(--surface);border:none;padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;color:var(--text);font-family:var(--font-b);font-size:.9rem;font-weight:600;
+  transition:background .15s;text-align:left;
+}
+.acc-btn:hover{background:var(--surface2);}
+.acc-arrow{font-size:.75rem;color:var(--soft);transition:transform .2s;flex-shrink:0;}
+.acc-btn.open .acc-arrow{transform:rotate(180deg);}
+.acc-body{display:none;padding:0 20px 18px;background:var(--surface);}
+.acc-body.open{display:block;}
+.acc-body p,.acc-body li{font-size:.87rem;color:var(--soft);line-height:1.6;}
+.acc-body li{margin-left:16px;margin-top:4px;}
+.acc-body strong{color:var(--text);}
+
+/* ── QUIZ ── */
+#page-quiz .quiz-shell{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start;}
+.quiz-side{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;position:sticky;top:20px;}
+.quiz-side h3{font-size:.9rem;font-family:var(--font-d);margin-bottom:14px;}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
+.metric{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px 10px;text-align:center;}
+.metric .num{font-family:var(--font-d);font-size:1.4rem;font-weight:700;line-height:1;}
+.metric .lbl{font-size:.68rem;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-top:3px;}
+.progress-wrap{margin-bottom:14px;}
+.progress-row{display:flex;justify-content:space-between;font-size:.78rem;color:var(--soft);margin-bottom:5px;}
+.progress-bar{height:5px;background:var(--border);border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a3));width:0%;transition:width .3s ease;border-radius:99px;}
+.jump-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:10px;}
+.jbtn{aspect-ratio:1;border:1px solid var(--border);background:var(--surface2);border-radius:7px;cursor:pointer;font-family:var(--font-m);font-size:.68rem;color:var(--soft);transition:all .1s;}
+.jbtn:hover{border-color:var(--a1);}
+.jbtn.cur{background:var(--a1);color:#fff;border-color:var(--a1);font-weight:700;}
+.jbtn.ok{background:var(--goodbg);color:var(--good);border-color:rgba(94,211,160,.3);}
+.jbtn.ng{background:var(--badbg);color:var(--bad);border-color:rgba(240,122,122,.3);}
+.jbtn.ans{background:var(--a1s);color:var(--a1);border-color:rgba(124,156,248,.25);}
+.quiz-main{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:30px;}
+.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+.q-chip{font-size:.68rem;padding:3px 10px;border-radius:99px;border:1px solid var(--border);color:var(--soft);}
+.q-chip.cat{background:var(--a1s);color:var(--a1);border-color:rgba(124,156,248,.25);font-weight:600;}
+.q-chip.sata{background:var(--a4s);color:var(--a4);border-color:rgba(245,196,106,.25);font-weight:600;}
+.q-stem{font-family:var(--font-d);font-size:1.12rem;line-height:1.55;color:var(--text);font-weight:600;margin-bottom:20px;}
+.options{display:grid;gap:9px;margin-bottom:20px;}
+.opt{
+  border:1.5px solid var(--border);background:var(--surface2);border-radius:var(--r);
+  padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:12px;
+  transition:all .12s;font-size:.88rem;color:var(--soft);line-height:1.45;
+}
+.opt:hover{border-color:var(--a1);color:var(--text);background:var(--a1s);}
+.opt.selected{border-color:var(--a1);background:var(--a1s);color:var(--text);}
+.opt.correct{border-color:var(--good);background:var(--goodbg);color:var(--text);}
+.opt.wrong{border-color:var(--bad);background:var(--badbg);color:var(--text);}
+.opt-key{font-family:var(--font-m);font-weight:700;font-size:.85rem;min-width:22px;flex-shrink:0;margin-top:.5px;}
+.opt.selected .opt-key{color:var(--a1);}
+.opt.correct .opt-key{color:var(--good);}
+.opt.wrong .opt-key{color:var(--bad);}
+.rationale{background:var(--surface3);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-top:12px;font-size:.86rem;line-height:1.6;color:var(--soft);display:none;}
+.rationale.show{display:block;}
+.rationale strong{color:var(--text);}
+.rationale .rat-head{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:6px;}
+.rationale .rat-head.ok{color:var(--good);}
+.rationale .rat-head.ng{color:var(--bad);}
+.q-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{font-family:var(--font-b);font-weight:600;font-size:.88rem;padding:10px 18px;border-radius:var(--r);border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .12s;line-height:1;}
+.btn:disabled{opacity:.4;cursor:default;}
+.btn.primary{background:var(--a1);color:#fff;border-color:var(--a1);}
+.btn.primary:hover:not(:disabled){background:color-mix(in srgb,var(--a1) 85%,#000);}
+.btn.ghost{background:var(--surface2);color:var(--text);border-color:var(--border);}
+.btn.ghost:hover:not(:disabled){border-color:var(--border2);}
+.btn.success{background:var(--good);color:#000;border-color:var(--good);}
+.btn.danger{background:var(--bad);color:#fff;border-color:var(--bad);}
+.score-screen{text-align:center;padding:40px 20px;}
+.score-big{font-family:var(--font-d);font-size:4rem;font-weight:900;line-height:1;margin:16px 0 8px;}
+.score-label{font-size:.9rem;color:var(--soft);}
+.score-stars{font-size:2rem;margin:12px 0;}
+
+/* ── COMPARISON TABLE ── */
+.compare-wrap{overflow-x:auto;margin:16px 0;}
+
+/* ── HIGHLIGHT PILLS ── */
+.hl{display:inline;padding:1px 6px;border-radius:4px;font-weight:600;}
+.hl.r{background:var(--badbg);color:var(--bad);}
+.hl.g{background:var(--goodbg);color:var(--good);}
+.hl.b{background:var(--a1s);color:var(--a1);}
+.hl.y{background:var(--a4s);color:var(--a4);}
+.hl.p{background:var(--a5s);color:var(--a5);}
+
+/* ── HOME DASHBOARD ── */
+.home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:24px;}
+.home-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px;cursor:pointer;
+  transition:all .15s;text-align:center;
+}
+.home-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow);}
+.home-card-icon{font-size:2rem;margin-bottom:10px;}
+.home-card-title{font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:4px;}
+.home-card-sub{font-size:.76rem;color:var(--soft);}
+.home-card-weight{font-size:.7rem;font-weight:700;margin-top:8px;padding:3px 8px;border-radius:99px;display:inline-block;}
+
+h2.section-h{font-family:var(--font-d);font-size:1.35rem;font-weight:700;color:var(--text);margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+h3.sub-h{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--text);margin:22px 0 10px;}
+ul.nice-list{margin:8px 0 8px 16px;display:grid;gap:5px;}
+ul.nice-list li{font-size:.87rem;color:var(--soft);line-height:1.5;}
+ul.nice-list li strong{color:var(--text);}
+.divider{height:1px;background:var(--border);margin:24px 0;}
+
+/* scrollbar */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside id="sidebar">
+  <div class="sb-head">
+    <div class="sb-logo">
+      <div class="sb-badge">♦</div>
+      <div>
+        <div class="sb-title">HCC II · Exam 4</div>
+        <div class="sb-sub">Spring 2026 Study Guide</div>
+      </div>
+    </div>
+  </div>
+  <div class="xp-wrap">
+    <div class="xp-row"><span>XP <span id="xp-count">0</span> / 500</span><span class="xp-stars" id="xp-stars">☆☆☆☆☆</span></div>
+    <div class="xp-track"><div class="xp-fill" id="xp-fill"></div></div>
+  </div>
+  <nav>
+    <div class="nav-sec">Overview</div>
+    <button class="nav-btn active" onclick="showPage('home')">
+      <span class="nav-dot" style="background:var(--a1)"></span> 🏠 Home Dashboard
+    </button>
+
+    <div class="nav-sec">Study Topics</div>
+    <button class="nav-btn" onclick="showPage('anxiety')">
+      <span class="nav-dot" style="background:var(--a1)"></span> 😰 Anxiety &amp; Panic
+      <span class="nav-count">~8 Qs</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('addiction')">
+      <span class="nav-dot" style="background:var(--a2)"></span> 💊 Addiction &amp; SUD
+      <span class="nav-count">~12 Qs</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('mood')">
+      <span class="nav-dot" style="background:var(--a3)"></span> 🌊 Mood &amp; Affect
+      <span class="nav-count">~20 Qs</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('feeding')">
+      <span class="nav-dot" style="background:var(--a6)"></span> 🍽️ Feeding Disorders
+      <span class="nav-count">included</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('psychosis')">
+      <span class="nav-dot" style="background:var(--a5)"></span> 🌀 Psychosis
+      <span class="nav-count">~20 Qs</span>
+    </button>
+
+    <div class="nav-sec">Practice</div>
+    <button class="nav-btn" onclick="showPage('flashcards')">
+      <span class="nav-dot" style="background:var(--a4)"></span> 🃏 Flash Cards
+    </button>
+    <button class="nav-btn" onclick="showPage('quiz')">
+      <span class="nav-dot" style="background:var(--a3)"></span> 🎯 NCLEX Quiz (40 Qs)
+    </button>
+  </nav>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+  <div class="page-hero">
+    <div class="page-tag">HCC II · Spring 2026</div>
+    <div class="page-title">Exam 4 Master Guide</div>
+    <div class="page-desc">Everything you need for 60 questions across Anxiety, Addiction, Mood/Affect, Psychosis, and Feeding Disorders. Built to stick, not just scroll.</div>
+  </div>
+  <div class="home-grid">
+    <div class="home-card" onclick="showPage('anxiety')">
+      <div class="home-card-icon">😰</div>
+      <div class="home-card-title">Anxiety &amp; Panic</div>
+      <div class="home-card-sub">Panic disorder, PTSD, anxiolytics</div>
+      <div class="home-card-weight" style="background:var(--a1s);color:var(--a1)">~8 questions</div>
+    </div>
+    <div class="home-card" onclick="showPage('addiction')">
+      <div class="home-card-icon">💊</div>
+      <div class="home-card-title">Addiction &amp; SUD</div>
+      <div class="home-card-sub">Withdrawal, CIWA, treatment meds</div>
+      <div class="home-card-weight" style="background:var(--a2s);color:var(--a2)">~12 questions</div>
+    </div>
+    <div class="home-card" onclick="showPage('mood')">
+      <div class="home-card-icon">🌊</div>
+      <div class="home-card-title">Mood &amp; Affect</div>
+      <div class="home-card-sub">Depression, Bipolar, Suicide</div>
+      <div class="home-card-weight" style="background:var(--a3s);color:var(--a3)">~20 questions</div>
+    </div>
+    <div class="home-card" onclick="showPage('feeding')">
+      <div class="home-card-icon">🍽️</div>
+      <div class="home-card-title">Feeding Disorders</div>
+      <div class="home-card-sub">Anorexia, Bulimia, BED</div>
+      <div class="home-card-weight" style="background:var(--a6s);color:var(--a6)">included in exam</div>
+    </div>
+    <div class="home-card" onclick="showPage('psychosis')">
+      <div class="home-card-icon">🌀</div>
+      <div class="home-card-title">Psychosis</div>
+      <div class="home-card-sub">Schizophrenia, antipsychotics</div>
+      <div class="home-card-weight" style="background:var(--a5s);color:var(--a5)">~20 questions</div>
+    </div>
+    <div class="home-card" onclick="showPage('quiz')">
+      <div class="home-card-icon">🎯</div>
+      <div class="home-card-title">Take the Quiz</div>
+      <div class="home-card-sub">40 NCLEX-style questions</div>
+      <div class="home-card-weight" style="background:var(--goodbg);color:var(--good)">Practice exam</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 class="section-h">⚡ Quick Hit: What the Exam Tests</h2>
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--a1s)">📋</div>
+        <div><div class="card-label" style="color:var(--a1)">Therapeutic Comm.</div><div class="card-title">2 Questions</div></div>
+      </div>
+      <p>Use therapeutic techniques, assess verbal/nonverbal, encourage expression of feelings. Know what's therapeutic vs. not.</p>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--a5s)">🧠</div>
+        <div><div class="card-label" style="color:var(--a5)">Mental Health Concepts</div><div class="card-title">27 Questions</div></div>
+      </div>
+      <p>Signs of acute/chronic illness, defense mechanisms, adherence to treatment, group/individual therapy.</p>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--a2s)">💉</div>
+        <div><div class="card-label" style="color:var(--a2)">Pharm: Side Effects</div><div class="card-title">13 Questions</div></div>
+      </div>
+      <p>Contraindications, allergic reactions, side effects of psych meds. Document and monitor. Notify provider.</p>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--a4s)">🚨</div>
+        <div><div class="card-label" style="color:var(--a4)">Crisis Intervention</div><div class="card-title">3 Questions</div></div>
+      </div>
+      <p>Assess violence potential, identify client in crisis, apply crisis techniques. Guide to social supports.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ANXIETY ══ -->
+<div class="page" id="page-anxiety">
+  <div class="page-hero">
+    <div class="page-tag">Topic 1</div>
+    <div class="page-title">Anxiety &amp; Panic Disorders</div>
+    <div class="page-desc">Panic disorder, PTSD, and nursing interventions. Peak in 10 minutes — so should your knowledge.</div>
+    <span class="exam-weight">📊 ~8 exam questions</span>
+  </div>
+
+  <h2 class="section-h">🎯 The Big Picture</h2>
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a1s)">😰</div><div><div class="card-label" style="color:var(--a1)">Definition</div><div class="card-title">What is Anxiety?</div></div></div>
+      <p>A subjectively distressful experience activated by the <strong>perception of threat</strong>. Has both psychological AND physiological expression. <em>Distinct from normal anxiety when it interferes with daily function.</em></p>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a2s)">⚡</div><div><div class="card-label" style="color:var(--a2)">Panic Attack</div><div class="card-title">Peak in 10 min</div></div></div>
+      <p><strong>4+ symptoms = panic attack.</strong> Abrupt onset. Peaks within 10 minutes. Patients often go to the ED thinking it's a heart attack. Know why!</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a5s)">💥</div><div><div class="card-label" style="color:var(--a5)">PTSD</div><div class="card-title">Re-experiencing Trauma</div></div></div>
+      <p>Follows exposure to extreme trauma. Characterized by flashbacks, avoidance, hyperarousal, and detachment. Higher incidence with previous history of abuse.</p>
+    </div>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Panic Attack Symptoms</div>
+    <div class="mnemonic-title">CHEST PAIN + 3 More</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter">C</div><div class="mn-word"><strong>Chest pain</strong> <em>+ palpitations, pounding heart</em></div></div>
+      <div class="mn-row"><div class="mn-letter">H</div><div class="mn-word"><strong>Hot flushes/chills</strong> <em>+ sweating, trembling</em></div></div>
+      <div class="mn-row"><div class="mn-letter">E</div><div class="mn-word"><strong>Environment feels unreal</strong> <em>(derealization, depersonalization)</em></div></div>
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Smothering/SOB sensation</strong> <em>+ choking feeling</em></div></div>
+      <div class="mn-row"><div class="mn-letter">T</div><div class="mn-word"><strong>Terror of dying / losing control</strong> <em>+ paresthesias, nausea</em></div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--soft);margin-top:10px;">Remember: 4+ of these symptoms = panic attack diagnosis</p>
+  </div>
+
+  <h2 class="section-h">🩺 Nursing Interventions — Panic Attack</h2>
+
+  <div class="danger-box">
+    <div class="dl">⚠️ DURING Acute Panic Attack (Priority Actions)</div>
+    <ul style="margin-left:16px;display:grid;gap:4px;">
+      <li><strong>Stay with the client</strong> — never leave them alone</li>
+      <li><strong>Minimize stimuli</strong> — quiet room, dim lights, calm voice</li>
+      <li><strong>Do NOT try to teach</strong> — client CANNOT learn new info during attack</li>
+      <li><strong>Remain calm yourself</strong> — your anxiety is contagious</li>
+    </ul>
+  </div>
+
+  <div class="good-box">
+    <div class="gl">✅ Long-Term Goals (After Acute Phase)</div>
+    <ul style="margin-left:16px;display:grid;gap:4px;">
+      <li>Recognize early symptoms and intervene BEFORE reaching panic stage</li>
+      <li>Develop balanced life; teach relaxation/breathing techniques</li>
+      <li>Postpone health teaching until acute anxiety has subsided</li>
+      <li>CBT, prolonged exposure, mindfulness — all evidence-based</li>
+    </ul>
+  </div>
+
+  <h2 class="section-h">💙 PTSD Deep Dive</h2>
+
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a5s)">👁️</div><div><div class="card-label" style="color:var(--a5)">PTSD Symptoms</div><div class="card-title">Know ALL 4 clusters</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Re-experiencing:</strong> Flashbacks, hallucinations, illusions, nightmares</li>
+        <li><strong>Avoidance:</strong> Avoiding people/places, emotional numbness</li>
+        <li><strong>Hyperarousal:</strong> Irritability, anger, trouble concentrating, insomnia</li>
+        <li><strong>Detachment:</strong> Interpersonal problems, can't show feelings</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a2s)">🏥</div><div><div class="card-label" style="color:var(--a2)">PTSD Nursing Priorities</div><div class="card-title">Safety First</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Always assess suicide risk</strong> — they won't always say it directly</li>
+        <li><strong>Assess comorbid substance abuse</strong> (common!)</li>
+        <li>Focus client on the <strong>present</strong> — use structured interview</li>
+        <li>Validate and acknowledge feelings (therapeutic comm.)</li>
+        <li>Help identify relaxation techniques</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="story-box">
+    <div class="story-label">📖 Story Anchor — PTSD vs Panic: Remember the Difference</div>
+    <p><strong>Pat (Panic Disorder)</strong> has random episodes that come out of nowhere — no clear trigger, peaks in 10 min, goes to the ED thinking heart attack. <br><br>
+    <strong>Pam (PTSD)</strong> was assaulted 2 years ago. She has nightmares, avoids her neighborhood, can't show emotion to her kids, and snaps at everything. Her symptoms have a CAUSE — a specific traumatic event.</p>
+  </div>
+
+  <h2 class="section-h">💊 Pharmacology</h2>
+  <div class="drug-grid">
+    <div class="drug-card">
+      <div class="drug-name">SSRIs</div>
+      <div class="drug-generic">e.g. Paroxetine (Paxil), Sertraline</div>
+      <div class="drug-tags"><span class="dtag class">First-line PTSD/Anxiety</span><span class="dtag nclex">NCLEX ★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">PTSD (FDA approved), panic disorder, depression</div></div>
+        <div class="drug-row"><div class="drug-row-label">Key fact:</div><div class="drug-row-val"><strong>Takes 2–4 weeks</strong> to see therapeutic effect</div></div>
+        <div class="drug-row"><div class="drug-row-label">Teach:</div><div class="drug-row-val">Don't stop abruptly — taper to prevent discontinuation syndrome</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Benzodiazepines</div>
+      <div class="drug-generic">Alprazolam (Xanax), Lorazepam (Ativan)</div>
+      <div class="drug-tags"><span class="dtag class">Anxiolytic</span><span class="dtag danger">Dependence Risk</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Short-term / crisis anxiety only</div></div>
+        <div class="drug-row"><div class="drug-row-label">⚠️ Risk:</div><div class="drug-row-val"><strong>Long-term = dependence.</strong> Withdrawal can cause seizures (DANGEROUS)</div></div>
+        <div class="drug-row"><div class="drug-row-label">Monitor:</div><div class="drug-row-val">Sedation, fall risk, respiratory depression</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Buspirone</div>
+      <div class="drug-generic">BuSpar</div>
+      <div class="drug-tags"><span class="dtag class">Atypical Anxiolytic</span><span class="dtag use">No Dependence</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Key fact:</div><div class="drug-row-val">Non-habit forming! Takes <strong>2–4 weeks</strong> to work</div></div>
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Generalized anxiety disorder, long-term management</div></div>
+        <div class="drug-row"><div class="drug-row-label">Not for:</div><div class="drug-row-val">Acute panic — too slow onset</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-h">🧪 Evidence-Based Treatments for PTSD</h2>
+  <div class="section-grid">
+    <div class="card"><div class="card-head"><div class="card-icon" style="background:var(--a3s)">👁️</div><div><div class="card-title">EMDR</div></div></div><p>Eye Movement Desensitization & Reprocessing — patient processes trauma while tracking side-to-side movements. Evidence-based.</p></div>
+    <div class="card"><div class="card-head"><div class="card-icon" style="background:var(--a1s)">🧩</div><div><div class="card-title">CBT / CPT</div></div></div><p>Cognitive Behavioral / Processing Therapy — identify and challenge distorted trauma-related thoughts.</p></div>
+    <div class="card"><div class="card-head"><div class="card-icon" style="background:var(--a2s)">📢</div><div><div class="card-title">Prolonged Exposure</div></div></div><p>Gradually confront trauma-related fears. Also used for phobias. Helps break avoidance cycle.</p></div>
+  </div>
+</div>
+
+<!-- ══ ADDICTION ══ -->
+<div class="page" id="page-addiction">
+  <div class="page-hero">
+    <div class="page-tag">Topic 2</div>
+    <div class="page-title">Substance Use &amp; Addiction</div>
+    <div class="page-desc">Withdrawal timelines, dangerous substances, treatment meds, and nursing in SUD care.</div>
+    <span class="exam-weight">📊 ~12 exam questions</span>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Most Dangerous Withdrawals</div>
+    <div class="mnemonic-title">"A-B-O = Always Be On alert"</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter">A</div><div class="mn-word"><strong>Alcohol</strong> <em>— MOST DANGEROUS. Can cause seizures & death. NEVER cold turkey.</em></div></div>
+      <div class="mn-row"><div class="mn-letter">B</div><div class="mn-word"><strong>Benzos</strong> <em>— With high doses/extended use: seizures possible.</em></div></div>
+      <div class="mn-row"><div class="mn-letter">O</div><div class="mn-word"><strong>Opioids</strong> <em>— Uncomfortable, rarely fatal. (N/V, bone pain, gooseflesh)</em></div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--soft);margin-top:10px;">Stimulant withdrawal = lethargy, depression, suicidal thoughts — NOT seizures</p>
+  </div>
+
+  <h2 class="section-h">🍺 Alcohol Withdrawal — Timeline You MUST Know</h2>
+  <table class="nice-table">
+    <thead><tr><th>Time After Last Drink</th><th>Symptoms</th><th>Nursing Action</th></tr></thead>
+    <tbody>
+      <tr><td><strong>6–12 hrs</strong></td><td>Shakes, tremors, nausea, anxiety, diaphoresis</td><td>Baseline vitals, CIWA score, notify MD</td></tr>
+      <tr><td><strong>12–24 hrs</strong></td><td>Hallucinations (visual, auditory, tactile)</td><td>Administer benzos per protocol, seizure precautions</td></tr>
+      <tr><td><strong>24–48 hrs</strong></td><td>PEAK — tonic-clonic seizures</td><td>Diazepam, safe environment, airway management</td></tr>
+      <tr><td><strong>2–3 days</strong></td><td>⚠️ Delirium Tremens (DTs) — MEDICAL EMERGENCY</td><td>ICU-level care, antipsychotics, fluids</td></tr>
+    </tbody>
+  </table>
+
+  <div class="danger-box">
+    <div class="dl">🚨 Delirium Tremens — MEDICAL EMERGENCY</div>
+    <p>Occurs <strong>2–3 days after cessation</strong>. Lasts 2–3 days. Can be fatal. Symptoms: hallucinations, severe HTN, tachypnea, severe disorientation, cardiac dysrhythmias, delirium. <strong>Symptoms may progress to death.</strong></p>
+  </div>
+
+  <div class="story-box">
+    <div class="story-label">📖 Story Anchor — CIWA Scale</div>
+    <p>Think of CIWA as the alcohol withdrawal <strong>"thermometer."</strong> It measures 10 symptoms (tremors, sweating, anxiety, headache, agitation, etc.) scored 0–7 each. A <strong>high score = more benzos needed.</strong> CIWA guides treatment — it does NOT diagnose AUD or predict relapse. Classic NCLEX trap: CIWA's purpose is to <strong>monitor severity and guide benzo administration.</strong></p>
+  </div>
+
+  <h2 class="section-h">💊 Alcohol Treatment Medications</h2>
+  <div class="drug-grid">
+    <div class="drug-card">
+      <div class="drug-name">Diazepam (Valium)</div>
+      <div class="drug-generic">+ Lorazepam, Librium</div>
+      <div class="drug-tags"><span class="dtag class">Benzo</span><span class="dtag use">First-line Withdrawal</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Manage AWS — given for elevated HR, BP, temp, and tremors</div></div>
+        <div class="drug-row"><div class="drug-row-label">Key:</div><div class="drug-row-val"><strong>Can PREVENT delirium tremens if given early</strong></div></div>
+        <div class="drug-row"><div class="drug-row-label">Monitor:</div><div class="drug-row-val">Check vitals frequently and track trends</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Disulfiram (Antabuse)</div>
+      <div class="drug-generic"></div>
+      <div class="drug-tags"><span class="dtag class">Aversion Therapy</span><span class="dtag nclex">NCLEX ★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">How:</div><div class="drug-row-val">Even small amounts of alcohol → severe unpleasant reaction</div></div>
+        <div class="drug-row"><div class="drug-row-label">Teach:</div><div class="drug-row-val"><strong>Avoid mouthwash, cough syrup, aftershave</strong> — anything with alcohol</div></div>
+        <div class="drug-row"><div class="drug-row-label">Goal:</div><div class="drug-row-val">Aversion — makes drinking unappealing</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Naltrexone (Vivitrol/ReVia)</div>
+      <div class="drug-generic"></div>
+      <div class="drug-tags"><span class="dtag class">Opioid Antagonist</span><span class="dtag use">Alcohol + Opioid</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Both alcohol AND opioid dependence. Reduces cravings.</div></div>
+        <div class="drug-row"><div class="drug-row-label">Key:</div><div class="drug-row-val"><strong>Interferes with wanting to drink more</strong> if patient relapses</div></div>
+        <div class="drug-row"><div class="drug-row-label">Bonus:</div><div class="drug-row-val">Great for patients with comorbid addiction (opioid + alcohol)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-h">💉 Opioid Overdose &amp; Treatment</h2>
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a2s)">🚑</div><div><div class="card-label" style="color:var(--a2)">Overdose Signs</div><div class="card-title">The "3 P's of Opioid OD"</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Pinpoint pupils</strong> (miosis)</li>
+        <li><strong>Plummeting respirations</strong> (&lt;10/min)</li>
+        <li><strong>Profound sedation</strong> / unconsciousness</li>
+      </ul>
+      <div style="margin-top:10px;font-size:.8rem;color:var(--soft);">Also: euphoria, slurred speech, bradycardia, hypotension, flushed skin</div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a3s)">💉</div><div><div class="card-label" style="color:var(--a3)">Emergency Tx</div><div class="card-title">Naloxone (Narcan) Protocol</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Administer Naloxone</strong> — opioid antagonist, reverses OD</li>
+        <li>Give O2 if RR &lt;10/min or hypoxia present</li>
+        <li><strong>Have suction available</strong> (risk of vomiting on reversal)</li>
+        <li>Monitor vitals and LOC continuously</li>
+        <li><strong>Do NOT leave patient</strong> until fully responsive</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-h">🔄 Opioid Long-Term Treatment</h2>
+  <div class="drug-grid">
+    <div class="drug-card">
+      <div class="drug-name">Methadone</div>
+      <div class="drug-generic">Dolophine</div>
+      <div class="drug-tags"><span class="dtag class">Opioid Agonist</span><span class="dtag use">Substitution Tx</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Key:</div><div class="drug-row-val">Legal synthetic opioid — does NOT cause the "high"</div></div>
+        <div class="drug-row"><div class="drug-row-label">Goal:</div><div class="drug-row-val">Prevents withdrawal, reduces cravings, enables functioning</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Buprenorphine/Naloxone</div>
+      <div class="drug-generic">Suboxone</div>
+      <div class="drug-tags"><span class="dtag class">Partial Agonist</span><span class="dtag nclex">NCLEX ★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Key:</div><div class="drug-row-val">Agonist-antagonist combo — naloxone deters IV misuse</div></div>
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Opioid dependence treatment, office-based prescribing</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-h">⚠️ Substance Comparison Table</h2>
+  <div class="compare-wrap">
+    <table class="nice-table">
+      <thead><tr><th>Substance</th><th>Intoxication Signs</th><th>Withdrawal</th><th>Danger Level</th><th>Emergency Tx</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Alcohol</strong></td><td>Slurred speech, incoordination, blackouts</td><td>Tremors, seizures, DTs — <span class="hl r">LIFE-THREATENING</span></td><td>🔴 Highest</td><td>Benzos (diazepam)</td></tr>
+        <tr><td><strong>Opioids</strong></td><td>Pinpoint pupils, sedation, ↓ RR, euphoria</td><td>N/V, gooseflesh, bone pain, yawning — <span class="hl y">Uncomfortable</span></td><td>🟠 OD = lethal</td><td>Naloxone (Narcan)</td></tr>
+        <tr><td><strong>Benzos</strong></td><td>Slurred speech, ataxia, sedation</td><td>Anxiety, seizures (extended use) — <span class="hl r">DANGEROUS</span></td><td>🔴 High</td><td>Gradual taper</td></tr>
+        <tr><td><strong>Stimulants</strong></td><td>Dilated pupils, euphoria, tachycardia, agitation</td><td>Depression, lethargy, suicidal ideation</td><td>🟡 Crash</td><td>Safety, antipsychotics</td></tr>
+        <tr><td><strong>Hallucinogens</strong></td><td>Paranoia, visual distortions, dilated pupils</td><td>No true withdrawal pattern</td><td>🟡 Behavioral</td><td>Haldol, diazepam, safety</td></tr>
+        <tr><td><strong>Cannabis</strong></td><td>Red eyes, ↑HR, dry mouth, ↑appetite</td><td>Mild irritability, insomnia</td><td>🟢 Low</td><td>Quiet room, support</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-h">👩‍⚕️ SUD in Nurses — Know This!</h2>
+  <div class="warn-box">
+    <div class="wl">⚠️ Impaired Nurse — What To Watch For</div>
+    <ul style="margin-left:16px;display:grid;gap:4px;">
+      <li>Frequent tardiness, mood swings, unusual fatigue</li>
+      <li><strong>Discrepancies in controlled substance counts</strong></li>
+      <li>Volunteers to administer pain medications frequently</li>
+      <li>Defensive when questioned about behavior</li>
+    </ul>
+  </div>
+  <div class="good-box">
+    <div class="gl">✅ Correct Response Steps</div>
+    <ul style="margin-left:16px;display:grid;gap:4px;">
+      <li>1️⃣ <strong>Report concern to management</strong> (NOT law enforcement first, NOT confront publicly)</li>
+      <li>2️⃣ Conduct formal evaluation and <strong>drug screening</strong></li>
+      <li>3️⃣ If diagnosed with SUD: <strong>Peer assistance / alternative-to-discipline program</strong> — NOT license revocation</li>
+    </ul>
+  </div>
+
+  <h2 class="section-h">🤝 Twelve-Step Programs (AA/NA)</h2>
+  <div class="accordion">
+    <button class="acc-btn" onclick="toggleAcc(this)">Core Principles of AA/NA <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <ul class="nice-list">
+        <li><strong>Abstinence is necessary</strong> for recovery</li>
+        <li>A <strong>higher power</strong> is needed to assist in recovery</li>
+        <li>You are <strong>not responsible for the disease</strong>, but ARE responsible for recovery</li>
+        <li>Others cannot be blamed; must acknowledge own feelings/problems</li>
+        <li>Non-religious alternatives exist (SMART Recovery, etc.)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="accordion">
+    <button class="acc-btn" onclick="toggleAcc(this)">CAGE-AID Screening Tool <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <div class="mnemonic-grid">
+        <div class="mn-row"><div class="mn-letter">C</div><div class="mn-word"><strong>Cut down</strong> — Have you tried to cut down on drinking/drug use?</div></div>
+        <div class="mn-row"><div class="mn-letter">A</div><div class="mn-word"><strong>Annoyed</strong> — Have people annoyed you by criticizing your use?</div></div>
+        <div class="mn-row"><div class="mn-letter">G</div><div class="mn-word"><strong>Guilty</strong> — Have you felt bad or guilty about your use?</div></div>
+        <div class="mn-row"><div class="mn-letter">E</div><div class="mn-word"><strong>Eye-opener</strong> — First thing in morning drink/use to steady nerves?</div></div>
+      </div>
+      <p style="margin-top:10px;font-size:.84rem;color:var(--soft);">2+ "yes" answers = significant screening result → formal assessment needed</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOOD ══ -->
+<div class="page" id="page-mood">
+  <div class="page-hero">
+    <div class="page-tag">Topic 3 — BIGGEST Section</div>
+    <div class="page-title">Mood &amp; Affect Disorders</div>
+    <div class="page-desc">Depression, Bipolar Disorder, and Suicide — 20 questions on your exam. Don't skip this.</div>
+    <span class="exam-weight">📊 ~20 exam questions — heaviest weight!</span>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Major Depression Symptoms (DSM-5)</div>
+    <div class="mnemonic-title">"SIG E CAPS" — Prescribe energy capsules!</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Sleep</strong> disturbances (insomnia or hypersomnia)</div></div>
+      <div class="mn-row"><div class="mn-letter">I</div><div class="mn-word"><strong>Interest</strong> loss (anhedonia — no pleasure in activities)</div></div>
+      <div class="mn-row"><div class="mn-letter">G</div><div class="mn-word"><strong>Guilt</strong> (worthlessness, excessive guilt)</div></div>
+      <div class="mn-row"><div class="mn-letter">E</div><div class="mn-word"><strong>Energy</strong> loss / fatigue</div></div>
+      <div class="mn-row"><div class="mn-letter">C</div><div class="mn-word"><strong>Concentration</strong> impaired (can't make decisions)</div></div>
+      <div class="mn-row"><div class="mn-letter">A</div><div class="mn-word"><strong>Appetite</strong> changes (↑ or ↓) / weight changes</div></div>
+      <div class="mn-row"><div class="mn-letter">P</div><div class="mn-word"><strong>Psychomotor</strong> changes (agitated or retarded movements)</div></div>
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Suicidal ideation</strong> — always assess!</div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--soft);margin-top:10px;">5+ symptoms for ≥2 weeks = Major Depressive Episode (must include depressed mood OR anhedonia)</p>
+  </div>
+
+  <h2 class="section-h">💊 Antidepressants — Know Your Classes</h2>
+  <div class="drug-grid">
+    <div class="drug-card">
+      <div class="drug-name">SSRIs</div>
+      <div class="drug-generic">Fluoxetine (Prozac), Sertraline, Paroxetine, Escitalopram</div>
+      <div class="drug-tags"><span class="dtag class">First-Line</span><span class="dtag nclex">NCLEX ★★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">MOA:</div><div class="drug-row-val">Block reuptake of serotonin → more serotonin available</div></div>
+        <div class="drug-row"><div class="drug-row-label">Takes:</div><div class="drug-row-val"><strong>2–4 weeks</strong> for full therapeutic effect</div></div>
+        <div class="drug-row"><div class="drug-row-label">⚠️ Risk:</div><div class="drug-row-val">Serotonin syndrome (agitation, hyperthermia, tachycardia, tremors) — especially if combined with MAOIs or tramadol</div></div>
+        <div class="drug-row"><div class="drug-row-label">Teach:</div><div class="drug-row-val">Don't stop abruptly. Watch for suicidal ideation in first weeks (BLACK BOX in teens/young adults)</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">SNRIs</div>
+      <div class="drug-generic">Venlafaxine (Effexor), Duloxetine (Cymbalta)</div>
+      <div class="drug-tags"><span class="dtag class">SNRI</span><span class="dtag use">Depression + Anxiety + Pain</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">MOA:</div><div class="drug-row-val">Block reuptake of serotonin AND norepinephrine</div></div>
+        <div class="drug-row"><div class="drug-row-label">Bonus:</div><div class="drug-row-val">Good for pain disorders (fibromyalgia, neuropathy)</div></div>
+        <div class="drug-row"><div class="drug-row-label">Monitor:</div><div class="drug-row-val">BP (norepinephrine = ↑ BP), serotonin syndrome</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">TCAs</div>
+      <div class="drug-generic">Amitriptyline, Imipramine, Nortriptyline</div>
+      <div class="drug-tags"><span class="dtag class">Tricyclic</span><span class="dtag danger">Overdose Risk</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">⚠️ NCLEX:</div><div class="drug-row-val"><strong>LETHAL in overdose</strong> — do NOT give full supply to suicidal patients</div></div>
+        <div class="drug-row"><div class="drug-row-label">SE:</div><div class="drug-row-val">Anticholinergic effects (dry mouth, urinary retention, constipation, blurred vision)</div></div>
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Depression, chronic pain, neuropathy</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">MAOIs</div>
+      <div class="drug-generic">Phenelzine (Nardil), Tranylcypromine</div>
+      <div class="drug-tags"><span class="dtag danger">Dangerous Diet Restrictions</span><span class="dtag nclex">NCLEX ★★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">⚠️ BIG:</div><div class="drug-row-val"><strong>Tyramine-rich food = Hypertensive Crisis!</strong> No aged cheeses, red wine, cured meats, fermented foods</div></div>
+        <div class="drug-row"><div class="drug-row-label">Also:</div><div class="drug-row-val">Do NOT combine with SSRIs → serotonin syndrome</div></div>
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Treatment-resistant depression (rarely first-line)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="danger-box">
+    <div class="dl">🚨 Serotonin Syndrome — Emergency!</div>
+    <p>Caused by too much serotonergic activity. Triad: <strong>Mental status changes + Neuromuscular abnormalities (tremors, clonus) + Autonomic instability (hyperthermia, tachycardia, diaphoresis)</strong>. Most common when SSRIs combined with MAOIs, tramadol, or linezolid. Treat: stop the drug, supportive care, cyproheptadine.</p>
+  </div>
+
+  <h2 class="section-h">🔋 Bipolar Disorder</h2>
+
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a4s)">⚡</div><div><div class="card-label" style="color:var(--a4)">Mania</div><div class="card-title">DIG FAST Mnemonic</div></div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">D</div><div class="mn-word" style="font-size:.85rem;"><strong>Distractibility</strong></div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">I</div><div class="mn-word" style="font-size:.85rem;"><strong>Impulsivity</strong> / risky behavior</div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">G</div><div class="mn-word" style="font-size:.85rem;"><strong>Grandiosity</strong></div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">F</div><div class="mn-word" style="font-size:.85rem;"><strong>Flight of ideas</strong></div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">A</div><div class="mn-word" style="font-size:.85rem;"><strong>Activity ↑</strong> / decreased need for sleep</div></div>
+      <div class="mn-row" style="margin-bottom:4px;"><div class="mn-letter" style="color:var(--a4)">S</div><div class="mn-word" style="font-size:.85rem;"><strong>Speech rapid</strong> (pressured speech)</div></div>
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a4)">T</div><div class="mn-word" style="font-size:.85rem;"><strong>Thoughtlessness</strong> (poor judgment)</div></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a2s)">⚖️</div><div><div class="card-label" style="color:var(--a2)">Bipolar Types</div><div class="card-title">I vs II</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Bipolar I:</strong> Full manic episodes (≥7 days or hospitalization needed). May have depression.</li>
+        <li><strong>Bipolar II:</strong> Hypomanic episodes (less severe) + depressive episodes. No full mania.</li>
+        <li><strong>Cyclothymia:</strong> Milder chronic mood fluctuations ≥2 years</li>
+      </ul>
+      <div class="warn-box" style="margin-top:12px;">
+        <div class="wl">⚠️ Nursing Priority in Mania</div>
+        <p>Safety + nutrition + sleep. Manic patients don't eat/sleep. Provide finger foods, limit stimulation, set clear limits.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-h">🔋 Mood Stabilizers</h2>
+  <div class="drug-grid">
+    <div class="drug-card">
+      <div class="drug-name">Lithium</div>
+      <div class="drug-generic">Lithobid, Eskalith</div>
+      <div class="drug-tags"><span class="dtag class">Gold Standard Bipolar</span><span class="dtag nclex">NCLEX ★★★</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Range:</div><div class="drug-row-val">Therapeutic: <strong>0.6–1.2 mEq/L</strong> (maintenance)</div></div>
+        <div class="drug-row"><div class="drug-row-label">Toxic:</div><div class="drug-row-val"><strong>&gt;1.5 mEq/L</strong> = toxicity; &gt;2.0 = severe/lethal</div></div>
+        <div class="drug-row"><div class="drug-row-label">⚠️ Signs:</div><div class="drug-row-val">Early: N/V, tremor, polyuria. Late: ataxia, confusion, seizures, dysrhythmias</div></div>
+        <div class="drug-row"><div class="drug-row-label">Key:</div><div class="drug-row-val"><strong>Adequate Na+ and hydration</strong> required — dehydration → toxicity. Low-sodium diet INCREASES lithium levels!</div></div>
+        <div class="drug-row"><div class="drug-row-label">Monitor:</div><div class="drug-row-val">Serum lithium levels, renal function, thyroid function</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Valproic Acid</div>
+      <div class="drug-generic">Depakote</div>
+      <div class="drug-tags"><span class="dtag class">Anticonvulsant/Mood Stab.</span><span class="dtag danger">Hepatotoxic</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Bipolar mania, seizures, migraine prevention</div></div>
+        <div class="drug-row"><div class="drug-row-label">⚠️ Monitor:</div><div class="drug-row-val">LFTs (liver toxicity), CBC (thrombocytopenia)</div></div>
+        <div class="drug-row"><div class="drug-row-label">Teach:</div><div class="drug-row-val">Teratogenic — use contraception. Report bruising/bleeding.</div></div>
+      </div>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Carbamazepine</div>
+      <div class="drug-generic">Tegretol</div>
+      <div class="drug-tags"><span class="dtag class">Anticonvulsant/Mood Stab.</span><span class="dtag danger">Blood Dyscrasias</span></div>
+      <div class="drug-rows">
+        <div class="drug-row"><div class="drug-row-label">⚠️ Risk:</div><div class="drug-row-val">Agranulocytosis, aplastic anemia — monitor CBC</div></div>
+        <div class="drug-row"><div class="drug-row-label">Also:</div><div class="drug-row-val">Decreases effectiveness of oral contraceptives!</div></div>
+        <div class="drug-row"><div class="drug-row-label">Use:</div><div class="drug-row-val">Bipolar, trigeminal neuralgia, seizures</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-h">🆘 Suicide — Always on the Exam</h2>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Suicide Risk Factors</div>
+    <div class="mnemonic-title">"SAD PERSONS" Scale</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Sex</strong> (male = higher completion rate)</div></div>
+      <div class="mn-row"><div class="mn-letter">A</div><div class="mn-word"><strong>Age</strong> (elderly, adolescents)</div></div>
+      <div class="mn-row"><div class="mn-letter">D</div><div class="mn-word"><strong>Depression</strong></div></div>
+      <div class="mn-row"><div class="mn-letter">P</div><div class="mn-word"><strong>Previous attempt</strong> (strongest predictor!)</div></div>
+      <div class="mn-row"><div class="mn-letter">E</div><div class="mn-word"><strong>ETOH/substance use</strong></div></div>
+      <div class="mn-row"><div class="mn-letter">R</div><div class="mn-word"><strong>Rational thinking loss</strong> (psychosis)</div></div>
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Social support lacking</strong></div></div>
+      <div class="mn-row"><div class="mn-letter">O</div><div class="mn-word"><strong>Organized plan</strong></div></div>
+      <div class="mn-row"><div class="mn-letter">N</div><div class="mn-word"><strong>No spouse/significant other</strong></div></div>
+      <div class="mn-row"><div class="mn-letter">S</div><div class="mn-word"><strong>Sickness</strong> (chronic illness, terminal diagnosis)</div></div>
+    </div>
+  </div>
+
+  <div class="section-grid">
+    <div class="danger-box" style="grid-column:1/-1">
+      <div class="dl">🚨 NCLEX: Suicide Assessment Priorities</div>
+      <ul style="margin-left:16px;display:grid;gap:6px;">
+        <li><strong>Always ask directly</strong> about suicidal ideation — asking does NOT plant the idea</li>
+        <li>Assess for a <strong>plan, means, and timeline</strong> — specific plan = high risk</li>
+        <li><strong>Remove means</strong> — sharps, medications, belts from environment</li>
+        <li>1:1 supervision (one-to-one observation) for high-risk patients</li>
+        <li>Clients who seem suddenly calm/improved after being severely depressed = <strong>DANGER</strong> — they may have made a decision</li>
+        <li>ECT (Electroconvulsive Therapy) — used for severe, treatment-resistant depression & immediate suicide risk</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-btn" onclick="toggleAcc(this)">ECT (Electroconvulsive Therapy) — What Nurses Need to Know <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <ul class="nice-list">
+        <li><strong>Used for:</strong> Severe treatment-resistant depression, active suicidal risk, during pregnancy (safer than meds)</li>
+        <li><strong>Pre-procedure:</strong> NPO, remove jewelry, dentures, informed consent, baseline vitals</li>
+        <li><strong>Post-procedure:</strong> Monitor airway, vitals, orientation; short-term memory loss is common and expected</li>
+        <li><strong>Therapeutic communication:</strong> Reassure that confusion and memory loss are temporary side effects</li>
+        <li>Contraindicated with: increased ICP, recent MI, space-occupying brain lesions</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FEEDING DISORDERS ══ -->
+<div class="page" id="page-feeding">
+  <div class="page-hero">
+    <div class="page-tag">Topic 4</div>
+    <div class="page-title">Feeding &amp; Eating Disorders</div>
+    <div class="page-desc">Anorexia, Bulimia, and Binge Eating Disorder — critical to distinguish, critical to treat safely.</div>
+    <span class="exam-weight">📊 Included in Mood/Mental Health questions</span>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Tell Them Apart Fast</div>
+    <div class="mnemonic-title">"A = Away from food. B = Binge then Banish. BED = Binge, no Exit"</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a2)">AN</div><div class="mn-word"><strong>Anorexia Nervosa</strong> — <em>Restrict, restrict, restrict. BMI &lt;17.5. Weight way below normal.</em></div></div>
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a4)">BN</div><div class="mn-word"><strong>Bulimia Nervosa</strong> — <em>Binge THEN purge/laxatives. Normal or near-normal BMI. Dental erosion clue!</em></div></div>
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a3)">BED</div><div class="mn-word"><strong>Binge Eating Disorder</strong> — <em>Binge, feel guilty, NO compensatory behaviors. Obesity risk.</em></div></div>
+    </div>
+  </div>
+
+  <h2 class="section-h">📊 Comparison Table</h2>
+  <div class="compare-wrap">
+    <table class="nice-table">
+      <thead><tr><th>Feature</th><th>Anorexia Nervosa</th><th>Bulimia Nervosa</th><th>Binge Eating Disorder</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Weight</strong></td><td>Severely underweight (BMI &lt;17.5)</td><td>Normal to slightly below/above</td><td>Overweight/obese</td></tr>
+        <tr><td><strong>Behaviors</strong></td><td>Severe food restriction, excessive exercise, laxatives</td><td>Binge then purge, laxatives, excessive exercise</td><td>Binge eating only — NO purging</td></tr>
+        <tr><td><strong>Physical clues</strong></td><td>Lanugo, bradycardia, amenorrhea, dry skin, thinning hair</td><td><strong>Dental erosion, parotid swelling</strong>, calluses on knuckles (Russell's sign), edema</td><td>Obesity-related complications</td></tr>
+        <tr><td><strong>Labs to watch</strong></td><td><span class="hl r">Hypokalemia (★ most dangerous)</span>, hypoglycemia</td><td>Hypokalemia, metabolic alkalosis, low chloride</td><td>Elevated glucose, cholesterol</td></tr>
+        <tr><td><strong>Priority nursing</strong></td><td>Stabilize vitals, correct electrolytes, refeeding slowly</td><td>Stabilize, electrolytes, suicide risk assessment</td><td>Small goals, slow eating education, bariatric eval</td></tr>
+        <tr><td><strong>Medications</strong></td><td>No FDA-approved drug. Treat comorbidities (SSRIs, antipsychotics)</td><td><span class="hl g">Fluoxetine (Prozac)</span> at HIGH dose. Bupropion CONTRAINDICATED (seizures)</td><td><span class="hl b">Lisdexamfetamine (Vyvanse)</span> — only FDA-approved for BED</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="danger-box">
+    <div class="dl">🚨 Refeeding Syndrome — Anorexia Danger!</div>
+    <p>Reintroducing nutrition too quickly in severely malnourished patients causes dangerous electrolyte shifts (especially <strong>hypophosphatemia</strong>). Can cause cardiac failure, seizures, respiratory failure. <strong>Reintroduce nutrients SLOWLY</strong> with close monitoring. This is why medical stabilization comes BEFORE psychotherapy.</p>
+  </div>
+
+  <div class="warn-box">
+    <div class="wl">⚠️ Bupropion is CONTRAINDICATED in Bulimia and Anorexia</div>
+    <p>Due to <strong>increased seizure risk</strong> in eating disorder patients (electrolyte imbalances lower seizure threshold). This is a classic NCLEX trap — know it!</p>
+  </div>
+
+  <h2 class="section-h">👩‍⚕️ Nursing Approach</h2>
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a2s)">🏥</div><div><div class="card-title">Acute Priority</div></div></div>
+      <ul class="nice-list">
+        <li><strong>Stabilize vitals first</strong> — dysrhythmias, BP, electrolytes</li>
+        <li>Monitor ECG for QT prolongation (hypokalemia risk)</li>
+        <li>Assess suicide risk (especially bulimia)</li>
+        <li>Start nutrition slowly (refeeding syndrome prevention)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a3s)">💬</div><div><div class="card-title">Long-Term Care</div></div></div>
+      <ul class="nice-list">
+        <li>Psychosocial intervention, family therapy, CBT</li>
+        <li>Weight monitoring with empathy — not punitive</li>
+        <li>Teach healthy coping behaviors</li>
+        <li>Education on fluid/electrolyte risks</li>
+        <li>NON-JUDGMENTAL approach always</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PSYCHOSIS ══ -->
+<div class="page" id="page-psychosis">
+  <div class="page-hero">
+    <div class="page-tag">Topic 5</div>
+    <div class="page-title">Psychosis &amp; Schizophrenia</div>
+    <div class="page-desc">Lost in reality. Nursing goal: safety, trust, and reality orientation. 20 questions — know your antipsychotics.</div>
+    <span class="exam-weight">📊 ~20 exam questions</span>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — Positive vs Negative Symptoms</div>
+    <div class="mnemonic-title">"Positive = Present (stuff added). Negative = Not there (stuff removed)."</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a2)">➕</div><div class="mn-word"><strong>Positive (added to behavior):</strong> Hallucinations, delusions, disorganized speech/behavior, catatonia</div></div>
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a3)">➖</div><div class="mn-word"><strong>Negative (taken away):</strong> Flat affect, alogia (can't speak), avolition (no motivation), anhedonia, social withdrawal</div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--soft);margin-top:10px;">Typical antipsychotics treat positive symptoms well. Atypical antipsychotics treat BOTH positive AND negative symptoms.</p>
+  </div>
+
+  <h2 class="section-h">🩺 Nursing Care of Psychotic Patient</h2>
+  <div class="section-grid">
+    <div class="danger-box">
+      <div class="dl">🚨 Priority: Safety</div>
+      <ul style="margin-left:16px;display:grid;gap:4px;">
+        <li><strong>Do NOT argue with delusions</strong> — don't reinforce, but don't dispute</li>
+        <li>Focus on feelings, not the content of delusions</li>
+        <li><strong>Assess for command hallucinations</strong> — "Are you hearing voices telling you to hurt yourself/others?"</li>
+        <li>Safe environment, appropriate room assignment</li>
+      </ul>
+    </div>
+    <div class="good-box">
+      <div class="gl">✅ Therapeutic Communication in Psychosis</div>
+      <ul style="margin-left:16px;display:grid;gap:4px;">
+        <li>Short, simple, concrete statements</li>
+        <li>Calm, non-threatening approach</li>
+        <li>Don't whisper or laugh near client (paranoia)</li>
+        <li><strong>Orient to reality gently</strong> — "I understand you believe that, but I don't see/hear that"</li>
+        <li>Build trust slowly — consistency is key</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-h">💊 Antipsychotic Medications</h2>
+
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a1s)">💊</div><div><div class="card-label" style="color:var(--a1)">1st Generation (Typical)</div><div class="card-title">Haloperidol, Chlorpromazine</div></div></div>
+      <ul class="nice-list">
+        <li>Treat positive symptoms only</li>
+        <li><strong>High EPS risk</strong> (extrapyramidal symptoms)</li>
+        <li>Used for acute agitation (Haldol IM)</li>
+        <li>Older drugs, more side effects</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon" style="background:var(--a5s)">💊</div><div><div class="card-label" style="color:var(--a5)">2nd Generation (Atypical)</div><div class="card-title">Clozapine, Risperidone, Olanzapine, Quetiapine</div></div></div>
+      <ul class="nice-list">
+        <li>Treat BOTH positive AND negative symptoms</li>
+        <li>Lower EPS risk than typical</li>
+        <li>BUT: metabolic syndrome, weight gain, diabetes risk</li>
+        <li><strong>Clozapine = agranulocytosis risk → weekly WBC monitoring required</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-h">⚠️ Extrapyramidal Symptoms (EPS) — MAJOR NCLEX Topic</h2>
+  <table class="nice-table">
+    <thead><tr><th>EPS Type</th><th>What It Looks Like</th><th>Onset</th><th>Treatment</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acute Dystonia</strong></td><td>Sudden muscle spasms, torticollis, oculogyric crisis (eyes stuck up)</td><td>Hours to days</td><td><strong>Benadryl (diphenhydramine) IM/IV</strong> or Cogentin (benztropine)</td></tr>
+      <tr><td><strong>Akathisia</strong></td><td>Extreme restlessness, can't stop moving/pacing</td><td>Days to weeks</td><td>Beta-blockers, benzodiazepines, lower dose</td></tr>
+      <tr><td><strong>Pseudoparkinsonism</strong></td><td>Tremor, rigidity, shuffling gait, masklike face</td><td>Weeks</td><td>Anticholinergics (Cogentin)</td></tr>
+      <tr><td><strong>Tardive Dyskinesia (TD)</strong></td><td>Repetitive involuntary movements — lip smacking, tongue protrusion, facial grimacing</td><td><strong>Months to years</strong></td><td>⚠️ <strong>IRREVERSIBLE.</strong> Stop drug if possible. Switch to atypical.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="danger-box">
+    <div class="dl">🔥 Neuroleptic Malignant Syndrome (NMS) — Life-Threatening Emergency</div>
+    <p>Rare but deadly complication of antipsychotics. <strong>FEVER + MUSCLE RIGIDITY + Altered LOC + Autonomic instability (unstable BP, tachycardia, diaphoresis).</strong> Treatment: Stop antipsychotic IMMEDIATELY, cooling measures, dantrolene, bromocriptine. Often confused with serotonin syndrome — key difference: <strong>NMS has prominent rigidity; no clonus.</strong></p>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Mnemonic — NMS vs Serotonin Syndrome</div>
+    <div class="mnemonic-title">"Serotonin = Shaky. NMS = Stiff."</div>
+    <div class="mnemonic-grid">
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a3)">SS</div><div class="mn-word"><strong>Serotonin Syndrome:</strong> Shaky (clonus/tremors), SSRIs/MAOIs, starts fast (hours)</div></div>
+      <div class="mn-row"><div class="mn-letter" style="color:var(--a2)">NMS</div><div class="mn-word"><strong>NMS:</strong> Stiff (severe "lead-pipe" rigidity), antipsychotics, starts slower (days)</div></div>
+    </div>
+  </div>
+
+  <h2 class="section-h">💊 Clozapine Special Monitoring</h2>
+  <div class="warn-box">
+    <div class="wl">⚠️ Clozapine (Clozaril) — The Most Dangerous Antipsychotic</div>
+    <ul style="margin-left:16px;display:grid;gap:5px;">
+      <li>Used for <strong>treatment-resistant schizophrenia</strong></li>
+      <li>Risk of <strong>agranulocytosis</strong> — life-threatening low WBC</li>
+      <li><strong>Mandatory weekly WBC monitoring</strong> — must have normal WBC to get next prescription</li>
+      <li>Also risks: <strong>seizures</strong> (dose-related), myocarditis, extreme weight gain, hypersalivation</li>
+      <li>Classic NCLEX: patient on clozapine gets a sore throat and fever → <strong>hold med, check WBC immediately</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ FLASH CARDS ══ -->
+<div class="page" id="page-flashcards">
+  <div class="page-hero">
+    <div class="page-tag">Practice Tool</div>
+    <div class="page-title">Flash Cards</div>
+    <div class="page-desc">Click any card to flip it. Great for a quick review on any topic.</div>
+  </div>
+
+  <h2 class="section-h">😰 Anxiety &amp; Panic</h2>
+  <div class="flip-grid" id="flip-anxiety"></div>
+
+  <h2 class="section-h">💊 Addiction &amp; SUD</h2>
+  <div class="flip-grid" id="flip-addiction"></div>
+
+  <h2 class="section-h">🌊 Mood &amp; Bipolar</h2>
+  <div class="flip-grid" id="flip-mood"></div>
+
+  <h2 class="section-h">🍽️ Feeding Disorders</h2>
+  <div class="flip-grid" id="flip-feeding"></div>
+
+  <h2 class="section-h">🌀 Psychosis</h2>
+  <div class="flip-grid" id="flip-psychosis"></div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div class="page" id="page-quiz">
+  <div class="page-hero">
+    <div class="page-tag">Practice Exam</div>
+    <div class="page-title">NCLEX-Style Quiz</div>
+    <div class="page-desc">40 questions across all Exam 4 topics with full rationales. Earn XP for every correct answer!</div>
+  </div>
+  <div class="quiz-shell">
+    <div class="quiz-side panel">
+      <h3>Progress</h3>
+      <div class="metric-grid">
+        <div class="metric"><div class="num" id="q-score">0</div><div class="lbl">Correct</div></div>
+        <div class="metric"><div class="num" id="q-total">0</div><div class="lbl">Answered</div></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-row"><span>Questions</span><span id="q-prog-lbl">0 / 40</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="q-prog-fill"></div></div>
+      </div>
+      <div style="font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Jump to</div>
+      <div class="jump-grid" id="jump-grid"></div>
+    </div>
+    <div class="quiz-main panel" id="quiz-main"></div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ═══ NAV ═══
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    if(b.getAttribute('onclick')===`showPage('${id}')`) b.classList.add('active');
+  });
+  window.scrollTo(0,0);
+}
+
+// ═══ ACCORDION ═══
+function toggleAcc(btn){
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ═══ XP SYSTEM ═══
+let xp = 0;
+function addXP(n){
+  xp = Math.min(500, xp+n);
+  document.getElementById('xp-count').textContent = xp;
+  document.getElementById('xp-fill').style.width = (xp/500*100)+'%';
+  const stars = document.getElementById('xp-stars');
+  const filled = Math.floor(xp/100);
+  stars.textContent = '★'.repeat(filled)+'☆'.repeat(5-filled);
+}
+
+// ═══ FLASH CARDS ═══
+const flashData = {
+  anxiety: [
+    {q:"How many symptoms = panic attack?", a:"4+ symptoms. Peaks within 10 minutes."},
+    {q:"Priority action DURING a panic attack?", a:"Stay with client. Minimize stimuli. Do NOT teach new info."},
+    {q:"What is EMDR?", a:"Eye Movement Desensitization and Reprocessing — evidence-based PTSD treatment"},
+    {q:"Buspirone vs Benzos — which for long-term anxiety?", a:"Buspirone — no dependence risk, but takes 2–4 weeks to work"},
+    {q:"Why can't you teach during a panic attack?", a:"Client cannot concentrate on new info during acute panic"},
+    {q:"4 symptom clusters of PTSD?", a:"Re-experiencing, Avoidance, Hyperarousal, Detachment"},
+  ],
+  addiction: [
+    {q:"Most dangerous substance to withdraw from?", a:"Alcohol — can cause seizures and death. NEVER quit cold turkey."},
+    {q:"When do DTs occur after last drink?", a:"2–3 days after cessation — MEDICAL EMERGENCY"},
+    {q:"What does CIWA measure?", a:"Severity of alcohol withdrawal — guides benzodiazepine dosing"},
+    {q:"Disulfiram (Antabuse) teaching?", a:"Avoid ALL alcohol including mouthwash, cough syrup, aftershave"},
+    {q:"Naloxone (Narcan) — used for?", a:"Opioid overdose reversal. Given every 2–3 min as needed."},
+    {q:"Signs of opioid overdose?", a:"Pinpoint pupils, decreased RR (<10), profound sedation"},
+    {q:"Opioid withdrawal — fatal?", a:"Uncomfortable but rarely fatal. N/V, gooseflesh, bone pain, yawning"},
+    {q:"Methadone vs Suboxone?", a:"Methadone = opioid substitution (no high). Suboxone = buprenorphine + naloxone (deters IV misuse)"},
+  ],
+  mood: [
+    {q:"What does SIG E CAPS stand for?", a:"Sleep, Interest, Guilt, Energy, Concentration, Appetite, Psychomotor, Suicidal ideation"},
+    {q:"How long do SSRIs take to work?", a:"2–4 weeks for full therapeutic effect"},
+    {q:"SSRIs black box warning?", a:"Increased suicidal ideation in children, adolescents, and young adults (up to 24)"},
+    {q:"MAOIs — what foods to avoid?", a:"Tyramine-rich foods: aged cheese, red wine, cured meats → Hypertensive crisis!"},
+    {q:"Lithium therapeutic range?", a:"0.6–1.2 mEq/L. Toxic >1.5 mEq/L"},
+    {q:"Lithium toxicity early signs?", a:"N/V, tremors, polyuria, polydipsia"},
+    {q:"What increases lithium levels?", a:"Dehydration, low-sodium diet (Na competes with Li — low Na = Li retention)"},
+    {q:"DIG FAST — what is it?", a:"Manic symptoms: Distractibility, Impulsivity, Grandiosity, Flight of ideas, Activity↑, Speech rapid, Thoughtlessness"},
+    {q:"What does a sudden calm in a suicidal patient mean?", a:"DANGER — they may have made a decision to act"},
+  ],
+  feeding: [
+    {q:"Anorexia vs Bulimia — key physical difference?", a:"Anorexia = severely underweight. Bulimia = normal BMI with dental erosion, parotid swelling, knuckle calluses"},
+    {q:"Most dangerous lab finding in anorexia?", a:"Hypokalemia → cardiac dysrhythmias"},
+    {q:"What is refeeding syndrome?", a:"Dangerous electrolyte shifts (↓phosphorus) when nutrition reintroduced too fast in malnourished patients"},
+    {q:"Drug approved for BED?", a:"Lisdexamfetamine (Vyvanse) — only FDA-approved for binge eating disorder"},
+    {q:"Why is bupropion contraindicated in eating disorders?", a:"Increased seizure risk due to electrolyte imbalances"},
+    {q:"First priority in severe anorexia?", a:"Medical stabilization — correct electrolytes and stabilize vitals BEFORE psychotherapy"},
+  ],
+  psychosis: [
+    {q:"Positive vs negative symptoms of schizophrenia?", a:"Positive = added (hallucinations, delusions). Negative = removed (flat affect, avolition, alogia)"},
+    {q:"Tardive Dyskinesia — key facts?", a:"Repetitive involuntary movements (lip smacking, tongue). IRREVERSIBLE. Caused by long-term antipsychotics."},
+    {q:"Acute dystonia treatment?", a:"Diphenhydramine (Benadryl) IM/IV — works fast"},
+    {q:"What makes Clozapine unique?", a:"Treats negative symptoms. Risk of agranulocytosis — requires weekly WBC monitoring"},
+    {q:"NMS vs Serotonin Syndrome?", a:"NMS = Stiff + antipsychotics + slower onset. SS = Shaky (clonus) + serotonergic drugs + fast onset"},
+    {q:"How to respond to a patient's delusions?", a:"Don't argue or reinforce. Focus on feelings, not delusion content. Gently orient to reality."},
+    {q:"Akathisia — what is it?", a:"Extreme restlessness / inability to sit still — EPS from antipsychotics"},
+  ]
+};
+
+function buildFlips(){
+  Object.keys(flashData).forEach(topic=>{
+    const el = document.getElementById('flip-'+topic);
+    if(!el) return;
+    el.innerHTML = flashData[topic].map((c,i)=>`
+      <div class="flip-card" onclick="this.classList.toggle('flipped');if(this.classList.contains('flipped'))addXP(2)">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="flip-q">${c.q}</div><div class="flip-hint">tap to reveal</div></div>
+          <div class="flip-back"><div class="flip-a"><strong>${c.a}</strong></div></div>
+        </div>
+      </div>`).join('');
+  });
+}
+buildFlips();
+
+// ═══ QUIZ ═══
+const questions = [
+  // ANXIETY
+  {cat:"Anxiety",stem:"A client experiencing a panic attack is hyperventilating and crying 'I'm going to die!' The nurse's PRIORITY action is:",opts:["A. Teach deep breathing exercises","B. Stay with the client and speak calmly","C. Leave briefly to get the charge nurse","D. Encourage the client to call a family member"],ans:1,rat:"During an acute panic attack, the nurse must stay with the client and remain calm. The client cannot process new information like breathing techniques. Leaving the client is inappropriate — never leave a panicking client alone."},
+  {cat:"Anxiety",stem:"Which medication is MOST appropriate for LONG-TERM management of generalized anxiety disorder with no risk of dependence?",opts:["A. Lorazepam (Ativan)","B. Alprazolam (Xanax)","C. Buspirone (BuSpar)","D. Diazepam (Valium)"],ans:2,rat:"Buspirone is a non-habit-forming anxiolytic that takes 2–4 weeks to reach therapeutic effect. Benzodiazepines (A, B, D) all carry dependence risk and are for short-term/crisis use only."},
+  {cat:"PTSD",stem:"A nurse is caring for a client with PTSD who was assaulted 6 months ago. The client says 'I feel like hurting myself.' The FIRST nursing action is:",opts:["A. Document the statement and continue care","B. Explore the client's PTSD history in depth","C. Assess for the presence of a plan, means, and intent","D. Administer an anxiolytic medication"],ans:2,rat:"Suicide risk assessment is always the priority when a client expresses suicidal ideation. The nurse must determine whether there is a specific plan, available means, and intent before anything else."},
+  {cat:"PTSD",stem:"Which is an EVIDENCE-BASED treatment specifically recommended for PTSD?",opts:["A. Lithium therapy","B. EMDR (Eye Movement Desensitization and Reprocessing)","C. Disulfiram therapy","D. Electroconvulsive therapy (ECT)"],ans:1,rat:"EMDR is a well-established evidence-based treatment for PTSD. It involves processing traumatic memories while following bilateral stimulation (e.g., eye movements). Lithium is for bipolar; disulfiram for alcohol; ECT for severe depression."},
+  // ADDICTION
+  {cat:"Addiction",stem:"A client hospitalized 2 days ago with the last alcohol intake 48 hours ago develops confusion, severe hypertension, visual hallucinations, and diaphoresis. The nurse recognizes this as:",opts:["A. Wernicke's encephalopathy","B. Alcohol intoxication","C. Delirium tremens (DTs)","D. Opiate withdrawal"],ans:2,rat:"Delirium tremens occurs 2–3 days after the last drink. It is a medical emergency characterized by hallucinations, severe HTN, disorientation, tachypnea, and cardiac dysrhythmias. It can be fatal."},
+  {cat:"Addiction",stem:"A client with alcoholism is admitted. The nurse's FIRST priority in assessment is:",opts:["A. Assess for a severe or major withdrawal syndrome","B. Identify the type of alcohol consumed","C. Educate on alcohol's effects on the liver","D. Refer to Alcoholics Anonymous"],ans:0,rat:"The first priority is to assess for a severe withdrawal syndrome — it can be life-threatening. Seizures, DTs, and death can result from untreated alcohol withdrawal."},
+  {cat:"Addiction",stem:"The nurse is caring for a client experiencing alcohol withdrawal. Which medication is the FIRST-LINE treatment?",opts:["A. Haloperidol (Haldol)","B. Diazepam (Valium)","C. Disulfiram (Antabuse)","D. Naltrexone (ReVia)"],ans:1,rat:"Benzodiazepines like diazepam (Valium) are first-line for alcohol withdrawal. They help manage tremors, elevated BP/HR, and can prevent delirium tremens if given early."},
+  {cat:"Addiction",stem:"A nurse is teaching a client prescribed Disulfiram (Antabuse). Which statement by the client indicates understanding?",opts:["A. 'I can drink wine with dinner as long as I limit it to one glass'","B. 'I should avoid mouthwash containing alcohol'","C. 'I should take this medication only when I feel a craving'","D. 'I can stop taking this when I feel better'"],ans:1,rat:"Disulfiram causes severe reactions even with small amounts of alcohol, including alcohol found in mouthwash, cough syrup, or aftershave. The medication is taken regularly, not only during cravings."},
+  {cat:"Addiction",stem:"A patient is found unresponsive with pinpoint pupils and a respiratory rate of 6/min. The nurse should FIRST:",opts:["A. Administer naloxone (Narcan)","B. Call the family","C. Administer methadone","D. Start IV thiamine"],ans:0,rat:"The presentation (pinpoint pupils, severely depressed respirations, unconsciousness) is classic opioid overdose. Naloxone is the antidote. Give O2 if RR <10/min and do not leave the patient."},
+  {cat:"Addiction",stem:"A supervisor notices a nurse who frequently volunteers to administer opioids, has mood swings, and there are medication count discrepancies. The MOST appropriate action is:",opts:["A. Confront the nurse publicly at the nursing station","B. Report concerns directly to law enforcement","C. Report the concern to management","D. Ignore it until you have more evidence"],ans:2,rat:"The appropriate action is to report concern to management — not confront publicly (dangerous/humiliating), not call law enforcement directly, and not ignore. Management will initiate formal evaluation and drug screening."},
+  {cat:"Addiction",stem:"The CIWA scale is used primarily to:",opts:["A. Diagnose alcohol use disorder","B. Monitor withdrawal severity and guide benzodiazepine dosing","C. Assess liver damage from chronic alcoholism","D. Predict relapse after discharge"],ans:1,rat:"CIWA-Ar (Clinical Institute Withdrawal Assessment for Alcohol) measures withdrawal symptom severity and guides medication (benzo) administration. It does not diagnose AUD or assess liver function."},
+  {cat:"Addiction",stem:"A client on long-term buprenorphine/naloxone (Suboxone) asks why naloxone is added to buprenorphine. The best response is:",opts:["A. 'Naloxone enhances the pain-relieving properties of buprenorphine'","B. 'Naloxone is added to deter IV misuse — it causes withdrawal if injected'","C. 'Naloxone prevents weight gain from buprenorphine'","D. 'Naloxone helps with alcohol cravings'"],ans:1,rat:"Naloxone is added to buprenorphine (Suboxone) to deter injection misuse. When taken sublingually as directed, the naloxone has minimal effect; if injected, it precipitates withdrawal, discouraging abuse."},
+  // MOOD — DEPRESSION
+  {cat:"Depression",stem:"A client has been prescribed an SSRI for depression. The client asks 'Why isn't it working yet?' Today is day 5 of the medication. The nurse's best response is:",opts:["A. 'The dose needs to be increased'","B. 'SSRIs take 2–4 weeks to reach full therapeutic effect'","C. 'You should stop the medication and try a different one'","D. 'It should have worked by now — call your doctor'"],ans:1,rat:"SSRIs take 2–4 weeks to achieve full therapeutic effect. This is critical patient education. Clients may stop medication prematurely if not taught this."},
+  {cat:"Depression",stem:"A patient on phenelzine (Nardil, an MAOI) reports having a sudden severe headache, stiff neck, and BP of 190/110 after eating aged cheddar cheese. The nurse recognizes this as:",opts:["A. Serotonin syndrome","B. Neuroleptic malignant syndrome","C. Hypertensive crisis from tyramine interaction","D. Anticholinergic crisis"],ans:2,rat:"MAOIs interact with tyramine-rich foods (aged cheese, red wine, cured meats) to cause hypertensive crisis. Symptoms include severe headache, neck stiffness, and dangerously elevated BP."},
+  {cat:"Depression",stem:"An adolescent client who has been severely depressed appears suddenly calm and is giving away personal belongings. The nurse should FIRST:",opts:["A. Praise the client for the positive mood change","B. Assume the antidepressant is now working","C. Immediately assess for suicidal plan and intent","D. Allow the client quiet time to process feelings"],ans:2,rat:"A sudden calmness in a severely depressed patient is a RED FLAG — the client may have made a decision to attempt suicide. The nurse must immediately assess for plan and intent."},
+  {cat:"Depression",stem:"Regarding ECT (Electroconvulsive Therapy), which is TRUE?",opts:["A. ECT is only used when the patient requests it","B. Memory loss after ECT is permanent","C. ECT is contraindicated in pregnancy","D. Short-term memory loss is a common, expected side effect"],ans:3,rat:"Short-term memory loss is a common and expected side effect of ECT, and it is typically temporary. ECT is actually safe in pregnancy (sometimes safer than meds). Informed consent is required. Memory loss generally improves over time."},
+  // BIPOLAR
+  {cat:"Bipolar",stem:"A client with Bipolar I disorder is hospitalized during a manic episode. The nurse's priority nursing diagnosis is:",opts:["A. Ineffective coping related to mood disturbance","B. Risk for injury related to poor judgment and impulsivity","C. Disturbed body image related to weight changes","D. Social isolation related to withdrawn behavior"],ans:1,rat:"During mania, the priority is safety — the client has impaired judgment, impulsivity, grandiosity, and may make dangerous decisions. Risk for injury is always the priority."},
+  {cat:"Bipolar",stem:"A client on lithium has a serum level of 1.8 mEq/L and reports nausea, tremors, and confusion. The nurse should:",opts:["A. Administer the next scheduled dose","B. Encourage oral fluids and recheck in 4 hours","C. Hold the medication and notify the provider immediately","D. Reduce the lithium dose by half"],ans:2,rat:"A lithium level of 1.8 mEq/L is above the toxic threshold (>1.5 mEq/L). With symptoms of toxicity (N/V, tremors, confusion), the nurse should hold the medication and immediately notify the provider."},
+  {cat:"Bipolar",stem:"A client on lithium is started on a low-sodium diet for hypertension. The nurse is MOST concerned because:",opts:["A. Low sodium increases lithium excretion","B. Low sodium causes lithium toxicity — sodium and lithium compete for reabsorption","C. Sodium increases lithium absorption","D. Lithium and sodium interact to cause cardiac arrhythmias"],ans:1,rat:"Sodium and lithium compete for renal reabsorption. Low sodium → kidneys reabsorb more lithium → lithium toxicity. Clients must maintain adequate sodium and fluid intake. Dehydration has the same effect."},
+  {cat:"Bipolar",stem:"Which antiepileptic mood stabilizer is CONTRAINDICATED in pregnant women and those not using contraception due to teratogenicity?",opts:["A. Lithium","B. Carbamazepine","C. Valproic acid (Depakote)","D. Lamotrigine"],ans:2,rat:"Valproic acid (Depakote) is highly teratogenic — associated with neural tube defects and developmental delays. It should only be used in women of childbearing age if adequate contraception is confirmed and no alternatives exist."},
+  // FEEDING DISORDERS
+  {cat:"Feeding Disorders",stem:"A 17-year-old female with anorexia nervosa has a BMI of 14.8 and serum potassium of 2.8 mEq/L. The PRIORITY nursing concern is:",opts:["A. Body image disturbance","B. Knowledge deficit about nutrition","C. Risk for cardiac dysrhythmias from hypokalemia","D. Chronic low self-esteem"],ans:2,rat:"Hypokalemia in anorexia nervosa is the most dangerous immediate concern — it can cause life-threatening cardiac dysrhythmias. Medical stabilization of electrolytes is the first priority."},
+  {cat:"Feeding Disorders",stem:"When beginning refeeding in a severely malnourished anorexia patient, the nurse should:",opts:["A. Start with a high-calorie diet immediately to restore weight quickly","B. Reintroduce nutrients slowly and monitor for refeeding syndrome","C. Allow the patient to choose their own diet to increase autonomy","D. Begin with IV lipids only for the first 48 hours"],ans:1,rat:"Refeeding syndrome can be fatal — rapid nutrient reintroduction causes dangerous phosphate shifts. Nutrients must be reintroduced slowly with close monitoring of electrolytes."},
+  {cat:"Feeding Disorders",stem:"Which medication is FDA-approved specifically for Binge Eating Disorder?",opts:["A. Fluoxetine (Prozac)","B. Bupropion (Wellbutrin)","C. Lithium","D. Lisdexamfetamine (Vyvanse)"],ans:3,rat:"Lisdexamfetamine (Vyvanse) is the only FDA-approved medication for moderate-to-severe Binge Eating Disorder. Fluoxetine is approved for bulimia nervosa. Bupropion is contraindicated in eating disorders (seizure risk)."},
+  {cat:"Feeding Disorders",stem:"A 22-year-old woman presents with fatigue, muscle cramps, dental erosion, and BMI of 22. She reports eating large amounts of food followed by vomiting. This presentation is MOST consistent with:",opts:["A. Anorexia Nervosa","B. Binge Eating Disorder","C. Bulimia Nervosa","D. ARFID"],ans:2,rat:"Bulimia nervosa is characterized by binge eating followed by compensatory purging behaviors. Normal BMI, dental erosion (from acid), parotid gland swelling, and knuckle calluses (Russell's sign) are hallmark findings."},
+  {cat:"Feeding Disorders",stem:"Bupropion (Wellbutrin) is CONTRAINDICATED in eating disorders primarily because:",opts:["A. It causes significant weight gain","B. It increases suicide risk in this population","C. It lowers the seizure threshold, especially with electrolyte imbalances","D. It interacts with lithium"],ans:2,rat:"Bupropion lowers the seizure threshold. Patients with eating disorders already have electrolyte imbalances that raise seizure risk. This combination makes bupropion dangerous in this population."},
+  // PSYCHOSIS
+  {cat:"Psychosis",stem:"A client with schizophrenia says 'The government has planted microchips in my brain.' The nurse's BEST response is:",opts:["A. 'That's not true — microchips can't be implanted that way'","B. 'I can see you're very frightened by what you're experiencing'","C. 'You're having a delusion — let's talk about something else'","D. 'I believe you — that sounds awful'"],ans:1,rat:"Never argue with or reinforce delusions. Focus on the feeling, not the content. 'I can see you're frightened' acknowledges the emotional experience without reinforcing the false belief."},
+  {cat:"Psychosis",stem:"Which EPS is characterized by sudden muscle spasms and an oculogyric crisis (eyes rolled upward and fixed)?",opts:["A. Akathisia","B. Tardive dyskinesia","C. Acute dystonia","D. Pseudoparkinsonism"],ans:2,rat:"Acute dystonia presents with sudden, sustained muscle contractions. Oculogyric crisis (eyes stuck in upward gaze) is classic. Treatment: diphenhydramine (Benadryl) IM/IV or benztropine (Cogentin)."},
+  {cat:"Psychosis",stem:"A nurse's PRIORITY concern when a patient is receiving clozapine (Clozaril) is:",opts:["A. Monitoring for tardive dyskinesia","B. Weekly WBC monitoring for agranulocytosis","C. Monitoring serum lithium levels","D. Teaching the MAOI tyramine restriction diet"],ans:1,rat:"Clozapine carries a serious risk of agranulocytosis — a potentially fatal decrease in WBCs. Mandatory weekly WBC monitoring is required. If WBC drops critically, the medication must be held immediately."},
+  {cat:"Psychosis",stem:"Which statement about Tardive Dyskinesia (TD) is MOST accurate?",opts:["A. It typically appears within the first week of antipsychotic therapy","B. It is treated effectively with benztropine (Cogentin)","C. It involves repetitive involuntary movements and is often irreversible","D. It presents primarily as severe muscle rigidity"],ans:2,rat:"TD develops after months to years of antipsychotic use. It presents as repetitive involuntary movements (lip smacking, tongue protrusion, facial grimacing) and may be irreversible. It is NOT treated with Cogentin (that's for acute dystonia/pseudoparkinsonism)."},
+  {cat:"Psychosis",stem:"A client on haloperidol (Haldol) develops a temperature of 104°F, severe muscle rigidity, BP of 170/100, and confusion. The nurse recognizes this as:",opts:["A. Serotonin syndrome","B. Neuroleptic Malignant Syndrome (NMS)","C. Acute dystonia","D. Tardive dyskinesia"],ans:1,rat:"NMS is a life-threatening emergency from antipsychotics. Classic triad: hyperthermia, severe muscle rigidity, and altered consciousness with autonomic instability. Unlike serotonin syndrome, NMS has prominent rigidity (not clonus). Stop the drug immediately."},
+  {cat:"Psychosis",stem:"Typical antipsychotics (1st generation) differ from atypical antipsychotics (2nd generation) in which key way?",opts:["A. Typical antipsychotics are more effective for negative symptoms","B. Atypical antipsychotics treat both positive AND negative symptoms","C. Typical antipsychotics have no risk of tardive dyskinesia","D. Atypical antipsychotics require monthly WBC monitoring"],ans:1,rat:"Atypical (2nd gen) antipsychotics treat both positive AND negative symptoms of schizophrenia. Typical (1st gen) antipsychotics only reliably treat positive symptoms and carry higher EPS risk. Clozapine specifically requires WBC monitoring, not all atypicals."},
+  // THERAPEUTIC COMM & MENTAL HEALTH CONCEPTS
+  {cat:"Therapeutic Communication",stem:"A client says 'I feel like no one really cares about me.' The nurse's BEST response is:",opts:["A. 'Of course people care about you!'","B. 'Why do you feel that way?'","C. 'It sounds like you're feeling very alone right now. Tell me more.'","D. 'I know exactly how you feel.'"],ans:2,rat:"Reflecting feelings and using open-ended invitation ('tell me more') is therapeutic. Reassuring ('of course people care') is non-therapeutic (dismisses feelings). 'Why' can feel accusatory. 'I know exactly how you feel' is non-therapeutic (nurse cannot know)."},
+  {cat:"Mental Health",stem:"A client with alcohol use disorder tells the nurse 'I don't have a problem — my wife is the problem.' This is an example of which defense mechanism?",opts:["A. Projection","B. Denial","C. Rationalization","D. Displacement"],ans:1,rat:"Denial is refusing to acknowledge a problem exists. 'I don't have a problem' is classic denial — extremely common in SUD. Rationalization = making excuses. Projection = attributing one's feelings to others."},
+  {cat:"Mental Health",stem:"Which client assignment is MOST appropriate for a nurse caring for a severely depressed, suicidal client?",opts:["A. A room near the nurses' station with 1:1 supervision","B. A quiet room at the end of the hallway for privacy","C. A room with another psychiatric patient for companionship","D. A room with a large window for natural light"],ans:0,rat:"Suicidal clients require 1:1 supervision and placement near the nurses' station for close observation. End-of-hallway rooms decrease visibility. Pairing with another psychiatric patient can be unsafe. Safety is the priority."},
+  {cat:"Mental Health",stem:"A client is prescribed a new antipsychotic and says 'I feel fine now. I want to stop taking it.' The nurse's BEST response is:",opts:["A. 'If you feel fine, it's safe to stop'","B. 'Stopping suddenly can cause relapse — let's talk about your concerns'","C. 'You must take it — it's doctor's orders'","D. 'I'll document that you've refused the medication'"],ans:1,rat:"Non-adherence is a major issue in psychiatric care. The nurse should validate the client's feelings and educate about the risks of stopping abruptly (relapse, withdrawal). Threatening documentation is non-therapeutic."},
+  {cat:"Crisis Intervention",stem:"During a crisis intervention, the nurse's FIRST priority is to:",opts:["A. Explore the history of previous crises","B. Ensure the client's immediate safety","C. Begin psychoeducation about coping strategies","D. Contact the client's family"],ans:1,rat:"Crisis intervention focuses on the 'here and now.' Immediate safety is always the first priority. Education and family contact come after safety is ensured. Extensive history-taking is not the priority in a crisis."},
+  {cat:"Safety",stem:"A nurse is preparing to administer lithium to a client who reports having diarrhea and has eaten very little today. The nurse should:",opts:["A. Administer the lithium as ordered","B. Crush the lithium and mix with food","C. Hold the lithium and notify the provider","D. Administer half the dose and reassess"],ans:2,rat:"Dehydration (from diarrhea) and poor oral intake can increase lithium levels to toxic ranges since sodium and lithium compete for reabsorption. The nurse should hold the dose and notify the provider for guidance."},
+  {cat:"Addiction",stem:"Which finding is MOST concerning in a client who used cocaine 2 hours ago?",opts:["A. Constricted pupils","B. Bradycardia","C. Chest pain and cardiac arrhythmias","D. Hypotension"],ans:2,rat:"Cocaine (a stimulant) causes vasoconstriction and cardiac stimulation. Chest pain and cardiac arrhythmias are the most dangerous acute complications. Cocaine causes dilated pupils and tachycardia/hypertension, NOT constriction or bradycardia."},
+  {cat:"Addiction",stem:"A 3-day-old infant in the NICU is showing signs of irritability, high-pitched crying, tremors, and poor feeding. The nurse is aware the mother used opioids during pregnancy. The PRIORITY nursing intervention is:",opts:["A. Administer IV antibiotics for presumed sepsis","B. Provide a quiet environment and swaddle the infant snugly","C. Begin formula feeding immediately","D. Separate the infant from the mother permanently"],ans:1,rat:"Neonatal opioid withdrawal (NAS) is managed with non-pharmacologic comfort measures first: swaddling, quiet/dim environment, limited stimulation, and skin-to-skin. The non-judgmental approach to the mother-infant pair is essential."},
+  {cat:"Mood",stem:"A client taking sertraline (Zoloft) for 2 weeks calls the nurse and says 'I've been having muscle twitches, fever, and I feel extremely restless and agitated.' The nurse suspects:",opts:["A. Lithium toxicity","B. Neuroleptic malignant syndrome","C. Serotonin syndrome","D. Anticholinergic toxicity"],ans:2,rat:"Serotonin syndrome presents with mental status changes, neuromuscular abnormalities (clonus, tremors, restlessness), and autonomic instability (fever, diaphoresis, tachycardia). It can be triggered by SSRIs, especially in combination with other serotonergic drugs."},
+  {cat:"Psychosis",stem:"A client with schizophrenia tells the nurse 'The voices are telling me to hurt the nurse next door.' The nurse's PRIORITY action is:",opts:["A. Reassure the client that voices are not real","B. Notify the charge nurse and implement safety measures immediately","C. Move the client to a different room","D. Document the statement and continue with care"],ans:1,rat:"Command hallucinations to hurt others are an immediate safety emergency. The nurse must notify the charge nurse and implement safety precautions for both the client and the potential victim. This takes priority over documentation."},
+];
+
+let current=0, answered={}, correct=0;
+
+function buildJumpGrid(){
+  const g = document.getElementById('jump-grid');
+  g.innerHTML = questions.map((_,i)=>`<button class="jbtn${i===0?' cur':''}" onclick="goTo(${i})">${i+1}</button>`).join('');
+}
+
+function renderQuestion(i){
+  const q = questions[i];
+  const isAnswered = i in answered;
+  const html = `
+    <div class="q-meta">
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <span class="q-chip">Q ${i+1} / ${questions.length}</span>
+        <span class="q-chip cat">${q.cat}</span>
+      </div>
+    </div>
+    <div class="q-stem">${q.stem}</div>
+    <div class="options">
+      ${q.opts.map((o,idx)=>{
+        let cls='opt';
+        if(isAnswered){
+          if(idx===q.ans) cls+=' correct';
+          else if(idx===answered[i] && answered[i]!==q.ans) cls+=' wrong';
+        } else if(answered[i]===idx) cls+=' selected';
+        const label = String.fromCharCode(65+idx);
+        const text = o.replace(/^[A-D]\.\s*/,'');
+        return `<div class="${cls}" data-qi="${i}" data-idx="${idx}" style="cursor:pointer">
+          <span class="opt-key">${label}</span>
+          <span>${text}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    ${isAnswered?`
+    <div class="rationale show">
+      <div class="rat-head ${answered[i]===q.ans?'ok':'ng'}">${answered[i]===q.ans?'✅ Correct!':'❌ Incorrect'}</div>
+      <strong>Rationale:</strong> ${q.rat}
+    </div>`:''}
+    <div class="q-actions">
+      <button class="btn ghost" onclick="goTo(${i-1})" ${i===0?'disabled':''}>← Prev</button>
+      ${isAnswered?`<button class="btn primary" onclick="goTo(${i+1})" ${i===questions.length-1?'disabled':''}>Next →</button>`:''}
+      ${i===questions.length-1 && isAnswered?`<button class="btn success" onclick="showScore()">See Results 🎉</button>`:''}
+    </div>`;
+  document.getElementById('quiz-main').innerHTML = html;
+  updateProgress();
+}
+
+function selectOpt(qi, idx){
+  if(qi in answered) return;
+  answered[qi]=idx;
+  if(idx===questions[qi].ans){correct++;addXP(10);}
+  updateJump(qi);
+  renderQuestion(qi);
+  document.getElementById('q-score').textContent=correct;
+  document.getElementById('q-total').textContent=Object.keys(answered).length;
+}
+
+function updateJump(qi){
+  const btns = document.querySelectorAll('.jbtn');
+  if(!btns[qi]) return;
+  btns[qi].classList.remove('cur','ans');
+  btns[qi].classList.add(answered[qi]===questions[qi].ans?'ok':'ng');
+}
+
+function goTo(i){
+  if(i<0||i>=questions.length) return;
+  current=i;
+  document.querySelectorAll('.jbtn').forEach((b,idx)=>{
+    b.classList.remove('cur');
+    if(idx===i) b.classList.add('cur');
+  });
+  renderQuestion(i);
+}
+
+function updateProgress(){
+  const total=Object.keys(answered).length;
+  const pct=total/questions.length*100;
+  document.getElementById('q-prog-fill').style.width=pct+'%';
+  document.getElementById('q-prog-lbl').textContent=`${total} / ${questions.length}`;
+}
+
+function showScore(){
+  const pct=Math.round(correct/questions.length*100);
+  let grade='';
+  if(pct>=90) grade='🏆 Excellent! Exam-ready!';
+  else if(pct>=80) grade='👏 Great job! Review missed topics.';
+  else if(pct>=70) grade='📚 Good start. Hit the weak spots!';
+  else grade='💪 Keep studying — you got this!';
+  document.getElementById('quiz-main').innerHTML=`
+    <div class="score-screen">
+      <div class="page-tag">Quiz Complete</div>
+      <div class="score-big" style="color:${pct>=80?'var(--good)':'var(--a4)'}">${pct}%</div>
+      <div class="score-label">${correct} / ${questions.length} correct</div>
+      <div class="score-stars">${pct>=90?'🏆':pct>=80?'⭐⭐⭐':pct>=70?'⭐⭐':'⭐'}</div>
+      <div style="font-size:1.1rem;margin:12px 0 24px;color:var(--text);font-weight:600;">${grade}</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn primary" onclick="restartQuiz()">Retake Quiz</button>
+        <button class="btn ghost" onclick="showPage('home')">Back to Home</button>
+      </div>
+    </div>`;
+  addXP(50);
+}
+
+function restartQuiz(){
+  current=0; answered={}; correct=0;
+  document.getElementById('q-score').textContent='0';
+  document.getElementById('q-total').textContent='0';
+  buildJumpGrid();
+  renderQuestion(0);
+}
+
+buildJumpGrid();
+renderQuestion(0);
+
+// Event delegation for option clicks (avoids quote-escaping issues in innerHTML)
+document.getElementById('quiz-main').addEventListener('click', function(e){
+  const opt = e.target.closest('.opt');
+  if(!opt) return;
+  const qi = parseInt(opt.dataset.qi);
+  const idx = parseInt(opt.dataset.idx);
+  selectOpt(qi, idx);
+});
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done. $(wc -c < /home/claude/hcc2_exam4.html) bytes"
